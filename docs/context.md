@@ -88,7 +88,10 @@ These aren't arbitrary; each one exists because something went wrong.
 - **`gap.verification.status` may only ever be written as `"unverified"` by a machine.**
   Only Angela sets confirmed / wrong / partial.
 - **`outreach.sent` is never written by a machine.** It's her signature on a message
-  that went to a real person.
+  that went to a real person. The dashboard's **Log send** button *does* write it — but
+  that's Angela clicking it in her own browser with her own token, which is her
+  signature, not a research run forging one. A weekly-research run still may never touch
+  it.
 - **A `wrong` verdict requires a note.** `scripts/validate.mjs` fails the build without
   one. The note is the only part that can become a rule.
 - **A draft edit requires a reason.** The dashboard blocks Copy JSON otherwise.
@@ -137,17 +140,49 @@ on every PR.
 - 28 leads across two research runs are in `data/leads.json`. As of the migration,
   **none had been human-verified yet** — every card was still a machine guess.
 
+## Outreach tracking (the send → reply lifecycle)
+
+Each lead's `outreach` block records what actually went out and what came back:
+
+| Field | Meaning |
+|---|---|
+| `draft` | Claude's message. Never overwritten — it's the baseline for the edit delta. |
+| `sent` | The exact text Angela sent. Her signature (see constraints above). |
+| `channel` | `"email"` or `"instagram"` — how it went out. |
+| `sentOn` | `YYYY-MM-DD` — anchors the two-week reply clock. |
+| `reply` | `"replied"` or `"none"` — set explicitly by Angela. |
+| `repliedOn` | `YYYY-MM-DD` when she marked it replied. |
+| `revisions` | How many times the draft was edited before sending. |
+
+**Reply state is derived from the date, not stored.** A message with `sent` set, no
+`reply`, and a `sentOn` more than 14 days ago renders as "No reply after 2 weeks"
+automatically — nobody has to mark it. `reply: "none"` is only for closing one out
+early. The validator requires `sentOn` + `channel` whenever `sent` is set, so the clock
+can always be computed.
+
+## The dashboard write-path (how the copy-paste went away)
+
+The dashboard can commit `data/leads.json` and `data/feedback.json` directly through
+the GitHub Contents API, using a fine-grained token Angela pastes once (stored only in
+her browser — see `docs/automation.md`). Saves go straight to `main`; the Validate
+workflow still runs on the push.
+
+This does **not** violate the "dumb renderer, data in JSON" decision above. The data
+still lives only in `data/*.json`; the page holds none of it. The token path just
+automates the exact commit Angela used to make by hand in GitHub's web editor. When no
+token is connected, every save falls back to the original copy-JSON + "Edit on GitHub"
+flow, so nothing regresses and the page still works as a pure static file.
+
 ## Known gaps / open items
 
-- No way yet to mark a lead as "sent and replied" — the outreach pipeline still lives
-  in a separate Google Sheet Angela maintains by hand.
 - `data/excluded.json` has entries marked `recheck` (Rogers Park Social, Staropolska)
   that have real gaps but couldn't clear the Instagram-reachable test. If outreach ever
   adds a Facebook channel, they qualify immediately.
 - The dashboard has no search — fine at 28 leads, will bite around 100.
-- Verdicts are staged in the page and copied out by hand. A real write path (a small
-  form action, or a GitHub App) would remove the copy-paste step, at the cost of
-  needing a server or more permissions.
+- The browser-stored token is an accepted tradeoff for staying serverless: it's a
+  fine-grained token scoped to this one repo's contents, on Angela's own origin, on a
+  page with no third-party scripts. A GitHub App or serverless proxy would avoid
+  storing it at all, at the cost of the "no server" simplicity.
 
 ---
 

@@ -16,6 +16,9 @@ const GAP_TYPES = ['No website', 'Broken links', 'No menu online', 'Weak / outda
 const TIERS = ['routing', 'static', 'absence'];
 const VERDICTS = ['unverified', 'confirmed', 'wrong', 'partial'];
 const IG_STATUS = ['active-est', 'handle-found', 'unconfirmed', 'personal-account-only', 'not-found'];
+const CHANNELS = ['email', 'instagram'];
+const REPLY = ['replied', 'none'];
+const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const BANNED = [
   'i hope this finds you well', 'i wanted to reach out', 'leverage', 'solutions',
   'elevate', "in today's digital landscape", 'unlock', 'seamless',
@@ -72,6 +75,22 @@ for (const l of leads) {
     if (/\$\s?\d|\d+\s?(?:\/mo|per month|dollars)/i.test(text)) {
       err(`${at}: outreach.${field} appears to mention pricing — never allowed in a draft`);
     }
+  }
+
+  // Outreach tracking fields — the record of what actually went out and what came back.
+  const o = l.outreach ?? {};
+  if (o.channel != null && !CHANNELS.includes(o.channel)) err(`${at}: outreach.channel "${o.channel}" must be ${CHANNELS.join('|')}`);
+  if (o.reply != null && !REPLY.includes(o.reply)) err(`${at}: outreach.reply "${o.reply}" must be ${REPLY.join('|')}`);
+  if (o.sentOn != null && !ISO_DATE.test(o.sentOn)) err(`${at}: outreach.sentOn "${o.sentOn}" must be YYYY-MM-DD`);
+  if (o.repliedOn != null && !ISO_DATE.test(o.repliedOn)) err(`${at}: outreach.repliedOn "${o.repliedOn}" must be YYYY-MM-DD`);
+  // A send has to carry its date and channel, or the 2-week reply clock can't be computed.
+  if (o.sent) {
+    if (!o.sentOn) err(`${at}: outreach.sent is set but sentOn is missing — the 2-week reply clock needs the send date`);
+    if (!o.channel) err(`${at}: outreach.sent is set but channel is missing — record email or instagram`);
+  }
+  // A reply can't exist before the message that prompted it.
+  if ((o.reply != null || o.repliedOn != null) && !o.sent) {
+    err(`${at}: outreach records a reply but nothing was sent`);
   }
 
   // Sending on an unverified gap is the exact failure the repo exists to prevent.

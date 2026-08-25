@@ -72,6 +72,18 @@ const edited = sentAny.filter((l) => l.outreach.draft && l.outreach.sent !== l.o
 const sentUnchanged = sentAny.filter((l) => l.outreach.draft && l.outreach.sent === l.outreach.draft);
 console.log(`${b('Outreach drafts')}\n`);
 console.log(`  sent as-drafted: ${sentUnchanged.length}   edited before sending: ${edited.length}`);
+
+// Reply outcomes — the number that says whether the voice is landing. A message with a
+// sentOn older than 14 days and no reply logged has passed the 2-week cutoff.
+const now = new Date();
+const daysSince = (d) => Math.floor((now - new Date(d)) / 86400000);
+const replied = sentAny.filter((l) => l.outreach.reply === 'replied').length;
+const closed = sentAny.filter((l) => l.outreach.reply === 'none').length;
+const awaiting = sentAny.filter((l) => !l.outreach.reply && l.outreach.sentOn && daysSince(l.outreach.sentOn) < 14).length;
+const stale = sentAny.filter((l) => !l.outreach.reply && l.outreach.sentOn && daysSince(l.outreach.sentOn) >= 14).length;
+if (sentAny.length) {
+  console.log(`  replies: ${replied}/${sentAny.length} (${pct(replied, sentAny.length).trim()})   awaiting: ${awaiting}   no reply after 2wk: ${stale}   closed: ${closed}`);
+}
 if (edited.length) {
   const grew = edited.filter((l) => l.outreach.sent.length > l.outreach.draft.length).length;
   const avgDelta = Math.round(

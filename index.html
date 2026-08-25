@@ -166,6 +166,25 @@ textarea::placeholder{color:var(--ink-muted)}
 .btn[disabled]{opacity:.4;cursor:not-allowed}
 .hint{font-size:11.5px;color:var(--ink-muted)}
 
+/* Outreach tracking — the record of what went out and whether it came back */
+.outreach{border-top:1px dashed var(--border);padding-top:12px;margin-top:2px}
+.outreach .vlabel{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);margin-bottom:8px}
+.ostatus{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;margin-bottom:8px}
+.ostatus .swatch{width:7px;height:7px;border-radius:50%;flex:none;background:currentColor}
+.os-good{color:var(--good);background:color-mix(in srgb,var(--good) 12%,transparent)}
+.os-warn{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.os-serious{color:var(--serious);background:color-mix(in srgb,var(--serious) 12%,transparent)}
+.os-muted,.os-none{color:var(--ink-muted);background:var(--surface-2)}
+.ohint{font-size:11.5px;color:var(--ink-muted);margin-top:4px;line-height:1.5}
+/* GitHub connect bar — the one-time setup that turns copy-paste into a direct save */
+.ghbar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 15px;margin-bottom:24px;font-size:13px;color:var(--ink-2);box-shadow:var(--shadow)}
+.ghbar .ghmsg{display:flex;align-items:center;gap:9px;line-height:1.5}
+.ghbar .gdot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--ink-muted)}
+.ghbar.on .gdot{background:var(--good)}
+.ghbar strong{color:var(--ink)}
+.ghform{display:flex;flex-wrap:wrap;gap:8px;align-items:center;width:100%;margin-top:6px}
+.ghform input{flex:1;min-width:220px;font:inherit;font-size:12.5px;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:8px 11px}
+.ghform .help{width:100%;font-size:11.5px;color:var(--ink-muted);line-height:1.55}
 .loading,.error{padding:48px 24px;text-align:center;color:var(--ink-muted);font-size:14px;line-height:1.7}
 .error{color:var(--critical)}
 .error code{display:inline-block;background:var(--surface-2);padding:2px 6px;border-radius:5px;color:var(--ink-2)}
@@ -201,6 +220,8 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
   </div>
 </div>
 
+<div class="ghbar" id="ghbar"></div>
+
 <div class="stats" id="stats"></div>
 
 <div class="panel">
@@ -215,7 +236,8 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
   <div class="filter-group" id="f-run"><span class="glabel">Run</span></div>
   <div class="filter-group" id="f-verify"><span class="glabel">Verification</span></div>
 </div>
-<div class="filter-group" id="f-gap" style="margin-bottom:18px"><span class="glabel">Gap type</span></div>
+<div class="filter-group" id="f-gap" style="margin-bottom:14px"><span class="glabel">Gap type</span></div>
+<div class="filter-group" id="f-outreach" style="margin-bottom:18px"><span class="glabel">Outreach</span></div>
 
 <p class="count-note" id="count-note"></p>
 <div id="grid"><div class="loading">Loading leads…</div></div>
@@ -228,16 +250,16 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
 </div>
 
 <script>
-// Where the "Edit on GitHub" buttons point.
-// On GitHub Pages this figures itself out from the URL — nothing to configure.
-// The fallback below is only used when previewing the file locally.
+// Which GitHub repo the "Edit on GitHub" links and the direct-save use.
+// The live site (Vercel, qq-leads.vercel.app) and any local preview save to the org repo
+// below. A GitHub Pages preview still figures itself out from its own URL.
 const REPO = (() => {
   const host = location.hostname.match(/^([\w-]+)\.github\.io$/i);
   if (host) {
     const firstSegment = location.pathname.split("/").filter(Boolean)[0];
     return { owner: host[1], name: firstSegment || `${host[1]}.github.io`, branch: "main" };
   }
-  return { owner: "YOUR-GITHUB-USERNAME", name: "qq-leads", branch: "main" };
+  return { owner: "qqadvertisement", name: "qq-leads", branch: "main" };
 })();
 
 const GAP = {
@@ -265,10 +287,50 @@ let LEADS = [], FEEDBACK = [];
 const draftVerdicts = {};   // leadId -> confirmed | wrong | partial
 const draftEdits    = {};   // leadId -> revised outreach text
 const draftWhy      = {};   // leadId -> why it was revised
-let filters = { run:"All", verify:"All", gap:"All" };
+let filters = { run:"All", verify:"All", gap:"All", outreach:"All" };
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const today = () => new Date().toISOString().slice(0,10);
+
+// ---- GitHub token (stored only in this browser) --------------------------
+// When connected, saving a verdict / logging outreach commits straight to the repo.
+// When not, everything falls back to the copy-JSON + "Edit on GitHub" path below.
+const TOKEN_KEY = "qq-gh-token";
+const getToken = () => { try { return localStorage.getItem(TOKEN_KEY) || ""; } catch { return ""; } };
+const setToken = t => { try { t ? localStorage.setItem(TOKEN_KEY, t) : localStorage.removeItem(TOKEN_KEY); } catch {} };
+const hasToken = () => !!getToken();
+let ghPanelOpen = false;
+
+// ---- Outreach lifecycle (Part 1) -----------------------------------------
+// Reply state is DERIVED from the send date, so the 2-week cutoff is automatic —
+// no save needed for a message to age past two weeks.
+const daysBetween = (iso) => Math.floor((Date.now() - new Date(iso + "T00:00:00")) / 86400000);
+function outreachState(l){
+  const o = l.outreach || {};
+  if(!o.sent) return { key:"not-sent", label:"Not sent yet", cls:"os-none" };
+  if(o.reply==="replied") return { key:"replied", label:`Replied ✓${o.repliedOn?" · "+o.repliedOn:""}`, cls:"os-good" };
+  if(o.reply==="none") return { key:"closed", label:"No reply — closed", cls:"os-muted" };
+  const days = o.sentOn ? daysBetween(o.sentOn) : 0;
+  if(days>=14) return { key:"stale", label:"No reply after 2 weeks", cls:"os-serious" };
+  return { key:"awaiting", label:`Awaiting reply · ${14-days}d left`, cls:"os-warn" };
+}
+// A message can only go out on a gap that's actually been verified and saved —
+// this mirrors scripts/validate.mjs so the dashboard never writes a state CI would reject.
+function canSend(l){
+  const v = l.gap.verification.status;   // committed truth, not a staged verdict
+  if(v==="unverified") return false;
+  if(v==="wrong" && !l.gap.supersededBy) return false;
+  return true;
+}
+function outreachMatch(l, f){
+  if(f==="All") return true;
+  const k = outreachState(l).key;
+  if(f==="Not sent") return k==="not-sent";
+  if(f==="Awaiting")  return k==="awaiting";
+  if(f==="Replied")   return k==="replied";
+  if(f==="No reply")  return k==="stale" || k==="closed";
+  return true;
+}
 
 async function load(){
   try{
@@ -287,11 +349,36 @@ async function load(){
 }
 
 function boot(){
-  renderNotice(); renderStats(); renderChart(); renderLessons();
+  renderGhBar(); renderNotice(); renderStats(); renderChart(); renderLessons();
   pills("f-run", ["All", ...new Set(LEADS.map(l=>l.run))], "run");
   pills("f-verify", ["All","unverified","confirmed","wrong","partial"], "verify");
   pills("f-gap", ["All", ...Object.keys(GAP)], "gap");
+  pills("f-outreach", ["All","Not sent","Awaiting","Replied","No reply"], "outreach");
   render();
+}
+
+// The one-time GitHub connection. Disconnected: explain the copy-paste you still do,
+// and offer to connect. Connected: confirm saves go straight to the repo.
+function renderGhBar(){
+  const el = document.getElementById("ghbar");
+  if(!el) return;
+  const on = hasToken();
+  el.className = "ghbar" + (on ? " on" : "");
+  if(on){
+    el.innerHTML = `
+      <div class="ghmsg"><span class="gdot"></span><span><strong>Connected to GitHub.</strong> Verdicts and outreach save straight from here — no copying, no pasting.</span></div>
+      <button class="btn ghost" data-gh="disconnect">Disconnect</button>`;
+    return;
+  }
+  const tokenUrl = "https://github.com/settings/personal-access-tokens/new";
+  el.innerHTML = `
+    <div class="ghmsg"><span class="gdot"></span><span>Saving still copies JSON for you to paste into GitHub. <strong>Connect once</strong> to save straight from this page.</span></div>
+    <button class="btn" data-gh="toggle">${ghPanelOpen ? "Cancel" : "Connect GitHub"}</button>
+    ${ghPanelOpen ? `<div class="ghform">
+      <input type="password" data-gh-token placeholder="Paste your GitHub token" autocomplete="off" spellcheck="false">
+      <button class="btn" data-gh="save">Save</button>
+      <div class="help">Make a <a href="${tokenUrl}" target="_blank" rel="noopener">fine-grained token ↗</a> for <code>${esc(REPO.owner)}/${esc(REPO.name)}</code> with <strong>Contents: Read and write</strong>. It's stored only in this browser and never leaves it except to save to your repo. Full steps: <code>docs/automation.md</code>.</div>
+    </div>` : ""}`;
 }
 
 function pills(id, vals, key){
@@ -332,11 +419,18 @@ function renderStats(){
   const runs = [...new Set(LEADS.map(l=>l.run))].sort().reverse();
   document.getElementById("run-label").textContent = "Latest run: " + runs[0];
   document.getElementById("lead-count").textContent = n + " leads across " + runs.length + " runs";
+  const sent = LEADS.filter(l=>l.outreach && l.outreach.sent);
+  const replied = sent.filter(l=>l.outreach.reply==="replied").length;
+  const noReply = sent.filter(l=>{const s=outreachState(l).key;return s==="stale"||s==="closed";}).length;
+  const awaiting = sent.filter(l=>outreachState(l).key==="awaiting").length;
   document.getElementById("stats").innerHTML = `
     <div class="stat"><div class="label">Total leads</div><div class="value">${n}</div><div class="foot">across ${runs.length} runs</div></div>
     <div class="stat"><div class="label">Verified by you</div><div class="value">${verified.length}</div><div class="foot">${n-verified.length} still awaiting a check</div></div>
     <div class="stat"><div class="label">Overturned</div><div class="value">${verified.length?wrong:"—"}</div><div class="foot">${verified.length?Math.round(wrong/verified.length*100)+"% of what you checked":"nothing checked yet"}</div></div>
-    <div class="stat"><div class="label">Avg. fit score</div><div class="value">${avg}</div><div class="foot">out of 5</div></div>`;
+    <div class="stat"><div class="label">Avg. fit score</div><div class="value">${avg}</div><div class="foot">out of 5</div></div>
+    <div class="stat"><div class="label">Outreach sent</div><div class="value">${sent.length}</div><div class="foot">${awaiting} awaiting a reply</div></div>
+    <div class="stat"><div class="label">Replied</div><div class="value">${sent.length?replied:"—"}</div><div class="foot">${sent.length?replied+" of "+sent.length+" got a reply":"nothing sent yet"}</div></div>
+    <div class="stat"><div class="label">No reply (2wk+)</div><div class="value">${sent.length?noReply:"—"}</div><div class="foot">${sent.length?"past the two-week cutoff":"—"}</div></div>`;
 }
 
 function renderChart(){
@@ -354,6 +448,36 @@ function renderChart(){
 function scoreEl(n){
   let d=""; for(let i=1;i<=5;i++) d+=`<span class="${i<=n?"on":""}"></span>`;
   return `<div class="score"><span class="num">${n}</span><div class="dots">${d}</div></div>`;
+}
+
+// The send/reply record for one lead. Status is always shown; the buttons offered
+// depend on where the message is in its life (not sent → sent/awaiting → replied/closed).
+function outreachBlock(l){
+  const o = l.outreach || {};
+  const st = outreachState(l);
+  const chanLabel = o.channel==="email" ? "Email" : o.channel==="instagram" ? "Instagram" : "";
+  const meta = [chanLabel, o.sentOn ? "sent "+o.sentOn : ""].filter(Boolean).join(" · ");
+  let actions = "";
+  if(st.key==="not-sent"){
+    actions = canSend(l)
+      ? `<div class="vactions">
+           <button class="btn" data-act="send" data-ch="email">Log send · Email</button>
+           <button class="btn" data-act="send" data-ch="instagram">Log send · Instagram</button>
+         </div>
+         <div class="ohint">Logs the message above as sent today and starts the two-week reply clock.</div>`
+      : `<div class="ohint">Verify the gap and save the verdict first — a message can't go out on an unverified gap.</div>`;
+  } else if(st.key==="awaiting" || st.key==="stale"){
+    actions = `<div class="vactions">
+        <button class="btn" data-act="reply" data-r="replied">Mark replied</button>
+        <button class="btn ghost" data-act="reply" data-r="none">Mark no reply</button>
+      </div>`;
+  }
+  return `<div class="outreach">
+    <div class="vlabel">Outreach</div>
+    <div><span class="ostatus ${st.cls}"><span class="swatch"></span>${esc(st.label)}</span></div>
+    ${meta ? `<div class="ohint">${esc(meta)}</div>` : ""}
+    ${actions}
+  </div>`;
 }
 
 function card(l){
@@ -385,13 +509,13 @@ function card(l){
       <div class="draftbox">
         <textarea data-draft>${esc(draftEdits[l.id] ?? l.outreach.sent ?? l.outreach.draft)}</textarea>
         <div class="delta" data-delta></div>
-        <textarea class="why" data-why placeholder="Why did you change it? e.g. 'cut the second sentence — too long for a DM' — this is the part the next run learns from">${esc(draftWhy[l.id] ?? "")}</textarea>
+        <textarea class="why" data-why placeholder="Edited it? Say why in one line — e.g. 'cut the second sentence, too long for a DM'. This is what the next run learns from, and it's required before you log an edited send.">${esc(draftWhy[l.id] ?? "")}</textarea>
         <div class="vactions">
-          <button class="btn" data-act="copy-draft">Copy JSON</button>
           <button class="mini" data-act="reset-draft">Reset to original</button>
         </div>
       </div>
     </details>` : ""}
+    ${(l.outreach.draft || l.outreach.sent) ? outreachBlock(l) : ""}
     ${(l.caveats||[]).map(c=>`<div class="caveat">${esc(c)}</div>`).join("")}
     <div class="verify">
       <div class="vlabel">Did the gap check out?</div>
@@ -401,7 +525,7 @@ function card(l){
       </div>
       <textarea data-note placeholder="${v==="wrong"?"What was actually true? (required — this is the lesson)":"Optional note — what you saw"}">${esc(l.gap.verification.note||"")}</textarea>
       <div class="vactions">
-        <button class="btn" data-act="copy" ${v==="unverified"?"disabled":""}>Copy JSON</button>
+        <button class="btn" data-act="copy" ${v==="unverified"?"disabled":""}>${hasToken()?"Save verdict":"Copy JSON"}</button>
         <button class="btn ghost" data-act="gh">Edit on GitHub ↗</button>
       </div>
     </div>
@@ -412,7 +536,8 @@ function render(){
   const list = LEADS.filter(l=>
     (filters.run==="All"||l.run===filters.run) &&
     (filters.gap==="All"||l.gap.type===filters.gap) &&
-    (filters.verify==="All"||(draftVerdicts[l.id]??l.gap.verification.status)===filters.verify));
+    (filters.verify==="All"||(draftVerdicts[l.id]??l.gap.verification.status)===filters.verify) &&
+    outreachMatch(l, filters.outreach));
   document.getElementById("count-note").textContent = `Showing ${list.length} of ${LEADS.length} leads.`;
   document.getElementById("grid").innerHTML = list.map(card).join("") ||
     `<div class="loading">No leads match those filters.</div>`;
@@ -507,54 +632,88 @@ document.addEventListener("click", e=>{
     render(); return;
   }
 
-  if(act==="copy-draft"){
-    const revised = (cardEl.querySelector("[data-draft]").value || "").trim();
-    const why = (cardEl.querySelector("[data-why]").value || "").trim();
+  // Log a send — captures the (possibly edited) message, channel, and today's date,
+  // and starts the two-week reply clock. If the text was edited, the reason rides along
+  // as an outreach-edit correction, same as the old draft-edit flow.
+  if(act==="send"){
+    if(!canSend(lead)){
+      alert("Verify the gap and save the verdict first — a message can't go out on an unverified gap.");
+      return;
+    }
+    const channel = e.target.dataset.ch;
+    const ta = cardEl.querySelector("[data-draft]");
+    const text = ((ta ? ta.value : (lead.outreach.sent ?? lead.outreach.draft)) || "").trim();
+    if(!text){ alert("The message is empty — nothing to send."); return; }
     const original = (lead.outreach.draft || "").trim();
-
-    if(revised === original){
-      alert("This is still Claude's draft, unchanged.\n\nIf you're sending it as-is, that's useful too — edit nothing, but note it. If you meant to revise it, make your changes first.");
+    const changed = text !== original;
+    const why = (cardEl.querySelector("[data-why]")?.value || "").trim();
+    if(changed && !why){
+      alert("You edited the draft — add a line about why before logging the send.\n\nThe reason is what turns one fix into a rule the next run follows.");
       return;
     }
-    if(!why){
-      alert("Add a line about why you changed it.\n\nThe edit alone can't be generalized — the reason is what turns one fix into a rule the next run follows.");
-      return;
-    }
-    const patch = {
-      _paste_into: `data/leads.json → the lead with id "${id}" → replace its "outreach" block`,
-      outreach: { draft: lead.outreach.draft, sent: revised, revisions: (lead.outreach.revisions||0)+1 },
-      _also_append_to_feedback_json: {
-        id:`fb-${today()}-XXX`, date:today(), leadId:id, kind:"outreach-edit",
-        verdict:null, claimed:lead.outreach.draft, actual:revised,
-        reason:why, generalizes:true,
-        proposedRule:"<leave this for Claude to fill in, or write it yourself>",
-        ruleStatus:"proposed",
-      },
+    const block = {
+      draft: lead.outreach.draft, sent: text, channel, sentOn: today(),
+      reply: null, repliedOn: null, revisions: (lead.outreach.revisions||0) + (changed?1:0),
     };
-    copyOut(e.target, JSON.stringify(patch,null,2));
+    const feedbackEntry = changed ? {
+      id:fbId(), date:today(), leadId:id, kind:"outreach-edit", verdict:null,
+      claimed:lead.outreach.draft, actual:text, reason:why, generalizes:true,
+      proposedRule:"", ruleStatus:"proposed",
+    } : null;
+    const fallbackPatch = ()=>{
+      const p = { _paste_into:`data/leads.json → the lead with id "${id}" → replace its "outreach" block`, outreach: block };
+      if(feedbackEntry) p._also_append_to_feedback_json = { ...feedbackEntry, id:`fb-${today()}-XXX`, proposedRule:"<leave for Claude, or write it yourself>" };
+      return JSON.stringify(p,null,2);
+    };
+    if(!hasToken()){ copyOut(e.target, fallbackPatch()); return; }
+    saveOutreach(lead, block, feedbackEntry, e.target, `Logged send (${channel}) for ${id}`)
+      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, fallbackPatch()); });
+    return;
+  }
+
+  // Record whether the send got a reply, or passed with none.
+  if(act==="reply"){
+    const r = e.target.dataset.r;   // "replied" | "none"
+    const block = { ...lead.outreach, reply:r, repliedOn: r==="replied" ? today() : null };
+    const fallback = ()=>JSON.stringify({ _paste_into:`data/leads.json → the lead with id "${id}" → replace its "outreach" block`, outreach: block }, null, 2);
+    if(!hasToken()){ copyOut(e.target, fallback()); return; }
+    saveOutreach(lead, block, null, e.target, `Outreach ${r==="replied"?"reply":"no-reply"} for ${id}`)
+      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, fallback()); });
     return;
   }
 
   if(act==="copy"){
     const status = draftVerdicts[id] ?? lead.gap.verification.status;
     const note = cardEl.querySelector("[data-note]").value.trim();
+    if(status==="unverified") return;   // the Save button is disabled here; guard anyway
     if(status==="wrong" && !note){
       alert('A "wrong" verdict needs a note saying what was actually true — that note is what the next run learns from.');
       return;
     }
-    const patch = {
-      _paste_into: `data/leads.json → the object with id "${id}" → replace its gap.verification block`,
-      verification: { status, checkedBy:"angela", checkedOn:today(), note: note || null },
-    };
-    if(status!=="confirmed"){
-      patch._also_append_to_feedback_json = {
-        id:`fb-${today()}-XXX`, date:today(), leadId:id, kind:"gap-verdict",
-        verdict:status, claimed:lead.gap.claim, actual:note,
-        reason:"<why the machine got this wrong — the generalizable part>",
-        generalizes:true, proposedRule:"<the rule this implies, if any>", ruleStatus:"proposed",
-      };
+    // Saving straight to GitHub writes the correction verbatim, so a partial verdict needs
+    // its note too — the note becomes the feedback entry's reason, which can't be empty.
+    if(status==="partial" && !note && hasToken()){
+      alert('Add a note for a partial verdict — saved directly, that note becomes the correction the next run learns from.');
+      return;
     }
-    copyOut(e.target, JSON.stringify(patch,null,2));
+    const buildPatch = ()=>{
+      const patch = {
+        _paste_into: `data/leads.json → the object with id "${id}" → replace its gap.verification block`,
+        verification: { status, checkedBy:"angela", checkedOn:today(), note: note || null },
+      };
+      if(status!=="confirmed"){
+        patch._also_append_to_feedback_json = {
+          id:`fb-${today()}-XXX`, date:today(), leadId:id, kind:"gap-verdict",
+          verdict:status, claimed:lead.gap.claim, actual:note,
+          reason:"<why the machine got this wrong — the generalizable part>",
+          generalizes:true, proposedRule:"<the rule this implies, if any>", ruleStatus:"proposed",
+        };
+      }
+      return JSON.stringify(patch,null,2);
+    };
+    if(!hasToken()){ copyOut(e.target, buildPatch()); return; }
+    saveVerdict(lead, status, note, e.target)
+      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, buildPatch()); });
   }
 });
 
@@ -568,6 +727,104 @@ function copyOut(btn, text){
     window.prompt("Copy this:", text);
   });
 }
+
+// ---- Direct save to GitHub (Part 2) --------------------------------------
+// Base64 for UTF-8, chunked so large files don't overflow the call stack.
+function encodeB64(str){
+  const bytes = new TextEncoder().encode(str);
+  let bin = ""; const CH = 0x8000;
+  for(let i=0;i<bytes.length;i+=CH) bin += String.fromCharCode.apply(null, bytes.subarray(i,i+CH));
+  return btoa(bin);
+}
+function decodeB64(b64){
+  const bin = atob(b64.replace(/\s/g,""));
+  const bytes = new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+const ghHeaders = () => ({ Authorization:`Bearer ${getToken()}`, Accept:"application/vnd.github+json" });
+async function ghGet(path){
+  const {owner,name,branch} = REPO;
+  const r = await fetch(`https://api.github.com/repos/${owner}/${name}/contents/${path}?ref=${branch}&t=${Date.now()}`,
+    { headers: ghHeaders(), cache:"no-store" });
+  if(!r.ok) throw new Error(`GET ${path} → ${r.status}`);
+  const j = await r.json();
+  return { sha:j.sha, data:JSON.parse(decodeB64(j.content)) };
+}
+async function ghPut(path, dataObj, sha, message){
+  const {owner,name,branch} = REPO;
+  const r = await fetch(`https://api.github.com/repos/${owner}/${name}/contents/${path}`, {
+    method:"PUT", headers:{...ghHeaders(),"Content-Type":"application/json"},
+    body: JSON.stringify({ message, content: encodeB64(JSON.stringify(dataObj,null,2)+"\n"), sha, branch }),
+  });
+  if(!r.ok) throw new Error(`PUT ${path} → ${r.status}`);
+  return r.json();
+}
+// Fetch → mutate the freshest copy → write. One retry if someone else moved the file.
+async function ghWrite(path, mutate, message){
+  for(let attempt=0; attempt<2; attempt++){
+    const { sha, data } = await ghGet(path);
+    mutate(data);
+    try { await ghPut(path, data, sha, message); return; }
+    catch(e){ if(attempt===0 && /→ 409/.test(e.message)) continue; throw e; }
+  }
+}
+const fbId = () => `fb-${today()}-${Date.now().toString(36).slice(-4)}`;
+
+function btnBusy(btn){ btn.dataset.restore = btn.textContent; btn.textContent = "Saving…"; btn.disabled = true; }
+function btnDone(btn, text){ btn.disabled = false; btn.textContent = text; setTimeout(()=>{ if(btn.dataset.restore!==undefined) btn.textContent = btn.dataset.restore; }, 1600); }
+function refreshAll(){ renderNotice(); renderStats(); renderChart(); renderLessons(); render(); }
+
+async function saveVerdict(lead, status, note, btn){
+  btnBusy(btn);
+  const block = { status, checkedBy:"angela", checkedOn:today(), note: note || null };
+  await ghWrite("data/leads.json", arr=>{
+    const t = arr.find(x=>x.id===lead.id); if(!t) throw new Error("lead not found in file");
+    t.gap.verification = block;
+  }, `Verdict: ${status} for ${lead.id}`);
+  lead.gap.verification = block;
+  if(status!=="confirmed"){
+    const fb = { id:fbId(), date:today(), leadId:lead.id, kind:"gap-verdict", verdict:status,
+      claimed:lead.gap.claim, actual:note, reason:note, generalizes:true, proposedRule:"", ruleStatus:"proposed" };
+    await ghWrite("data/feedback.json", arr=>arr.push(fb), `Correction from ${lead.id}`);
+    FEEDBACK.push(fb);
+  }
+  delete draftVerdicts[lead.id];
+  btnDone(btn, "Saved ✓"); refreshAll();
+}
+
+async function saveOutreach(lead, block, feedbackEntry, btn, commitMsg){
+  btnBusy(btn);
+  await ghWrite("data/leads.json", arr=>{
+    const t = arr.find(x=>x.id===lead.id); if(!t) throw new Error("lead not found in file");
+    t.outreach = block;
+  }, commitMsg);
+  lead.outreach = block;
+  if(feedbackEntry){
+    await ghWrite("data/feedback.json", arr=>arr.push(feedbackEntry), `Outreach edit on ${lead.id}`);
+    FEEDBACK.push(feedbackEntry);
+  }
+  delete draftEdits[lead.id]; delete draftWhy[lead.id];
+  btnDone(btn, "Saved ✓"); refreshAll();
+}
+
+// The connect bar lives outside the cards, so it gets its own listener.
+document.addEventListener("click", e=>{
+  const act = e.target.dataset?.gh; if(!act) return;
+  if(act==="toggle"){ ghPanelOpen = !ghPanelOpen; renderGhBar(); return; }
+  if(act==="disconnect"){
+    if(confirm("Disconnect from GitHub? Saving will go back to copying JSON for you to paste. Your token is removed from this browser.")){
+      setToken(""); ghPanelOpen = false; renderGhBar();
+    }
+    return;
+  }
+  if(act==="save"){
+    const input = document.querySelector("[data-gh-token]");
+    const t = (input?.value || "").trim();
+    if(!t){ alert("Paste your token first."); return; }
+    setToken(t); ghPanelOpen = false; renderGhBar();
+  }
+});
 
 load();
 </script>

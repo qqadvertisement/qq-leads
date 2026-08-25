@@ -104,3 +104,49 @@ The research PR is where your judgment goes in. Worth checking:
 
 You can always comment `@claude` on the PR to ask for changes rather than merging or
 closing it.
+
+---
+
+## Connecting the dashboard so it saves for you (one-time)
+
+This is separate from the Claude token above, and optional. Without it, saving a
+verdict or logging an outreach still works — the dashboard copies a block of JSON and
+you paste it into GitHub's web editor. Connect the dashboard once and that copy-paste
+step disappears: **Save verdict**, **Log send**, and **Mark replied** commit straight
+to `data/leads.json` from the page.
+
+It's entirely web-based — no terminal.
+
+1. Go to **GitHub → your photo (top-right) → Settings → Developer settings → Personal
+   access tokens → Fine-grained tokens → Generate new token**. (The dashboard's
+   **Connect GitHub** button links straight here.)
+2. Give it a name like "qq-leads dashboard", set **Resource owner** to your account,
+   and under **Repository access** pick **Only select repositories → `qq-leads`**.
+3. Under **Permissions → Repository permissions**, set **Contents** to **Read and
+   write**. Leave everything else alone.
+4. Generate it, copy the token (starts with `github_pat_…`), open the dashboard, click
+   **Connect GitHub**, paste it, and hit **Save**.
+
+The token is stored **only in your browser** (nothing is uploaded, no server sees it),
+and it only ever talks to your own `qq-leads` repo. Click **Disconnect** any time to
+remove it. If you clear your browser data, just paste it again — or make a fresh one
+and delete the old token on GitHub.
+
+Saved verdicts and outreach go **straight to `main`**, so they're live on the
+dashboard immediately. Because the site is deployed on Vercel from that same `main`
+branch, each save also triggers a fresh Vercel deploy — the public page updates on its
+own a moment later. The same validator that guards every PR (`scripts/validate.mjs`)
+also runs on each save via the **Validate** workflow, so a bad write still gets
+flagged.
+
+> **The repo now lives in the `qqadvertisement` organization.** If it's private, the
+> org may need to *allow* fine-grained tokens, and an org owner may have to approve
+> yours once before it can write. In the token screen, set **Resource owner** to
+> `qqadvertisement` (not your personal account). If saving fails with a permissions
+> error, that approval is usually what's missing — ask an org owner to check
+> **Organization → Settings → Personal access tokens**. The dashboard falls back to
+> copy-paste in the meantime, so you're never blocked.
+
+> Fine-grained tokens can be given an expiry date. If yours expires, the dashboard
+> quietly falls back to the copy-paste flow and tells you the save didn't go through —
+> nothing is lost, you just make a new token.
