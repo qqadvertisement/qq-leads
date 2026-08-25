@@ -67,15 +67,24 @@ if (verified.length === 0) {
 console.log(`  ${verified.length} verified · ${b(String(unverified))} awaiting a human check\n`);
 
 // ---- Outreach edits -------------------------------------------------------
-const edited = leads.filter((l) => l.outreach.sent && l.outreach.sent !== l.outreach.draft);
-const sentUnchanged = leads.filter((l) => l.outreach.sent && l.outreach.sent === l.outreach.draft);
+const sentAny = leads.filter((l) => l.outreach.sent);
+const edited = sentAny.filter((l) => l.outreach.draft && l.outreach.sent !== l.outreach.draft);
+const sentUnchanged = sentAny.filter((l) => l.outreach.draft && l.outreach.sent === l.outreach.draft);
 console.log(`${b('Outreach drafts')}\n`);
 console.log(`  sent as-drafted: ${sentUnchanged.length}   edited before sending: ${edited.length}`);
 if (edited.length) {
+  const grew = edited.filter((l) => l.outreach.sent.length > l.outreach.draft.length).length;
   const avgDelta = Math.round(
-    edited.reduce((s, l) => s + Math.abs(l.outreach.sent.length - l.outreach.draft.length), 0) / edited.length,
+    edited.reduce((s, l) => s + (l.outreach.sent.length - l.outreach.draft.length), 0) / edited.length,
   );
-  console.log(dim(`  average edit size: ~${avgDelta} characters`));
+  console.log(
+    dim(`  average length change: ${avgDelta > 0 ? '+' : ''}${avgDelta} characters (${grew} of ${edited.length} got longer)`),
+  );
+  // If nothing ever ships unedited, the drafts are raw material rather than a product.
+  // Worth stating plainly instead of leaving it buried in the numbers.
+  if (sentUnchanged.length === 0 && edited.length >= 3) {
+    console.log(dim('  nothing has ever been sent unedited — drafts are raw material, not output'));
+  }
 }
 console.log();
 

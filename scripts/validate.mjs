@@ -78,8 +78,12 @@ for (const l of leads) {
   if (l.outreach?.sent && l.gap?.verification?.status === 'unverified') {
     err(`${at}: marked as sent, but the gap was never verified`);
   }
-  if (l.outreach?.sent && l.gap?.verification?.status === 'wrong') {
-    err(`${at}: marked as sent, but the gap verdict is "wrong"`);
+  // A "wrong" verdict doesn't always kill the lead — sometimes the claim was false but a
+  // real gap sits underneath it. That replacement has to be written down, because it's
+  // what the message is actually built on. Without it, "sent on a wrong verdict" means
+  // a message went out repeating a claim we know to be false.
+  if (l.outreach?.sent && l.gap?.verification?.status === 'wrong' && !l.gap?.supersededBy) {
+    err(`${at}: sent on a "wrong" verdict with no gap.supersededBy — record the corrected gap the message is built on`);
   }
 }
 

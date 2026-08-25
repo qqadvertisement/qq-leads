@@ -426,14 +426,14 @@
     "website": null,
     "gap": {
       "type": "Weak / outdated site",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "Site still lists the OLD Chinatown address (2002 S Wentworth Ave) as its only address and carries no priced menu (a few dish names appear in prose; ordering is pushed off to Chowbus), though they relocated to 30 E Hubbard St in Jul 2026. Correctly-spelled domain hunancuisinechicago.com is dead (DNS NXDOMAIN) yet still ranks in search. Live menu is stranded on Chowbus.",
+      "sourceUrl": "https://www.hunancusinechicago.com/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "Need to fix address and the website design could be fix"
       }
     },
     "whyNow": null,
@@ -444,9 +444,9 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Went looking for your new place after hearing you'd moved to Hubbard St, and your site sent me to the old Wentworth address in Chinatown. It's the only address on there, so I figured you'd want to know. Anyone who Googles you and drives to Chinatown probably doesn't try a second time. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Happy to put together a fixed version you can look at, want me to?",
+      "sent": "您好！我周日去吃了你們的土匪烤魚，味道真的非常棒、我很喜歡！不過我也注意到當時晚餐時段的客人稍微有點稀少。另外想順便提醒您一下：我原本想找你們的新店，但貴店網站上的地址依然寫著中國城的舊址（Wentworth Ave），沒有更新到 Hubbard St。如果顧客照著網站地址跑去中國城，發現白跑一趟，恐怕就不會再試第二次了，這對晚餐生意影響蠻大的。我是芝加哥當地的網站設計師，專門幫餐廳做網站與顧客回流小互動。如果您需要的話，我很樂意免費幫您把網站上的舊地址修正過來。另外，針對晚餐時段客流的部分，我也幫其他餐廳做過一些簡單的掃碼互動小遊戲，能幫店家收集熟客名單並吸引他們回訪。如果方便的話，我做個簡單的修改預覽發給您參考看看，您看可以嗎？",
+      "revisions": 1
     },
     "status": "New",
     "caveats": []
@@ -460,14 +460,14 @@
     "website": null,
     "gap": {
       "type": "Weak / outdated site",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "Live site is an unedited Wix demo template, verified on two fetches: footer reads \"(c) 2035 by My Site\", address shown is Wix's demo \"500 Terry Francine Street, 6th Floor, San Francisco, CA 94158\", contact is info@mysite.com / 123-456-7890, and the social buttons link to facebook.com/wix and instagram.com/wix. No menu anywhere on the site.",
+      "sourceUrl": "https://www.jomonchicago.com/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "partial",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "The website is a placeholder but no address is listed"
       }
     },
     "whyNow": null,
@@ -478,9 +478,9 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Saw the old Wave Sushi space was open again and looked you up. Your site's still on the Wix starter template though, it lists an address in San Francisco. Anyone who lands there before they find your Toast link probably figures you aren't open yet. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free dish, which quietly gets you a list of customers you actually own. Happy to mock up what yours could look like if you want to see it.",
+      "sent": "Hi! Saw the old Wave Sushi space was open again and looked you up, but noticed your site is still showing the default Wix template. Right now, anyone who lands there before finding your Toast link probably assumes you're not open yet, which means lost orders! I'm a local Chicago web designer. I build sites tailored to match a restaurant's specific decor and vibe, plus simple interactive games for regulars to win a free dish — which quietly builds a customer list you actually own. I'd be happy to mock up a quick concept of what your site could look like matching your space. Mind if I send it over?",
+      "revisions": 1
     },
     "status": "Hold",
     "caveats": [
@@ -496,14 +496,14 @@
     "website": null,
     "gap": {
       "type": "Weak / outdated site",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "Chowbus-built template still carries the vendor's stock placeholder copy verbatim in the contact form: \"Tell me a little about your event so I can begin the creation process\". Menu exists only as photographs (no dish names or prices as text). Page also carries a stray tel:413-507-2121 (Massachusetts area code) alongside the real 872-946-7049.",
+      "sourceUrl": "https://www.kashgaruyghurdiningil.com/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "dish name is not text based"
       }
     },
     "whyNow": null,
@@ -514,9 +514,9 @@
     "score": 5,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Read the Axios piece on your lagman and went to look up your menu, which is how I ended up here. Couldn't really read it though, it's all photos, so none of the dish names are text anywhere. Means when someone searches for lagman in Chicago, yours can't come up. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Happy to put together a version you can look at if you want.",
+      "sent": "Hi! Saw the Axios piece on your lagman and went straight to look up your menu, but noticed it's currently uploaded as image files rather than text. The big issue there is searchability — Google can't read the text inside image files, so when people in Chicago search for \"best lagman,\" your site isn't showing up to those potential customers! I'm a web designer here in Chicago. I build clean, mobile-friendly sites for local restaurants, plus simple interactive games for regulars to win a free dish — which quietly builds a customer list you actually own to bring people back in. I'd be happy to mock up a searchable version of your menu so you can see what it looks like. Mind if I send it over?",
+      "revisions": 1
     },
     "status": "New",
     "caveats": []
@@ -530,14 +530,14 @@
     "website": null,
     "gap": {
       "type": "No website",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "No owned domain found. Roadtrippers listing has no website field at all, only \"Learn more on Yelp\". Infatuation listing shows address, phone and Instagram but no website.",
+      "sourceUrl": "https://maps.roadtrippers.com/us/chicago-il/food-drink/wasai-bbq-chicago-il--0",
       "evidenceTier": "absence",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "no website at all"
       }
     },
     "whyNow": null,
@@ -548,7 +548,7 @@
     "score": 5,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
+      "draft": "Hi! Heard someone finally took over the old Won Kow space, and went looking for your hours and what the AYCE includes. Couldn't find a site anywhere, just Yelp, so I gave up, and I'd guess other people do too. I do websites for Chicago restaurants, plus a small game regulars play for a free plate, which builds you a customer list you can bring back in later. Happy to put something together you can look at, no pressure either way.",
       "sent": null,
       "revisions": 0
     },
@@ -564,15 +564,16 @@
     "website": null,
     "gap": {
       "type": "Weak / outdated site",
-      "claim": null,
-      "sourceUrl": null,
-      "evidenceTier": "static",
+      "claim": "craftandcarvery.com/menu returns HTTP 404. Homepage still publishes the pre-launch line \"Look out for our mid-June opening\" (verified verbatim 2026-08-20) two months after they actually opened, and the site tells visitors to browse the menu on Instagram instead of hosting it.",
+      "sourceUrl": "https://craftandcarvery.com",
+      "evidenceTier": "routing",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
-      }
+        "status": "wrong",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "the menu and pics stay in different page so its hard to pair. menu link doesnt go to a 404 but the web could be design better"
+      },
+      "supersededBy": "Menu and photos sit on separate screens, so a visitor never sees a dish and reads what is in it at the same moment. Confirmed by Angela in a browser 2026-08-21. The original 404 claim is withdrawn."
     },
     "whyNow": null,
     "instagram": {
@@ -582,11 +583,11 @@
     "score": 5,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Followed you over from Time Out Market and went to check the menu at the new place. The menu link on your site goes to a 404, and the homepage still says look out for our mid-June opening, so I couldn't tell what you serve or whether you're open. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free dish, which quietly gets you a list of customers you actually own. Want me to mock up a version with the menu actually on it?",
+      "sent": "Hi! Followed you over from Time Out Market, glad the pizza made the jump. Was looking through your site and the menu and the photos sit on separate screens, so you never quite get the moment where someone sees the porchetta panuozzo and reads what's in it at the same time. That pairing is most of what makes someone decide to come in. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free dish, which quietly gets you a list of customers you actually own. Want me to mock up a version with the menu actually on it?",
+      "revisions": 1
     },
-    "status": "New",
+    "status": "Needs a new angle",
     "caveats": [
       "A 404 claim on this one was withdrawn after a browser check (client-side routing, not a real error). Remaining angle — menu/photos split across screens — is a design opinion, not a defect. Weakest opener in the batch."
     ]
@@ -600,15 +601,16 @@
     "website": null,
     "gap": {
       "type": "No menu online",
-      "claim": null,
-      "sourceUrl": null,
-      "evidenceTier": "static",
+      "claim": "chefthiago.com, www.chefthiago.com/ and chefthiago.com/soon/ all fail with \"Too many redirects\" (redirect loop), verified on three separate attempts. The Infatuation review links customers to that domain. Fallback domain chefthiago.net loads but is a stale personal-chef site whose featured menu is a Thanksgiving 2023 package.",
+      "sourceUrl": "https://chefthiago.com/",
+      "evidenceTier": "routing",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
-      }
+        "status": "wrong",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "page is not dead. the menu is not on the site for visibility."
+      },
+      "supersededBy": "No menu on the site at all — the only route in is the Order Online button, so a visitor has to begin an order just to see what is served. Confirmed by Angela in a browser 2026-08-21. The original redirect-loop claim is withdrawn."
     },
     "whyNow": null,
     "instagram": {
@@ -618,11 +620,11 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Heard about the Brazilian place on Clark and went to pull up your site. chefthiago.com won't load at all, it's stuck in a redirect loop, and the .net one still shows a Thanksgiving 2023 menu. So every listing pointing people to your site is sending them to a dead page right now. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Happy to put a working one together you can look at.",
+      "sent": "Hi! Heard about the Brazilian place on Clark and went to look at the menu before heading over. Couldn't find one on the site, the only way through is the Order Online button, so you have to start placing an order just to see what you serve. Most people browsing on their phone won't take that step, they'll just check somewhere else. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Happy to put a working one together you can look at.",
+      "revisions": 1
     },
-    "status": "New",
+    "status": "Needs a new angle",
     "caveats": [
       "Gap type corrected after a browser check: site loads fine, the real gap is no menu on it (only an Order Online button)."
     ]
@@ -636,14 +638,14 @@
     "website": null,
     "gap": {
       "type": "Broken links",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "The only call-to-action on zimisrestaurant.com is an \"Order Online\" button pointing at zimispizzaandgrill.toast.site/order, which returns a 404 (\"The page you were looking for does not exist\") — verified by fetching it. It still uses the pre-rebrand subdomain. The homepage has no menu at all.",
+      "sourceUrl": "https://www.zimisrestaurant.com/",
       "evidenceTier": "routing",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "the menu is not on the site and the order online button goes to 404"
       }
     },
     "whyNow": null,
@@ -654,9 +656,9 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Saw you're switching Zimi's over to Balkan food and went to look at the menu. There isn't one on the site, and the Order Online button goes to a 404, it's still pointing at the old zimispizzaandgrill address. Right now the phone number is about the only thing on there that works. I do websites for Chicago restaurants, plus a small game regulars play for a free dish, which builds you a customer list you can bring back in later. Want me to mock up what the new one could look like?",
+      "sent": "Hi! Saw that you're switching Zimi's over to Balkan food and went straight to your site to check out the new menu! I noticed the menu isn't up yet, and the \"Order Online\" button currently links to a 404 error page. Since people looking for your new menu are landing on a broken link, you're likely missing out on early online orders! I'm a local Chicago web designer. I build clean, high-converting sites for restaurants, plus simple interactive games for regulars to win a free dish — which quietly builds a customer list you can reach out to anytime. I'd be happy to mock up a quick concept of what your new Balkan menu site could look like. Mind if I send it over?",
+      "revisions": 1
     },
     "status": "New",
     "caveats": [
@@ -672,14 +674,14 @@
     "website": null,
     "gap": {
       "type": "No website",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "No owned domain. Infatuation listing shows address and phone with no website field. Their Toast ordering page's own \"Website\" button resolves back to thejibaritostop.toast.site — Toast pointing at Toast.",
+      "sourceUrl": "https://www.theinfatuation.com/chicago/reviews/the-jibarito-stop-n-wabash-ave",
       "evidenceTier": "absence",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "no website at all"
       }
     },
     "whyNow": null,
@@ -690,7 +692,7 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
+      "draft": "Hi! Went looking for you after the move downtown and couldn't find a website anywhere, everything runs through Toast and Facebook. With the Food Network feature and 490-odd reviews pointing at you, that's a lot of people landing somewhere you don't own. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free jibarito, which quietly gets you a list of customers you actually own. Happy to put something together you can look at, want me to?",
       "sent": null,
       "revisions": 0
     },
@@ -708,14 +710,14 @@
     "website": null,
     "gap": {
       "type": "No website",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "No owned domain found across repeated searches. Infatuation listing shows address and phone (312) 265-0047 with no website field. Entire menu lives on a third-party Chowbus POS page that links to no site or social of theirs.",
+      "sourceUrl": "https://www.theinfatuation.com/chicago/reviews/szechuan-bistro-bridgeport",
       "evidenceTier": "absence",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "no website at all"
       }
     },
     "whyNow": null,
@@ -726,7 +728,7 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
+      "draft": "Hi! Followed you over from the Richland Center food court and went looking for the new place. Couldn't find a site, just your Chowbus page, so the menu lives on someone else's platform and nothing of yours turns up in a search. The old regulars will find you, new people mostly won't. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Want to see a mockup?",
       "sent": null,
       "revisions": 0
     },
@@ -744,14 +746,14 @@
     "website": null,
     "gap": {
       "type": "No website",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "No owned domain. Infatuation listing shows phone, address and Instagram with no website field. Their Toast page carries a full priced menu (6 categories, mains $18-23) and lists no external website link, confirming there is no domain to point at.",
+      "sourceUrl": "https://www.theinfatuation.com/chicago/reviews/izakaya-by-aiya",
       "evidenceTier": "absence",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "no website at all"
       }
     },
     "whyNow": null,
@@ -762,7 +764,7 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
+      "draft": "Hi! Heard you were soft-opening on Western and went to look you up. The Toast menu looks great, but there's no site behind it, so searching you just lands on an ordering page with nothing about the room itself. I do websites for Chicago restaurants, plus a small game regulars play for a free dish, which builds you a customer list you can bring back in later. Happy to mock one up if you want to see it.",
       "sent": null,
       "revisions": 0
     },
@@ -778,15 +780,16 @@
     "website": null,
     "gap": {
       "type": "No menu online",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "monarchcommunitycafe.com/menu-overview/ presents the Daily Menu only as a screenshot image with a \"Download or Print Menu (PDF)\" link. No item names or prices render as text anywhere on the page. A second \"Shared Experience Menu\" section is still labeled COMING SOON.",
+      "sourceUrl": "https://monarchcommunitycafe.com/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
-      }
+        "status": "wrong",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "the website is functioning well. menu is text based. link is not 404. skip for reaching out"
+      },
+      "supersededBy": null
     },
     "whyNow": null,
     "instagram": {
@@ -796,11 +799,11 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
+      "draft": "Hi! Heard about the 5,000 free coffees and went to look at your menu. It's a screenshot with a PDF under it, so on my phone I was pinching and zooming to read it and gave up halfway. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free drink, which quietly gets you a list of customers you actually own. Want me to mock up a version where the menu's just there on the page?",
       "sent": null,
       "revisions": 0
     },
-    "status": "New",
+    "status": "Rejected",
     "caveats": []
   },
   {
@@ -812,14 +815,14 @@
     "website": null,
     "gap": {
       "type": "Weak / outdated site",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "Their only owned web property is an auto-generated Toast subdomain with a random string in it, running the stock uncustomized template with no branding or about content. It lists ONLY the original Lakeview address (438 W Diversey Pkwy) and never mentions the new Devon location. Infatuation lists the Devon address with no website field.",
+      "sourceUrl": "https://shawarmaandgrill-399xq34a.toast.site/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "partial",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "the site on the ig page lands to a wix page."
       }
     },
     "whyNow": null,
@@ -830,9 +833,9 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Went looking for the new Devon spot and the only site that comes up still lists just Diversey. Anyone searching for the Devon location would come away thinking you're only in Lakeview. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free plate, which quietly builds you a list of people to bring back in. Happy to mock up one with both locations on it if you want a look.",
+      "sent": "Hi! Went looking for your new Devon spot, but the only website that comes up still just lists your Diversey location in Lakeview. On top of that, the website link on your Instagram profile lands on an empty Wix starter page. Right now, anyone finding you on IG or searching for the Devon location will probably assume you're only open in Lakeview — or not open at all — which means lost orders! I'm a local Chicago web designer. I help neighborhood restaurants build clean, custom sites that showcase all their locations and match their vibe, plus simple games for regulars to win a free plate — which quietly builds a customer list you actually own. I'd be happy to mock up a quick concept featuring both locations so you can see what it could look like. Mind if I send it over?",
+      "revisions": 1
     },
     "status": "New",
     "caveats": []
@@ -846,14 +849,14 @@
     "website": null,
     "gap": {
       "type": "Not mobile-friendly",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "brennansburgers.com/menu serves the entire menu as a raster image file named \"Menu Template (Website).png\" rather than HTML text. On a phone that means pinch-and-zoom, no selectable text, no screen-reader access, and no search engine indexing of any dish. The only text item on the page is the Burger of the Month, listed with no price.",
+      "sourceUrl": "https://brennansburgers.com/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "the menu looks off when its on mobile. menu is not text base on the site."
       }
     },
     "whyNow": null,
@@ -864,9 +867,9 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Heard there's a burger counter inside the Emerald Isle and went to look at the menu. It's one big image, so on my phone I was zooming around trying to read it, and none of the burgers turn up in a search either. Seems a shame given the monthly rotation. I do websites for Chicago restaurants, plus a small game regulars play for a free burger, which builds you a customer list you can bring back in later. Want me to mock up a version that reads properly on a phone?",
+      "sent": "Hi! Heard there's a burger counter inside the Emerald Isle and went online to check out the menu. Since the menu is currently one big image, it looks really off on mobile — I had to pinch and zoom around just to read it. Most people search for restaurants on their phone nowadays, and because the dish names aren't actual text, Google can't read them either. That makes it hard for prospective customers to discover your signature items and monthly burger rotations! I'm a local Chicago web designer. I build clean, mobile-friendly sites for neighborhood restaurants, plus simple interactive games regulars play to win a free burger — which quietly builds a customer list you can reach out to anytime. I'd be happy to mock up a responsive version that reads perfectly on mobile and highlights your signature burgers. Mind if I send it over?",
+      "revisions": 1
     },
     "status": "New",
     "caveats": []
@@ -880,14 +883,14 @@
     "website": null,
     "gap": {
       "type": "No menu online",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "Their only web page is a subpage on the parent nonprofit's WordPress site. It has description copy, address, phone and hours but ZERO menu content — no HTML menu, no PDF, no prices, and no reservation link despite Sunday being reservation-only. The Infatuation review names specific dishes (zucchini fritters, sartu di riso, panzanella) that appear nowhere on their own page.",
+      "sourceUrl": "https://www.sentieri.com/langolo-italiano/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "no website at all"
       }
     },
     "whyNow": null,
@@ -898,9 +901,9 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
-      "sent": null,
-      "revisions": 0
+      "draft": "Hi! Read about the BYOB at the Italian cultural center and went looking for the menu. Your page on the Sentieri site has the hours and address but no menu at all, and the reviews keep naming dishes like the sartu di riso that I couldn't find anywhere. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free plate, which quietly gets you a list of customers you actually own. Happy to put a menu page together you can look at.",
+      "sent": "Hi! Excited to hear about your BYOB spot at the Italian cultural center! I tried looking up your menu online after reading reviews about your sartù di riso, but couldn't find a menu on your Sentieri page or a dedicated website anywhere. Having your own website is huge for capturing new diners — it lets you showcase your signature dishes, build trust, and turn online searchers into actual table reservations. I build simple, high-converting sites for Chicago restaurants. I'd love to put together a quick mockup of a menu page for your place — no pressure either way. Want me to send over a preview?",
+      "revisions": 1
     },
     "status": "New",
     "caveats": []
@@ -914,15 +917,16 @@
     "website": null,
     "gap": {
       "type": "Not mobile-friendly",
-      "claim": null,
-      "sourceUrl": null,
+      "claim": "saporinapoletani.com/menu contains no HTML menu text at all — it reads \"Browse our full Sapori Napoletani menu as a PDF\" and links five separate PDFs. PDF-only menus force pinch-and-zoom on mobile and are invisible to search. Secondary signal: the FAQ nav item still points to the Wix default page name /blank-10.",
+      "sourceUrl": "https://www.saporinapoletani.com/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
-      }
+        "status": "wrong",
+        "checkedBy": "angela",
+        "checkedOn": "2026-08-21",
+        "note": "menu is in text"
+      },
+      "supersededBy": null
     },
     "whyNow": null,
     "instagram": {
@@ -932,11 +936,11 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": null,
+      "draft": "Hi! Heard about the rooftop at the new Irving Park spot and went to look at the menu. They're all PDFs, so I was pinching and zooming on my phone, and none of the dishes turn up in a search, including the paccheri all'astice. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Want me to mock up a version that reads on a phone?",
       "sent": null,
       "revisions": 0
     },
-    "status": "New",
+    "status": "Needs a new angle",
     "caveats": []
   },
   {

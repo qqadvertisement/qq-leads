@@ -2,6 +2,10 @@
 
 Read this before doing anything. It applies to Claude and to any other LLM working here.
 
+**Changing the software rather than doing research?** Read
+[`docs/context.md`](docs/context.md) instead — design system, architectural decisions,
+and what not to undo. This file is about running the lead research itself.
+
 This repo runs a **lead research loop with a human verifier in the middle**. The machine is
 fast and wrong often enough to matter. Angela is slow and right. The whole design exists to
 route around that asymmetry — never to hide it.

@@ -109,6 +109,18 @@ h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.01em;margin-b
 .chiprow{display:flex;flex-wrap:wrap;gap:6px}
 .evidence{font-size:13px;line-height:1.55;color:var(--ink-2);border-left:2px solid var(--grid);padding-left:10px}
 .evidence a{word-break:break-all}
+.evidence.struck{opacity:.55}
+.evidence.struck::after{content:" — claim withdrawn";color:var(--critical);font-weight:600;font-size:11.5px}
+.superseded{font-size:13px;line-height:1.55;color:var(--ink-2);border-left:2px solid var(--good);padding-left:10px}
+.superseded .k{color:var(--good);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:2px;font-weight:700}
+.verdictnote{font-size:12.5px;line-height:1.55;border-radius:8px;padding:8px 11px;color:var(--ink-2)}
+.verdictnote .vlabel-inline{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;margin-bottom:3px}
+.verdictnote.v-confirmed{background:color-mix(in srgb,var(--good) 10%,transparent)}
+.verdictnote.v-confirmed .vlabel-inline{color:var(--good)}
+.verdictnote.v-wrong{background:color-mix(in srgb,var(--critical) 10%,transparent)}
+.verdictnote.v-wrong .vlabel-inline{color:var(--critical)}
+.verdictnote.v-partial{background:color-mix(in srgb,var(--warn) 12%,transparent)}
+.verdictnote.v-partial .vlabel-inline{color:var(--warn)}
 .field{font-size:13px;line-height:1.5}
 .field .k{color:var(--ink-muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:2px}
 .caveat{font-size:12px;color:var(--serious);background:color-mix(in srgb,var(--serious) 10%,transparent);border-radius:7px;padding:7px 10px;line-height:1.5}
@@ -185,7 +197,7 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
 <div class="notice">
   <div class="dot"></div>
   <div id="notice-body">
-    <strong>Nothing here has been verified by a human yet.</strong> Every gap claim is a machine reading, and the machine has been wrong before — twice on 404s that turned out to be client-side routing. Check a gap, hit a verdict button, and the card gives you a JSON block plus a direct link to edit the data file on GitHub.
+    <strong id="notice-lead">Loading…</strong> <span id="notice-rest"></span>
   </div>
 </div>
 
@@ -275,7 +287,7 @@ async function load(){
 }
 
 function boot(){
-  renderStats(); renderChart(); renderLessons();
+  renderNotice(); renderStats(); renderChart(); renderLessons();
   pills("f-run", ["All", ...new Set(LEADS.map(l=>l.run))], "run");
   pills("f-verify", ["All","unverified","confirmed","wrong","partial"], "verify");
   pills("f-gap", ["All", ...Object.keys(GAP)], "gap");
@@ -295,6 +307,21 @@ function pills(id, vals, key){
     };
     el.appendChild(b);
   });
+}
+
+function renderNotice(){
+  const verified = LEADS.filter(l=>l.gap.verification.status!=="unverified");
+  const wrong = verified.filter(l=>l.gap.verification.status==="wrong");
+  const left = LEADS.length - verified.length;
+  const lead = document.getElementById("notice-lead");
+  const rest = document.getElementById("notice-rest");
+  if(!verified.length){
+    lead.textContent = "Nothing here has been verified by a human yet.";
+    rest.textContent = "Every gap claim is a machine reading. Check a gap, hit a verdict button, and the card gives you a JSON block plus a direct link to edit the data file on GitHub.";
+    return;
+  }
+  lead.textContent = `You've checked ${verified.length} of ${LEADS.length} leads, and overturned ${wrong.length}.`;
+  rest.textContent = `${left} still to go. Overturned claims are struck through with the corrected gap underneath — those are the ones worth re-reading before you send anything. Filter by Verification to work through what's left.`;
 }
 
 function renderStats(){
@@ -345,9 +372,13 @@ function card(l){
       <span class="chip chip-status">${esc(l.status)}</span>
     </div>
     ${l.gap.claim
-      ? `<div class="evidence">${esc(l.gap.claim)}${l.gap.sourceUrl?` <a href="${esc(l.gap.sourceUrl)}" target="_blank" rel="noopener">source ↗</a>`:""}</div>`
+      ? `<div class="evidence${v==="wrong"?" struck":""}">${esc(l.gap.claim)}${l.gap.sourceUrl?` <a href="${esc(l.gap.sourceUrl)}" target="_blank" rel="noopener">source ↗</a>`:""}</div>`
       : `<div class="evidence" style="opacity:.6">Summary-level only — see the research log.</div>`}
-    <div class="hint">${esc(TIER_NOTE[l.gap.evidenceTier]||"")}</div>
+    ${l.gap.supersededBy ? `<div class="superseded"><span class="k">The real gap</span>${esc(l.gap.supersededBy)}</div>` : ""}
+    ${l.gap.verification.note ? `<div class="verdictnote v-${v}">
+        <span class="vlabel-inline">${v==="confirmed"?"Confirmed":v==="wrong"?"Overturned":"Partly right"} by ${esc(l.gap.verification.checkedBy||"a human")} · ${esc(l.gap.verification.checkedOn||"")}</span>
+        ${esc(l.gap.verification.note)}
+      </div>` : `<div class="hint">${esc(TIER_NOTE[l.gap.evidenceTier]||"")}</div>`}
     ${l.whyNow?`<div class="field"><span class="k">Why now</span>${esc(l.whyNow.text)}${l.whyNow.sourceUrl?` <a href="${esc(l.whyNow.sourceUrl)}" target="_blank" rel="noopener">↗</a>`:""}</div>`:""}
     ${l.demoAngle?`<div class="field"><span class="k">Demo angle</span>${esc(l.demoAngle)}</div>`:""}
     ${l.outreach.draft ? `<details ${draftEdits[l.id]!==undefined?"open":""}><summary>Outreach draft — click to read and edit</summary>
@@ -400,12 +431,17 @@ function renderLessons(){
   el.innerHTML = `
     <h2>What the system has learned</h2>
     <p class="panel-sub">${adopted.length} rule${adopted.length===1?"":"s"} in effect · ${proposed.length} correction${proposed.length===1?"":"s"} waiting to become one</p>
-    ${proposed.length ? proposed.map(f=>`
+    ${proposed.length ? proposed.slice(0,3).map(f=>`
       <div class="lesson">
         <div class="lid">${esc(f.id)} · ${esc(f.kind)}</div>
         <div class="rule">${esc(f.proposedRule && !f.proposedRule.startsWith("<") ? f.proposedRule : f.reason)}</div>
         <div class="from">${f.leadId?`From ${esc(f.leadId)}. `:""}Waiting for a rule PR.</div>
-      </div>`).join("")
+      </div>`).join("") + (proposed.length>3 ? `<details style="margin-top:12px"><summary>${proposed.length-3} more waiting</summary>
+        ${proposed.slice(3).map(f=>`<div class="lesson" style="margin-top:12px">
+          <div class="lid">${esc(f.id)} · ${esc(f.kind)}</div>
+          <div class="rule">${esc(f.proposedRule && !f.proposedRule.startsWith("<") ? f.proposedRule : f.reason)}</div>
+          <div class="from">${f.leadId?`From ${esc(f.leadId)}. `:""}Waiting for a rule PR.</div>
+        </div>`).join("")}</details>` : "")
     : `<div class="empty-lessons">Nothing waiting. Every correction you've logged has been turned into a rule in <code>rules/</code>, and the next research run reads those before it starts.<br><br>
        When you mark a gap <strong>Wrong</strong> or revise a draft, the JSON you paste includes a correction entry. It shows up here until Claude turns it into a rule and you approve the PR.</div>`}
     ${adopted.length ? `<details style="margin-top:16px"><summary>${adopted.length} rules already in effect</summary>

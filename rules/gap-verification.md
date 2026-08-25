@@ -19,12 +19,26 @@ This tier has been wrong twice out of three checks. **Never send unchecked.**
 *Provenance: fb-2026-08-21-001, fb-2026-08-21-002*
 
 **2. Static-content claims** — a PDF menu, an image menu, a placeholder page title, a missing
-viewport tag, an address on the page. These are assets rather than rendered state. Low risk,
-ten seconds to confirm.
+viewport tag, an address on the page.
+
+These were documented as "low risk, ten seconds to confirm." **The data says otherwise.** As of
+the 2026-08-21 verification pass, static claims were overturned in 4 of 8 checks — nearly as
+unreliable as routing claims. Two failures were the same shape: the crawler saw a menu as an
+image or a PDF, but the live site actually served readable text (Monarch Community Cafe, Sapori
+Napoletani). A page can serve different markup to a crawler than to a browser, and "the menu is
+an image" is a claim about rendered output, not a static asset after all.
+
+Treat static claims as needing a real browser check too. Run `node scripts/learn.mjs` for the
+current overturn rate rather than trusting any fixed ordering written here — the numbers move
+as verdicts accumulate, and they beat this paragraph.
 
 **3. Absence claims** — "no website exists." Corroborate across two or more independent
-listings that each omit a website field. A browser check adds little here; you cannot fetch
-your way to proving a negative.
+listings that each omit a website field.
+
+This is the tier that has actually held up: **0 of 4 overturned** in the 2026-08-21 pass. The
+reason is structural — an absence claim is a statement about listings, and listings are static
+records rather than rendered pages, so the crawler-vs-browser gap doesn't apply. Lead with these
+when you have them.
 
 ---
 
