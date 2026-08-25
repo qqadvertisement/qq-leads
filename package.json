@@ -1,0 +1,12 @@
+{
+  "name": "qq-leads",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "QQ Studio restaurant lead research — human-verified, self-improving",
+  "scripts": {
+    "learn": "node scripts/learn.mjs",
+    "validate": "node scripts/validate.mjs",
+    "serve": "npx --yes serve ."
+  }
+}

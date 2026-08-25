@@ -1,0 +1,39 @@
+name: Validate
+
+on:
+  pull_request:
+    paths: ['data/**', 'scripts/**', 'rules/**']
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Validate data files
+        run: node scripts/validate.mjs
+
+      - name: Calibration report
+        run: node scripts/learn.mjs
+
+      # Surface the learning backlog directly on the PR, so a correction that hasn't
+      # become a rule yet can't quietly sit there for weeks.
+      - name: Comment calibration on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { execSync } = require('child_process');
+            const raw = execSync('node scripts/learn.mjs', { encoding: 'utf8' });
+            const clean = raw.replace(/\u001b\[[0-9;]*m/g, '');
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '### Lead calibration\n\n```\n' + clean.trim() + '\n```',
+            });

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "fb-2026-08-21-001",
+    "date": "2026-08-21",
+    "leadId": "2026-08-20-craft-and-carvery",
+    "kind": "gap-verdict",
+    "verdict": "wrong",
+    "claimed": "/menu returns HTTP 404 — the menu page is broken",
+    "actual": "The menu works fine in a browser. The site builder uses client-side routing, so a direct path request 404s at the server while the in-app nav renders normally.",
+    "reason": "The crawler is not a browser. It does not run JS and cannot follow client-side routes, so it reported a real HTTP status that is not what a customer experiences.",
+    "generalizes": true,
+    "proposedRule": "A bare HTTP status code from a site builder usually means client-side routing the crawler could not follow. A rendered 404 page with its own copy means the route is genuinely missing. Only the second is safe to lead with.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
+  },
+  {
+    "id": "fb-2026-08-21-002",
+    "date": "2026-08-21",
+    "leadId": "2026-08-20-chef-thiago-kitchen-and-cafe",
+    "kind": "gap-verdict",
+    "verdict": "wrong",
+    "claimed": "Site returns 'Too many redirects' — confirmed on five attempts across two days",
+    "actual": "Site loads normally in a browser. The real gap is that there is no menu on the site at all; the only route in is the Order Online button.",
+    "reason": "Repeated identical machine readings felt like confirmation but were the same blind spot repeated. Re-fetching does not validate a fetch-based claim.",
+    "generalizes": true,
+    "proposedRule": "When a gap claim fails verification, look for the real gap before discarding the lead — the opener is wrong, not necessarily the lead. Also: a design opinion ('menu and photos on separate screens') is not a defect and makes a weak opener.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
+  },
+  {
+    "id": "fb-2026-08-21-003",
+    "date": "2026-08-21",
+    "leadId": "2026-08-20-jomon-sushi-and-izakaya",
+    "kind": "gap-verdict",
+    "verdict": "partial",
+    "claimed": "Wix placeholder content, San Francisco demo address, no menu — a neglected site",
+    "actual": "The page reading was accurate and is unchanged. But this is a site MID-BUILD, not a neglected one — the Mammoth Poke team is likely building it right now.",
+    "reason": "An unfinished site and a neglected site look identical from outside and mean opposite things commercially. The observation was right; the inference was wrong.",
+    "generalizes": true,
+    "proposedRule": "Before leading with a placeholder or template-default gap, check whether the business recently opened, changed hands, or has a builder attached. If it opened in the last ~60 days, assume mid-build unless proven otherwise.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
+  },
+  {
+    "id": "fb-2026-08-21-004",
+    "date": "2026-08-21",
+    "leadId": null,
+    "kind": "outreach-edit",
+    "verdict": null,
+    "claimed": "v1 drafts listed every defect found and did not say how the sender came to be looking at the page",
+    "actual": "Rewritten to five beats: route disclosed, one customer-visible wall, mechanical consequence, who you are, permission-style ask.",
+    "reason": "Disclosing no route and listing multiple defects reads as surveillance — like a compiled report rather than something a person happened to hit. Also: lead with the most CUSTOMER-VISIBLE defect, not the most damning one.",
+    "generalizes": true,
+    "proposedRule": "Five-beat structure, one defect only, blame the gap and never the owner, rotate beat 4 phrasing across a batch so owners comparing notes don't see identical paragraphs.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
+  },
+  {
+    "id": "fb-2026-08-24-001",
+    "date": "2026-08-24",
+    "leadId": null,
+    "kind": "method",
+    "verdict": null,
+    "claimed": "IG status marked 'active (est.)' based on a search-indexed post",
+    "actual": "For two leads the only indexed post was 1-5 years old despite the businesses clearly being active.",
+    "reason": "Search-indexed Instagram posts skew old even for accounts that post weekly, so an old indexed post is evidence of nothing either way.",
+    "generalizes": true,
+    "proposedRule": "When the only evidence of IG activity is an indexed post more than a year old, status is 'unconfirmed', not 'active-est'.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
+  }
+]

@@ -1,0 +1,1014 @@
+[
+  {
+    "id": "2026-08-24-taqueria-el-charro-i",
+    "run": "2026-08-24",
+    "name": "Taqueria El Charro I",
+    "neighborhood": "Rogers Park",
+    "cuisine": "Mexican (taqueria)",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "Rogers Park Business Alliance directory lists their \"website\" as a Facebook link, not a domain.",
+      "sourceUrl": "https://business.rpba.org/list/member/taqueria-el-charro-2178",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — established spot, 87 Yelp reviews",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@taqueriaelcharro1",
+      "status": "active-est"
+    },
+    "score": 5,
+    "demoAngle": "Build a simple one-page site with hours/menu/real domain to replace the directory-only presence.",
+    "outreach": {
+      "draft": "Hey! I was looking up Taqueria El Charro to grab your menu before heading over and couldn't find a real website anywhere — just a Facebook link in the neighborhood directory. When someone's deciding where to eat and can't pull up a menu in a few seconds, they usually just tap into whatever shows up next, even if your food's better. I build simple sites for Chicago spots, plus a little game your regulars can play to win something free that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Name suggests a possible 2nd location — unconfirmed, treat as independent until checked."
+    ]
+  },
+  {
+    "id": "2026-08-24-taqueria-hernandez",
+    "run": "2026-08-24",
+    "name": "Taqueria Hernandez",
+    "neighborhood": "Rogers Park",
+    "cuisine": "Mexican (taqueria)",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "Rogers Park Business Alliance directory listing has no website field at all.",
+      "sourceUrl": "https://business.rpba.org/list/member/taqueria-hernandez-chicago-103",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — 83 Yelp reviews, updated July 2026",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@tacos_hernandez2022",
+      "status": "active-est"
+    },
+    "score": 5,
+    "demoAngle": "Screen-record the empty search results for their menu, then show a clean single-page mockup.",
+    "outreach": {
+      "draft": "Hey! Went looking for Taqueria Hernandez's menu online before stopping by and came up empty — no website listed anywhere, just the Yelp page. That's the kind of thing that costs you the split-second decision: someone scrolling for tacos nearby picks whoever's easiest to check out first. I build simple sites for Chicago spots, plus a little game your regulars can play to win something free that quietly builds you a list of customers to bring back. Happy to put together a free mockup of what yours could look like — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-24-coco-vietnamese-sandwiches-and-pho",
+    "run": "2026-08-24",
+    "name": "CoCo Vietnamese Sandwiches & Pho",
+    "neighborhood": "Ravenswood",
+    "cuisine": "Vietnamese (banh mi, pho)",
+    "website": "cocovietnamesesandwiches.com",
+    "gap": {
+      "type": "Broken links",
+      "claim": "Homepage banner reads \"site under maintenance, order by phone\" — fetched directly from their own live site. Menu with prices displays fine; the gap is specifically the ordering path.",
+      "sourceUrl": "http://www.cocovietnamesesandwiches.com/",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@cocoravenswood",
+      "status": "active-est"
+    },
+    "score": 4,
+    "demoAngle": "Fix the broken online-ordering flow and pair it with a clean menu page.",
+    "outreach": {
+      "draft": "Hey! I pulled up CoCo's site to order a banh mi and the whole page just says the site's under maintenance, call to order instead. That's a real wall — a lot of people won't call, they'll just order from whoever's ordering page actually works. I build sites (and fix the ordering part) for Chicago spots, plus a little game your regulars can play to win a free item that quietly builds you a list of customers to bring back. Happy to mock up a working version, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-24-portage-park-breakfast-place",
+    "run": "2026-08-24",
+    "name": "Portage Park Breakfast Place",
+    "neighborhood": "Portage Park",
+    "cuisine": "American/Mexican breakfast",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "Yahoo Local listing shows no website field; only site-like link anywhere is a bare Toast ordering page, not an informational site.",
+      "sourceUrl": "https://local.yahoo.com/info-240513094-portage-park-breakfast-place-chicago/",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "Opened Jan 2026 \"after years of anticipation.\"",
+      "sourceUrl": "https://blockclubchicago.org/2026/01/15/portage-park-breakfast-place-opens-after-years-of-anticipation/"
+    },
+    "instagram": {
+      "handle": "@portageparkbreakfastplace",
+      "status": "active-est"
+    },
+    "score": 5,
+    "demoAngle": "Build the missing site around their Toast ordering page so newcomers get a real front door.",
+    "outreach": {
+      "draft": "Hey! Congrats on getting Portage Park Breakfast Place open — looks like it's been a hit so far. I went to check your menu before coming in and all I could find was the Toast ordering page, no actual website. When people are deciding where to grab breakfast, not being able to see the full menu or vibe of the place first can send them to the spot next door instead. I build simple sites for Chicago restaurants, plus a little game your regulars can play to win a free breakfast that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-24-iztatl-cocina-mexicana",
+    "run": "2026-08-24",
+    "name": "Iztatl Cocina Mexicana",
+    "neighborhood": "Jefferson Park",
+    "cuisine": "Mexican (family-run)",
+    "website": "iztatlcocinamexicana.com (dead)",
+    "gap": {
+      "type": "Broken links",
+      "claim": "Google-indexed domain does not resolve at all (DNS failure), confirmed via two separate fetch attempts. Current presence is Facebook + delivery aggregators only.",
+      "sourceUrl": "http://iztatlcocinamexicana.com",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — 26 Yelp reviews, updated July 2026",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@iztatl4808",
+      "status": "active-est"
+    },
+    "score": 5,
+    "demoAngle": "Screen-record the dead domain failing to load, then show a working mockup.",
+    "outreach": {
+      "draft": "Hey! I tried to pull up Iztatl's website to check the menu and the domain doesn't load at all anymore — just comes back as not found. If that's how it looks for me, it's how it looks for anyone searching for you online, and most people won't dig further, they'll just pick the next place that loads. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free dish that quietly builds you a list of customers to bring back. Happy to mock up what a working one could look like — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-24-taqueria-la-paz",
+    "run": "2026-08-24",
+    "name": "Taqueria La Paz",
+    "neighborhood": "Belmont Cragin",
+    "cuisine": "Mexican taqueria (family-owned)",
+    "website": "taquerialapazchicago.com",
+    "gap": {
+      "type": "Broken links",
+      "claim": "All three \"Order Online Now\" buttons on the homepage are hard-coded to go nowhere, confirmed via raw HTML. Needs a human click-through to rule out a JS-driven order modal before outreach.",
+      "sourceUrl": "https://taquerialapazchicago.com",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@taquerialapaz",
+      "status": "active-est"
+    },
+    "score": 4,
+    "demoAngle": "Fix the three dead 'Order Online' buttons and rebuild that flow.",
+    "outreach": {
+      "draft": "Hey! Your site's got a nice look, but the 'Order Online Now' buttons on the homepage don't actually go anywhere — I clicked all three. When someone's ready to order and hits a dead button, most just close the tab and order from wherever works. I build and fix sites for Chicago restaurants, plus a little game your regulars can play to win a free item that quietly builds you a list of customers to bring back. Happy to take a look and mock up a fix, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Routing/loading-tier claim — human click-through recommended before send."
+    ]
+  },
+  {
+    "id": "2026-08-24-los-vasos-lokos",
+    "run": "2026-08-24",
+    "name": "Los Vasos Lokos",
+    "neighborhood": "Little Village",
+    "cuisine": "Mexican aguas frescas / elotes / raspados stand",
+    "website": "losvasoslokos.com (resold)",
+    "gap": {
+      "type": "Broken links",
+      "claim": "Little Village Chamber of Commerce directory lists this domain as their site; it now 302-redirects to a GoDaddy domain-resale listing ($195 buy-it-now).",
+      "sourceUrl": "https://littlevillagechamber.org/business-directory/los-vasos-lokos/",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@losvasoslokos",
+      "status": "unconfirmed"
+    },
+    "score": 3,
+    "demoAngle": "Reclaim/rebuild a real site under their own domain, away from the resale listing.",
+    "outreach": {
+      "draft": "Hey! I went to check out Los Vasos Lokos online and the website listed for you is actually up for sale now, not your page anymore — it's been picked up as a domain listing. That means anyone searching for you and clicking through lands somewhere totally unrelated. I build simple sites for Chicago spots, plus a little game your regulars can play to win something free that quietly builds you a list of customers to come back. Happy to mock up what yours could look like, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Reads more as a snack/drink stand than a full sit-down restaurant — confirm ICP fit before outreach. IG recency also unconfirmed (only 2019–2022 posts indexed)."
+    ]
+  },
+  {
+    "id": "2026-08-24-jamaican-jerk-king",
+    "run": "2026-08-24",
+    "name": "Jamaican Jerk King",
+    "neighborhood": "Bronzeville / Douglas",
+    "cuisine": "Caribbean / Jamaican",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "TripAdvisor listing has populated hours/phone/live-open-status but an empty website field. Every \"own website\" search result is a third-party auto-generated listing mill, not owner-built.",
+      "sourceUrl": "https://www.tripadvisor.com/Restaurant_Review-g35805-d15168000-Reviews-Jamaican_Jerk_King-Chicago_Illinois.html",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — established, 147 Yelp reviews updated Aug 2026",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@jamaicanjerkking",
+      "status": "unconfirmed"
+    },
+    "score": 4,
+    "demoAngle": "Replace the auto-generated listing-mill pages with a real owned site.",
+    "outreach": {
+      "draft": "Hey! I was trying to find Jamaican Jerk King's menu online and couldn't turn up a real website — just some auto-generated listing pages that aren't really yours. When people can't confirm the menu or hours in a few seconds, they tend to just go with whatever shows up easiest. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free plate that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Only an old (Jan 2021) IG post was indexed — do not assume the account is currently active."
+    ]
+  },
+  {
+    "id": "2026-08-24-taan",
+    "run": "2026-08-24",
+    "name": "Taan",
+    "neighborhood": "Humboldt Park (est.)",
+    "cuisine": "Thai, chef-driven wine bar",
+    "website": "taanchicago.com",
+    "gap": {
+      "type": "Weak / outdated site",
+      "claim": "Browser tab still reads \"Your Site Title\" — the site builder's never-customized template default, confirmed via direct fetch.",
+      "sourceUrl": "https://taanchicago.com",
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "Opened ~Aug 20, 2026 — four days old as of this run.",
+      "sourceUrl": "https://whatnow.com/chicago/restaurants/chef-debuting-new-restaurant-taan-in-humboldt-park-with-thai-specialties/"
+    },
+    "instagram": {
+      "handle": "@chanitacooks",
+      "status": "personal-account-only"
+    },
+    "score": 4,
+    "demoAngle": "Quick fix of the placeholder page title, plus a polish pass on the just-launched site.",
+    "outreach": {
+      "draft": "Hey, congrats on opening Taan! I checked out the site and noticed the browser tab still says 'Your Site Title' — looks like the template default never got swapped out. Small thing, but it's the kind of detail that makes people wonder if the rest of the page is finished too, right when you need first impressions to land. I build clean sites for Chicago restaurants, plus a little game regulars can play to win a free dish that quietly builds you a list of customers to bring back. Happy to put together a mockup, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Instagram handle is the chef's personal account, not a dedicated restaurant handle — fine for a founder-run DM, but flag before sending."
+    ]
+  },
+  {
+    "id": "2026-08-24-sunrise-cafe",
+    "run": "2026-08-24",
+    "name": "Sunrise Cafe",
+    "neighborhood": "Ukrainian Village",
+    "cuisine": "Breakfast & brunch diner",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "TripAdvisor's own website field fetched directly and confirmed empty. Only third-party menu aggregators plus a Facebook page exist.",
+      "sourceUrl": "https://www.tripadvisor.com/Restaurant_Review-g35805-d4201818-Reviews-Sunrise_Cafe-Chicago_Illinois.html",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — established, 360 Yelp reviews",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@sunrisecafechicago",
+      "status": "active-est"
+    },
+    "score": 5,
+    "demoAngle": "Build the menu + hours page they're missing, given how many regulars they already have.",
+    "outreach": {
+      "draft": "Hey! I tried to pull up Sunrise Cafe's menu online before stopping in and couldn't find a website anywhere, just the Yelp page. With as many regulars as you clearly have, it seems like a lot of first-timers are probably missing you because there's nowhere to check the menu first. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free breakfast that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Reopened once before after a 2022 closure, per Block Club Chicago — worth knowing before outreach."
+    ]
+  },
+  {
+    "id": "2026-08-24-semaphore-cafe",
+    "run": "2026-08-24",
+    "name": "Semaphore Cafe",
+    "neighborhood": "East Garfield Park",
+    "cuisine": "Cafe / coffee & brunch",
+    "website": "semaphorecafe.com (dead)",
+    "gap": {
+      "type": "Broken links",
+      "claim": "4 independent fetches (root, /about, /menu, bare apex) all returned genuine 404s. Real, current press (WTTW, The Infatuation, Austin Weekly News) actively cites this URL as the live link.",
+      "sourceUrl": "https://semaphorecafe.com",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "Active press wave right now citing the now-dead site.",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@semaphorecafe",
+      "status": "unconfirmed"
+    },
+    "score": 5,
+    "demoAngle": "Screen-record the 404 from the press link, then show a working mockup landing page.",
+    "outreach": {
+      "draft": "Hey! Saw the recent write-ups on Semaphore Cafe and went to check out the site they linked — semaphorecafe.com comes back as page not found. That's rough timing, since anyone reading that piece right now and clicking through hits a dead end instead of your menu. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free coffee that quietly builds you a list of customers to bring back. Happy to mock up a working version, no strings — want to see?",
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Handle sourced from a press citation, not independently loaded — confirm before DM."
+    ]
+  },
+  {
+    "id": "2026-08-20-hunan-cuisine",
+    "run": "2026-08-20",
+    "name": "Hunan Cuisine",
+    "neighborhood": "River North",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "Weak / outdated site",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@hunancuisine.chicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-jomon-sushi-and-izakaya",
+    "run": "2026-08-20",
+    "name": "Jomon Sushi & Izakaya",
+    "neighborhood": "Bucktown",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "Weak / outdated site",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@jomonchicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "Hold",
+    "caveats": [
+      "On hold — site reads as mid-build (Mammoth Poke team likely building it now), not neglected. Confirm before any outreach."
+    ]
+  },
+  {
+    "id": "2026-08-20-kashgar-uyghur-dining",
+    "run": "2026-08-20",
+    "name": "Kashgar Uyghur Dining",
+    "neighborhood": "Albany Park",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "Weak / outdated site",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@kashgar_uyghur_dining_chicago",
+      "status": "handle-found"
+    },
+    "score": 5,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-wasai-bbq",
+    "run": "2026-08-20",
+    "name": "Wasai BBQ",
+    "neighborhood": "Chinatown",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@wasaibbq.chicago",
+      "status": "handle-found"
+    },
+    "score": 5,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-craft-and-carvery",
+    "run": "2026-08-20",
+    "name": "Craft & Carvery",
+    "neighborhood": "Wicker Park",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "Weak / outdated site",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@craftandcarvery",
+      "status": "handle-found"
+    },
+    "score": 5,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "A 404 claim on this one was withdrawn after a browser check (client-side routing, not a real error). Remaining angle — menu/photos split across screens — is a design opinion, not a defect. Weakest opener in the batch."
+    ]
+  },
+  {
+    "id": "2026-08-20-chef-thiago-kitchen-and-cafe",
+    "run": "2026-08-20",
+    "name": "Chef Thiago Kitchen & Cafe",
+    "neighborhood": "Lakeview",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No menu online",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@chef_thiagokitchencafe",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Gap type corrected after a browser check: site loads fine, the real gap is no menu on it (only an Order Online button)."
+    ]
+  },
+  {
+    "id": "2026-08-20-zimi-s-restaurant",
+    "run": "2026-08-20",
+    "name": "Zimi's Restaurant",
+    "neighborhood": "Lincoln Square",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "Broken links",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@zimisonlincoln",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Routing/loading-tier claim — never send unchecked, per standing rule. Human browser check recommended first."
+    ]
+  },
+  {
+    "id": "2026-08-20-the-jibarito-stop",
+    "run": "2026-08-20",
+    "name": "The Jibarito Stop",
+    "neighborhood": "Loop",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": null,
+      "status": "not-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "No Instagram handle surfaced — confirmed Facebook only."
+    ]
+  },
+  {
+    "id": "2026-08-20-szechuan-bistro",
+    "run": "2026-08-20",
+    "name": "Szechuan Bistro",
+    "neighborhood": "Bridgeport",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@szechuanbistro (unconfirmed)",
+      "status": "unconfirmed"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "An account surfaced but could not be confidently tied to this location."
+    ]
+  },
+  {
+    "id": "2026-08-20-izakaya-by-aiya",
+    "run": "2026-08-20",
+    "name": "Izakaya By Aiya",
+    "neighborhood": "Lincoln Square",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@izakayabyaiya",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-monarch-community-cafe",
+    "run": "2026-08-20",
+    "name": "Monarch Community Cafe",
+    "neighborhood": "Rogers Park",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No menu online",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@monarch_community_cafe",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-shawarma-and-grill",
+    "run": "2026-08-20",
+    "name": "Shawarma & Grill",
+    "neighborhood": "West Ridge",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "Weak / outdated site",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@eatshawarmagrill",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-brennan-s-gourmet-burger-shack",
+    "run": "2026-08-20",
+    "name": "Brennan's Gourmet Burger Shack",
+    "neighborhood": "Edison Park",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "Not mobile-friendly",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@brennansburgershack",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-l-angolo-italiano",
+    "run": "2026-08-20",
+    "name": "L'Angolo Italiano",
+    "neighborhood": "Rogers Park",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No menu online",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@langoloitalianochicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-sapori-napoletani",
+    "run": "2026-08-20",
+    "name": "Sapori Napoletani",
+    "neighborhood": "Dunning",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "Not mobile-friendly",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@saporinapoletanichicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": []
+  },
+  {
+    "id": "2026-08-20-pitch-and-pour-supper-club",
+    "run": "2026-08-20",
+    "name": "Pitch And Pour Supper Club",
+    "neighborhood": "West Loop",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@pitchandpourchicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "Bench",
+    "caveats": [
+      "Benched — promote if a slot opens."
+    ]
+  },
+  {
+    "id": "2026-08-20-thai-me-up-cafe",
+    "run": "2026-08-20",
+    "name": "Thai Me Up Cafe",
+    "neighborhood": "Lakeview",
+    "cuisine": null,
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": null,
+      "sourceUrl": null,
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": null,
+    "instagram": {
+      "handle": "@thaimeup608",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": null,
+    "outreach": {
+      "draft": null,
+      "sent": null,
+      "revisions": 0
+    },
+    "status": "Bench",
+    "caveats": [
+      "Benched — promote if a slot opens."
+    ]
+  }
+]

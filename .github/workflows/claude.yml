@@ -1,0 +1,57 @@
+# Lets you talk to Claude inside GitHub.
+#
+# Open an issue (or comment on a pull request) and write @claude followed by what
+# you want — "make the lead cards wider", "add a Neighborhood filter", "the dark
+# mode text is hard to read". Claude reads the repo, makes the change, and opens a
+# pull request for you to look at and merge.
+#
+# Needs one repository secret before it does anything: CLAUDE_CODE_OAUTH_TOKEN
+# (works with your Claude subscription) or ANTHROPIC_API_KEY (separate billing).
+# See docs/automation.md in this repo.
+
+name: Claude
+
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+  issues:
+    types: [opened, assigned]
+
+jobs:
+  claude:
+    # Only wake up when someone actually says @claude.
+    if: |
+      contains(github.event.comment.body, '@claude') ||
+      contains(github.event.issue.body, '@claude')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Check the token is set up
+        id: guard
+        run: |
+          if [ -z "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            echo "No CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY secret set — skipping."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.guard.outputs.ready == 'true'
+        with:
+          fetch-depth: 1
+
+      - uses: anthropics/claude-code-action@v1
+        if: steps.guard.outputs.ready == 'true'
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: "--max-turns 20"

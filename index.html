@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QQ Studio — Restaurant Lead Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --page:#f9f9f7; --surface:#fcfcfb; --surface-2:#f3f2ee;
+  --ink:#0b0b0b; --ink-2:#52514e; --ink-muted:#898781;
+  --grid:#e1e0d9; --border:rgba(11,11,11,.10);
+  --brand:#a8451f; --brand-soft:rgba(168,69,31,.09);
+  --good:#0ca30c; --warn:#b9790a; --serious:#c65a2e; --critical:#d03b3b;
+  --cat-1:#2a78d6; --cat-2:#eb6834; --cat-3:#1baf7a;
+  --cat-4:#b6790a; --cat-4-fill:#eda100; --cat-5:#c14577; --cat-5-fill:#e87ba4;
+  --shadow:0 1px 2px rgba(11,11,11,.04),0 8px 24px -12px rgba(11,11,11,.12);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --page:#0d0d0d; --surface:#1a1a19; --surface-2:#212120;
+  --ink:#fff; --ink-2:#c3c2b7; --ink-muted:#8f8d85;
+  --grid:#2c2c2a; --border:rgba(255,255,255,.10);
+  --brand:#e2703f; --brand-soft:rgba(226,112,63,.14);
+  --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --critical:#e66767;
+  --cat-1:#3987e5; --cat-2:#d95926; --cat-3:#199e70;
+  --cat-4:#c98500; --cat-4-fill:#c98500; --cat-5:#d55181; --cat-5-fill:#d55181;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --page:#0d0d0d; --surface:#1a1a19; --surface-2:#212120;
+  --ink:#fff; --ink-2:#c3c2b7; --ink-muted:#8f8d85;
+  --grid:#2c2c2a; --border:rgba(255,255,255,.10);
+  --brand:#e2703f; --brand-soft:rgba(226,112,63,.14);
+  --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --critical:#e66767;
+  --cat-1:#3987e5; --cat-2:#d95926; --cat-3:#199e70;
+  --cat-4:#c98500; --cat-4-fill:#c98500; --cat-5:#d55181; --cat-5-fill:#d55181;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:"Public Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 24px 80px}
+h1,h2,h3{font-family:"Archivo",system-ui,sans-serif;margin:0}
+a{color:var(--brand)}
+code,.mono{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.92em}
+
+header.hero{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-end;padding-bottom:28px;margin-bottom:24px;border-bottom:1px solid var(--border)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:700;margin:0 0 10px}
+h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.sub{color:var(--ink-2);font-size:15px;max-width:62ch;line-height:1.55;margin:0}
+.meta-block{text-align:right;font-size:13px;color:var(--ink-muted)}
+.meta-block strong{color:var(--ink);display:block;font-size:14px}
+
+.notice{display:flex;gap:12px;align-items:flex-start;background:var(--brand-soft);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:28px;font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+.notice .dot{width:8px;height:8px;border-radius:50%;background:var(--serious);margin-top:6px;flex:none}
+.notice strong{color:var(--ink)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:32px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;box-shadow:var(--shadow)}
+.stat .label{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);margin-bottom:6px}
+.stat .value{font-family:"Archivo",sans-serif;font-size:28px;font-weight:800;font-variant-numeric:tabular-nums}
+.stat .foot{font-size:12px;color:var(--ink-2);margin-top:2px}
+
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px;margin-bottom:32px;box-shadow:var(--shadow)}
+.panel h2{font-size:16px;margin-bottom:3px}
+.panel .panel-sub{font-size:12.5px;color:var(--ink-muted);margin:0 0 20px}
+.bar-row{display:grid;grid-template-columns:168px 1fr 40px;align-items:center;gap:12px;margin-bottom:12px}
+.bar-row:last-child{margin-bottom:0}
+.bar-label{font-size:13px;color:var(--ink-2);text-align:right}
+.bar-track{background:var(--surface-2);border-radius:5px;height:14px;overflow:hidden;border:1px solid var(--grid)}
+.bar-fill{height:100%;border-radius:4px;min-width:4px}
+.bar-count{font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+
+.controls{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
+.filter-group{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.glabel{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);width:100%;margin-bottom:2px}
+.pill{font:inherit;font-size:12.5px;color:var(--ink-2);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 13px;cursor:pointer}
+.pill:hover{border-color:var(--brand);color:var(--ink)}
+.pill.active{background:var(--ink);color:var(--page);border-color:var(--ink)}
+.pill:focus-visible,button:focus-visible,textarea:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.count-note{font-size:12.5px;color:var(--ink-muted);margin:0 0 16px}
+
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.chip .swatch{width:7px;height:7px;border-radius:50%;flex:none}
+.chip-status{color:var(--ink-2);background:var(--surface-2);border:1px solid var(--border)}
+.chip-good{color:var(--good);background:color-mix(in srgb,var(--good) 12%,transparent)}
+.chip-warn{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.chip-critical{color:var(--critical);background:color-mix(in srgb,var(--critical) 14%,transparent)}
+.chip-muted{color:var(--ink-muted);background:var(--surface-2)}
+
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grid)}
+.card.v-confirmed::before{background:var(--good)}
+.card.v-wrong::before{background:var(--critical)}
+.card.v-partial::before{background:var(--warn)}
+.card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card h3{font-size:16.5px;letter-spacing:-.005em;margin-bottom:2px}
+.place{font-size:12.5px;color:var(--ink-muted)}
+.score{display:flex;align-items:center;gap:6px;flex:none}
+.score .dots{display:flex;gap:2px}
+.score .dots span{width:6px;height:6px;border-radius:50%;background:var(--grid)}
+.score .dots span.on{background:var(--ink)}
+.score .num{font-family:"Archivo",sans-serif;font-weight:800;font-size:15px;font-variant-numeric:tabular-nums}
+.chiprow{display:flex;flex-wrap:wrap;gap:6px}
+.evidence{font-size:13px;line-height:1.55;color:var(--ink-2);border-left:2px solid var(--grid);padding-left:10px}
+.evidence a{word-break:break-all}
+.field{font-size:13px;line-height:1.5}
+.field .k{color:var(--ink-muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:2px}
+.caveat{font-size:12px;color:var(--serious);background:color-mix(in srgb,var(--serious) 10%,transparent);border-radius:7px;padding:7px 10px;line-height:1.5}
+details{font-size:13px}
+details summary{cursor:pointer;color:var(--brand);font-weight:600;font-size:12.5px;list-style:none}
+details summary::before{content:"▸ "}
+details[open] summary::before{content:"▾ "}
+details p{background:var(--surface-2);border-radius:8px;padding:12px 13px;line-height:1.6;color:var(--ink-2);margin:8px 0 0}
+
+.draftbox{margin-top:9px;display:flex;flex-direction:column;gap:7px}
+.draftbox textarea{min-height:130px;font-size:13px;line-height:1.6}
+.draftbox .why{min-height:76px}
+.delta{font-size:11.5px;color:var(--ink-muted);display:flex;align-items:center;gap:6px}
+.delta.changed{color:var(--brand);font-weight:600}
+.delta .pipdot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none}
+.mini{font:inherit;font-size:11.5px;color:var(--ink-muted);background:none;border:none;cursor:pointer;text-decoration:underline;padding:0}
+.mini:hover{color:var(--ink)}
+
+.lessons{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:32px;box-shadow:var(--shadow)}
+.lessons h2{font-size:16px;margin-bottom:3px}
+.lessons .panel-sub{font-size:12.5px;color:var(--ink-muted);margin:0 0 16px}
+.lesson{border-left:2px solid var(--brand);padding:2px 0 2px 13px;margin-bottom:14px;font-size:13px;line-height:1.6}
+.lesson:last-child{margin-bottom:0}
+.lesson .lid{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-muted)}
+.lesson .rule{color:var(--ink);font-weight:600;margin-top:2px}
+.lesson .from{color:var(--ink-2);margin-top:3px}
+.empty-lessons{font-size:13px;color:var(--ink-muted);line-height:1.6}
+
+.verify{border-top:1px dashed var(--border);padding-top:12px;margin-top:2px}
+.verify .vlabel{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);margin-bottom:8px}
+.vbtns{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.vbtn{font:inherit;font-size:12px;font-weight:600;padding:5px 11px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink-2);cursor:pointer}
+.vbtn:hover{border-color:var(--ink-muted);color:var(--ink)}
+.vbtn.sel-confirmed{background:color-mix(in srgb,var(--good) 15%,transparent);color:var(--good);border-color:var(--good)}
+.vbtn.sel-wrong{background:color-mix(in srgb,var(--critical) 15%,transparent);color:var(--critical);border-color:var(--critical)}
+.vbtn.sel-partial{background:color-mix(in srgb,var(--warn) 18%,transparent);color:var(--warn);border-color:var(--warn)}
+textarea{width:100%;font:inherit;font-size:12.5px;line-height:1.5;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:9px 11px;resize:vertical;min-height:60px}
+textarea::placeholder{color:var(--ink-muted)}
+.vactions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center}
+.btn{font:inherit;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:8px;border:1px solid var(--ink);background:var(--ink);color:var(--page);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink-2);border-color:var(--border)}
+.btn.ghost:hover{color:var(--ink);border-color:var(--ink-muted)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.hint{font-size:11.5px;color:var(--ink-muted)}
+
+.loading,.error{padding:48px 24px;text-align:center;color:var(--ink-muted);font-size:14px;line-height:1.7}
+.error{color:var(--critical)}
+.error code{display:inline-block;background:var(--surface-2);padding:2px 6px;border-radius:5px;color:var(--ink-2)}
+
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-size:12px;color:var(--ink-muted);line-height:1.7}
+@media (max-width:640px){
+  header.hero{flex-direction:column;align-items:flex-start}
+  .meta-block{text-align:left}
+  .bar-row{grid-template-columns:100px 1fr 34px}
+  .bar-label{font-size:11.5px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <p class="eyebrow">QQ Studio · Outreach Research</p>
+    <h1>Restaurant Lead Board</h1>
+    <p class="sub">Every lead the weekly research run has found — gap, evidence, fit score, outreach draft. Research is machine-generated and <strong>unverified until you check it</strong>. Your verdict is what makes a lead sendable, and what teaches the next run.</p>
+  </div>
+  <div class="meta-block">
+    <strong id="run-label">—</strong>
+    <span id="lead-count">—</span>
+  </div>
+</header>
+
+<div class="notice">
+  <div class="dot"></div>
+  <div id="notice-body">
+    <strong>Nothing here has been verified by a human yet.</strong> Every gap claim is a machine reading, and the machine has been wrong before — twice on 404s that turned out to be client-side routing. Check a gap, hit a verdict button, and the card gives you a JSON block plus a direct link to edit the data file on GitHub.
+  </div>
+</div>
+
+<div class="stats" id="stats"></div>
+
+<div class="panel">
+  <h2>Leads by gap type</h2>
+  <p class="panel-sub">What the outreach is built around. Once verdicts accumulate, the overturn rate per gap type tells you which openers to stop trusting.</p>
+  <div id="chart"></div>
+</div>
+
+<div class="lessons" id="lessons"></div>
+
+<div class="controls">
+  <div class="filter-group" id="f-run"><span class="glabel">Run</span></div>
+  <div class="filter-group" id="f-verify"><span class="glabel">Verification</span></div>
+</div>
+<div class="filter-group" id="f-gap" style="margin-bottom:18px"><span class="glabel">Gap type</span></div>
+
+<p class="count-note" id="count-note"></p>
+<div id="grid"><div class="loading">Loading leads…</div></div>
+
+<footer>
+  Data lives in <code>data/leads.json</code> · corrections in <code>data/feedback.json</code> · learned rules in <code>rules/</code>.
+  Run <code>node scripts/learn.mjs</code> to see calibration and any rules awaiting review.
+  No pricing appears in any draft — every message is a starting point to edit before sending.
+</footer>
+</div>
+
+<script>
+// Where the "Edit on GitHub" buttons point.
+// On GitHub Pages this figures itself out from the URL — nothing to configure.
+// The fallback below is only used when previewing the file locally.
+const REPO = (() => {
+  const host = location.hostname.match(/^([\w-]+)\.github\.io$/i);
+  if (host) {
+    const firstSegment = location.pathname.split("/").filter(Boolean)[0];
+    return { owner: host[1], name: firstSegment || `${host[1]}.github.io`, branch: "main" };
+  }
+  return { owner: "YOUR-GITHUB-USERNAME", name: "qq-leads", branch: "main" };
+})();
+
+const GAP = {
+  "No website":           {v:"--cat-1", f:"--cat-1"},
+  "Broken links":         {v:"--cat-2", f:"--cat-2"},
+  "No menu online":       {v:"--cat-3", f:"--cat-3"},
+  "Weak / outdated site": {v:"--cat-4", f:"--cat-4-fill"},
+  "Not mobile-friendly":  {v:"--cat-5", f:"--cat-5-fill"},
+};
+const IG = {
+  "active-est":            {c:"chip-good",     t:"Active (est.)"},
+  "handle-found":          {c:"chip-status",   t:"Handle found"},
+  "unconfirmed":           {c:"chip-warn",     t:"IG unconfirmed"},
+  "personal-account-only": {c:"chip-warn",     t:"Personal acct only"},
+  "not-found":             {c:"chip-critical", t:"No IG found"},
+};
+const TIER_NOTE = {
+  routing: "Routing claim — highest risk. The crawler can't run JavaScript, so a 404 here may just be client-side routing. Open it in a browser.",
+  static:  "Static-content claim — low risk. Ten seconds to confirm.",
+  absence: "Absence claim — corroborated across listings. A browser check adds little.",
+};
+
+let LEADS = [], FEEDBACK = [];
+// Staged in the page until committed to GitHub — nothing here is saved on its own.
+const draftVerdicts = {};   // leadId -> confirmed | wrong | partial
+const draftEdits    = {};   // leadId -> revised outreach text
+const draftWhy      = {};   // leadId -> why it was revised
+let filters = { run:"All", verify:"All", gap:"All" };
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const today = () => new Date().toISOString().slice(0,10);
+
+async function load(){
+  try{
+    const [l,f] = await Promise.all([
+      fetch("./data/leads.json").then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
+      fetch("./data/feedback.json").then(r=>r.ok?r.json():[]),
+    ]);
+    LEADS = l; FEEDBACK = f;
+    boot();
+  }catch(e){
+    document.getElementById("grid").innerHTML =
+      `<div class="error"><strong>Couldn't load the data files.</strong><br><br>
+       If you opened this file directly from disk, browsers block <code>fetch()</code> on <code>file://</code>.<br>
+       Serve it instead: <code>npx serve .</code> — or just use the GitHub Pages URL.</div>`;
+  }
+}
+
+function boot(){
+  renderStats(); renderChart(); renderLessons();
+  pills("f-run", ["All", ...new Set(LEADS.map(l=>l.run))], "run");
+  pills("f-verify", ["All","unverified","confirmed","wrong","partial"], "verify");
+  pills("f-gap", ["All", ...Object.keys(GAP)], "gap");
+  render();
+}
+
+function pills(id, vals, key){
+  const el = document.getElementById(id);
+  vals.forEach(v=>{
+    const b = document.createElement("button");
+    b.className = "pill" + (filters[key]===v ? " active" : "");
+    b.textContent = v;
+    b.onclick = ()=>{
+      filters[key]=v;
+      el.querySelectorAll(".pill").forEach(p=>p.classList.remove("active"));
+      b.classList.add("active"); render();
+    };
+    el.appendChild(b);
+  });
+}
+
+function renderStats(){
+  const n = LEADS.length;
+  const verified = LEADS.filter(l=>l.gap.verification.status!=="unverified");
+  const wrong = verified.filter(l=>l.gap.verification.status!=="confirmed").length;
+  const avg = (LEADS.reduce((s,l)=>s+l.score,0)/n).toFixed(1);
+  const runs = [...new Set(LEADS.map(l=>l.run))].sort().reverse();
+  document.getElementById("run-label").textContent = "Latest run: " + runs[0];
+  document.getElementById("lead-count").textContent = n + " leads across " + runs.length + " runs";
+  document.getElementById("stats").innerHTML = `
+    <div class="stat"><div class="label">Total leads</div><div class="value">${n}</div><div class="foot">across ${runs.length} runs</div></div>
+    <div class="stat"><div class="label">Verified by you</div><div class="value">${verified.length}</div><div class="foot">${n-verified.length} still awaiting a check</div></div>
+    <div class="stat"><div class="label">Overturned</div><div class="value">${verified.length?wrong:"—"}</div><div class="foot">${verified.length?Math.round(wrong/verified.length*100)+"% of what you checked":"nothing checked yet"}</div></div>
+    <div class="stat"><div class="label">Avg. fit score</div><div class="value">${avg}</div><div class="foot">out of 5</div></div>`;
+}
+
+function renderChart(){
+  const counts = {}; Object.keys(GAP).forEach(g=>counts[g]=0);
+  LEADS.forEach(l=>counts[l.gap.type]=(counts[l.gap.type]||0)+1);
+  const max = Math.max(...Object.values(counts), 1);
+  document.getElementById("chart").innerHTML = Object.entries(counts)
+    .sort((a,b)=>b[1]-a[1])
+    .map(([g,c])=>`<div class="bar-row">
+      <div class="bar-label">${esc(g)}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${Math.max(4,Math.round(c/max*100))}%;background:var(${GAP[g].f})"></div></div>
+      <div class="bar-count">${c}</div></div>`).join("");
+}
+
+function scoreEl(n){
+  let d=""; for(let i=1;i<=5;i++) d+=`<span class="${i<=n?"on":""}"></span>`;
+  return `<div class="score"><span class="num">${n}</span><div class="dots">${d}</div></div>`;
+}
+
+function card(l){
+  const v = draftVerdicts[l.id] ?? l.gap.verification.status;
+  const g = GAP[l.gap.type] || {v:"--ink-muted"};
+  const ig = IG[l.instagram.status] || IG["handle-found"];
+  const cls = v!=="unverified" ? " v-"+v : "";
+  return `<div class="card${cls}" data-id="${esc(l.id)}">
+    <div class="card-top">
+      <div><h3>${esc(l.name)}</h3><div class="place">${esc(l.neighborhood)}${l.cuisine?" · "+esc(l.cuisine):""}</div></div>
+      ${scoreEl(l.score)}
+    </div>
+    <div class="chiprow">
+      <span class="chip" style="color:var(${g.v});background:color-mix(in srgb,var(${g.f||g.v}) 14%,transparent)"><span class="swatch" style="background:var(${g.v})"></span>${esc(l.gap.type)}</span>
+      <span class="chip ${ig.c}">${esc(l.instagram.handle || ig.t)}</span>
+      <span class="chip chip-status">${esc(l.status)}</span>
+    </div>
+    ${l.gap.claim
+      ? `<div class="evidence">${esc(l.gap.claim)}${l.gap.sourceUrl?` <a href="${esc(l.gap.sourceUrl)}" target="_blank" rel="noopener">source ↗</a>`:""}</div>`
+      : `<div class="evidence" style="opacity:.6">Summary-level only — see the research log.</div>`}
+    <div class="hint">${esc(TIER_NOTE[l.gap.evidenceTier]||"")}</div>
+    ${l.whyNow?`<div class="field"><span class="k">Why now</span>${esc(l.whyNow.text)}${l.whyNow.sourceUrl?` <a href="${esc(l.whyNow.sourceUrl)}" target="_blank" rel="noopener">↗</a>`:""}</div>`:""}
+    ${l.demoAngle?`<div class="field"><span class="k">Demo angle</span>${esc(l.demoAngle)}</div>`:""}
+    ${l.outreach.draft ? `<details ${draftEdits[l.id]!==undefined?"open":""}><summary>Outreach draft — click to read and edit</summary>
+      <div class="draftbox">
+        <textarea data-draft>${esc(draftEdits[l.id] ?? l.outreach.sent ?? l.outreach.draft)}</textarea>
+        <div class="delta" data-delta></div>
+        <textarea class="why" data-why placeholder="Why did you change it? e.g. 'cut the second sentence — too long for a DM' — this is the part the next run learns from">${esc(draftWhy[l.id] ?? "")}</textarea>
+        <div class="vactions">
+          <button class="btn" data-act="copy-draft">Copy JSON</button>
+          <button class="mini" data-act="reset-draft">Reset to original</button>
+        </div>
+      </div>
+    </details>` : ""}
+    ${(l.caveats||[]).map(c=>`<div class="caveat">${esc(c)}</div>`).join("")}
+    <div class="verify">
+      <div class="vlabel">Did the gap check out?</div>
+      <div class="vbtns">
+        ${["confirmed","wrong","partial"].map(s=>
+          `<button class="vbtn ${v===s?"sel-"+s:""}" data-v="${s}">${s[0].toUpperCase()+s.slice(1)}</button>`).join("")}
+      </div>
+      <textarea data-note placeholder="${v==="wrong"?"What was actually true? (required — this is the lesson)":"Optional note — what you saw"}">${esc(l.gap.verification.note||"")}</textarea>
+      <div class="vactions">
+        <button class="btn" data-act="copy" ${v==="unverified"?"disabled":""}>Copy JSON</button>
+        <button class="btn ghost" data-act="gh">Edit on GitHub ↗</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function render(){
+  const list = LEADS.filter(l=>
+    (filters.run==="All"||l.run===filters.run) &&
+    (filters.gap==="All"||l.gap.type===filters.gap) &&
+    (filters.verify==="All"||(draftVerdicts[l.id]??l.gap.verification.status)===filters.verify));
+  document.getElementById("count-note").textContent = `Showing ${list.length} of ${LEADS.length} leads.`;
+  document.getElementById("grid").innerHTML = list.map(card).join("") ||
+    `<div class="loading">No leads match those filters.</div>`;
+  document.querySelectorAll("#grid .card").forEach(el=>{
+    const lead = LEADS.find(l=>l.id===el.dataset.id);
+    if(lead && lead.outreach.draft) paintDelta(el, lead);
+  });
+}
+
+// Makes the learning loop visible: corrections you've logged that haven't
+// become rules yet. This is the queue Claude works from.
+function renderLessons(){
+  const proposed = FEEDBACK.filter(f=>f.ruleStatus==="proposed");
+  const adopted  = FEEDBACK.filter(f=>f.ruleStatus==="adopted");
+  const el = document.getElementById("lessons");
+  el.innerHTML = `
+    <h2>What the system has learned</h2>
+    <p class="panel-sub">${adopted.length} rule${adopted.length===1?"":"s"} in effect · ${proposed.length} correction${proposed.length===1?"":"s"} waiting to become one</p>
+    ${proposed.length ? proposed.map(f=>`
+      <div class="lesson">
+        <div class="lid">${esc(f.id)} · ${esc(f.kind)}</div>
+        <div class="rule">${esc(f.proposedRule && !f.proposedRule.startsWith("<") ? f.proposedRule : f.reason)}</div>
+        <div class="from">${f.leadId?`From ${esc(f.leadId)}. `:""}Waiting for a rule PR.</div>
+      </div>`).join("")
+    : `<div class="empty-lessons">Nothing waiting. Every correction you've logged has been turned into a rule in <code>rules/</code>, and the next research run reads those before it starts.<br><br>
+       When you mark a gap <strong>Wrong</strong> or revise a draft, the JSON you paste includes a correction entry. It shows up here until Claude turns it into a rule and you approve the PR.</div>`}
+    ${adopted.length ? `<details style="margin-top:16px"><summary>${adopted.length} rules already in effect</summary>
+      ${adopted.map(f=>`<div class="lesson" style="margin-top:12px;border-left-color:var(--grid)">
+        <div class="rule">${esc(f.proposedRule||f.reason)}</div>
+        <div class="from">Learned from ${esc(f.leadId||"a voice correction")} → <code>${esc(f.adoptedInto||"")}</code></div>
+      </div>`).join("")}</details>` : ""}`;
+}
+
+// Typing must not trigger a re-render — that would steal focus mid-sentence.
+// Stash the text and update just the delta line in place.
+document.addEventListener("input", e=>{
+  const cardEl = e.target.closest(".card"); if(!cardEl) return;
+  const lead = LEADS.find(l=>l.id===cardEl.dataset.id); if(!lead) return;
+
+  if(e.target.matches("[data-draft]")){
+    draftEdits[lead.id] = e.target.value;
+    paintDelta(cardEl, lead);
+  } else if(e.target.matches("[data-why]")){
+    draftWhy[lead.id] = e.target.value;
+  }
+});
+
+function paintDelta(cardEl, lead){
+  const el = cardEl.querySelector("[data-delta]"); if(!el) return;
+  const now = draftEdits[lead.id] ?? lead.outreach.sent ?? lead.outreach.draft ?? "";
+  const orig = lead.outreach.draft ?? "";
+  if(now.trim() === orig.trim()){
+    el.className = "delta";
+    el.innerHTML = `<span class="pipdot"></span>Unchanged from Claude's draft`;
+  } else {
+    const d = now.length - orig.length;
+    el.className = "delta changed";
+    el.innerHTML = `<span class="pipdot"></span>Edited — ${d>0?"+":""}${d} characters vs. the draft`;
+  }
+}
+
+// Verdicts are staged in the page, then copied out as JSON — no backend needed.
+document.addEventListener("click", e=>{
+  const cardEl = e.target.closest(".card"); if(!cardEl) return;
+  const id = cardEl.dataset.id;
+  const lead = LEADS.find(l=>l.id===id); if(!lead) return;
+
+  if(e.target.matches(".vbtn")){
+    draftVerdicts[id] = draftVerdicts[id]===e.target.dataset.v ? "unverified" : e.target.dataset.v;
+    render(); return;
+  }
+  const act = e.target.dataset?.act;
+  if(!act) return;
+
+  if(act==="gh"){
+    const {owner,name,branch} = REPO;
+    if(owner.startsWith("YOUR-")){
+      alert("Set REPO.owner at the top of index.html to your GitHub username first.");
+      return;
+    }
+    window.open(`https://github.com/${owner}/${name}/edit/${branch}/data/leads.json`,"_blank","noopener");
+    return;
+  }
+
+  if(act==="reset-draft"){
+    delete draftEdits[id]; delete draftWhy[id];
+    render(); return;
+  }
+
+  if(act==="copy-draft"){
+    const revised = (cardEl.querySelector("[data-draft]").value || "").trim();
+    const why = (cardEl.querySelector("[data-why]").value || "").trim();
+    const original = (lead.outreach.draft || "").trim();
+
+    if(revised === original){
+      alert("This is still Claude's draft, unchanged.\n\nIf you're sending it as-is, that's useful too — edit nothing, but note it. If you meant to revise it, make your changes first.");
+      return;
+    }
+    if(!why){
+      alert("Add a line about why you changed it.\n\nThe edit alone can't be generalized — the reason is what turns one fix into a rule the next run follows.");
+      return;
+    }
+    const patch = {
+      _paste_into: `data/leads.json → the lead with id "${id}" → replace its "outreach" block`,
+      outreach: { draft: lead.outreach.draft, sent: revised, revisions: (lead.outreach.revisions||0)+1 },
+      _also_append_to_feedback_json: {
+        id:`fb-${today()}-XXX`, date:today(), leadId:id, kind:"outreach-edit",
+        verdict:null, claimed:lead.outreach.draft, actual:revised,
+        reason:why, generalizes:true,
+        proposedRule:"<leave this for Claude to fill in, or write it yourself>",
+        ruleStatus:"proposed",
+      },
+    };
+    copyOut(e.target, JSON.stringify(patch,null,2));
+    return;
+  }
+
+  if(act==="copy"){
+    const status = draftVerdicts[id] ?? lead.gap.verification.status;
+    const note = cardEl.querySelector("[data-note]").value.trim();
+    if(status==="wrong" && !note){
+      alert('A "wrong" verdict needs a note saying what was actually true — that note is what the next run learns from.');
+      return;
+    }
+    const patch = {
+      _paste_into: `data/leads.json → the object with id "${id}" → replace its gap.verification block`,
+      verification: { status, checkedBy:"angela", checkedOn:today(), note: note || null },
+    };
+    if(status!=="confirmed"){
+      patch._also_append_to_feedback_json = {
+        id:`fb-${today()}-XXX`, date:today(), leadId:id, kind:"gap-verdict",
+        verdict:status, claimed:lead.gap.claim, actual:note,
+        reason:"<why the machine got this wrong — the generalizable part>",
+        generalizes:true, proposedRule:"<the rule this implies, if any>", ruleStatus:"proposed",
+      };
+    }
+    copyOut(e.target, JSON.stringify(patch,null,2));
+  }
+});
+
+function copyOut(btn, text){
+  const restore = btn.textContent;
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent = "Copied ✓";
+    setTimeout(()=>btn.textContent = restore, 1600);
+  }).catch(()=>{
+    // Clipboard is blocked in some contexts — fall back to a selectable prompt.
+    window.prompt("Copy this:", text);
+  });
+}
+
+load();
+</script>
+</body>
+</html>

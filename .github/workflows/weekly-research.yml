@@ -1,0 +1,84 @@
+# The weekly lead research run, living inside GitHub instead of a chat session.
+#
+# Every Monday it researches new leads and opens a pull request. You review that PR
+# the same way you'd review anything else, merge it, and the leads appear on the
+# dashboard — already marked unverified, waiting for your check.
+#
+# Needs CLAUDE_CODE_OAUTH_TOKEN (your Claude subscription) or ANTHROPIC_API_KEY.
+# Until one of those secrets exists this workflow exits quietly and costs nothing.
+#
+# Run it by hand any time from the Actions tab → Weekly lead research → Run workflow.
+
+name: Weekly lead research
+
+on:
+  schedule:
+    - cron: "0 10 * * 1"      # Mondays 10:00 UTC — ~5am Chicago
+  workflow_dispatch:           # the "Run workflow" button
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Check the token is set up
+        id: guard
+        run: |
+          if [ -z "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            echo "::notice::No Claude token secret set yet — skipping. See docs/automation.md."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.guard.outputs.ready == 'true'
+
+      - uses: anthropics/claude-code-action@v1
+        if: steps.guard.outputs.ready == 'true'
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: "--max-turns 60"
+          prompt: |
+            Run this week's restaurant lead research for QQ Studio.
+
+            Read CLAUDE.md first, then rules/icp.md, rules/gap-verification.md and
+            rules/outreach-voice.md. Those rules are the spec — they were written
+            because earlier runs got things wrong. Run `node scripts/learn.mjs` to
+            see calibration and any corrections still awaiting a rule.
+
+            Then:
+
+            1. Load data/leads.json and data/excluded.json. Skip anything already
+               there — matched on restaurant name, domain, or Instagram handle.
+               The dedupe window is 60 days.
+            2. Research up to 15 new qualifying leads. Prioritise the neighbourhoods
+               flagged as under-searched in data/excluded.json entries marked
+               "unknown", and close out any "recheck" entries first.
+            3. Every gap claim needs a real sourceUrl that proves it. No source, no
+               lead. Set evidenceTier honestly.
+            4. Every new lead's gap.verification.status MUST be "unverified".
+               Never write outreach.sent. Those two fields belong to Angela.
+            5. Write an outreach draft per rules/outreach-voice.md. No pricing, no
+               invented owner names.
+            6. Append to data/leads.json and add anything checked-and-rejected to
+               data/excluded.json so future runs don't repeat the work.
+            7. Run `node scripts/validate.mjs` — it must pass before you commit.
+
+            Also: if scripts/learn.mjs shows feedback entries with ruleStatus
+            "proposed", propose the rules they imply as edits to the relevant
+            rules/*.md file in this same PR, and flip those entries to "adopted"
+            with an adoptedInto path. Do not adopt a rule that doesn't generalise
+            past the single lead that produced it.
+
+            Open ONE pull request titled "Weekly research — <today's date>".
+            In the PR description, summarise: how many leads you added, the top
+            three by fit score with the gap you'd lead with for each, which
+            neighbourhoods were thin or unreachable, and any rules you proposed.
+            Be explicit about what you could NOT verify. Do not push to main.
