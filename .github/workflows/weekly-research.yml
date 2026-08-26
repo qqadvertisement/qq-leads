@@ -36,7 +36,7 @@ jobs:
             echo "ready=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: steps.guard.outputs.ready == 'true'
 
       - uses: anthropics/claude-code-action@v1
@@ -44,7 +44,11 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          claude_args: "--max-turns 60"
+          # Without an explicit allow-list the action denies Write/Edit/Bash, so the
+          # research can read and browse but can't change a single file — which is why
+          # a run finishes "successfully" with no PR. These are the tools the job needs:
+          # read the repo, edit the JSON/rules, run the node scripts, and search the web.
+          claude_args: "--allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 60"
           prompt: |
             Run this week's restaurant lead research for QQ Studio.
 
