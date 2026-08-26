@@ -160,6 +160,26 @@ automatically — nobody has to mark it. `reply: "none"` is only for closing one
 early. The validator requires `sentOn` + `channel` whenever `sent` is set, so the clock
 can always be computed.
 
+## Priority and multiple gaps (Angela's own ordering)
+
+Two more optional fields she controls from the card:
+
+- **`priority`** (top-level): `"high" | "medium" | "low" | "skip"` (or absent). Her own
+  outreach order, separate from the machine's `score`. The board sorts by it — high at
+  the top, `skip` ("No reach", for off-ICP or not-her-taste places) dimmed at the
+  bottom, `score` breaking ties.
+- **`gap.types`** (array, optional): a lead can have several gaps. `gap.type` stays the
+  **primary** one — the `claim` and `sourceUrl` describe it, and the validator requires
+  it to appear in `gap.types`. The extra types are her annotations; the card shows a
+  chip per type.
+
+**One Save per card.** Picking a verdict, a priority, or a gap type only *stages* the
+change (the card updates in place; the board does **not** re-sort, so nothing jumps).
+The card's single **Save** button commits everything staged at once, and only then does
+the lead re-file into its verdict/priority position. And a **note now feeds learning on
+any saved verdict, confirmed included** — whenever a note is present it's written to
+`data/feedback.json` and shows under "What the system has learned", not just on `wrong`.
+
 ## The dashboard write-path (how the copy-paste went away)
 
 The dashboard can commit `data/leads.json` and `data/feedback.json` directly through

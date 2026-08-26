@@ -188,6 +188,25 @@ textarea::placeholder{color:var(--ink-muted)}
 .ghbar.pending .gdot{background:var(--warn)}
 .ghbar.bad .gdot{background:var(--critical)}
 .ghbtns{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+/* Priority — Angela's own ordering, set per card */
+.card.p-skip{opacity:.5}
+.card.p-skip:hover,.card.p-skip:focus-within{opacity:1}
+.prio{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.prio .plabel{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted)}
+.pbtn{font:inherit;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink-2);cursor:pointer}
+.pbtn:hover{border-color:var(--ink-muted);color:var(--ink)}
+.pbtn.psel-high{background:var(--brand-soft);color:var(--brand);border-color:var(--brand)}
+.pbtn.psel-medium{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn);border-color:var(--warn)}
+.pbtn.psel-low{background:var(--surface-2);color:var(--ink);border-color:var(--ink-muted)}
+.pbtn.psel-skip{background:color-mix(in srgb,var(--critical) 13%,transparent);color:var(--critical);border-color:var(--critical)}
+/* Gap-type editor — a lead may carry several gaps */
+.gtypes{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:2px}
+.gtbtn{font:inherit;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px;border:1px dashed var(--border);background:transparent;color:var(--ink-muted);cursor:pointer}
+.gtbtn:hover{border-color:var(--ink-muted);color:var(--ink)}
+.gtbtn.on{border-style:solid;color:var(--ink);background:var(--surface-2);border-color:var(--ink-muted)}
+.gtbtn[disabled]{cursor:default;opacity:.9}
+.savebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:2px}
+.savebar .dirtydot{font-size:11.5px;color:var(--brand);font-weight:600}
 .loading,.error{padding:48px 24px;text-align:center;color:var(--ink-muted);font-size:14px;line-height:1.7}
 .error{color:var(--critical)}
 .error code{display:inline-block;background:var(--surface-2);padding:2px 6px;border-radius:5px;color:var(--ink-2)}
@@ -240,7 +259,8 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
   <div class="filter-group" id="f-verify"><span class="glabel">Verification</span></div>
 </div>
 <div class="filter-group" id="f-gap" style="margin-bottom:14px"><span class="glabel">Gap type</span></div>
-<div class="filter-group" id="f-outreach" style="margin-bottom:18px"><span class="glabel">Outreach</span></div>
+<div class="filter-group" id="f-outreach" style="margin-bottom:14px"><span class="glabel">Outreach</span></div>
+<div class="filter-group" id="f-priority" style="margin-bottom:18px"><span class="glabel">Priority</span></div>
 
 <p class="count-note" id="count-note"></p>
 <div id="grid"><div class="loading">Loading leads…</div></div>
@@ -287,10 +307,43 @@ const TIER_NOTE = {
 
 let LEADS = [], FEEDBACK = [];
 // Staged in the page until committed to GitHub — nothing here is saved on its own.
-const draftVerdicts = {};   // leadId -> confirmed | wrong | partial
+// Selecting a verdict/priority/gap-type only stages it here; the card's Save button is
+// what commits everything at once, so picking a verdict never makes the board jump.
+const draftVerdicts = {};   // leadId -> confirmed | wrong | partial | unverified
 const draftEdits    = {};   // leadId -> revised outreach text
 const draftWhy      = {};   // leadId -> why it was revised
-let filters = { run:"All", verify:"All", gap:"All", outreach:"All" };
+const draftNotes    = {};   // leadId -> verification note
+const draftPriority = {};   // leadId -> high | medium | low | skip | null
+const draftGapTypes = {};   // leadId -> array of gap-type strings
+let filters = { run:"All", verify:"All", gap:"All", outreach:"All", priority:"All" };
+
+// ---- Priority (Angela's own outreach ordering) ---------------------------
+// Her preference, separate from the machine's fit score. "skip" = a restaurant she's
+// decided not to reach (off-ICP or not her taste); those sink to the bottom, dimmed.
+const PRIORITY_ORDER = { high:0, medium:1, low:2, none:3, skip:4 };
+const prioRank = p => PRIORITY_ORDER[p ?? "none"] ?? 3;
+const PRIO_LABEL = { high:"High", medium:"Medium", low:"Low", skip:"No reach" };
+const curPriority = l => (draftPriority[l.id] !== undefined ? draftPriority[l.id] : (l.priority ?? null));
+// A lead can have several gaps. gap.types is the full set; gap.type stays the primary
+// one (the claim + source describe it), and is always kept in the set.
+const committedTypes = l => (l.gap.types && l.gap.types.length ? l.gap.types : [l.gap.type]);
+const curTypes = l => (draftGapTypes[l.id] ?? committedTypes(l));
+const arrEq = (a,b) => a.length===b.length && a.every(x=>b.includes(x)) && b.every(x=>a.includes(x));
+
+// Has this card got staged edits not yet saved?
+function cardDirty(l){
+  const id = l.id;
+  if(draftVerdicts[id]!==undefined && draftVerdicts[id]!==l.gap.verification.status) return true;
+  if(draftNotes[id]!==undefined && draftNotes[id]!==(l.gap.verification.note||"")) return true;
+  if(draftPriority[id]!==undefined && draftPriority[id]!==(l.priority??null)) return true;
+  if(draftGapTypes[id]!==undefined && !arrEq(draftGapTypes[id], committedTypes(l))) return true;
+  return false;
+}
+function priorityMatch(l, f){
+  if(f==="All") return true;
+  const p = l.priority ?? null;
+  return f==="High"&&p==="high" || f==="Medium"&&p==="medium" || f==="Low"&&p==="low" || f==="No reach"&&p==="skip";
+}
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const today = () => new Date().toISOString().slice(0,10);
@@ -361,6 +414,7 @@ function boot(){
   pills("f-verify", ["All","unverified","confirmed","wrong","partial"], "verify");
   pills("f-gap", ["All", ...Object.keys(GAP)], "gap");
   pills("f-outreach", ["All","Not sent","Awaiting","Replied","No reply"], "outreach");
+  pills("f-priority", ["All","High","Medium","Low","No reach"], "priority");
   render();
   if(hasToken()) verifyToken();   // resolve whether the stored token actually works yet
 }
@@ -505,27 +559,46 @@ function outreachBlock(l){
   </div>`;
 }
 
+function gapChip(t){
+  const g = GAP[t] || {v:"--ink-muted"};
+  return `<span class="chip" style="color:var(${g.v});background:color-mix(in srgb,var(${g.f||g.v}) 14%,transparent)"><span class="swatch" style="background:var(${g.v})"></span>${esc(t)}</span>`;
+}
+
 function card(l){
   const v = draftVerdicts[l.id] ?? l.gap.verification.status;
-  const g = GAP[l.gap.type] || {v:"--ink-muted"};
+  const prio = curPriority(l);
+  const types = curTypes(l);
   const ig = IG[l.instagram.status] || IG["handle-found"];
-  const cls = v!=="unverified" ? " v-"+v : "";
+  const dirty = cardDirty(l);
+  let cls = "";
+  if(v!=="unverified") cls += " v-"+v;
+  if(prio==="skip") cls += " p-skip";
+  const noteVal = draftNotes[l.id] ?? l.gap.verification.note ?? "";
   return `<div class="card${cls}" data-id="${esc(l.id)}">
     <div class="card-top">
       <div><h3>${esc(l.name)}</h3><div class="place">${esc(l.neighborhood)}${l.cuisine?" · "+esc(l.cuisine):""}</div></div>
       ${scoreEl(l.score)}
     </div>
-    <div class="chiprow">
-      <span class="chip" style="color:var(${g.v});background:color-mix(in srgb,var(${g.f||g.v}) 14%,transparent)"><span class="swatch" style="background:var(${g.v})"></span>${esc(l.gap.type)}</span>
+    <div class="chiprow" data-chiprow>
+      ${types.map(gapChip).join("")}
       <span class="chip ${ig.c}">${esc(l.instagram.handle || ig.t)}</span>
       <span class="chip chip-status">${esc(l.status)}</span>
     </div>
+    <details class="gaptypes-wrap"${draftGapTypes[l.id]!==undefined?" open":""}><summary>Gap types${types.length>1?` · ${types.length}`:""}</summary>
+      <div class="gtypes" data-gtypes>
+        ${Object.keys(GAP).map(t=>{
+          const on = types.includes(t);
+          const primary = t===l.gap.type;
+          return `<button class="gtbtn ${on?"on":""}" data-gaptype="${esc(t)}"${primary?" disabled title=\"primary gap — from the research claim\"":""}>${on?"✓ ":""}${esc(t)}</button>`;
+        }).join("")}
+      </div>
+    </details>
     ${l.gap.claim
       ? `<div class="evidence${v==="wrong"?" struck":""}">${esc(l.gap.claim)}${l.gap.sourceUrl?` <a href="${esc(l.gap.sourceUrl)}" target="_blank" rel="noopener">source ↗</a>`:""}</div>`
       : `<div class="evidence" style="opacity:.6">Summary-level only — see the research log.</div>`}
     ${l.gap.supersededBy ? `<div class="superseded"><span class="k">The real gap</span>${esc(l.gap.supersededBy)}</div>` : ""}
-    ${l.gap.verification.note ? `<div class="verdictnote v-${v}">
-        <span class="vlabel-inline">${v==="confirmed"?"Confirmed":v==="wrong"?"Overturned":"Partly right"} by ${esc(l.gap.verification.checkedBy||"a human")} · ${esc(l.gap.verification.checkedOn||"")}</span>
+    ${l.gap.verification.note ? `<div class="verdictnote v-${l.gap.verification.status}">
+        <span class="vlabel-inline">${l.gap.verification.status==="confirmed"?"Confirmed":l.gap.verification.status==="wrong"?"Overturned":l.gap.verification.status==="partial"?"Partly right":"Note"} by ${esc(l.gap.verification.checkedBy||"a human")} · ${esc(l.gap.verification.checkedOn||"")}</span>
         ${esc(l.gap.verification.note)}
       </div>` : `<div class="hint">${esc(TIER_NOTE[l.gap.evidenceTier]||"")}</div>`}
     ${l.whyNow?`<div class="field"><span class="k">Why now</span>${esc(l.whyNow.text)}${l.whyNow.sourceUrl?` <a href="${esc(l.whyNow.sourceUrl)}" target="_blank" rel="noopener">↗</a>`:""}</div>`:""}
@@ -542,27 +615,47 @@ function card(l){
     </details>` : ""}
     ${(l.outreach.draft || l.outreach.sent) ? outreachBlock(l) : ""}
     ${(l.caveats||[]).map(c=>`<div class="caveat">${esc(c)}</div>`).join("")}
+    <div class="prio">
+      <span class="plabel">Priority</span>
+      ${["high","medium","low","skip"].map(p=>`<button class="pbtn ${prio===p?"psel-"+p:""}" data-prio="${p}">${PRIO_LABEL[p]}</button>`).join("")}
+    </div>
     <div class="verify">
       <div class="vlabel">Did the gap check out?</div>
       <div class="vbtns">
         ${["confirmed","wrong","partial"].map(s=>
           `<button class="vbtn ${v===s?"sel-"+s:""}" data-v="${s}">${s[0].toUpperCase()+s.slice(1)}</button>`).join("")}
       </div>
-      <textarea data-note placeholder="${v==="wrong"?"What was actually true? (required — this is the lesson)":"Optional note — what you saw"}">${esc(l.gap.verification.note||"")}</textarea>
-      <div class="vactions">
-        <button class="btn" data-act="copy" ${v==="unverified"?"disabled":""}>${canSaveDirect()?"Save verdict":"Copy JSON"}</button>
+      <textarea data-note placeholder="${v==="wrong"?"What was actually true? (required — this is the lesson)":"Optional note — what you saw. Anything here is saved and feeds “What the system has learned.”"}">${esc(noteVal)}</textarea>
+      <div class="savebar">
+        <button class="btn" data-act="save-card" ${dirty?"":"disabled"}>${canSaveDirect()?"Save changes":"Copy JSON"}</button>
         <button class="btn ghost" data-act="gh">Edit on GitHub ↗</button>
       </div>
     </div>
   </div>`;
 }
 
+// Re-render one card in place (no board re-sort, no scroll jump) after a staged pick.
+function refreshCard(cardEl, l){
+  const holder = document.createElement("div");
+  holder.innerHTML = card(l);
+  const fresh = holder.firstElementChild;
+  cardEl.replaceWith(fresh);
+  if(l.outreach.draft) paintDelta(fresh, l);
+}
+function clearCardDrafts(id){
+  delete draftVerdicts[id]; delete draftNotes[id];
+  delete draftPriority[id]; delete draftGapTypes[id];
+}
+
 function render(){
   const list = LEADS.filter(l=>
     (filters.run==="All"||l.run===filters.run) &&
-    (filters.gap==="All"||l.gap.type===filters.gap) &&
+    (filters.gap==="All"||committedTypes(l).includes(filters.gap)) &&
     (filters.verify==="All"||(draftVerdicts[l.id]??l.gap.verification.status)===filters.verify) &&
-    outreachMatch(l, filters.outreach));
+    outreachMatch(l, filters.outreach) &&
+    priorityMatch(l, filters.priority))
+    // Angela's priority first (High → No reach at the bottom), fit score breaks ties.
+    .sort((a,b)=> prioRank(a.priority??null) - prioRank(b.priority??null) || b.score - a.score);
   document.getElementById("count-note").textContent = `Showing ${list.length} of ${LEADS.length} leads.`;
   document.getElementById("grid").innerHTML = list.map(card).join("") ||
     `<div class="loading">No leads match those filters.</div>`;
@@ -612,6 +705,10 @@ document.addEventListener("input", e=>{
     paintDelta(cardEl, lead);
   } else if(e.target.matches("[data-why]")){
     draftWhy[lead.id] = e.target.value;
+  } else if(e.target.matches("[data-note]")){
+    draftNotes[lead.id] = e.target.value;
+    const btn = cardEl.querySelector("[data-act=save-card]");
+    if(btn) btn.disabled = !cardDirty(lead);   // enable Save the moment the note changes
   }
 });
 
@@ -635,9 +732,25 @@ document.addEventListener("click", e=>{
   const id = cardEl.dataset.id;
   const lead = LEADS.find(l=>l.id===id); if(!lead) return;
 
+  // A verdict pick only stages — the card updates in place, the board does NOT re-sort,
+  // so the page never jumps. The Save button is what commits and files it into place.
   if(e.target.matches(".vbtn")){
-    draftVerdicts[id] = draftVerdicts[id]===e.target.dataset.v ? "unverified" : e.target.dataset.v;
-    render(); return;
+    const cur = draftVerdicts[id] ?? lead.gap.verification.status;
+    draftVerdicts[id] = cur===e.target.dataset.v ? "unverified" : e.target.dataset.v;
+    refreshCard(cardEl, lead); return;
+  }
+  if(e.target.matches(".pbtn")){
+    const p = e.target.dataset.prio;
+    draftPriority[id] = curPriority(lead)===p ? null : p;
+    refreshCard(cardEl, lead); return;
+  }
+  if(e.target.matches(".gtbtn")){
+    const t = e.target.dataset.gaptype;
+    const set = new Set(curTypes(lead));
+    if(set.has(t)) set.delete(t); else set.add(t);
+    set.add(lead.gap.type);   // primary always stays in the set
+    draftGapTypes[id] = Object.keys(GAP).filter(x=>set.has(x));   // keep canonical order
+    refreshCard(cardEl, lead); return;
   }
   const act = e.target.dataset?.act;
   if(!act) return;
@@ -707,38 +820,8 @@ document.addEventListener("click", e=>{
     return;
   }
 
-  if(act==="copy"){
-    const status = draftVerdicts[id] ?? lead.gap.verification.status;
-    const note = cardEl.querySelector("[data-note]").value.trim();
-    if(status==="unverified") return;   // the Save button is disabled here; guard anyway
-    if(status==="wrong" && !note){
-      alert('A "wrong" verdict needs a note saying what was actually true — that note is what the next run learns from.');
-      return;
-    }
-    // Saving straight to GitHub writes the correction verbatim, so a partial verdict needs
-    // its note too — the note becomes the feedback entry's reason, which can't be empty.
-    if(status==="partial" && !note && canSaveDirect()){
-      alert('Add a note for a partial verdict — saved directly, that note becomes the correction the next run learns from.');
-      return;
-    }
-    const buildPatch = ()=>{
-      const patch = {
-        _paste_into: `data/leads.json → the object with id "${id}" → replace its gap.verification block`,
-        verification: { status, checkedBy:"angela", checkedOn:today(), note: note || null },
-      };
-      if(status!=="confirmed"){
-        patch._also_append_to_feedback_json = {
-          id:`fb-${today()}-XXX`, date:today(), leadId:id, kind:"gap-verdict",
-          verdict:status, claimed:lead.gap.claim, actual:note,
-          reason:"<why the machine got this wrong — the generalizable part>",
-          generalizes:true, proposedRule:"<the rule this implies, if any>", ruleStatus:"proposed",
-        };
-      }
-      return JSON.stringify(patch,null,2);
-    };
-    if(!canSaveDirect()){ copyOut(e.target, buildPatch()); return; }
-    saveVerdict(lead, status, note, e.target)
-      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, buildPatch()); verifyToken(); });
+  if(act==="save-card"){
+    saveCard(lead, cardEl, e.target);
   }
 });
 
@@ -817,22 +900,68 @@ function btnBusy(btn){ btn.dataset.restore = btn.textContent; btn.textContent = 
 function btnDone(btn, text){ btn.disabled = false; btn.textContent = text; setTimeout(()=>{ if(btn.dataset.restore!==undefined) btn.textContent = btn.dataset.restore; }, 1600); }
 function refreshAll(){ renderNotice(); renderStats(); renderChart(); renderLessons(); render(); }
 
-async function saveVerdict(lead, status, note, btn){
-  btnBusy(btn);
-  const block = { status, checkedBy:"angela", checkedOn:today(), note: note || null };
-  await ghWrite("data/leads.json", arr=>{
-    const t = arr.find(x=>x.id===lead.id); if(!t) throw new Error("lead not found in file");
-    t.gap.verification = block;
-  }, `Verdict: ${status} for ${lead.id}`);
-  lead.gap.verification = block;
-  if(status!=="confirmed"){
-    const fb = { id:fbId(), date:today(), leadId:lead.id, kind:"gap-verdict", verdict:status,
-      claimed:lead.gap.claim, actual:note, reason:note, generalizes:true, proposedRule:"", ruleStatus:"proposed" };
-    await ghWrite("data/feedback.json", arr=>arr.push(fb), `Correction from ${lead.id}`);
-    FEEDBACK.push(fb);
+// One Save per card: commits any staged verdict + note + priority + gap-type changes
+// together. A note on ANY saved verdict (confirmed included) is written to
+// data/feedback.json so it shows up under "What the system has learned".
+async function saveCard(lead, cardEl, btn){
+  const id = lead.id;
+  const status = draftVerdicts[id] ?? lead.gap.verification.status;
+  const note = (cardEl.querySelector("[data-note]")?.value || "").trim();
+  const prio = curPriority(lead);
+  const types = curTypes(lead);
+
+  if(status==="wrong" && !note){
+    alert('A "wrong" verdict needs a note saying what was actually true — that note is what the next run learns from.');
+    return;
   }
-  delete draftVerdicts[lead.id];
-  btnDone(btn, "Saved ✓"); refreshAll();
+
+  const verdictChanged = draftVerdicts[id]!==undefined && status!==lead.gap.verification.status;
+  const noteChanged   = note !== (lead.gap.verification.note||"");
+  const prioChanged   = draftPriority[id]!==undefined && prio!==(lead.priority??null);
+  const typesChanged  = draftGapTypes[id]!==undefined && !arrEq(types, committedTypes(lead));
+  // Only touch verification when there's a real verdict to write (not "unverified").
+  const writeVerif = status!=="unverified" && (verdictChanged || noteChanged);
+  if(!writeVerif && !prioChanged && !typesChanged) return;   // nothing staged
+
+  const verification = writeVerif ? { status, checkedBy:"angela", checkedOn:today(), note: note || null } : null;
+  const fb = (writeVerif && note) ? {
+    id:fbId(), date:today(), leadId:id, kind:"gap-verdict", verdict:status,
+    claimed:lead.gap.claim, actual:note, reason:note, generalizes:true, proposedRule:"", ruleStatus:"proposed",
+  } : null;
+
+  const applyLeads = arr=>{
+    const t = arr.find(x=>x.id===id); if(!t) throw new Error("lead not found in file");
+    if(verification) t.gap.verification = verification;
+    if(prioChanged)  t.priority = prio;
+    if(typesChanged) t.gap.types = types;
+  };
+  const fallback = ()=>{
+    const changes = {};
+    if(verification) changes["gap.verification"] = verification;
+    if(prioChanged)  changes.priority = prio;
+    if(typesChanged) changes["gap.types"] = types;
+    const patch = { _paste_into:`data/leads.json → the lead with id "${id}"`, changes };
+    if(fb) patch._also_append_to_feedback_json = { ...fb, id:`fb-${today()}-XXX` };
+    return JSON.stringify(patch,null,2);
+  };
+
+  if(!canSaveDirect()){ copyOut(btn, fallback()); return; }
+
+  btnBusy(btn);
+  try{
+    const bits = [verification&&"verdict", prioChanged&&"priority", typesChanged&&"gap types"].filter(Boolean).join(", ");
+    await ghWrite("data/leads.json", applyLeads, `Update ${id}: ${bits}`);
+    if(fb){ await ghWrite("data/feedback.json", arr=>arr.push(fb), `Note from ${id}`); FEEDBACK.push(fb); }
+    if(verification) lead.gap.verification = verification;
+    if(prioChanged)  lead.priority = prio;
+    if(typesChanged) lead.gap.types = types;
+    clearCardDrafts(id);
+    btnDone(btn, "Saved ✓"); refreshAll();
+  }catch(err){
+    btnDone(btn, canSaveDirect()?"Save changes":"Copy JSON");
+    alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead.");
+    copyOut(btn, fallback()); verifyToken();
+  }
 }
 
 async function saveOutreach(lead, block, feedbackEntry, btn, commitMsg){
