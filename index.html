@@ -185,6 +185,9 @@ textarea::placeholder{color:var(--ink-muted)}
 .ghform{display:flex;flex-wrap:wrap;gap:8px;align-items:center;width:100%;margin-top:6px}
 .ghform input{flex:1;min-width:220px;font:inherit;font-size:12.5px;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:8px 11px}
 .ghform .help{width:100%;font-size:11.5px;color:var(--ink-muted);line-height:1.55}
+.ghbar.pending .gdot{background:var(--warn)}
+.ghbar.bad .gdot{background:var(--critical)}
+.ghbtns{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .loading,.error{padding:48px 24px;text-align:center;color:var(--ink-muted);font-size:14px;line-height:1.7}
 .error{color:var(--critical)}
 .error code{display:inline-block;background:var(--surface-2);padding:2px 6px;border-radius:5px;color:var(--ink-2)}
@@ -300,6 +303,10 @@ const getToken = () => { try { return localStorage.getItem(TOKEN_KEY) || ""; } c
 const setToken = t => { try { t ? localStorage.setItem(TOKEN_KEY, t) : localStorage.removeItem(TOKEN_KEY); } catch {} };
 const hasToken = () => !!getToken();
 let ghPanelOpen = false;
+// A stored token isn't the same as a working one — on a private org repo it may be
+// waiting for an owner to approve it. tokenState reflects what the token can actually do.
+let tokenState = "unknown"; // unknown | checking | ok | pending | bad | offline
+const canSaveDirect = () => tokenState === "ok";
 
 // ---- Outreach lifecycle (Part 1) -----------------------------------------
 // Reply state is DERIVED from the send date, so the 2-week cutoff is automatic —
@@ -355,6 +362,7 @@ function boot(){
   pills("f-gap", ["All", ...Object.keys(GAP)], "gap");
   pills("f-outreach", ["All","Not sent","Awaiting","Replied","No reply"], "outreach");
   render();
+  if(hasToken()) verifyToken();   // resolve whether the stored token actually works yet
 }
 
 // The one-time GitHub connection. Disconnected: explain the copy-paste you still do,
@@ -362,22 +370,39 @@ function boot(){
 function renderGhBar(){
   const el = document.getElementById("ghbar");
   if(!el) return;
-  const on = hasToken();
-  el.className = "ghbar" + (on ? " on" : "");
-  if(on){
-    el.innerHTML = `
-      <div class="ghmsg"><span class="gdot"></span><span><strong>Connected to GitHub.</strong> Verdicts and outreach save straight from here — no copying, no pasting.</span></div>
-      <button class="btn ghost" data-gh="disconnect">Disconnect</button>`;
+  const tokenUrl = "https://github.com/settings/personal-access-tokens/new";
+  const repoTag = `<code>${esc(REPO.owner)}/${esc(REPO.name)}</code>`;
+
+  if(hasToken()){
+    // A token is stored — but whether it actually works depends on tokenState.
+    const S = {
+      checking: { cls:"",         msg:`<strong>Checking your token…</strong>`,
+                  btns:`` },
+      ok:       { cls:" on",      msg:`<strong>Connected to GitHub.</strong> Verdicts and outreach save straight from here — no copying, no pasting.`,
+                  btns:`<button class="btn ghost" data-gh="disconnect">Disconnect</button>` },
+      pending:  { cls:" pending", msg:`<strong>Token added — waiting for approval.</strong> An org owner still needs to approve it for ${repoTag} before it can save. Until then, saving uses the copy-paste step. Just got approved? Hit Re-check.`,
+                  btns:`<button class="btn" data-gh="recheck">Re-check</button><button class="btn ghost" data-gh="disconnect">Remove</button>` },
+      bad:      { cls:" bad",     msg:`<strong>That token didn't work.</strong> It may be expired, or not scoped to ${repoTag} with <strong>Contents: Read and write</strong>. Remove it and connect a fresh one.`,
+                  btns:`<button class="btn ghost" data-gh="disconnect">Remove &amp; reconnect</button>` },
+      offline:  { cls:"",         msg:`<strong>Couldn't reach GitHub to check the token.</strong> Saving uses copy-paste for now — try Re-check when you're back online.`,
+                  btns:`<button class="btn" data-gh="recheck">Re-check</button><button class="btn ghost" data-gh="disconnect">Remove</button>` },
+      unknown:  { cls:"",         msg:`<strong>Token added.</strong> Checking access…`,
+                  btns:`<button class="btn" data-gh="recheck">Re-check</button><button class="btn ghost" data-gh="disconnect">Remove</button>` },
+    };
+    const s = S[tokenState] || S.unknown;
+    el.className = "ghbar" + s.cls;
+    el.innerHTML = `<div class="ghmsg"><span class="gdot"></span><span>${s.msg}</span></div>${s.btns?`<div class="ghbtns">${s.btns}</div>`:""}`;
     return;
   }
-  const tokenUrl = "https://github.com/settings/personal-access-tokens/new";
+
+  el.className = "ghbar";
   el.innerHTML = `
     <div class="ghmsg"><span class="gdot"></span><span>Saving still copies JSON for you to paste into GitHub. <strong>Connect once</strong> to save straight from this page.</span></div>
     <button class="btn" data-gh="toggle">${ghPanelOpen ? "Cancel" : "Connect GitHub"}</button>
     ${ghPanelOpen ? `<div class="ghform">
       <input type="password" data-gh-token placeholder="Paste your GitHub token" autocomplete="off" spellcheck="false">
       <button class="btn" data-gh="save">Save</button>
-      <div class="help">Make a <a href="${tokenUrl}" target="_blank" rel="noopener">fine-grained token ↗</a> for <code>${esc(REPO.owner)}/${esc(REPO.name)}</code> with <strong>Contents: Read and write</strong>. It's stored only in this browser and never leaves it except to save to your repo. Full steps: <code>docs/automation.md</code>.</div>
+      <div class="help">Make a <a href="${tokenUrl}" target="_blank" rel="noopener">fine-grained token ↗</a> for ${repoTag} with <strong>Contents: Read and write</strong>. It's stored only in this browser and never leaves it except to save to your repo. Full steps: <code>docs/automation.md</code>.</div>
     </div>` : ""}`;
 }
 
@@ -525,7 +550,7 @@ function card(l){
       </div>
       <textarea data-note placeholder="${v==="wrong"?"What was actually true? (required — this is the lesson)":"Optional note — what you saw"}">${esc(l.gap.verification.note||"")}</textarea>
       <div class="vactions">
-        <button class="btn" data-act="copy" ${v==="unverified"?"disabled":""}>${hasToken()?"Save verdict":"Copy JSON"}</button>
+        <button class="btn" data-act="copy" ${v==="unverified"?"disabled":""}>${canSaveDirect()?"Save verdict":"Copy JSON"}</button>
         <button class="btn ghost" data-act="gh">Edit on GitHub ↗</button>
       </div>
     </div>
@@ -665,9 +690,9 @@ document.addEventListener("click", e=>{
       if(feedbackEntry) p._also_append_to_feedback_json = { ...feedbackEntry, id:`fb-${today()}-XXX`, proposedRule:"<leave for Claude, or write it yourself>" };
       return JSON.stringify(p,null,2);
     };
-    if(!hasToken()){ copyOut(e.target, fallbackPatch()); return; }
+    if(!canSaveDirect()){ copyOut(e.target, fallbackPatch()); return; }
     saveOutreach(lead, block, feedbackEntry, e.target, `Logged send (${channel}) for ${id}`)
-      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, fallbackPatch()); });
+      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, fallbackPatch()); verifyToken(); });
     return;
   }
 
@@ -676,9 +701,9 @@ document.addEventListener("click", e=>{
     const r = e.target.dataset.r;   // "replied" | "none"
     const block = { ...lead.outreach, reply:r, repliedOn: r==="replied" ? today() : null };
     const fallback = ()=>JSON.stringify({ _paste_into:`data/leads.json → the lead with id "${id}" → replace its "outreach" block`, outreach: block }, null, 2);
-    if(!hasToken()){ copyOut(e.target, fallback()); return; }
+    if(!canSaveDirect()){ copyOut(e.target, fallback()); return; }
     saveOutreach(lead, block, null, e.target, `Outreach ${r==="replied"?"reply":"no-reply"} for ${id}`)
-      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, fallback()); });
+      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, fallback()); verifyToken(); });
     return;
   }
 
@@ -692,7 +717,7 @@ document.addEventListener("click", e=>{
     }
     // Saving straight to GitHub writes the correction verbatim, so a partial verdict needs
     // its note too — the note becomes the feedback entry's reason, which can't be empty.
-    if(status==="partial" && !note && hasToken()){
+    if(status==="partial" && !note && canSaveDirect()){
       alert('Add a note for a partial verdict — saved directly, that note becomes the correction the next run learns from.');
       return;
     }
@@ -711,9 +736,9 @@ document.addEventListener("click", e=>{
       }
       return JSON.stringify(patch,null,2);
     };
-    if(!hasToken()){ copyOut(e.target, buildPatch()); return; }
+    if(!canSaveDirect()){ copyOut(e.target, buildPatch()); return; }
     saveVerdict(lead, status, note, e.target)
-      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, buildPatch()); });
+      .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, buildPatch()); verifyToken(); });
   }
 });
 
@@ -769,6 +794,23 @@ async function ghWrite(path, mutate, message){
     catch(e){ if(attempt===0 && /→ 409/.test(e.message)) continue; throw e; }
   }
 }
+// Ask GitHub whether the stored token can actually reach the repo. A fine-grained token
+// waiting for org approval authenticates but is denied the resource (403/404) — that's
+// "pending", not "connected". Only a clean 200 means saves will really commit.
+async function verifyToken(){
+  if(!hasToken()){ tokenState = "unknown"; renderGhBar(); return tokenState; }
+  tokenState = "checking"; renderGhBar();
+  try{
+    const { owner, name } = REPO;
+    const r = await fetch(`https://api.github.com/repos/${owner}/${name}`, { headers: ghHeaders(), cache:"no-store" });
+    if(r.ok) tokenState = "ok";
+    else if(r.status === 401) tokenState = "bad";
+    else tokenState = "pending";   // 403 = awaiting approval / no permission; 404 = token can't see the repo yet
+  }catch(e){ tokenState = "offline"; }
+  renderGhBar();
+  render();   // card buttons say "Save verdict" vs "Copy JSON" based on canSaveDirect()
+  return tokenState;
+}
 const fbId = () => `fb-${today()}-${Date.now().toString(36).slice(-4)}`;
 
 function btnBusy(btn){ btn.dataset.restore = btn.textContent; btn.textContent = "Saving…"; btn.disabled = true; }
@@ -812,9 +854,10 @@ async function saveOutreach(lead, block, feedbackEntry, btn, commitMsg){
 document.addEventListener("click", e=>{
   const act = e.target.dataset?.gh; if(!act) return;
   if(act==="toggle"){ ghPanelOpen = !ghPanelOpen; renderGhBar(); return; }
+  if(act==="recheck"){ verifyToken(); return; }
   if(act==="disconnect"){
     if(confirm("Disconnect from GitHub? Saving will go back to copying JSON for you to paste. Your token is removed from this browser.")){
-      setToken(""); ghPanelOpen = false; renderGhBar();
+      setToken(""); ghPanelOpen = false; tokenState = "unknown"; renderGhBar(); render();
     }
     return;
   }
@@ -822,7 +865,7 @@ document.addEventListener("click", e=>{
     const input = document.querySelector("[data-gh-token]");
     const t = (input?.value || "").trim();
     if(!t){ alert("Paste your token first."); return; }
-    setToken(t); ghPanelOpen = false; renderGhBar();
+    setToken(t); ghPanelOpen = false; verifyToken();   // check it right away, don't assume it works
   }
 });
 

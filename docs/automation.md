@@ -17,8 +17,15 @@ so there's nothing to break by leaving them in place.
 
 ## Adding the token
 
-Pick one. Both go in the same place: **repo → Settings → Secrets and variables →
-Actions → New repository secret**.
+Pick one. Both go in the same place: **the org repo → Settings → Secrets and variables
+→ Actions → New repository secret** — that's
+`github.com/qqadvertisement/qq-leads/settings`, and you need **admin** on the repo to
+add a secret.
+
+> Two things about the org move: GitHub Actions secrets **do not transfer** with a
+> repository, so anything set on the old personal repo has to be re-added here. And on a
+> private org repo an owner may need to have **Actions enabled** for it. If you aren't an
+> org owner, that's a one-time ask to someone who is.
 
 ### Option A — use your Claude subscription (no extra billing)
 
@@ -142,10 +149,12 @@ flagged.
 > **The repo now lives in the `qqadvertisement` organization.** If it's private, the
 > org may need to *allow* fine-grained tokens, and an org owner may have to approve
 > yours once before it can write. In the token screen, set **Resource owner** to
-> `qqadvertisement` (not your personal account). If saving fails with a permissions
-> error, that approval is usually what's missing — ask an org owner to check
-> **Organization → Settings → Personal access tokens**. The dashboard falls back to
-> copy-paste in the meantime, so you're never blocked.
+> `qqadvertisement` (not your personal account). The connect bar tells you where you
+> stand: after you paste a token it shows **"waiting for approval"** (amber) until an
+> org owner approves it, then flips to **"Connected"** (green) — click **Re-check** the
+> moment they approve to switch it on without reloading. While it's amber, saving still
+> works via copy-paste, so you're never blocked. An org owner approves pending tokens at
+> **Organization → Settings → Personal access tokens**.
 
 > Fine-grained tokens can be given an expiry date. If yours expires, the dashboard
 > quietly falls back to the copy-paste flow and tells you the save didn't go through —
