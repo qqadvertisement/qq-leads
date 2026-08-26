@@ -44,7 +44,7 @@ jobs:
             echo "ready=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         if: steps.guard.outputs.ready == 'true'
         with:
           fetch-depth: 1
@@ -54,4 +54,6 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          claude_args: "--max-turns 20"
+          # Same allow-list as the research job, so an @claude request can actually edit
+          # the dashboard/data and open a PR rather than being denied Write/Edit/Bash.
+          claude_args: "--allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 20"
