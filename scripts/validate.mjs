@@ -18,6 +18,7 @@ const VERDICTS = ['unverified', 'confirmed', 'wrong', 'partial'];
 const IG_STATUS = ['active-est', 'handle-found', 'unconfirmed', 'personal-account-only', 'not-found'];
 const CHANNELS = ['email', 'instagram'];
 const REPLY = ['replied', 'none'];
+const PRIORITIES = ['high', 'medium', 'low', 'skip'];
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 const BANNED = [
   'i hope this finds you well', 'i wanted to reach out', 'leverage', 'solutions',
@@ -46,6 +47,23 @@ for (const l of leads) {
 
   if (!GAP_TYPES.includes(l.gap?.type)) err(`${at}: gap.type "${l.gap?.type}" is not one of the five categories`);
   if (!TIERS.includes(l.gap?.evidenceTier)) err(`${at}: gap.evidenceTier must be one of ${TIERS.join('|')}`);
+
+  // A lead may carry several gaps. gap.types (optional) is the full set Angela curated;
+  // each entry must be a real category, and it must include the primary gap.type.
+  if (l.gap?.types !== undefined) {
+    if (!Array.isArray(l.gap.types) || l.gap.types.length === 0) {
+      err(`${at}: gap.types must be a non-empty array when present`);
+    } else {
+      for (const t of l.gap.types) {
+        if (!GAP_TYPES.includes(t)) err(`${at}: gap.types contains "${t}", not one of the five categories`);
+      }
+      if (!l.gap.types.includes(l.gap.type)) err(`${at}: gap.types must include the primary gap.type "${l.gap.type}"`);
+    }
+  }
+  // Angela's personal outreach priority (optional): high/medium/low, or skip = "no reach".
+  if (l.priority != null && !PRIORITIES.includes(l.priority)) {
+    err(`${at}: priority "${l.priority}" must be one of ${PRIORITIES.join('|')}`);
+  }
   if (!VERDICTS.includes(l.gap?.verification?.status)) err(`${at}: gap.verification.status invalid`);
   if (!IG_STATUS.includes(l.instagram?.status)) err(`${at}: instagram.status "${l.instagram?.status}" invalid`);
 
