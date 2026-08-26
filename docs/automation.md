@@ -17,8 +17,15 @@ so there's nothing to break by leaving them in place.
 
 ## Adding the token
 
-Pick one. Both go in the same place: **repo → Settings → Secrets and variables →
-Actions → New repository secret**.
+Pick one. Both go in the same place: **the org repo → Settings → Secrets and variables
+→ Actions → New repository secret** — that's
+`github.com/qqadvertisement/qq-leads/settings`, and you need **admin** on the repo to
+add a secret.
+
+> Two things about the org move: GitHub Actions secrets **do not transfer** with a
+> repository, so anything set on the old personal repo has to be re-added here. And on a
+> private org repo an owner may need to have **Actions enabled** for it. If you aren't an
+> org owner, that's a one-time ask to someone who is.
 
 ### Option A — use your Claude subscription (no extra billing)
 
