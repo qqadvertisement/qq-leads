@@ -159,3 +159,46 @@ flagged.
 > Fine-grained tokens can be given an expiry date. If yours expires, the dashboard
 > quietly falls back to the copy-paste flow and tells you the save didn't go through —
 > nothing is lost, you just make a new token.
+
+---
+
+## Reading a failed research run (without asking Claude)
+
+When a **Weekly lead research** run fails, open the run's page and download the
+**`claude-execution-output`** artifact (bottom of the page, under "Artifacts"). Unzip
+it and open `claude-execution-output.json` in any text editor or browser — it's big
+JSON, so use Find (Cmd+F). Read these three things, in order.
+
+**1. Jump to the very end → the last `"result"` object.**
+
+- `"subtype"` — often names the failure by itself (`error_max_turns`, `error_during_execution`, `success`).
+- `"result"` — a text field with the actual error message or Claude's last words. The single most useful line.
+- `"num_turns"` — if it's at the cap, it just ran long (see the max-turns note below).
+
+**2. Cmd+F for these — first match tells you the cause:**
+
+| Search for | Means | What to do |
+|---|---|---|
+| `usage limit` | The Claude subscription hit its cap mid-run | Wait for reset, cut scope, or move research to an API key |
+| `overloaded` · `529` | Transient Anthropic hiccup | Just re-run — nothing to fix |
+| `rate_limit` · `429` | Too many requests too fast | Re-run; if it repeats, cut scope |
+| `Bad credentials` · `401` | The `CLAUDE_CODE_OAUTH_TOKEN` secret is bad/expired | Regenerate it, update the secret |
+| `403` · `create pull request` · `not permitted` | Org blocks Actions from opening PRs | Turn on that org setting (Settings → Actions → General) |
+| `prompt is too long` · `context` | Too much loaded into one call | Cut scope |
+| `exceeding the configured maximum` | Ran more turns than the cap — **the work usually still finished** | Raise `--max-turns` in `weekly-research.yml` |
+
+**3. If none hit,** search `"is_error":true` — every match *except* the final result is
+a **failed tool call** (a Bash/WebFetch/Edit that broke). Read the `"content"` right
+after it: a `validate.mjs` failure, a `git` error, a web fetch that 403'd. That's the
+concrete thing that stopped it — the one worth sending to Claude to fix.
+
+**Rule of thumb:** `overloaded`/`rate_limit` → re-run. `usage limit` → it's cost/plan,
+change scope or billing. `401`/`403` → a token or org setting. A failed tool with real
+output → a genuine bug.
+
+> **"Failed" but a PR still appeared?** A run can finish the work, open the PR, and
+> *then* be marked failed only because it used more turns than the cap
+> (`exceeding the configured maximum of N`). The PR is real — check its data. And a
+> green-data PR can still show a red **Validate** check if only the *calibration
+> comment* step failed; the "Validate data files" line (`… 0 errors`) is the part that
+> actually matters.

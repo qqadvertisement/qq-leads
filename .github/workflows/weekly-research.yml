@@ -49,7 +49,11 @@ jobs:
           # the action denies Write/Edit/Bash, so the research can read and browse but
           # can't change a file — which is why an early run finished with no PR. These are
           # the tools it needs: read the repo, edit the JSON/rules, run node, search the web.
-          claude_args: "--model claude-opus-5 --allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 60"
+          # Real research across ~15 leads with web verification runs long — one run
+          # legitimately took 127 turns. The action FAILS the job if the turn count
+          # exceeds this cap (even when the work finished and a PR was opened), so keep
+          # it well above what a full run needs rather than at a tight 60.
+          claude_args: "--model claude-opus-5 --allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 250"
           prompt: |
             Run this week's restaurant lead research for QQ Studio.
 
