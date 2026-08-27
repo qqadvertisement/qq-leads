@@ -44,11 +44,12 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          # Without an explicit allow-list the action denies Write/Edit/Bash, so the
-          # research can read and browse but can't change a single file — which is why
-          # a run finishes "successfully" with no PR. These are the tools the job needs:
-          # read the repo, edit the JSON/rules, run the node scripts, and search the web.
-          claude_args: "--allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 60"
+          # Research is complex, judgement-heavy work, so run it on the strongest model
+          # (Opus) rather than the action's Sonnet default. Without an explicit allow-list
+          # the action denies Write/Edit/Bash, so the research can read and browse but
+          # can't change a file — which is why an early run finished with no PR. These are
+          # the tools it needs: read the repo, edit the JSON/rules, run node, search the web.
+          claude_args: "--model claude-opus-5 --allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 60"
           prompt: |
             Run this week's restaurant lead research for QQ Studio.
 
@@ -86,3 +87,17 @@ jobs:
             three by fit score with the gap you'd lead with for each, which
             neighbourhoods were thin or unreachable, and any rules you proposed.
             Be explicit about what you could NOT verify. Do not push to main.
+
+      # If the run fails, keep the full turn-by-turn log so we can see the real error
+      # (the action writes it to a file on the runner that otherwise vanishes).
+      # Download it from the failed run's page under "Artifacts".
+      - name: Save Claude execution log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-output
+          path: |
+            ${{ runner.temp }}/claude-execution-output.json
+            ${{ runner.temp }}/claude-*.json
+          if-no-files-found: warn
+          retention-days: 14
