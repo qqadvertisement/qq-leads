@@ -1,5 +1,357 @@
 [
   {
+    "id": "2026-08-27-staropolska-restaurant",
+    "run": "2026-08-27",
+    "name": "Staropolska Restaurant",
+    "neighborhood": "Avondale",
+    "cuisine": "Polish",
+    "website": "staropolskarestaurant.com",
+    "gap": {
+      "type": "Not mobile-friendly",
+      "claim": "Raw HTML fetched with a mobile user-agent on 2026-08-27 contains no viewport meta tag at all, so a phone renders the page at desktop width and zooms out. Layout is built on fixed pixel widths (width=\"312\", width=\"600\", width=\"292\"). Footer reads \"© 2020\". The footer also states \"We are located in Logan Square and are not affilated with any other Staropolska\", which independently confirms single-location ownership.",
+      "sourceUrl": "https://staropolskarestaurant.com/",
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — long-established spot. The 2020 footer is the only dated signal.",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@staropolskachicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Screenshot the current site on a phone next to a mobile-first rebuild of the same menu — the pinch-and-zoom is the whole pitch.",
+    "outreach": {
+      "draft": "Hey! I went looking for pierogi and ended up on your site on my phone — it loads at full desktop width, so I was pinching and zooming just to read the menu. Anyone checking you out on a phone before dinner hits that same wall, and most of them back out to the next result instead of fighting with it. I build small sites for Chicago restaurants that read properly on a phone, plus a little game regulars play to win a free dish that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like on a phone — mind if I send it over?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Closes the \"Staropolska Restaurant\" recheck entry in excluded.json — the blocker was a missing Instagram, and @staropolskachicago (1,267 followers) turned up this run.",
+      "Instagram profile itself returned HTTP 429 and could not be loaded; handle and follower count come from a search result, so recency of posting is unconfirmed.",
+      "Static tier is running ~50% overturned. Open the site on a real phone before sending."
+    ]
+  },
+  {
+    "id": "2026-08-27-paper-tiger-cafe",
+    "run": "2026-08-27",
+    "name": "Paper Tiger Cafe",
+    "neighborhood": "Lincoln Park",
+    "cuisine": "Cafe / coffee & pastries",
+    "website": "papertigercafe.com",
+    "gap": {
+      "type": "Weak / outdated site",
+      "claim": "The live site still serves the Squarespace default site title. Fetched 2026-08-27: <title>Your Site Title</title>, and both og:title and og:site_name are also \"Your Site Title\". Every browser tab, Google result and shared link therefore shows \"Your Site Title\" rather than the cafe name. The rest of the site is fully built out (251KB), so this is an unset field rather than a half-finished build.",
+      "sourceUrl": "https://www.papertigercafe.com/",
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "Recently opened in Lincoln Park at 628 W Webster Ave — already investing in the space, and the site is the last loose end.",
+      "sourceUrl": "https://www.yelp.com/biz/paper-tiger-cafe-chicago-2"
+    },
+    "instagram": {
+      "handle": "@papertigercafe",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Show the Google result and the browser tab reading \"Your Site Title\" side by side with the corrected version — a ten-second fix that proves competence and opens the door.",
+    "outreach": {
+      "draft": "Hey! Came across the new spot on Webster and went to pull up your hours — the site works fine, but the browser tab and the Google result both still read \"Your Site Title\" instead of Paper Tiger. It's the Squarespace default that never got filled in, so every link anyone shares of you turns up unnamed, and it's the one thing on the page that makes a brand-new cafe look unfinished. I'm a web guy here in Chicago — I build small sites for cafes and restaurants, plus a little game regulars play to win a free coffee that quietly builds you a list of people to bring back in. Want me to send over what a cleaned-up version looks like?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Closes the \"Paper Tiger Cafe\" unknown entry in excluded.json — the previous run flagged the placeholder title as \"a strong lead if it holds\". It holds, on the live domain.",
+      "Recently opened, so the mid-build exception in gap-verification.md applies. Judgement call: the site is complete apart from this one unset field, so it reads as an oversight rather than a build in progress — but confirm before sending."
+    ]
+  },
+  {
+    "id": "2026-08-27-cafe-63",
+    "run": "2026-08-27",
+    "name": "Café 63",
+    "neighborhood": "Garfield Ridge",
+    "cuisine": "American diner / breakfast",
+    "website": "cafe63chicago.net (dead)",
+    "gap": {
+      "type": "Broken links",
+      "claim": "The domain published in their directory listings, cafe63chicago.net, returns HTTP 404 serving a rendered Wix error page titled \"ConnectYourDomain Error | Wix.com\" — a real error page with its own copy, not a bare status code from client-side routing. Verified 2026-08-27 with a mobile user-agent. The Midway Chamber of Commerce directory and TripAdvisor both publish this domain as their website.",
+      "sourceUrl": "https://cafe63chicago.net/",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — established 2015. The domain failure is the whole why-now.",
+      "sourceUrl": "https://business.midwaychamber.org/directory/Details/caf-63-2898492"
+    },
+    "instagram": {
+      "handle": "@cafe63chicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Screen-record clicking through from the Midway Chamber listing to the Wix error page, then show a working one-pager with the breakfast menu on it.",
+    "outreach": {
+      "draft": "Hey! Someone mentioned your fried bologna sandwich so I went looking for the menu, and the site listed for you with the Midway Chamber — cafe63chicago.net — comes up as a Wix error page saying the domain isn't connected. So anyone finding you through that listing lands on an error instead of your breakfast menu, which means lost walk-ins from people who were already looking for you by name. I do websites for Chicago restaurants, plus a small game regulars play for a free breakfast that builds you a customer list you can bring back in later. Happy to put a working one together you can look at — want to see?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Routing tier is the worst-performing tier (67% overturned). This one is the safer shape — a rendered error page with its own copy rather than a bare status code — but it still needs a browser check.",
+      "A Wix \"domain not connected\" error can be fixed by the owner in minutes, so the gap may close on its own. Check it is still live on the day of sending."
+    ]
+  },
+  {
+    "id": "2026-08-27-taqueria-varitas",
+    "run": "2026-08-27",
+    "name": "Taqueria Varitas",
+    "neighborhood": "Bronzeville / Grand Boulevard",
+    "cuisine": "Mexican (taqueria)",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "No owned domain appears in any listing found. TripAdvisor (Grand Boulevard), Yelp (94 reviews), RestaurantGuru and Postmates all carry phone and address only, and the published contact is a Gmail address (taqueriavaritas@gmail.com). A Facebook page is the only owned web presence.",
+      "sourceUrl": "https://www.tripadvisor.com/Restaurant_Review-g35805-d12970703-Reviews-Taqueria_Varitas-Chicago_Illinois.html",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — open since 2017, steady review volume (94 on Yelp, 40 on Facebook).",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@taqueriavaritaschicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Build a one-page site with menu, hours and a real domain to replace the Facebook-and-Gmail setup.",
+    "outreach": {
+      "draft": "Hey! I was looking for tacos near 47th and went to pull up your menu before heading over — couldn't find a site anywhere, just a Facebook page and a Gmail address. When someone's deciding where to eat and can't find a menu in a few seconds, they usually pick whatever comes up next, even when yours is better. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free taco that quietly builds you a list of customers you actually own. Happy to mock one up so you can see it — want me to send it over?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "WEAKEST EVIDENCE IN THIS BATCH. The listing pages could not be loaded directly this run — TripAdvisor returned 403 and RestaurantGuru returned 503. The absence of a website field comes from search-result summaries, not from a page I opened. Treat as unconfirmed until checked in a browser."
+    ]
+  },
+  {
+    "id": "2026-08-27-jamisons-soul-food",
+    "run": "2026-08-27",
+    "name": "Jamison's Soul Food",
+    "neighborhood": "Auburn Gresham",
+    "cuisine": "Soul food / Southern",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "Two independent listings, both loaded directly on 2026-08-27, agree there is no working site. Restaurantji carries no website field at all (address, phone and social links only). EatOkra publishes the website as \"jamisons-soul-food.business.site/\", a retired Google Business Profile site which returns HTTP 404. The guessable domain jamisonssoulfood.com has no DNS record.",
+      "sourceUrl": "https://www.eatokra.com/businesses/jamison-s-soul-food",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found.",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@jamisonsoulfood1",
+      "status": "handle-found"
+    },
+    "score": 3,
+    "demoAngle": "Replace the dead Google business.site link with a real one-pager carrying the menu and hours.",
+    "outreach": {
+      "draft": "Hey! Went looking for your menu before heading over to 87th, and the website listed for you goes to a Google page that's been shut down — it just returns an error now. Google retired those business sites a while back, so the link sitting in most directories is dead, and anyone following it lands on nothing instead of your fried catfish. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free plate, which quietly builds you a list of people to bring back in. Happy to put a working one together you can look at — want to see?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "ICP fit is questionable and this is Angela’s call, not mine: review scores are very low across platforms (Yelp 2.0/5 from 63 reviews, TripAdvisor 1.3/5 and ranked #5,209 of 5,218 Chicago restaurants). The \"can plausibly afford a retainer\" criterion is doubtful. Scored 3 for that reason.",
+      "Instagram handle came from a domain-restricted search, not from loading the profile."
+    ]
+  },
+  {
+    "id": "2026-08-27-momtys-grill",
+    "run": "2026-08-27",
+    "name": "Momty's Grill",
+    "neighborhood": "Chatham",
+    "cuisine": "American / cheesesteaks & wings",
+    "website": "momtygrill.com",
+    "gap": {
+      "type": "Broken links",
+      "claim": "momtygrill.com does not serve their site. Fetched with a mobile user-agent on 2026-08-27 it resolves to https://order.menufy.com/?404Location — Menufy’s generic 404 handler, which renders a search page listing other restaurants. A customer typing the domain lands on a directory of competitors rather than the Momty’s menu.",
+      "sourceUrl": "https://momtygrill.com/",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found.",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@momtys04",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Show the domain landing on Menufy’s competitor list, then the same domain pointed at a real menu page.",
+    "outreach": {
+      "draft": "Hey! Went to pull up your menu and typed in momtygrill.com — it drops you onto Menufy's generic restaurant search instead of your own site, so you end up looking at a list of other people's places. That one stings, because anyone who got your domain off a flyer or a receipt is browsing your competition instead of your cheesesteaks. I do websites for Chicago restaurants, plus a small game regulars play for a free order that builds you a customer list you can reach out to later. Want me to mock up what yours could look like?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Two addresses appear across city license data and listings (8307 S King Dr, and 11449 S Halsted licensed 2026-06-26). That is 2 locations, still inside the 1–3 independent range, but confirm it is not a growing group before pitching.",
+      "Routing tier — confirm in a browser. The redirect target could be a transient Menufy misconfiguration."
+    ]
+  },
+  {
+    "id": "2026-08-27-roots-southern-cuisine",
+    "run": "2026-08-27",
+    "name": "Roots Southern Cuisine",
+    "neighborhood": "Greater Grand Crossing",
+    "cuisine": "Southern / soul food brunch",
+    "website": "rootsoutherncuisine.com (dead) / rootsbrunchexperience.com (live)",
+    "gap": {
+      "type": "Broken links",
+      "claim": "They are running two domains and the one cited as their website is dead at the DNS level. rootsoutherncuisine.com has no A record on either the apex or www (resolution fails outright, verified 2026-08-27) so it cannot load for anyone, anywhere. Their actually-working site is a different domain, rootsbrunchexperience.com.",
+      "sourceUrl": "https://rootsoutherncuisine.com",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "Grand opening this summer at 633 E 75th St in a converted church, backed by a $214K city DPD grant, with Block Club coverage on 2026-07-21. Press is actively sending people to look them up right now.",
+      "sourceUrl": "https://blockclubchicago.org/2026/07/21/roots-turns-south-side-church-into-brunch-spot-on-75th-street/"
+    },
+    "instagram": {
+      "handle": "@brunchatroots",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Show the dead domain failing to resolve next to the live one, and propose consolidating both onto a single working site.",
+    "outreach": {
+      "draft": "Hey! Read about you turning the old church on 75th into a brunch room and went to look you up — the address listed as your website, rootsoutherncuisine.com, doesn't resolve at all, so it just fails to load. Your working site sits on a different domain, which means anyone following the link from your Facebook page hits a dead end right when the write-ups are sending people your way. I build small sites for Chicago restaurants, plus a little game regulars play to win a free dish that quietly gets you a list of customers you actually own. Happy to put together a fixed version you can look at — mind if I send it over?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "What I verified directly: the DNS failure on rootsoutherncuisine.com. What I did NOT verify: that their Facebook page is the thing publishing that dead domain — Facebook blocks automated fetching, so that half of the claim comes from a search-result summary. The draft leads on the Facebook link, so confirm that specifically before sending, or reword to drop the Facebook reference.",
+      "Opened within roughly the last 60 days. The mid-build exception applies to placeholder sites, and this is a dead domain rather than a placeholder, but it is worth confirming they are not mid-migration between the two domains."
+    ]
+  },
+  {
+    "id": "2026-08-27-mariscos-la-grulla",
+    "run": "2026-08-27",
+    "name": "Mariscos La Grulla",
+    "neighborhood": "Little Village",
+    "cuisine": "Mexican seafood (mariscos)",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "No owned domain in any listing. ZipPicks (loaded directly 2026-08-27) carries an address and no website field at all, and separately confirms dine-in — it describes the place as \"A BYOB Mexican seafood dining room\". Yelp and Atly list the website field as facebook.com/MariscosLaGrulla, i.e. a Facebook page standing in for a site, which is the ICP definition of this gap.",
+      "sourceUrl": "https://zippicks.com/mariscos-la-grulla-chicago-60623/",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None found — established family restaurant.",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@mariscoslagrullachicago",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "One-page site with the mariscos menu as real text plus hours and the BYOB note, replacing the Facebook-only presence.",
+    "outreach": {
+      "draft": "Hey! I went looking for your menu after hearing about the aguachile — the only thing listed as your website is your Facebook page, so there's nowhere to actually read what you serve before coming in. When someone's picking a seafood spot and can't pull up a menu in a few seconds, they go with whatever they can read, even when yours is better. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free dish that quietly builds you a list of customers to bring back. Happy to mock one up, no strings — want to see?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Only one of the two corroborating listings was loaded directly (ZipPicks). The Yelp/Atly \"website = Facebook page\" detail comes from a search-result summary.",
+      "Owner language may well be Spanish — see the new language rule in outreach-voice.md before sending."
+    ]
+  },
+  {
     "id": "2026-08-24-taqueria-el-charro-i",
     "run": "2026-08-24",
     "name": "Taqueria El Charro I",

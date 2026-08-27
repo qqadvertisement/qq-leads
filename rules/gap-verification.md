@@ -5,6 +5,27 @@ Every rule here was bought with a real mistake. The provenance ID points at the
 
 ---
 
+## Records are safe. Renders are not.
+
+The tiers below sort by risk, but the thing actually predicting risk is simpler than the tier
+name. Ask what kind of fact the claim is:
+
+- A claim about a **record** — a listing that has no website field, a domain with no DNS entry,
+  a directory pointing at a URL that no longer exists. Records are static data. The crawler and
+  the browser read them identically, so there is nothing for a browser check to overturn.
+- A claim about a **render** — what a page shows a visitor. A menu that "is an image", a
+  placeholder title, a missing viewport, a 404. Rendered output can differ between a crawler
+  and a browser, and it routinely does.
+
+Every gap claim overturned in the 2026-08-21 pass was a render claim. Every absence claim, all
+of which were record claims, survived. "Static" is not a safety property: a menu served as an
+image is a claim about rendered output, and it failed as often as routing did. Classify by
+record-vs-render first, then pick the tier.
+
+*Provenance: fb-2026-08-21-105, fb-2026-08-21-107, fb-2026-08-21-110, fb-2026-08-21-115*
+
+---
+
 ## The three-tier rule
 
 No message goes out on a gap only a crawler has seen. Tiers in descending risk:
@@ -67,6 +88,34 @@ Corollary: a design opinion is not a defect. "Menu and photos are on separate sc
 taste, not breakage, and it makes for a weak opener. Don't dress one up as the other.
 
 *Provenance: fb-2026-08-21-002*
+
+---
+
+## Follow the route the customer actually takes
+
+Check the path most people use, not the tidiest one. That is usually the **link in the
+Instagram bio** — not the domain printed in a directory. A dead bio link is far more
+customer-visible than a stale entry in a listing nobody reads, and it is the failure most
+worth leading with. Check the bio link, the Google listing link, and the link in any press
+piece currently sending people their way.
+
+*Provenance: fb-2026-08-21-112*
+
+---
+
+## A placeholder claim is several claims. Verify each one.
+
+"It is an unedited template" and "it shows a San Francisco demo address" are two separate
+factual assertions, and the second can be false while the first is true. Every specific
+detail you cite — the demo address, the fake phone number, the stock social links, the
+copyright year — is independently checkable and independently wrong-able. Cite only the
+specifics you actually confirmed, and drop the rest rather than padding the claim.
+
+The same applies in reverse: when a claim comes back `partial`, the usual cause is either a
+specific that was off, or a more customer-visible defect sitting next to the one you led with.
+Look for the second before rewriting the first.
+
+*Provenance: fb-2026-08-21-102, fb-2026-08-21-111*
 
 ---
 

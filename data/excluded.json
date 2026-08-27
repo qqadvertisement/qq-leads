@@ -1,77 +1,501 @@
 {
   "note": "Dedupe list. Check every candidate against this before researching it. Reasons are kept so a future run knows whether an entry is permanently dead or worth revisiting.",
-  "lastUpdated": "2026-08-25",
+  "lastUpdated": "2026-08-27",
   "entries": [
-    { "name": "404 Burgers", "reason": "no-gap", "detail": "modern site with a real text menu" },
-    { "name": "Topoli", "reason": "no-gap" },
-    { "name": "Medee Thai Kitchen", "reason": "no-gap" },
-    { "name": "Pok Pok Thai", "reason": "no-gap" },
-    { "name": "Terra Cafe", "reason": "no-gap" },
-    { "name": "Garuda", "reason": "no-gap" },
-    { "name": "Soul Ramen", "reason": "no-gap" },
-    { "name": "Tropical Bites", "reason": "no-gap" },
-    { "name": "Dots Cafe", "reason": "no-gap" },
-    { "name": "Zayna Express", "reason": "no-gap" },
-    { "name": "Nabala Cafe", "reason": "no-gap" },
-    { "name": "Denden Eritrean", "reason": "no-gap" },
-    { "name": "Fiya", "reason": "no-gap" },
-    { "name": "La Parrilla", "reason": "no-gap" },
-    { "name": "North Center Prime", "reason": "no-gap" },
-    { "name": "Gio's BBQ", "reason": "no-gap" },
-    { "name": "Brother's Restaurant", "reason": "no-gap" },
-    { "name": "Cozy Corner", "reason": "no-gap" },
-    { "name": "Rica Arepa", "reason": "no-gap" },
-    { "name": "Doña Torta Chilanga", "reason": "no-gap", "detail": "Weebly site is basic but genuinely mobile-friendly and functional" },
-    { "name": "Summertime Cantina", "reason": "no-gap" },
-    { "name": "Bacon & Jam", "reason": "no-gap" },
-    { "name": "Pochos", "reason": "no-gap", "detail": "relocated to Pilsen; new site is modern" },
-    { "name": "Nicky's of Beverly", "reason": "no-gap" },
-    { "name": "Alice's Bar-B-Que", "reason": "no-gap" },
-    { "name": "Dell' Rooster", "reason": "no-gap" },
-    { "name": "Caña", "reason": "no-gap" },
-    { "name": "Gilda Basque Tavern", "reason": "no-gap" },
-    { "name": "Cafe Central", "reason": "no-gap" },
-    { "name": "MacArthur's Restaurant", "reason": "no-gap" },
-    { "name": "Park Manor 75", "reason": "no-gap", "detail": "modern site, OpenTable, linked IG" },
-    { "name": "Swanson's Beverly Ritz Catering and Deli", "reason": "no-gap", "detail": "premise was wrong — active mobile-friendly site, ownership change was 2016 not recent, and it's deli/catering not dine-in. Do not re-research." },
-    { "name": "6978 Soul Food", "reason": "weak-gap", "detail": "site is mobile-friendly with a current menu; only angle is a generic templated footer. Low priority." },
-
-    { "name": "Con Azucar Cafe", "reason": "chain-or-group" },
-    { "name": "Culebra", "reason": "chain-or-group", "detail": "Land and Sea Dept." },
-    { "name": "Han Cha", "reason": "chain-or-group", "detail": "Rebuild Foundation" },
-    { "name": "Tafari's Kitchen", "reason": "chain-or-group", "detail": "Bon Appétit Management Co." },
-    { "name": "Roost Biscuit Co.", "reason": "chain-or-group" },
-    { "name": "Migos Fine Foods", "reason": "chain-or-group", "detail": "Portage Park + Montrose + Bronzeville" },
-    { "name": "Mariscos La Costa", "reason": "chain-or-group", "detail": "3rd location, still under construction — revisit once open" },
-    { "name": "Oooh Wee It Is", "reason": "chain-or-group", "detail": "likely 3+ locations; inconsistent address data across sources" },
-    { "name": "Surf's Up South Shore", "reason": "chain-or-group", "detail": "four sibling LLCs across Chicago per city license data" },
-
-    { "name": "Fork & Coin", "reason": "unknown", "detail": "site blocked automated fetching — check in a browser" },
-    { "name": "The Ivy Bar and Kitchen", "reason": "unknown" },
-    { "name": "The Origin", "reason": "unknown" },
-    { "name": "Tarsila Cafe", "reason": "unknown" },
-    { "name": "Paper Tiger Cafe", "reason": "unknown", "detail": "search results show its title indexed as the placeholder 'Your Site Title' — a strong lead if it holds" },
-    { "name": "Butterdough", "reason": "unknown", "detail": "McKinley Park; open status and dine-in fit unconfirmed" },
-    { "name": "Outside the Box Carryout", "reason": "unknown", "detail": "has a site; carryout/catering-focused, borderline dine-in fit" },
-    { "name": "Nafsi", "reason": "unknown", "detail": "South Shore; active city license through 2028, website/social never reached" },
-    { "name": "D's Roti & Trini Cuisine", "reason": "unknown", "detail": "West Englewood (est.); active license, website/social never reached" },
-    { "name": "Soul Shack Express", "reason": "unknown", "detail": "Auburn Gresham (est.); license flags 'operates without a dining area' — check dine-in exclusion first" },
-    { "name": "Chef Daddy's", "reason": "unknown", "detail": "Austin; could not verify existence, every domain guess failed DNS" },
-    { "name": "Coleman's No. 2 Hickory BBQ", "reason": "unknown", "detail": "Austin; fully unresolved" },
-    { "name": "Googoo's Table", "reason": "unknown", "detail": "benched — routing-claim risk / possible multi-location" },
-    { "name": "El Azteca", "reason": "unknown", "detail": "benched — possible multi-location ownership" },
-
-    { "name": "Ala Too", "reason": "poor-fit", "detail": "could not confirm open" },
-    { "name": "Paganini Music Cafe", "reason": "poor-fit", "detail": "no contact route found at all" },
-    { "name": "Lenci's Greek Pita", "reason": "poor-fit", "detail": "no social presence, so no IG DM route" },
-    { "name": "Chuy's Tacos", "reason": "poor-fit", "detail": "no confirmable IG handle" },
-    { "name": "Taqueria Belen", "reason": "poor-fit", "detail": "no confirmable IG handle" },
-    { "name": "Bucktown Pizza", "reason": "poor-fit", "detail": "no confirmable IG handle" },
-    { "name": "Old Lviv", "reason": "poor-fit", "detail": "real no-website gap but no findable dedicated Instagram" },
-    { "name": "Doña Torta", "reason": "closed", "detail": "original 3331 W 26th St location — closed per Yelp" },
-    { "name": "Ivory & K's Gourmet Popcorn, Smoothie Bar", "reason": "poor-fit", "detail": "no IG, DoorDash unavailable, reads as a counter not a restaurant" },
-
-    { "name": "Rogers Park Social", "reason": "recheck", "detail": "REAL, live gap — domain 302s to a fraudulent gambling page, confirmed twice. Blocked only because no Instagram could be found and dine-in food identity (vs bar-only) is unconfirmed. Worth closing out." },
-    { "name": "Staropolska Restaurant", "reason": "recheck", "detail": "REAL gap — no viewport tag, 2020 footer, confirmed independent. Blocked only because no Instagram found across two checks. Has a Facebook page if that channel ever opens up." }
+    {
+      "name": "404 Burgers",
+      "reason": "no-gap",
+      "detail": "modern site with a real text menu"
+    },
+    {
+      "name": "Topoli",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Medee Thai Kitchen",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Pok Pok Thai",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Terra Cafe",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Garuda",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Soul Ramen",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Tropical Bites",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Dots Cafe",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Zayna Express",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Nabala Cafe",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Denden Eritrean",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Fiya",
+      "reason": "no-gap"
+    },
+    {
+      "name": "La Parrilla",
+      "reason": "no-gap"
+    },
+    {
+      "name": "North Center Prime",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Gio's BBQ",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Brother's Restaurant",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Cozy Corner",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Rica Arepa",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Doña Torta Chilanga",
+      "reason": "no-gap",
+      "detail": "Weebly site is basic but genuinely mobile-friendly and functional"
+    },
+    {
+      "name": "Summertime Cantina",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Bacon & Jam",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Pochos",
+      "reason": "no-gap",
+      "detail": "relocated to Pilsen; new site is modern"
+    },
+    {
+      "name": "Nicky's of Beverly",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Alice's Bar-B-Que",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Dell' Rooster",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Caña",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Gilda Basque Tavern",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Cafe Central",
+      "reason": "no-gap"
+    },
+    {
+      "name": "MacArthur's Restaurant",
+      "reason": "no-gap"
+    },
+    {
+      "name": "Park Manor 75",
+      "reason": "no-gap",
+      "detail": "modern site, OpenTable, linked IG"
+    },
+    {
+      "name": "Swanson's Beverly Ritz Catering and Deli",
+      "reason": "no-gap",
+      "detail": "premise was wrong — active mobile-friendly site, ownership change was 2016 not recent, and it's deli/catering not dine-in. Do not re-research."
+    },
+    {
+      "name": "6978 Soul Food",
+      "reason": "weak-gap",
+      "detail": "site is mobile-friendly with a current menu; only angle is a generic templated footer. Low priority."
+    },
+    {
+      "name": "Con Azucar Cafe",
+      "reason": "chain-or-group"
+    },
+    {
+      "name": "Culebra",
+      "reason": "chain-or-group",
+      "detail": "Land and Sea Dept."
+    },
+    {
+      "name": "Han Cha",
+      "reason": "chain-or-group",
+      "detail": "Rebuild Foundation"
+    },
+    {
+      "name": "Tafari's Kitchen",
+      "reason": "chain-or-group",
+      "detail": "Bon Appétit Management Co."
+    },
+    {
+      "name": "Roost Biscuit Co.",
+      "reason": "chain-or-group"
+    },
+    {
+      "name": "Migos Fine Foods",
+      "reason": "chain-or-group",
+      "detail": "Portage Park + Montrose + Bronzeville"
+    },
+    {
+      "name": "Mariscos La Costa",
+      "reason": "chain-or-group",
+      "detail": "3rd location, still under construction — revisit once open"
+    },
+    {
+      "name": "Oooh Wee It Is",
+      "reason": "chain-or-group",
+      "detail": "likely 3+ locations; inconsistent address data across sources"
+    },
+    {
+      "name": "Surf's Up South Shore",
+      "reason": "chain-or-group",
+      "detail": "four sibling LLCs across Chicago per city license data"
+    },
+    {
+      "name": "The Origin",
+      "reason": "unknown"
+    },
+    {
+      "name": "Outside the Box Carryout",
+      "reason": "unknown",
+      "detail": "has a site; carryout/catering-focused, borderline dine-in fit"
+    },
+    {
+      "name": "Soul Shack Express",
+      "reason": "unknown",
+      "detail": "Auburn Gresham (est.); license flags 'operates without a dining area' — check dine-in exclusion first"
+    },
+    {
+      "name": "Chef Daddy's",
+      "reason": "unknown",
+      "detail": "Austin; could not verify existence, every domain guess failed DNS"
+    },
+    {
+      "name": "Coleman's No. 2 Hickory BBQ",
+      "reason": "unknown",
+      "detail": "Austin; fully unresolved"
+    },
+    {
+      "name": "El Azteca",
+      "reason": "unknown",
+      "detail": "benched — possible multi-location ownership"
+    },
+    {
+      "name": "Ala Too",
+      "reason": "poor-fit",
+      "detail": "could not confirm open"
+    },
+    {
+      "name": "Paganini Music Cafe",
+      "reason": "poor-fit",
+      "detail": "no contact route found at all"
+    },
+    {
+      "name": "Lenci's Greek Pita",
+      "reason": "poor-fit",
+      "detail": "no social presence, so no IG DM route"
+    },
+    {
+      "name": "Chuy's Tacos",
+      "reason": "poor-fit",
+      "detail": "no confirmable IG handle"
+    },
+    {
+      "name": "Taqueria Belen",
+      "reason": "poor-fit",
+      "detail": "no confirmable IG handle"
+    },
+    {
+      "name": "Bucktown Pizza",
+      "reason": "poor-fit",
+      "detail": "no confirmable IG handle"
+    },
+    {
+      "name": "Old Lviv",
+      "reason": "poor-fit",
+      "detail": "real no-website gap but no findable dedicated Instagram"
+    },
+    {
+      "name": "Doña Torta",
+      "reason": "closed",
+      "detail": "original 3331 W 26th St location — closed per Yelp"
+    },
+    {
+      "name": "Ivory & K's Gourmet Popcorn, Smoothie Bar",
+      "reason": "poor-fit",
+      "detail": "no IG, DoorDash unavailable, reads as a counter not a restaurant"
+    },
+    {
+      "name": "Rogers Park Social",
+      "reason": "poor-fit",
+      "detail": "Closed out 2026-08-27. Still no Instagram after a third check, and listings describe it as a bar that lets guests bring in outside food — no kitchen, so it fails the dine-in food identity test in icp.md. The gambling-redirect gap was real but this is not a restaurant. Do not re-research."
+    },
+    {
+      "name": "Fork & Coin",
+      "reason": "poor-fit",
+      "detail": "Resolved 2026-08-27. Not open yet — forkandcoin.com is live and says \"Opening 2026\". Revisit once trading."
+    },
+    {
+      "name": "The Ivy Bar and Kitchen",
+      "reason": "no-gap",
+      "detail": "Resolved 2026-08-27. theivybk.com is a real modern site, IG @theivybk. Lakeview."
+    },
+    {
+      "name": "Tarsila Cafe",
+      "reason": "weak-gap",
+      "detail": "Resolved 2026-08-27. Has tarsilacafe.com and IG @tarsila.chi. Only defect is the <title> reading \"tarsilacf\" (Squarespace slug rather than a real title). Real but thin — not worth leading with. Revisit if a batch runs short."
+    },
+    {
+      "name": "Butterdough",
+      "reason": "closed",
+      "detail": "Resolved 2026-08-27. Storefront at 3452 S Western closed; Yelp marks it CLOSED. Owner now supplies pastries to Café Consume at the same address."
+    },
+    {
+      "name": "Nafsi",
+      "reason": "no-gap",
+      "detail": "Resolved 2026-08-27. nafsisouthshorebeach.com is live. Also a Chicago Park District concessionaire, which pushes it toward the group exclusion."
+    },
+    {
+      "name": "D's Roti & Trini Cuisine",
+      "reason": "no-gap",
+      "detail": "Resolved 2026-08-27. dsroti.com is live; Choose Chicago lists it. Address confirmed 6239 S Ashland (West Englewood)."
+    },
+    {
+      "name": "Googoo's Table",
+      "reason": "no-gap",
+      "detail": "Resolved 2026-08-27. Single location at 4356 W Armitage (Hermosa) with two working domains. No leadable gap."
+    },
+    {
+      "name": "Bronzeville Soul",
+      "reason": "no-gap",
+      "detail": "bronzevillesoulrestaurant.com is modern and mobile-friendly."
+    },
+    {
+      "name": "Cecina Grill",
+      "reason": "no-gap",
+      "detail": "cecinagrillpilsen.com is current and mobile-friendly. Note: their older domain cecina-grill.com has been resold and now serves a gambling page — if a major listing is ever found still pointing there, that would be a real Broken links gap."
+    },
+    {
+      "name": "The Neighborhood Gem",
+      "reason": "unknown",
+      "detail": "Auburn Gresham. theneigborhoodgem.com sits behind a Cloudflare challenge (HTTP 403) so it could not be assessed. IG @chicagofoodontherun has ~55K followers. Worth a browser check."
+    },
+    {
+      "name": "Mi Tierrita Colombia",
+      "reason": "chain-or-group",
+      "detail": "Two locations (Austin + Des Plaines); mitierritacolombia.com is live."
+    },
+    {
+      "name": "Izalco Restaurant",
+      "reason": "poor-fit",
+      "detail": "South Lawndale. Real weak-site signal (fixed width=320 viewport, title \"Home\", mywebsitebuilder.com) but no Chicago Instagram could be confirmed across two searches — unreachable on the only outreach channel."
+    },
+    {
+      "name": "Rokia Home of Africa",
+      "reason": "poor-fit",
+      "detail": "Roseland. Genuine No website gap (Facebook only) but no Instagram found at all."
+    },
+    {
+      "name": "Las Delicias de las Marias",
+      "reason": "poor-fit",
+      "detail": "Hegewisch. No website and no Instagram found — unreachable."
+    },
+    {
+      "name": "K & Jay's Soulfood",
+      "reason": "poor-fit",
+      "detail": "Roseland, 10341 S Halsted. No website, but no Instagram found."
+    },
+    {
+      "name": "Quesadilla Pilsen",
+      "reason": "closed",
+      "detail": "Pilsen location closed; brand continues as Quesadilla La Reina del Sur on N Western."
+    },
+    {
+      "name": "47th St Bistro",
+      "reason": "poor-fit",
+      "detail": "Archer Heights. Real No website gap and active IG @47thstbistro, but it operates as a food truck / pop-up / catering business — fails the dine-in identity test."
+    },
+    {
+      "name": "So Soulful Eatery",
+      "reason": "poor-fit",
+      "detail": "Austin. Food truck, and sosoulfuleaterychicago.com is live."
+    },
+    {
+      "name": "Saint Bess Jerk",
+      "reason": "chain-or-group",
+      "detail": "Multiple locations (71st St, Northwest Hwy now closed, Burbank)."
+    },
+    {
+      "name": "La Haciendita Taqueria",
+      "reason": "chain-or-group",
+      "detail": "Three Chicago locations (Pulaski, 47th, Kedzie)."
+    },
+    {
+      "name": "Jerk Society",
+      "reason": "unknown",
+      "detail": "South Chicago, 8100 S Stony Island, licensed 2026-07-14. Could not confirm it exists under that name — nearby Stony Island jerk spots are different businesses."
+    },
+    {
+      "name": "Chicago Soul Cafe",
+      "reason": "unknown",
+      "detail": "Woodlawn, 6248 S St Lawrence. Coffee shop near the Obama Presidential Center with CBS coverage, but no Instagram handle or website could be pinned down. Good why-now if someone can find the handle."
+    },
+    {
+      "name": "Casa Noire",
+      "reason": "unknown",
+      "detail": "Bronzeville, 130 E 51st, licensed 2026-07-27. IG @casanoirechicago exists but the business is under 60 days old — mid-build exception applies. Recheck after October 2026."
+    },
+    {
+      "name": "Skyway Coffee",
+      "reason": "unknown",
+      "detail": "South Chicago, 10356 S Ewing. Only web presence is skywaycoffee.godaddysites.com (a builder subdomain, not an owned domain) — a real gap shape, but no Instagram could be confirmed."
+    },
+    {
+      "name": "Forum Cafe",
+      "reason": "unknown",
+      "detail": "Bronzeville, 318 E 43rd. forumcafebronzeville.com is live but the cafe is still pre-opening. Recheck once trading."
+    },
+    {
+      "name": "Que Chimba Comixxpress",
+      "reason": "weak-gap",
+      "detail": "Garfield Ridge, 6316 S Archer. comixxpressil.com is live and mobile-friendly; only angle is that the site title says \"Comixxpress\" while listings and IG use \"Que Chimba\". Thin."
+    },
+    {
+      "name": "HerBachi",
+      "reason": "no-gap",
+      "detail": "Chatham, 522 E 79th. herbachi.com is live and current."
+    },
+    {
+      "name": "Mae's Soul Kitchen & Rolls",
+      "reason": "no-gap",
+      "detail": "Woodlawn. maessoulkitchenandrolls.com is live; IG @maessoulkitchenandrolls_."
+    },
+    {
+      "name": "Bahia Burger 63",
+      "reason": "no-gap",
+      "detail": "Gage Park. bahiaburger63.com is live."
+    },
+    {
+      "name": "Sizzlin Skillets",
+      "reason": "poor-fit",
+      "detail": "Chatham. Listed as \"upscale carryout\" with a live site — fails dine-in identity and has no gap."
+    },
+    {
+      "name": "El Rayo Tacos",
+      "reason": "no-gap",
+      "detail": "Auburn Gresham. elrayotacos.com is live."
+    },
+    {
+      "name": "Bronzeville Hoagie & Panini",
+      "reason": "no-gap",
+      "detail": "bronzevillehoagiepanini.com is live; also sandwich-counter rather than dine-in."
+    },
+    {
+      "name": "Doreen's Pizzeria",
+      "reason": "no-gap",
+      "detail": "Hegewisch. Two live domains (doreenspizzeria.com, doreens.pizza)."
+    },
+    {
+      "name": "Jordyn's Soul Cafe",
+      "reason": "no-gap",
+      "detail": "jordynssoulcafe.com is live."
+    },
+    {
+      "name": "Morrison Soul Food",
+      "reason": "no-gap",
+      "detail": "morrisonsoulfood.com is live and mobile-friendly."
+    },
+    {
+      "name": "Cleo's Southern Cuisine",
+      "reason": "chain-or-group",
+      "detail": "Three Chicago locations."
+    },
+    {
+      "name": "Palermo’s of 63rd",
+      "reason": "chain-or-group",
+      "detail": "Chicago plus Frankfort locations; site is live."
+    },
+    {
+      "name": "Parkside Public House",
+      "reason": "no-gap",
+      "detail": "Garfield Park. parksidepublichouse.com is live and mobile-friendly."
+    },
+    {
+      "name": "The Park Bar & Grill",
+      "reason": "no-gap",
+      "detail": "theparkbarandgrill.com is live."
+    },
+    {
+      "name": "Señoritas Cantina Pilsen",
+      "reason": "no-gap",
+      "detail": "senoritascantina.com is live and mobile-friendly."
+    },
+    {
+      "name": "El Loto de Fuego",
+      "reason": "no-gap",
+      "detail": "Brighton Park. ellotodefuegolatinfusion.com is live."
+    },
+    {
+      "name": "S2 Southside Bar & Grill",
+      "reason": "chain-or-group",
+      "detail": "Roseland. Site is s2expressgrill.com — reads as part of an S2 Express group."
+    },
+    {
+      "name": "Lyrico Stone Bistro",
+      "reason": "unknown",
+      "detail": "East Garfield Park, 4115 W Roosevelt, licensed 2025-11-13. No trace online under this name at all."
+    },
+    {
+      "name": "Bien Chilero's",
+      "reason": "unknown",
+      "detail": "Gage Park, 3109 W 59th. Guatemalan; licensed 2026-05-08 but no online presence found."
+    },
+    {
+      "name": "Crossover Grill",
+      "reason": "unknown",
+      "detail": "Chatham, 835 E 75th. Licensed 2026-01-09 but not findable online under this name."
+    },
+    {
+      "name": "Nonna Soluri’s Italian Deli",
+      "reason": "poor-fit",
+      "detail": "Bridgeport, 3142 S Morgan. Trades as a deli — fails the deli/carryout exclusion."
+    },
+    {
+      "name": "Brother BomBom",
+      "reason": "poor-fit",
+      "detail": "South Shore, 1952 E 79th. Classified as a grocery store, not a restaurant."
+    }
   ]
 }

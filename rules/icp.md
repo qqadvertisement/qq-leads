@@ -52,3 +52,11 @@ Qualifying gaps, one of exactly these five (categorical — the dashboard charts
   City business-license data is a good way to spot this.
 - **A restaurant that opened in the last ~60 days with a placeholder site** — assume mid-build
   and check before pitching. See `gap-verification.md`.
+- **A page on somebody else's site is not a website.** A subpage on a parent nonprofit, a
+  landlord's or cultural centre's site, a builder subdomain (`*.godaddysites.com`,
+  `*.business.site`), an auto-generated delivery-platform page, or a Facebook page in the
+  website field — all of these are `No website`, not `Weak / outdated site`. Treating one as
+  a site the owner controls understates the gap, and the pitch lands weaker for it: "your menu
+  page is missing" is a much smaller idea than "you don't have a site of your own."
+
+  *Provenance: fb-2026-08-21-114*

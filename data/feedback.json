@@ -80,7 +80,8 @@
     "reason": "Rewrote in Mandarin — the owner is Chinese-speaking and a DM in their own language lands very differently. Also led with having actually eaten there and named the dish, and mentioned the quiet dinner service I saw, before raising the address problem.",
     "generalizes": true,
     "proposedRule": "Write the DM in the owner's own language when you can identify it. A Mandarin-speaking owner reading a Mandarin DM is a different conversation from the same message in English.",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
   },
   {
     "id": "fb-2026-08-21-102",
@@ -93,7 +94,8 @@
     "reason": "Gap is real but the specifics claimed were off, or a more customer-visible defect exists.",
     "generalizes": true,
     "proposedRule": "Verify each specific detail in a placeholder claim, not just that the page is a placeholder. \"It shows a San Francisco demo address\" is a separate factual claim from \"it is an unedited template\" and can be false on its own.",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   },
   {
     "id": "fb-2026-08-21-103",
@@ -106,7 +108,8 @@
     "reason": "Made the cost explicit (\"which means lost orders\") instead of leaving it implied, and said what I actually do — sites matched to their decor and vibe — rather than just \"I build websites\". Ended on \"Mind if I send it over?\" which feels less pushy than \"want to see it\".",
     "generalizes": true,
     "proposedRule": "State the commercial cost explicitly rather than implying it. \"Which means lost orders\" beats leaving the owner to infer why a broken page matters.",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
   },
   {
     "id": "fb-2026-08-21-104",
@@ -119,7 +122,8 @@
     "reason": "Named the mechanism plainly — Google cannot read text inside images — rather than assuming the owner already knows why an image menu hurts. Owners do not think in SEO terms; spelling out the cause makes the problem feel real.",
     "generalizes": true,
     "proposedRule": "Name the mechanism behind the problem. Owners do not think in SEO terms — \"Google cannot read text inside an image\" makes an image menu feel real in a way that \"it is not searchable\" does not.",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
   },
   {
     "id": "fb-2026-08-21-105",
@@ -132,7 +136,8 @@
     "reason": "Overturned by a browser check. The machine reading was not what a customer sees.",
     "generalizes": true,
     "proposedRule": "",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   },
   {
     "id": "fb-2026-08-21-106",
@@ -145,7 +150,8 @@
     "reason": "The 404 claim was false so the whole opener had to go. Replaced it with something true and still specific — menu and photos on separate screens — and named an actual dish to prove I looked.",
     "generalizes": true,
     "proposedRule": "When a claim is overturned, replace the whole opener rather than softening it, and anchor the replacement to a named dish so it still proves you looked.",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
   },
   {
     "id": "fb-2026-08-21-107",
@@ -158,7 +164,8 @@
     "reason": "Overturned by a browser check. The machine reading was not what a customer sees.",
     "generalizes": true,
     "proposedRule": "",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   },
   {
     "id": "fb-2026-08-21-108",
@@ -171,7 +178,8 @@
     "reason": "The redirect-loop claim was false. The real gap is better anyway: no menu on the site, the only route in is Order Online. Kept the structure, swapped the wall.",
     "generalizes": true,
     "proposedRule": "Tie the gap to the moment the business is in. A broken order button during a rebrand costs early orders specifically — that is sharper than a generic loss of traffic.",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
   },
   {
     "id": "fb-2026-08-21-109",
@@ -184,7 +192,8 @@
     "reason": "Tied the broken button to the rebrand moment specifically — they are relaunching, so lost early online orders is the thing that stings right now.",
     "generalizes": true,
     "proposedRule": "",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
   },
   {
     "id": "fb-2026-08-21-110",
@@ -197,7 +206,8 @@
     "reason": "Overturned by a browser check. The machine reading was not what a customer sees.",
     "generalizes": true,
     "proposedRule": "",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   },
   {
     "id": "fb-2026-08-21-111",
@@ -210,7 +220,8 @@
     "reason": "Gap is real but the specifics claimed were off, or a more customer-visible defect exists.",
     "generalizes": true,
     "proposedRule": "",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   },
   {
     "id": "fb-2026-08-21-112",
@@ -223,7 +234,8 @@
     "reason": "Added the dead Wix link in their Instagram bio — I found it while checking, and it is far more customer-visible than the Toast subdomain, because the IG bio is the route most people actually take.",
     "generalizes": true,
     "proposedRule": "",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   },
   {
     "id": "fb-2026-08-21-113",
@@ -236,7 +248,8 @@
     "reason": "Gave the image-menu problem two consequences instead of one — unreadable on a phone AND invisible to Google — because on its own the phone complaint sounds like a small cosmetic gripe.",
     "generalizes": true,
     "proposedRule": "When checking a lead, follow the route a customer actually takes — the Instagram bio link, not just the domain in the directory. The bio link is the most-used path and its failures are the most customer-visible.",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
   },
   {
     "id": "fb-2026-08-21-114",
@@ -249,7 +262,8 @@
     "reason": "Reframed from \"your menu page is missing\" to \"you have no website of your own\" — a subpage on the parent nonprofit is not a website, and treating it as one understates the gap.",
     "generalizes": true,
     "proposedRule": "",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/icp.md"
   },
   {
     "id": "fb-2026-08-21-115",
@@ -262,6 +276,7 @@
     "reason": "Overturned by a browser check. The machine reading was not what a customer sees.",
     "generalizes": true,
     "proposedRule": "Give an image-menu gap two consequences, not one: unreadable on a phone AND invisible to search. On its own the phone complaint reads as a cosmetic gripe.",
-    "ruleStatus": "proposed"
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   }
 ]

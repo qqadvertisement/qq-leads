@@ -16,11 +16,56 @@ sent by the machine. When she edits one, the diff plus her reason goes into
 3. **Mechanical consequence** — blame the gap, never the owner. "When someone can't find your
    menu in a few seconds, they pick the spot next door." Never "you're probably losing
    customers" — that diagnoses their business, which you have no standing to do.
+
+   Three things this beat keeps getting wrong, all found in Angela's edits:
+
+   - **Name the mechanism, don't assume it's obvious.** Owners do not think in SEO terms.
+     "Google can't read text inside an image" makes an image menu feel real in a way that
+     "it isn't searchable" never does. *(fb-2026-08-21-104)*
+   - **State the cost, don't imply it.** "…which means lost orders" beats leaving the owner
+     to work out why a broken page matters. *(fb-2026-08-21-103)*
+   - **Give a visual gap two consequences, not one.** An image or PDF menu is *both*
+     unreadable on a phone *and* invisible to search. On its own the phone complaint reads
+     as a cosmetic gripe. *(fb-2026-08-21-113)*
+
 4. **Who you are** — one line. Rotate the phrasing across a batch so owners who compare notes
-   don't see an identical paragraph.
-5. **Permission-style ask** — "want to see?" Not a hard CTA.
+   don't see an identical paragraph. Say what you actually build — "sites matched to a
+   restaurant's decor and vibe" lands harder than "I build websites."
+5. **Permission-style ask** — "want to see?" or "mind if I send it over?" Not a hard CTA.
 
 *Provenance: fb-2026-08-21-004 (v1 drafts read as surveillance)*
+
+---
+
+## Tie the gap to the moment the business is in
+
+A generic loss of traffic is abstract. The same gap during a rebrand, a relocation or an
+opening week is specific and urgent: a dead order button while you're relaunching costs
+*early* orders, and that is the thing that stings this week. Look at `whyNow` before writing
+beat 3 and aim the consequence at it.
+
+*Provenance: fb-2026-08-21-108, fb-2026-08-21-109*
+
+---
+
+## Write in the owner's language when you can identify it
+
+A Mandarin-speaking owner reading a Mandarin DM is a different conversation from the same
+message in English. Where the language is evident — from the restaurant's own posts, its
+menu, or the community it serves — draft in that language rather than English. Flag the
+language in `caveats` so Angela knows what she's reviewing.
+
+*Provenance: fb-2026-08-21-101*
+
+---
+
+## When the gap claim is overturned, replace the opener — don't soften it
+
+A false wall cannot be rescued by hedging it. Cut the whole opener and build a new one on
+something verified. Anchor the replacement to a named dish so the message still proves you
+actually looked.
+
+*Provenance: fb-2026-08-21-106*
 
 ---
 
