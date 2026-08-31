@@ -1,6 +1,6 @@
 {
   "note": "Dedupe list. Check every candidate against this before researching it. Reasons are kept so a future run knows whether an entry is permanently dead or worth revisiting.",
-  "lastUpdated": "2026-08-27",
+  "lastUpdated": "2026-08-31",
   "entries": [
     {
       "name": "404 Burgers",
@@ -370,7 +370,7 @@
     {
       "name": "Chicago Soul Cafe",
       "reason": "unknown",
-      "detail": "Woodlawn, 6248 S St Lawrence. Coffee shop near the Obama Presidential Center with CBS coverage, but no Instagram handle or website could be pinned down. Good why-now if someone can find the handle."
+      "detail": "Woodlawn, 6248 S St Lawrence (licensed as CHICAGO SOUL, 2026-06-01). Rechecked 2026-08-31: still no Instagram handle or website findable. Every \"soul cafe Chicago\" result resolves to a different business (Soul Soul Cafe on Jeffery, The Soul Cafe on Racine which is closed, Jordyn's Soul Cafe). Blocker is unchanged."
     },
     {
       "name": "Casa Noire",
@@ -385,7 +385,7 @@
     {
       "name": "Forum Cafe",
       "reason": "unknown",
-      "detail": "Bronzeville, 318 E 43rd. forumcafebronzeville.com is live but the cafe is still pre-opening. Recheck once trading."
+      "detail": "Bronzeville, 318 E 43rd. Rechecked 2026-08-31: forumcafebronzeville.com still reads \"will soon open as the first storefront in The Forum's retail corridor\" — future tense, no hours, no opening date. Still pre-opening. Recheck next quarter."
     },
     {
       "name": "Que Chimba Comixxpress",
@@ -496,6 +496,226 @@
       "name": "Brother BomBom",
       "reason": "poor-fit",
       "detail": "South Shore, 1952 E 79th. Classified as a grocery store, not a restaurant."
+    },
+    {
+      "name": "Haire's Gulf Shrimp",
+      "reason": "no-gap",
+      "detail": "Greater Grand Crossing, 7448 S Vincennes. hairesgulfshrimp.com is live with per-location text menus. Two locations (Vincennes + South Loop), still independent, but no gap."
+    },
+    {
+      "name": "Querrepario Mexican Kitchen",
+      "reason": "no-gap",
+      "detail": "Gage Park, 4151 W 47th. querrepario.com is a live custom build with a text menu, carousel and delivery integrations. Fetched 2026-08-31."
+    },
+    {
+      "name": "El Taco Azteca - Pilsen",
+      "reason": "no-gap",
+      "detail": "2151 W Cermak. eltacoaztecpilsen.com is a full live site (reservations, catering, ordering). The near-identical eltacoaztecapilsen.com and togoeltacoazteca.com also resolve — looked like a possible dead-domain angle, is not."
+    },
+    {
+      "name": "La Luna Pilsen",
+      "reason": "no-gap",
+      "detail": "1726 S Racine. lalunachicago.com, plus TimeOut and Choose Chicago coverage."
+    },
+    {
+      "name": "Mahari",
+      "reason": "no-gap",
+      "detail": "Hyde Park, 1504 E 55th. maharirestaurant.com; Jean Banchet \"Best Neighborhood Restaurant\"."
+    },
+    {
+      "name": "Cafe 53",
+      "reason": "no-gap",
+      "detail": "Hyde Park, 1369 E 53rd. cafe-53.com is live."
+    },
+    {
+      "name": "Mi Tierra En La Villita",
+      "reason": "no-gap",
+      "detail": "Little Village, 2528 S Kedzie. mitierraenlavillita.com is live. Title tag reads \"Home | mitierralavillita\" which is a thin weak-site angle — not worth leading with given the 60% overturn rate on that gap type."
+    },
+    {
+      "name": "El Coqui Restaurant",
+      "reason": "no-gap",
+      "detail": "Belmont Cragin. elcoquirestaurant.com with online ordering."
+    },
+    {
+      "name": "Axum Ethiopian Restaurant",
+      "reason": "no-gap",
+      "detail": "Edgewater, 5844 N Broadway. axumethiopianrestaurant.com live, plus Toast ordering and an Edgewater Chamber listing. Three sibling domains resolve — checked as a possible broken-link angle, none dead."
+    },
+    {
+      "name": "Tesfa Ethiopian Cuisine",
+      "reason": "no-gap",
+      "detail": "Edgewater, 5352 N Broadway. tesfacuisine.com is live."
+    },
+    {
+      "name": "Dan's Soul Food and Cafe",
+      "reason": "no-gap",
+      "detail": "Ashburn, 2523 W 79th. danschicagosbest.com is live."
+    },
+    {
+      "name": "Jamaican Jerk Villa",
+      "reason": "no-gap",
+      "detail": "Auburn Gresham, 642-648 W 79th. jerkvillabarandgrill.com is live. Two locations (also 2216 S Michigan), family-owned since 2002 — would otherwise fit ICP well."
+    },
+    {
+      "name": "Provaré",
+      "reason": "no-gap",
+      "detail": "West Town, 1523 W Chicago Ave (surfaced in a Woodlawn search, is not in Woodlawn). provarerestaurants.com is live; Michelin Guide listed."
+    },
+    {
+      "name": "Doughboy's Chicago",
+      "reason": "chain-or-group",
+      "detail": "Woodlawn, 501 E 61st. Part of DoughBoy Restaurant Group (doughboyrg.com) and has its own doughboyschicago.com. Group-owned, so out on both counts."
+    },
+    {
+      "name": "Soul Vibez",
+      "reason": "chain-or-group",
+      "detail": "soulvibezinc.com; locations at 226 W Chicago Ave, 431 N Wells and Orland Park."
+    },
+    {
+      "name": "Mikkey's Retro Grill",
+      "reason": "chain-or-group",
+      "detail": "mikkeys.com plus mikkeysretrogrill.com; multiple locations (Hyde Park Blvd, Stony Island, Auburn Gresham Healthy Hub)."
+    },
+    {
+      "name": "The Soul Food Lounge",
+      "reason": "chain-or-group",
+      "detail": "Quentin Love multi-concept operator; thesoulfoodlounge.com, locations at 3804 W 16th and 10701 S Hale."
+    },
+    {
+      "name": "Sip and Savor Chicago",
+      "reason": "chain-or-group",
+      "detail": "Bronzeville and multiple other Chicago locations."
+    },
+    {
+      "name": "La Catedral Cafe & Restaurant",
+      "reason": "chain-or-group",
+      "detail": "Four locations (Little Village, North Lawndale, Brighton Park, 400 E Randolph)."
+    },
+    {
+      "name": "Atotonilco",
+      "reason": "chain-or-group",
+      "detail": "IG @taqueriasatotonilco covers Little Village, Stone Park and Joliet — multi-site since 1972."
+    },
+    {
+      "name": "26th Street Cafe",
+      "reason": "poor-fit",
+      "detail": "Little Village. Its only web presence is a subpage on foodhe.ro, the culinary incubator that runs it — which is the \"page on somebody else's site\" No website shape, but it is an incubator program rather than an owner-operated restaurant, so there is no decision-maker to pitch."
+    },
+    {
+      "name": "Edgewater Mexican Cafe",
+      "reason": "closed",
+      "detail": "1055 W Bryn Mawr. Yelp marks it CLOSED as of Aug 2026."
+    },
+    {
+      "name": "Jerusalem Grill",
+      "reason": "unknown",
+      "detail": "Belmont Cragin, 3142 N Narragansett. Yelp marks CLOSED (July 2026) while Grubhub, Postmates and Restaurantji all still show it trading. Cannot confirm open — needs a phone call, not a fetch."
+    },
+    {
+      "name": "Selam Ethiopian Kitchen",
+      "reason": "unknown",
+      "detail": "Uptown, 4543 N Broadway. Yelp marks CLOSED (April 2026); IG @selamkitchen still exists. Cannot confirm open."
+    },
+    {
+      "name": "Tee's Soul Food Kitchen",
+      "reason": "unknown",
+      "detail": "Austin, 5623 W Madison. Strong No website shape — only DoorDash, Apple Maps and a Facebook page. But no Instagram handle could be confirmed; every instagram.com/popular/ result is an SEO stub and @tee_tees_soul_food is a different business. Unreachable until a handle surfaces."
+    },
+    {
+      "name": "Taqueria San Julian",
+      "reason": "unknown",
+      "detail": "Brighton Park, 3138 W 47th. No website (Facebook page + menu-world.com listing mill only) and has an Infatuation review, so a good target — but the Chicago location has no confirmable Instagram handle; the @taqueria_sanjulian-style handles that surface are Denver, Fort Myers and Naples."
+    },
+    {
+      "name": "Carnitas Don Pichi",
+      "reason": "unknown",
+      "detail": "Brighton Park, 2702 W 47th. No website — only Atly, Uber Eats, Postmates, Zmenu, Restaurantji. 4.8 rating. No Instagram handle found at all."
+    },
+    {
+      "name": "Restauracja Anastazja",
+      "reason": "unknown",
+      "detail": "Belmont Cragin, 5223 W Diversey. Textbook No website: its only \"site\" is anastazjarestaurant.netwaiter.com, a builder subdomain. Polish-language owner would suit the language rule well. No Instagram handle found — Polish-language spots seem to skew to Facebook."
+    },
+    {
+      "name": "Taqueria Los Molcajetes",
+      "reason": "unknown",
+      "detail": "Belmont Cragin, 5344 W Fullerton. Chamber directory shows a Facebook link only; no owner domain anywhere. Cash only. No Instagram handle confirmable for the Chicago location."
+    },
+    {
+      "name": "Red Rooster",
+      "reason": "unknown",
+      "detail": "South Shore, 2101 E 71st. Licensed 2026-05-16. No website found, but TripAdvisor returned 403 so the listing could not be confirmed, no IG handle found, and the wings/seafood counter format leaves dine-in identity unclear."
+    },
+    {
+      "name": "The Roux",
+      "reason": "unknown",
+      "detail": "Englewood, 5843 S Wentworth (second location; first at 7051 S Western, opened Sept 2024). Distinct from the well-known Roux Diner in Hyde Park. Could not resolve website or Instagram for the Wentworth site."
+    },
+    {
+      "name": "Jamaican Me Hungry",
+      "reason": "unknown",
+      "detail": "Chatham, 8221 S Evans per the Chatham Business Association directory and Auburn Gresham Portal. Yelp shows a different address (7959 S Ashland) marked CLOSED, and it began as a food truck. Address, open status and dine-in identity all unresolved; no IG handle."
+    },
+    {
+      "name": "El Caldero",
+      "reason": "unknown",
+      "detail": "West Elsdon, 5145 S Pulaski, licensed 2026-04-28. Every listing at that address is for El Taconazo instead. Either a rename mid-transition or a stale record — unresolvable from listings alone."
+    },
+    {
+      "name": "Mckinly Eatery",
+      "reason": "unknown",
+      "detail": "McKinley Park. IG @mckinly.eatery exists (walk-in only, 7am-3pm) but the business appears in no restaurant directory, Yelp or TripAdvisor listing, so no address and no website evidence could be established."
+    },
+    {
+      "name": "Austin's Soul Food",
+      "reason": "unknown",
+      "detail": "Austin (est.). IG @austinssoulfood posts limited hours (Wed/Fri/Sun 12-6pm) but no Chicago address or listing could be found — every search result resolves to a Jacksonville FL business of the same name."
+    },
+    {
+      "name": "Gage Park Diner",
+      "reason": "unknown",
+      "detail": "IG @gageparkdiner describes a family-operated diner opened 2016, but every website result resolves to gageparkdiner.ca in Canada. Chicago location unconfirmed."
+    },
+    {
+      "name": "Gaby'z Panaderia Y Pizzeria",
+      "reason": "unknown",
+      "detail": "Belmont Cragin, 5050 W Fullerton. Chamber directory shows a Facebook link only — a real No website shape, but not researched to completion this run. Good next-run candidate if a handle exists."
+    },
+    {
+      "name": "Polish Food",
+      "reason": "unknown",
+      "detail": "Belmont Cragin, 3104 N Central. Chamber directory shows a Facebook link only. Same shape and same status as Gaby'z — unfinished, worth picking up next run."
+    },
+    {
+      "name": "Paleteria Y Neveria Fruta Loca",
+      "reason": "poor-fit",
+      "detail": "Belmont Cragin, 5456 W Fullerton. Facebook-only in the chamber directory, so the gap is real, but it is an ice-cream/paleta counter — the snack-stand edge case in icp.md. Flagged for a human ICP call rather than scored."
+    },
+    {
+      "name": "Centro Wood Fired Kitchen",
+      "reason": "poor-fit",
+      "detail": "NOT CHICAGO — Chatham, Ontario. Surfaced by a \"Chatham Chicago\" Instagram search."
+    },
+    {
+      "name": "The Chatham Cut",
+      "reason": "poor-fit",
+      "detail": "NOT CHICAGO — Chatham, Ontario. Same trap as Centro."
+    },
+    {
+      "name": "The 75th Street Inn",
+      "reason": "poor-fit",
+      "detail": "NOT CHICAGO — Salem, Wisconsin. Surfaced by a \"75th Street Chicago\" search."
+    },
+    {
+      "name": "Roseland's Atlas",
+      "reason": "poor-fit",
+      "detail": "NOT CHICAGO — Buffalo, NY. Surfaced by a \"Roseland Chicago\" Instagram search."
+    },
+    {
+      "name": "Uptown Vietnam Cuisine",
+      "reason": "poor-fit",
+      "detail": "NOT CHICAGO — Columbus, GA. Surfaced by an \"Uptown Chicago\" Instagram search."
     }
   ]
 }
