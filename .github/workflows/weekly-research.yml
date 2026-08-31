@@ -1,6 +1,6 @@
 # The weekly lead research run, living inside GitHub instead of a chat session.
 #
-# Every Monday it researches new leads and opens a pull request. You review that PR
+# Every Sunday it researches new leads and opens a pull request. You review that PR
 # the same way you'd review anything else, merge it, and the leads appear on the
 # dashboard — already marked unverified, waiting for your check.
 #
@@ -13,7 +13,7 @@ name: Weekly lead research
 
 on:
   schedule:
-    - cron: "0 10 * * 1"      # Mondays 10:00 UTC — ~5am Chicago
+    - cron: "0 11 * * 0"      # Sundays 11:00 UTC — 6am Chicago (CDT)
   workflow_dispatch:           # the "Run workflow" button
 
 jobs:
