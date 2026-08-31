@@ -1478,5 +1478,275 @@
     "caveats": [
       "Benched — promote if a slot opens."
     ]
+  },
+  {
+    "id": "2026-08-31-mi-corazon-cafe-pilsen",
+    "run": "2026-08-31",
+    "name": "Mi Corazón Cafe Pilsen",
+    "neighborhood": "Pilsen",
+    "cuisine": "Mexican cafe / brunch",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "No owner-controlled site exists. Two independent listings fetched 2026-08-31 each fail to show one: restaurantguru.com prints \"facebook.com\" in its Website field (address, phone and @micorazoncafe.pilsen are all populated, so the field is filled in, just not with a site), and chicagorestaurantes.com shows only Facebook and Instagram links with no website field at all. The only other site-shaped result is mi-corazon-cafe.goto-where.net, an auto-generated listing mill of the kind gap-verification.md flags as evidence FOR a No website gap. Per icp.md, a Facebook page in the website field is No website, not a weak site.",
+      "sourceUrl": "https://restaurantguru.com/Mi-Corazon-Cafe-Chicago",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. Cash-only and open 10-4 Wednesday to Sunday, so the hours question is exactly what a customer would go looking for and not find.",
+      "sourceUrl": "https://www.yelp.com/biz/mi-coraz%C3%B3n-cafe-chicago"
+    },
+    "instagram": {
+      "handle": "@micorazoncafe.pilsen",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Search \"Mi Corazon Cafe Pilsen\" on a phone and screenshot what comes back — a Facebook page and three scraped listing pages — next to a one-page site with the real hours and the horchata latte on it.",
+    "outreach": {
+      "draft": "Hey! I went looking for the horchata latte everyone in Pilsen keeps mentioning and ended up on your Instagram — then tried to find a site with your hours and the full menu and there just isn't one, only a Facebook page and a few auto-generated listing pages with your name on them. Those pages are written by strangers scraping your info, so the hours people find are often wrong, and someone who shows up on a Monday to a closed door usually doesn't try again. I build small sites for Chicago restaurants matched to the actual room and vibe, plus a little game your regulars can play to win a free drink that quietly builds you a list of people to bring back in. Want to see what yours could look like?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Strongest lead of the run: absence tier, and absence is 0 of 4 overturned in the calibration data.",
+      "Instagram handle is confirmed by two listings but post recency is unconfirmed — Instagram blocks fetching, so per the fb-2026-08-24-001 rule this is handle-found, not active-est.",
+      "Language call: drafted in English. Could not read their own posts (Instagram blocked), so I could not confirm which language they post in — a Spanish version may land better and is worth a look before sending."
+    ]
+  },
+  {
+    "id": "2026-08-31-taylormade-que",
+    "run": "2026-08-31",
+    "name": "Taylormade Que",
+    "neighborhood": "Englewood",
+    "cuisine": "BBQ / soul food",
+    "website": "taylormadeque6717.com",
+    "gap": {
+      "type": "Weak / outdated site",
+      "claim": "The live Wix site still carries the template's demo branding. Fetched 2026-08-31: the footer copyright reads \"© 2023 by Luna Tapas\" — a different, unrelated restaurant, i.e. the demo content the template shipped with — and the same footer carries the placeholder string \"123-456-7890\" alongside the real number (872) 244-3616. Page title is \"Bbq | Taylormade Que | Chicago\". These are two separate, independently checkable assertions; both were confirmed in the same fetch. The rest of the site is built out (real menu nav, online ordering, social links), so this is leftover template furniture rather than a half-finished build.",
+      "sourceUrl": "https://www.taylormadeque6717.com/",
+      "evidenceTier": "static",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed — established 2017, so no opening or rebrand to aim at. The mid-build exception does not apply.",
+      "sourceUrl": null
+    },
+    "instagram": {
+      "handle": "@taylormade_que",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Screenshot the footer with another restaurant's name in the copyright line, next to the same footer corrected. It is a small fix that proves competence and makes the bigger rebuild an easy yes.",
+    "outreach": {
+      "draft": "Hey! Went looking for your rib tips, found the site, and scrolled to the bottom for the phone number — the footer still reads \"© 2023 by Luna Tapas,\" which is the demo restaurant the Wix template came with, and there's a 123-456-7890 placeholder sitting right next to your real number. Someone deciding where to order sees another restaurant's name on your page and a phone number that goes nowhere, and that is usually enough to make them wonder whether you're still open and pick somewhere else. I make sites for Chicago spots that look like the food actually tastes, plus a little game regulars play to win a free plate that quietly builds you a list of customers to bring back. Mind if I send over a cleaned-up version?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Static tier, which the current calibration puts at 50% overturned (4 of 8) — and gap-verification.md classifies footer text as a render claim, not a record claim. Open the site in a real browser before sending; a crawler and a browser can be served different markup.",
+      "Two specifics are cited (the Luna Tapas copyright and the placeholder phone). Per the \"a placeholder claim is several claims\" rule, either can be false independently — if only one holds, cut the other rather than softening both.",
+      "Instagram: search results report ~19K followers, but every indexed post I could see is from 2023, so recency is unconfirmed rather than active."
+    ]
+  },
+  {
+    "id": "2026-08-31-magos-tacos-y-tamales",
+    "run": "2026-08-31",
+    "name": "Magos Tacos y Tamales",
+    "neighborhood": "Belmont Cragin",
+    "cuisine": "Mexican",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "The Belmont Cragin Chamber restaurant directory (fetched 2026-08-31) lists a website or menu link for 46 of its 49 restaurants; Magos is one of only three entries with neither, which makes the omission meaningful rather than a directory that simply never shows websites. No owner-run domain appears anywhere else either — the only results are Yelp, Foursquare, Atly, Uber Eats and Postmates pages, all third-party.",
+      "sourceUrl": "https://www.belmontcragin.org/eat",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. Opens at 4:30-6am daily, so the breakfast trade is the business — and \"are they open yet\" is the question with no page to answer it.",
+      "sourceUrl": "https://www.yelp.com/biz/magos-tacos-y-tamales-chicago-2"
+    },
+    "instagram": {
+      "handle": "@magostacosytamales",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "A one-page site whose top line is the 4:30am open time and the hand-made tortillas — the two things the delivery-app listings bury.",
+    "outreach": {
+      "draft": "¡Hola! Los busqué por internet para ver a qué hora abren y no encontré una página suya, solo Yelp y las apps de entrega, que ponen sus horarios y su información sin preguntarles. Ustedes abren a las cuatro y media de la mañana, que es justo lo que alguien quiere confirmar antes de salir de casa, y ahorita la respuesta que encuentra la escribió otra persona y muchas veces está mal. Hago páginas sencillas para restaurantes de Chicago, con el estilo del lugar, y además un juego que los clientes juegan para ganarse algo gratis y que a ustedes les va armando una lista de gente para hacerla volver. ¿Les mando un ejemplo de cómo se vería la suya?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Drafted in Spanish per the outreach-voice language rule — reviews note the counter operates mainly in Spanish. Angela should confirm she is comfortable sending and replying in Spanish before this one goes out.",
+      "Two locations (5714 W Fullerton and 5211 W Diversey), so still inside the 1-3 independent range, but confirm they are one owner and not two families sharing a name.",
+      "The Diversey listing trades as \"Magos Tacos & Tamales 2\"; Foursquare calls it \"Tacos y Tamales Magos\". Name is unsettled across sources — use what their own Instagram uses."
+    ]
+  },
+  {
+    "id": "2026-08-31-el-mercadito",
+    "run": "2026-08-31",
+    "name": "El Mercadito",
+    "neighborhood": "Belmont Cragin",
+    "cuisine": "Mexican",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "Two independent listings fetched 2026-08-31 each omit a website. The Belmont Cragin Chamber directory lists a website or menu link for 46 of 49 restaurants and shows neither for El Mercadito; restaurantji.com shows address, phone, an online-ordering link, a Facebook link and an Instagram link, and no website field. Trading since 2019, so this is a settled business without a site rather than one mid-build.",
+      "sourceUrl": "https://www.restaurantji.com/il/chicago/el-mercadito-/",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. Runs day-of-week specials ($1 taco Tuesdays, torta Thursdays) that live only on third-party pages and change without anywhere to announce them.",
+      "sourceUrl": "https://www.restaurantji.com/il/chicago/el-mercadito-/"
+    },
+    "instagram": {
+      "handle": "@el_mercadito_inc",
+      "status": "unconfirmed"
+    },
+    "score": 3,
+    "demoAngle": "A single page that puts the weekly specials where a customer actually looks, instead of buried in a Grubhub description nobody updates.",
+    "outreach": {
+      "draft": "¡Hola! Alguien me habló del chile relleno y los busqué para ver los especiales de la semana — no encontré página suya, solo Yelp y las apps de entrega. El problema es que esos especiales cambian y esas páginas no, así que la gente llega esperando algo que ya no está, o de plano no se entera. Hago páginas sencillas para restaurantes de Chicago, hechas con el estilo del lugar, y también un juego que los clientes juegan para ganarse algo gratis y que a ustedes les arma una lista de gente para hacerla volver. ¿Les gustaría ver un ejemplo?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "WEAKEST LINK — Instagram handle is a guess, marked unconfirmed. @el_mercadito_inc matches the Facebook page name \"El Mercadito INC.\" exactly and is tagged Chicago, but I could not tie the handle to the 2815 N Central address. Confirm the handle before sending; if it is wrong this lead is unreachable and should move to excluded.json.",
+      "The gap claim itself is solid and independent of the handle problem — two fetched listings, both omitting the website field.",
+      "Drafted in Spanish. Same caveat as Magos: confirm Angela wants to open a Spanish-language thread."
+    ]
+  },
+  {
+    "id": "2026-08-31-salaam-restaurant-and-bakery",
+    "run": "2026-08-31",
+    "name": "Salaam Restaurant and Bakery",
+    "neighborhood": "Auburn Gresham",
+    "cuisine": "Soul food / halal bakery",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "Two independent listings fetched 2026-08-31 each omit a website field: novacircle.com shows address and phone and no website, and restaurantji.com shows the address and a Facebook link and no website. The only site-shaped results in search are auto-generated listing mills (salaam-restaurant-bakery.restaurants-hi.com, zmenu, restaurants.com).",
+      "sourceUrl": "https://www.restaurantji.com/il/chicago/salaam-restaurant-and-bakery-/",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. Open only Saturday and Sunday, and the Sunday buffet is the draw — which makes \"are they open today\" the one thing a customer needs and cannot find.",
+      "sourceUrl": "https://www.novacircle.com/spots/north-america/united-states/illinois/chicago/chicago-il/salaam-restaurant-972499"
+    },
+    "instagram": {
+      "handle": "@salaamrestaurant",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "One page that answers \"open this weekend?\" and shows the Sunday buffet — the whole business compressed into the question people are actually asking.",
+    "outreach": {
+      "draft": "Hey! I heard about the Sunday buffet and went looking for what's on it this week — there's no site to land on, just a Facebook page and a handful of scraped listing pages with your name on them. The catch is those pages list weekday hours you don't keep, so someone can turn up on a Tuesday to a locked door and write you off, and you never find out it happened. I build simple sites for Chicago restaurants that fit the place they're for, plus a little game regulars play to win a free plate that quietly builds you a list of people to bring back. Happy to put together what yours could look like — want to see?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "Confirm the weekday-hours claim in the draft before sending. Listings disagree: some show Saturday and Sunday only, others show weekday hours. The draft leans on that disagreement, so if the listings actually agree, cut that sentence.",
+      "Closes out part of the Auburn Gresham thin-coverage gap flagged in excluded.json.",
+      "Instagram bio matches the address and the \"Palace of the People\" tagline, so the handle is a solid match; post recency is unconfirmed."
+    ]
+  },
+  {
+    "id": "2026-08-31-que-rico-restaurant",
+    "run": "2026-08-31",
+    "name": "Que Rico! Restaurant",
+    "neighborhood": "Brighton Park",
+    "cuisine": "Puerto Rican",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "Two independent listings fetched 2026-08-31 each omit a website field: nextdoor.com shows phone, address, coordinates and business categories with no website, email or social link, and restaurantguru.com shows phone and address with no website. Ordering runs through Toast and Grubhub, both third-party.",
+      "sourceUrl": "https://nextdoor.com/pages/que-rico-restaurant-chicago-il/",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. Opened December 2021, so past the mid-build window and settled.",
+      "sourceUrl": "https://www.yelp.com/biz/que-rico-restaurant-chicago-2"
+    },
+    "instagram": {
+      "handle": "@quericoprrestaurant",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Puerto Rican food is thin on the ground in Brighton Park — a site that says what it is and where it is would own that search outright.",
+    "outreach": {
+      "draft": "¡Hola! Andaba buscando comida boricua por Brighton Park y llegué a ustedes, pero cuando quise ver el menú completo no había página suya, solo Yelp y las apps de pedidos. Ahí sale lo que otra gente escribió sobre ustedes, no lo que ustedes dirían, y quien busca \"comida puertorriqueña cerca de mí\" pasa de largo porque no encuentra nada que le diga claramente qué son. Hago páginas sencillas para restaurantes de Chicago, con el estilo del sitio, y además un juego que los clientes juegan para ganarse algo gratis y que a ustedes les va armando una lista de gente para hacerla volver. ¿Les mando un ejemplo de cómo se vería?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0
+    },
+    "status": "New",
+    "caveats": [
+      "There is a second, unrelated \"Que Rico!!\" at 2814 N Southport with its own Grubhub page. Everything here is tied to 4454 S Western — do not let the Southport business bleed into the research.",
+      "Drafted in Spanish. Same language caveat as the other two.",
+      "No dish named in the draft — I could not verify a signature item from a fetchable source, and inventing one would be the fabrication the contract warns about. Adding a real dish before sending would strengthen the \"I actually looked\" beat."
+    ]
   }
 ]
