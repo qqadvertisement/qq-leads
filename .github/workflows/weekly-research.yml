@@ -70,8 +70,9 @@ jobs:
                lead. Set evidenceTier honestly.
             4. Every new lead's gap.verification.status MUST be "unverified".
                Never write outreach.sent. Those two fields belong to Angela.
-            5. Write an outreach draft per rules/outreach-voice.md. No pricing, no
-               invented owner names.
+            5. Write an outreach draft per rules/outreach-voice.md, including a
+               compelling email subject line in outreach.subject (see the subject-line
+               section of that file). No pricing, no invented owner names.
             6. Append to data/leads.json and add anything checked-and-rejected to
                data/excluded.json so future runs don't repeat the work.
             7. Run `node scripts/validate.mjs` — it must pass before you commit.

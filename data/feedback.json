@@ -317,5 +317,19 @@
     "generalizes": true,
     "proposedRule": "",
     "ruleStatus": "proposed"
+  },
+  {
+    "id": "fb-2026-09-01-voice",
+    "date": "2026-09-01",
+    "leadId": "2026-08-27-paper-tiger-cafe",
+    "kind": "voice-direction",
+    "verdict": null,
+    "claimed": "Prior drafts opened with a bare route plus a single wall, no social proof, and a soft ask; email carried no subject line.",
+    "actual": "Angela reviewed the Paper Tiger draft and asked for a warmer, more value- and proof-forward voice as the new default, plus a customized email subject on every message. Portfolio link rides in the signature (qqstudio1.com), not the body.",
+    "reason": "Angela editorial direction, not a machine correction: keep the five beats but make them warmer, add a light social-proof nod, soften the ask to a mockup, and give every email a specific, curiosity-earning subject the body pays off. Warmth still needs one genuine specific detail; generic enthusiasm is the fake-enthusiasm tell.",
+    "generalizes": true,
+    "proposedRule": "Five beats stay. Beat 4 gains a light social-proof nod (a couple of real builds; link in the signature). Every email gets a specific subject line built on the verified gap, paid off by the first line. Ask softens to a mockup, not a meeting.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/outreach-voice.md"
   }
 ]

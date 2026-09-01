@@ -28,10 +28,13 @@ sent by the machine. When she edits one, the diff plus her reason goes into
      unreadable on a phone *and* invisible to search. On its own the phone complaint reads
      as a cosmetic gripe. *(fb-2026-08-21-113)*
 
-4. **Who you are** — one line. Rotate the phrasing across a batch so owners who compare notes
-   don't see an identical paragraph. Say what you actually build — "sites matched to a
-   restaurant's decor and vibe" lands harder than "I build websites."
-5. **Permission-style ask** — "want to see?" or "mind if I send it over?" Not a hard CTA.
+4. **Who you are, with light proof** — one line on what you actually build — "sites matched to a
+   restaurant's decor and vibe" lands harder than "I build websites" — and a low-key nod to real
+   work: "a few around the city we'd love to show you." Keep it a *nod*: the portfolio link lives
+   in the email signature (qqstudio1.com), never pasted into the body as a wall of links. Rotate
+   the phrasing across a batch so owners who compare notes don't see an identical paragraph.
+5. **Permission-style ask** — "want to see?" or "mind if I send it over?" Not a hard CTA. A soft
+   "want a quick mockup?" beats "let's set up a call" — a mockup is lower friction than a meeting.
 
 *Provenance: fb-2026-08-21-004 (v1 drafts read as surveillance)*
 
@@ -69,6 +72,21 @@ actually looked.
 
 ---
 
+## Email subject line
+
+Every email draft carries a `subject` — the line that earns the open, and it's worth as much
+thought as beat 1. Make it **specific and a little surprising**, built on the same verified gap
+the body opens with, and let the first line pay it off. Name the concrete thing, not a vague
+benefit.
+
+- ✓ *Paper Tiger shows up as "Your Site Title" on Google* — concrete, true, an instant "wait, what?"
+- ✓ *a small thing I noticed on your site* — warm, low-pressure, still honest
+- ✗ *Grow your restaurant's online presence* — generic, salesy, deleted on sight
+- ✗ *Quick question* — the oldest cold-open tell there is
+
+No pricing, none of the banned phrasings below, and no emoji-stuffing in the subject either.
+Subject is email-only — Instagram and phone outreach don't use one.
+
 ## Hard constraints
 
 - **No pricing.** Not in any draft, ever, at any beat.
@@ -88,12 +106,16 @@ long dashes strung through sentences
 
 ## Reference draft
 
-> Hey Maria! Love the al pastor at The Corner Taqueria — genuinely one of my favorites in the
-> neighborhood. Quick thing: I went to pull up your menu online and couldn't find it anywhere,
-> just your Instagram. When folks are deciding where to eat and can't find a menu in a few
-> seconds, they usually just pick the next place, even when yours is better. I build simple
-> sites for Chicago spots, plus a little game your regulars can play to win a free taco that
-> quietly builds you a list of customers to bring back. Happy to mock up what yours could look
-> like, no strings — want to see?
+**Subject:** The Corner Taqueria's menu is nowhere on Google
 
-Match the warmth. Personalize beats 1–2 to the real, verified gap.
+> Hey! Our team's always eating our way around the neighborhood, and the al pastor at The Corner
+> Taqueria is genuinely one of my favorites. I went to pull up your menu online and couldn't find
+> it anywhere, just your Instagram — and when folks are deciding where to eat and can't find a
+> menu in a few seconds, they usually just pick the next place, even when yours is better. We build
+> sites matched to a spot's vibe for Chicago restaurants, and we've done a few around the city we'd
+> love to show you, plus a little game your regulars play to win a free taco that quietly builds you
+> a list of customers to bring back. Want us to mock up what yours could look like?
+
+Match the warmth. Personalize the subject and beats 1–2 to the real, verified gap. The warmth still
+needs one genuine specific detail — the al pastor here — never generic "super excited to try you"
+enthusiasm. The portfolio link rides in the signature, not the body.
