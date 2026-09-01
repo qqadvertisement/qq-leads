@@ -1414,11 +1414,16 @@
       "sourceUrl": null,
       "evidenceTier": "absence",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
-      }
+        "status": "wrong",
+        "checkedBy": "angela",
+        "checkedOn": "2026-09-01",
+        "note": "the website exist but it is not landing well"
+      },
+      "types": [
+        "No website",
+        "No menu online",
+        "Weak / outdated site"
+      ]
     },
     "whyNow": null,
     "instagram": {
