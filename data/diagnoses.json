@@ -8,8 +8,47 @@
       "listing": null,
       "notes": null
     },
-    "status": "requested",
-    "result": null,
+    "status": "done",
+    "result": {
+      "name": "Amarit Thai & Sushi",
+      "neighborhood": "Printer's Row (South Loop)",
+      "cuisine": "Thai / sushi",
+      "website": "https://www.amaritthai.com/",
+      "gap": {
+        "type": "Broken links",
+        "claim": "Fetched 2026-09-01. Two of the six items in the site's top navigation, \"Online Menu\" and \"Table Resevation\" (their spelling), are anchors with no href and no attributes at all: <li id=\"menu-item-333\" ...><a>Online Menu</a></li>. Nothing on the site binds them — the only third-party script is fbgcdn's ewm2.js, which binds exclusively `*[data-glf-cuid]`, and neither anchor carries that attribute; the GloriaFood plugin's own public-scripts.js does nothing but render opening hours. Separately, the site's own page titled \"Menu\" at /services/ returns 200 with a completely empty page-content div and loads no widget script at all. The GloriaFood \"See MENU & Order\" button further down the homepage does carry data-glf-cuid and does work, so the menu is reachable — it is the header route and the Menu page that are dead.",
+        "sourceUrl": "https://www.amaritthai.com/services/",
+        "evidenceTier": "static",
+        "types": ["Broken links", "Weak / outdated site"]
+      },
+      "whyNow": {
+        "text": "Someone was actively working on this site about seven weeks ago and did not touch the menu route. The site's own page-sitemap.xml gives /services/, /about/ and /contact/ a lastmod of 2020-03-25, but the homepage is 2026-07-09, a new /faq/ page is 2026-07-10, there is a blog post dated 2026-07-10, and the logo was uploaded to /wp-content/uploads/2026/06/. So the blank Menu page has been blank for six years and survived a refresh this summer.",
+        "sourceUrl": "https://www.amaritthai.com/page-sitemap.xml"
+      },
+      "instagram": {
+        "handle": "@amaritthai",
+        "status": "handle-found"
+      },
+      "score": 4,
+      "demoAngle": "A Printer's Row fixture since 2007 with 466 Yelp reviews, and the page called Menu is empty. The demo writes itself: a menu page that actually loads, with the dishes their own FAQ names as favourites (Pad Thai, Green Curry, Panang Curry, Drunken Noodles) in readable text and one tap through to the order widget they already run.",
+      "outreach": {
+        "draft": "Hey! I went looking for Thai in Printer's Row and landed on your site, and the chili-in-summer post from July is a genuinely good read. Then I clicked Online Menu up in your header and nothing happened, and the page called Menu is completely blank. The order button further down works fine, so it's only that route that's dead, but the blank Menu page is indexed, so someone searching for your menu lands on nothing and backs straight out, and that's an order you never hear about even though you've clearly been putting work into the site this summer. I build sites for Chicago restaurants that look like the room they're actually in, plus a small game regulars play for a free dish that quietly builds you a list of people to bring back. Want me to put together what yours could look like?"
+      },
+      "caveats": [
+        "The input was just \"Amarit's\" with no listing link. I matched it to Amarit Thai & Sushi, 600 S Dearborn St, Chicago IL 60605. Confirm that's the right restaurant before anything goes out.",
+        "The dead-nav half of the claim is still a statement about click behaviour. I traced every script the pages load and none of them binds those two anchors, but click \"Online Menu\" and \"Table Resevation\" in a real browser before sending. The blank /services/ page is safer: the content div is empty server-side and that page loads no widget script at all.",
+        "The homepage's \"See MENU & Order (Chicago Location)\" button DOES work. The draft says so on purpose. Do not let an edit turn this into \"your menu isn't online\" — that would be false, and the menu is also on Grubhub, Seamless and Toast.",
+        "Mid-build check, per gap-verification.md: this is not a fresh build. /services/, /about/ and /contact/ carry a 2020-03-25 lastmod. But the homepage, a new FAQ page and a blog post are all dated 2026-07-09/10, so someone was in the site ~7 weeks ago. If that work is still in progress the message could land awkwardly. No agency or builder is visible — the served HTML still carries a MonsterInsights comment saying the site owner needs to authenticate, which reads as self-managed.",
+        "\"Indexed\" means /services/ is listed in the site's own page-sitemap.xml and surfaced in a web search as \"Menu - Amarit Thai & Sushi Restaurant\". I did not verify it against Google specifically.",
+        "I could not check the Instagram bio link, which gap-verification.md calls the route customers actually take — Instagram blocks fetching. @amaritthai was found via search; the only indexed post I saw is from roughly 2024, so recency is unconfirmed, not active. Check the bio link before sending: if it points somewhere other than amaritthai.com the opener needs re-aiming.",
+        "There is a second live domain, amaritthaichicago.com — a Next.js ordering site for the same address and phone. I could not establish whether the owner controls it or an ordering platform supplied it. If listings or the IG bio send people there instead, this diagnosis is aimed at the wrong site.",
+        "No owner name established. A search summary offered two first names; I did not verify them and did not use them.",
+        "Backup evidence if the opener has to be replaced, all fetched 2026-09-01 and all unused in the draft: /portfolio/ is a live page still carrying the Velux theme's demo copy (\"Project Name\", \"Talk about this portfolio piece–who you did it for and why\"); /gallery/ has an empty content div; /faq/ opens with the template's e-commerce boilerplate about return policy, product warranty and shipping; the published post at /hello-world/ still has bare citation markers like [1] and [1, 2, 3] in the body text; and the homepage meta description contains raw JSON-LD dumped into it, truncated mid-address.",
+        "The site's JSON-LD Organization telephone is +13125608147, which does not match the (312) 939-1179 on its own Contact page or in any listing. I could not determine which is current, so it is not in the draft.",
+        "\"Not mobile-friendly\" is not available as an angle — the viewport meta tag is present on every page checked and the theme is responsive.",
+        "Score 4: +2 screenshot-able gap, +1 independent (Chicago license data shows one entity, STAR OF SUPERSTARS INC., licensed only at 600 S Dearborn, active through 2027-03-15, with a Consumption on Premises licence confirming dine-in), +1 busy (466 Yelp reviews, 317 photos). No +1 for Instagram activity because I could not confirm it."
+      ]
+    },
     "error": null
   }
 ]
