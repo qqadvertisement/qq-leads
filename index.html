@@ -131,6 +131,10 @@ details[open] summary::before{content:"▾ "}
 details p{background:var(--surface-2);border-radius:8px;padding:12px 13px;line-height:1.6;color:var(--ink-2);margin:8px 0 0}
 
 .draftbox{margin-top:9px;display:flex;flex-direction:column;gap:7px}
+.draftbox .subjlabel{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-muted);font-weight:700;margin-bottom:-2px}
+.draftbox .subjlabel .subjhint{text-transform:none;letter-spacing:0;font-weight:400}
+.draftbox .subjinput{width:100%;font:inherit;font-size:13px;font-weight:600;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:9px 11px}
+.draftbox .subjinput::placeholder{color:var(--ink-muted);font-weight:400}
 .draftbox textarea{min-height:130px;font-size:13px;line-height:1.6}
 .draftbox .why{min-height:76px}
 .delta{font-size:11.5px;color:var(--ink-muted);display:flex;align-items:center;gap:6px}
@@ -389,6 +393,7 @@ let LEADS = [], FEEDBACK = [], DIAGNOSES = [];
 // what commits everything at once, so picking a verdict never makes the board jump.
 const draftVerdicts = {};   // leadId -> confirmed | wrong | partial | unverified
 const draftEdits    = {};   // leadId -> revised outreach text
+const draftSubjects = {};   // leadId -> revised email subject line
 const draftWhy      = {};   // leadId -> why it was revised
 const draftNotes    = {};   // leadId -> verification note
 const draftPriority = {};   // leadId -> high | medium | low | skip | null
@@ -643,16 +648,17 @@ function scoreEl(n){
 function outreachBlock(l){
   const o = l.outreach || {};
   const st = outreachState(l);
-  const chanLabel = o.channel==="email" ? "Email" : o.channel==="instagram" ? "Instagram" : "";
-  const meta = [chanLabel, o.sentOn ? "sent "+o.sentOn : ""].filter(Boolean).join(" · ");
+  const chanLabel = o.channel==="email" ? "Email" : o.channel==="instagram" ? "Instagram" : o.channel==="phone" ? "Phone call" : "";
+  const meta = [chanLabel, o.sentOn ? (o.channel==="phone"?"called ":"sent ")+o.sentOn : ""].filter(Boolean).join(" · ");
   let actions = "";
   if(st.key==="not-sent"){
     actions = canSend(l)
       ? `<div class="vactions">
            <button class="btn" data-act="send" data-ch="email">Log send · Email</button>
            <button class="btn" data-act="send" data-ch="instagram">Log send · Instagram</button>
+           <button class="btn" data-act="send" data-ch="phone">Log call · Phone</button>
          </div>
-         <div class="ohint">Logs the message above as sent today and starts the two-week reply clock.</div>`
+         <div class="ohint">Logs this outreach as done today and starts the two-week reply clock. For a phone call, the draft above is your talking points.</div>`
       : `<div class="ohint">Verify the gap and save the verdict first — a message can't go out on an unverified gap.</div>`;
   } else if(st.key==="awaiting" || st.key==="stale"){
     actions = `<div class="vactions">
@@ -664,6 +670,7 @@ function outreachBlock(l){
     <div class="vlabel">Outreach</div>
     <div><span class="ostatus ${st.cls}"><span class="swatch"></span>${esc(st.label)}</span></div>
     ${meta ? `<div class="ohint">${esc(meta)}</div>` : ""}
+    ${o.sent && o.channel==="email" && o.subject ? `<div class="ohint">Subject: “${esc(o.subject)}”</div>` : ""}
     ${actions}
   </div>`;
 }
@@ -714,6 +721,8 @@ function card(l){
     ${l.demoAngle?`<div class="field"><span class="k">Demo angle</span>${esc(l.demoAngle)}</div>`:""}
     ${l.outreach.draft ? `<details ${draftEdits[l.id]!==undefined?"open":""}><summary>Outreach draft — click to read and edit</summary>
       <div class="draftbox">
+        <label class="subjlabel">Email subject <span class="subjhint">— the line that earns the open</span></label>
+        <input class="subjinput" data-subject placeholder="e.g. Paper Tiger shows up as “Your Site Title” on Google" value="${esc(draftSubjects[l.id] ?? l.outreach.subject ?? "")}">
         <textarea data-draft>${esc(draftEdits[l.id] ?? l.outreach.sent ?? l.outreach.draft)}</textarea>
         <div class="delta" data-delta></div>
         <textarea class="why" data-why placeholder="Edited it? Say why in one line — e.g. 'cut the second sentence, too long for a DM'. This is what the next run learns from, and it's required before you log an edited send.">${esc(draftWhy[l.id] ?? "")}</textarea>
@@ -816,6 +825,8 @@ document.addEventListener("input", e=>{
   if(e.target.matches("[data-draft]")){
     draftEdits[lead.id] = e.target.value;
     paintDelta(cardEl, lead);
+  } else if(e.target.matches("[data-subject]")){
+    draftSubjects[lead.id] = e.target.value;
   } else if(e.target.matches("[data-why]")){
     draftWhy[lead.id] = e.target.value;
   } else if(e.target.matches("[data-note]")){
@@ -879,7 +890,7 @@ document.addEventListener("click", e=>{
   }
 
   if(act==="reset-draft"){
-    delete draftEdits[id]; delete draftWhy[id];
+    delete draftEdits[id]; delete draftWhy[id]; delete draftSubjects[id];
     render(); return;
   }
 
@@ -895,6 +906,10 @@ document.addEventListener("click", e=>{
     const ta = cardEl.querySelector("[data-draft]");
     const text = ((ta ? ta.value : (lead.outreach.sent ?? lead.outreach.draft)) || "").trim();
     if(!text){ alert("The message is empty — nothing to send."); return; }
+    // Subject only matters for email; on other channels keep whatever was already stored.
+    const subject = channel==="email"
+      ? ((cardEl.querySelector("[data-subject]")?.value ?? lead.outreach.subject ?? "").trim() || null)
+      : (lead.outreach.subject ?? null);
     const original = (lead.outreach.draft || "").trim();
     const changed = text !== original;
     const why = (cardEl.querySelector("[data-why]")?.value || "").trim();
@@ -903,7 +918,7 @@ document.addEventListener("click", e=>{
       return;
     }
     const block = {
-      draft: lead.outreach.draft, sent: text, channel, sentOn: today(),
+      draft: lead.outreach.draft, subject, sent: text, channel, sentOn: today(),
       reply: null, repliedOn: null, revisions: (lead.outreach.revisions||0) + (changed?1:0),
     };
     const feedbackEntry = changed ? {

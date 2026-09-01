@@ -147,8 +147,9 @@ Each lead's `outreach` block records what actually went out and what came back:
 | Field | Meaning |
 |---|---|
 | `draft` | Claude's message. Never overwritten — it's the baseline for the edit delta. |
+| `subject` | Email subject line (optional; email only). Held to the same no-pricing / no-banned-phrase bar as the body. |
 | `sent` | The exact text Angela sent. Her signature (see constraints above). |
-| `channel` | `"email"` or `"instagram"` — how it went out. |
+| `channel` | `"email"`, `"instagram"`, or `"phone"` — how it went out. |
 | `sentOn` | `YYYY-MM-DD` — anchors the two-week reply clock. |
 | `reply` | `"replied"` or `"none"` — set explicitly by Angela. |
 | `repliedOn` | `YYYY-MM-DD` when she marked it replied. |

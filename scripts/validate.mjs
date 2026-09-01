@@ -16,7 +16,7 @@ const GAP_TYPES = ['No website', 'Broken links', 'No menu online', 'Weak / outda
 const TIERS = ['routing', 'static', 'absence'];
 const VERDICTS = ['unverified', 'confirmed', 'wrong', 'partial'];
 const IG_STATUS = ['active-est', 'handle-found', 'unconfirmed', 'personal-account-only', 'not-found'];
-const CHANNELS = ['email', 'instagram'];
+const CHANNELS = ['email', 'instagram', 'phone'];
 const REPLY = ['replied', 'none'];
 const PRIORITIES = ['high', 'medium', 'low', 'skip'];
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
@@ -84,8 +84,9 @@ for (const l of leads) {
     }
   }
 
-  // Outreach constraints from rules/outreach-voice.md.
-  for (const field of ['draft', 'sent']) {
+  // Outreach constraints from rules/outreach-voice.md. The email subject line is held to
+  // the same no-pricing / no-banned-phrase bar as the body.
+  for (const field of ['draft', 'sent', 'subject']) {
     const text = l.outreach?.[field];
     if (!text) continue;
     const lower = text.toLowerCase();
