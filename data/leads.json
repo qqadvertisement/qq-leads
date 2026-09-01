@@ -29,13 +29,14 @@
     "score": 4,
     "demoAngle": "Screenshot the current site on a phone next to a mobile-first rebuild of the same menu — the pinch-and-zoom is the whole pitch.",
     "outreach": {
-      "draft": "Hey! I went looking for pierogi and ended up on your site on my phone — it loads at full desktop width, so I was pinching and zooming just to read the menu. Anyone checking you out on a phone before dinner hits that same wall, and most of them back out to the next result instead of fighting with it. I build small sites for Chicago restaurants that read properly on a phone, plus a little game regulars play to win a free dish that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like on a phone — mind if I send it over?",
+      "draft": "Hey! Our team's always hunting down the city's best pierogi, and Staropolska keeps coming up. I pulled your site up on my phone and it loads at full desktop width, so I was pinching and zooming just to read the menu — and most people checking you out before dinner hit that same wall and back out to the next result instead of fighting with it. We build phone-first sites for Chicago restaurants, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free plate that quietly builds you a list of people to bring back. Want us to mock up what yours could look like on a phone?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Staropolska's site makes people pinch-and-zoom on a phone"
     },
     "status": "New",
     "caveats": [
@@ -74,13 +75,14 @@
     "score": 4,
     "demoAngle": "Show the Google result and the browser tab reading \"Your Site Title\" side by side with the corrected version — a ten-second fix that proves competence and opens the door.",
     "outreach": {
-      "draft": "Hey! Came across the new spot on Webster and went to pull up your hours — the site works fine, but the browser tab and the Google result both still read \"Your Site Title\" instead of Paper Tiger. It's the Squarespace default that never got filled in, so every link anyone shares of you turns up unnamed, and it's the one thing on the page that makes a brand-new cafe look unfinished. I'm a web guy here in Chicago — I build small sites for cafes and restaurants, plus a little game regulars play to win a free coffee that quietly builds you a list of people to bring back in. Want me to send over what a cleaned-up version looks like?",
+      "draft": "Hey! Our team's always café-hopping around the neighborhood, and Paper Tiger's been on our list since you opened on Webster. I went to pull up your hours and noticed the browser tab and Google both still read \"Your Site Title\" instead of Paper Tiger — the Squarespace default that never got filled in, so for a brand-new café every shared link and search result turns up unnamed, right when first impressions count most. We build custom, made-to-match sites for Chicago cafés, plus a little game regulars play to win a free coffee that quietly builds you a list of people to bring back. We've done a few around the city we'd love to show you. Want us to put together a quick mockup of what yours could look like?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Paper Tiger shows up as “Your Site Title” on Google"
     },
     "status": "New",
     "caveats": [
@@ -118,13 +120,14 @@
     "score": 4,
     "demoAngle": "Screen-record clicking through from the Midway Chamber listing to the Wix error page, then show a working one-pager with the breakfast menu on it.",
     "outreach": {
-      "draft": "Hey! Someone mentioned your fried bologna sandwich so I went looking for the menu, and the site listed for you with the Midway Chamber — cafe63chicago.net — comes up as a Wix error page saying the domain isn't connected. So anyone finding you through that listing lands on an error instead of your breakfast menu, which means lost walk-ins from people who were already looking for you by name. I do websites for Chicago restaurants, plus a small game regulars play for a free breakfast that builds you a customer list you can bring back in later. Happy to put a working one together you can look at — want to see?",
+      "draft": "Hey! Our team's always chasing a good diner breakfast, and Café 63 kept coming up around Garfield Ridge. I clicked the website on your Midway Chamber listing and it dropped me on a Wix error page instead of your site — so anyone following that link to check your hours or menu hits a dead end and usually just picks somewhere else. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free breakfast that quietly grows a list of people to bring back. Want us to put together a one-pager with your breakfast menu on it?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Café 63's website link lands on a Wix error page"
     },
     "status": "New",
     "caveats": [
@@ -162,13 +165,14 @@
     "score": 4,
     "demoAngle": "Build a one-page site with menu, hours and a real domain to replace the Facebook-and-Gmail setup.",
     "outreach": {
-      "draft": "Hey! I was looking for tacos near 47th and went to pull up your menu before heading over — couldn't find a site anywhere, just a Facebook page and a Gmail address. When someone's deciding where to eat and can't find a menu in a few seconds, they usually pick whatever comes up next, even when yours is better. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free taco that quietly builds you a list of customers you actually own. Happy to mock one up so you can see it — want me to send it over?",
+      "draft": "Hey! Our team's always tracking down the city's best tacos, and Varitas keeps landing on the list. I went looking for your menu and hours and only found a Facebook page and a Gmail address — no site of your own — so when someone's deciding where to eat and can't pull you up in a few seconds, they usually just go with whoever they can find. We build clean, phone-first sites for Chicago taquerias, with a few around town we'd love to show you, plus a little game regulars play to win a free taco that quietly builds you a list of people to bring back. Want us to mock up a simple one with your menu and hours?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Taqueria Varitas doesn't turn up with a site of its own"
     },
     "status": "New",
     "caveats": [
@@ -205,13 +209,14 @@
     "score": 3,
     "demoAngle": "Replace the dead Google business.site link with a real one-pager carrying the menu and hours.",
     "outreach": {
-      "draft": "Hey! Went looking for your menu before heading over to 87th, and the website listed for you goes to a Google page that's been shut down — it just returns an error now. Google retired those business sites a while back, so the link sitting in most directories is dead, and anyone following it lands on nothing instead of your fried catfish. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free plate, which quietly builds you a list of people to bring back in. Happy to put a working one together you can look at — want to see?",
+      "draft": "Hey! Our team's always after real soul food, and Jamison's keeps coming up around Auburn Gresham. The website listed for you is an old Google business page that's gone dead — it 404s — so anyone clicking through for your menu or hours lands on nothing and moves on. We build simple, good-looking sites for Chicago restaurants (a few around town we'd love to show you), plus a little game that turns first-timers into regulars with a free plate on the line. Want us to put together a one-pager with the menu and hours?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Jamison's website link is dead"
     },
     "status": "New",
     "caveats": [
@@ -250,13 +255,14 @@
     "score": 4,
     "demoAngle": "Show the domain landing on Menufy’s competitor list, then the same domain pointed at a real menu page.",
     "outreach": {
-      "draft": "Hey! Went to pull up your menu and typed in momtygrill.com — it drops you onto Menufy's generic restaurant search instead of your own site, so you end up looking at a list of other people's places. That one stings, because anyone who got your domain off a flyer or a receipt is browsing your competition instead of your cheesesteaks. I do websites for Chicago restaurants, plus a small game regulars play for a free order that builds you a customer list you can reach out to later. Want me to mock up what yours could look like?",
+      "draft": "Hey! Our team's always on the hunt for a good cheesesteak, and Momty's kept coming up around Chatham. I typed in your domain and it dropped me on a page listing a bunch of other restaurants instead of yours — so someone trying to pull up your menu ends up looking at your competitors. We build phone-first sites for Chicago spots, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free order of wings that quietly builds you a list of people to bring back. Want us to point that domain at a real menu page and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Momty's domain lands people on a list of other restaurants"
     },
     "status": "New",
     "caveats": [
@@ -294,13 +300,14 @@
     "score": 4,
     "demoAngle": "Show the dead domain failing to resolve next to the live one, and propose consolidating both onto a single working site.",
     "outreach": {
-      "draft": "Hey! Read about you turning the old church on 75th into a brunch room and went to look you up — the address listed as your website, rootsoutherncuisine.com, doesn't resolve at all, so it just fails to load. Your working site sits on a different domain, which means anyone following the link from your Facebook page hits a dead end right when the write-ups are sending people your way. I build small sites for Chicago restaurants, plus a little game regulars play to win a free dish that quietly gets you a list of customers you actually own. Happy to put together a fixed version you can look at — mind if I send it over?",
+      "draft": "Hey! Our team's been following the new Roots opening in the old church on 75th — congrats, the Block Club piece was a great read. With the press sending people your way, one thing worth catching: the domain a lot of those links point to doesn't load at all, while your brunch site lives on a different one, so some of that attention lands on a dead page right when it matters most. We build phone-first sites for Chicago restaurants, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free brunch that quietly builds you a list of people to bring back. Want us to get both domains pointed at one working site and show you what it'd look like?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "One of Roots' two domains doesn't load at all"
     },
     "status": "New",
     "caveats": [
@@ -338,13 +345,14 @@
     "score": 4,
     "demoAngle": "One-page site with the mariscos menu as real text plus hours and the BYOB note, replacing the Facebook-only presence.",
     "outreach": {
-      "draft": "Hey! I went looking for your menu after hearing about the aguachile — the only thing listed as your website is your Facebook page, so there's nowhere to actually read what you serve before coming in. When someone's picking a seafood spot and can't pull up a menu in a few seconds, they go with whatever they can read, even when yours is better. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free dish that quietly builds you a list of customers to bring back. Happy to mock one up, no strings — want to see?",
+      "draft": "Hey! Our team's always chasing good mariscos, and La Grulla keeps coming up in Little Village. I went looking for your menu and hours and only turned up a Facebook page standing in for a website — so when someone's deciding where to eat and can't pull you up quickly, they usually go with whoever's easier to find. We're a small Chicago studio that builds restaurant sites made to match the room, with a few nearby we'd happily show you, plus a little game regulars play to win a free dish that quietly grows a list of people to bring back. Want us to mock up a simple one with the mariscos menu, hours, and the BYOB note?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Mariscos La Grulla has no site of its own to find"
     },
     "status": "New",
     "caveats": [
@@ -382,13 +390,14 @@
     "score": 5,
     "demoAngle": "Build a simple one-page site with hours/menu/real domain to replace the directory-only presence.",
     "outreach": {
-      "draft": "Hey! I was looking up Taqueria El Charro to grab your menu before heading over and couldn't find a real website anywhere — just a Facebook link in the neighborhood directory. When someone's deciding where to eat and can't pull up a menu in a few seconds, they usually just tap into whatever shows up next, even if your food's better. I build simple sites for Chicago spots, plus a little game your regulars can play to win something free that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like, no strings — want to see?",
+      "draft": "Hey! Our team's always tracking down the neighborhood's best tacos, and El Charro keeps coming up in Rogers Park. The Rogers Park directory lists a Facebook page where your website should be — so anyone looking for your menu and hours has to dig through social posts instead of just finding them. We build simple, phone-first sites for Chicago taquerias, with a few around town we'd love to show you, plus a little game regulars play to win a free taco that quietly builds you a list of people to bring back. Want us to put together a clean one-pager with your menu and hours?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "El Charro's only “website” is a Facebook link"
     },
     "status": "New",
     "caveats": [
@@ -425,13 +434,14 @@
     "score": 5,
     "demoAngle": "Screen-record the empty search results for their menu, then show a clean single-page mockup.",
     "outreach": {
-      "draft": "Hey! Went looking for Taqueria Hernandez's menu online before stopping by and came up empty — no website listed anywhere, just the Yelp page. That's the kind of thing that costs you the split-second decision: someone scrolling for tacos nearby picks whoever's easiest to check out first. I build simple sites for Chicago spots, plus a little game your regulars can play to win something free that quietly builds you a list of customers to bring back. Happy to put together a free mockup of what yours could look like — want to see?",
+      "draft": "Hey! Our team's always on the taco trail, and Hernandez keeps landing on the list around Rogers Park. When I went looking for your menu online there was no site of your own to find, just listings — so folks deciding where to eat can't pull you up in a few seconds and often go elsewhere. We build custom sites for Chicago spots that actually look like the place, with a few around the city we can show you, and a small game your regulars play for a free taco that builds you a list to bring folks back. Want us to mock up a simple one with your menu and hours?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Taqueria Hernandez is missing from search with its own site"
     },
     "status": "New",
     "caveats": []
@@ -466,13 +476,14 @@
     "score": 4,
     "demoAngle": "Fix the broken online-ordering flow and pair it with a clean menu page.",
     "outreach": {
-      "draft": "Hey! I pulled up CoCo's site to order a banh mi and the whole page just says the site's under maintenance, call to order instead. That's a real wall — a lot of people won't call, they'll just order from whoever's ordering page actually works. I build sites (and fix the ordering part) for Chicago spots, plus a little game your regulars can play to win a free item that quietly builds you a list of customers to bring back. Happy to mock up a working version, no strings — want to see?",
+      "draft": "Hey! Our team's always after a good bowl of pho, and CoCo keeps coming up in Ravenswood. Your menu and prices look great, but the site's banner says it's under maintenance and to order by phone — so anyone who wanted to order online right then just closes the tab, and that's an order you never hear about. We build phone-first sites for Chicago restaurants, with a few around town we'd love to show you, plus a little game regulars play to win a free banh mi that quietly builds you a list of people to bring back. Want us to get the ordering flow working again and show you a clean menu page?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "CoCo's online ordering is stuck in maintenance mode"
     },
     "status": "New",
     "caveats": []
@@ -507,13 +518,14 @@
     "score": 5,
     "demoAngle": "Build the missing site around their Toast ordering page so newcomers get a real front door.",
     "outreach": {
-      "draft": "Hey! Congrats on getting Portage Park Breakfast Place open — looks like it's been a hit so far. I went to check your menu before coming in and all I could find was the Toast ordering page, no actual website. When people are deciding where to grab breakfast, not being able to see the full menu or vibe of the place first can send them to the spot next door instead. I build simple sites for Chicago restaurants, plus a little game your regulars can play to win a free breakfast that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like, no strings — want to see?",
+      "draft": "Hey! Our team's always chasing a great breakfast, and we've been meaning to try your new Portage Park spot since you opened this year. Right now the only thing online is a bare Toast ordering page — there's no real site with your story, menu, and hours — so newcomers checking you out don't get much of a first impression. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free breakfast that quietly grows a list of people to bring back. Want us to build a proper front door around that ordering page and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Portage Park Breakfast Place has no real front door online"
     },
     "status": "New",
     "caveats": []
@@ -548,13 +560,14 @@
     "score": 5,
     "demoAngle": "Screen-record the dead domain failing to load, then show a working mockup.",
     "outreach": {
-      "draft": "Hey! I tried to pull up Iztatl's website to check the menu and the domain doesn't load at all anymore — just comes back as not found. If that's how it looks for me, it's how it looks for anyone searching for you online, and most people won't dig further, they'll just pick the next place that loads. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free dish that quietly builds you a list of customers to bring back. Happy to mock up what a working one could look like — want to see?",
+      "draft": "Hey! Our team's always after good family-run Mexican, and Iztatl keeps coming up in Jefferson Park. The domain that shows up for you in Google doesn't load at all — it just fails — so anyone clicking through for your menu or hours lands on nothing and moves on. We build simple, good-looking sites for Chicago restaurants (a few around town we'd love to show you), plus a little game that turns first-timers into regulars with a free plate on the line. Want us to get a working site up and show you what it'd look like?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Iztatl's website doesn't load at all"
     },
     "status": "New",
     "caveats": []
@@ -586,13 +599,14 @@
     "score": 4,
     "demoAngle": "Fix the three dead 'Order Online' buttons and rebuild that flow.",
     "outreach": {
-      "draft": "Hey! Your site's got a nice look, but the 'Order Online Now' buttons on the homepage don't actually go anywhere — I clicked all three. When someone's ready to order and hits a dead button, most just close the tab and order from wherever works. I build and fix sites for Chicago restaurants, plus a little game your regulars can play to win a free item that quietly builds you a list of customers to bring back. Happy to take a look and mock up a fix, no strings — want to see?",
+      "draft": "Hey! Our team's always tracking down the best tacos around, and La Paz keeps coming up in Belmont Cragin. On your homepage all three \"Order Online\" buttons don't go anywhere when you click them — so someone ready to place an order right then hits a dead button and usually just gives up. We build phone-first sites for Chicago taquerias, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free taco that quietly builds you a list of people to bring back. Want us to get that ordering flow working and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Taqueria La Paz's “Order Online” buttons go nowhere"
     },
     "status": "New",
     "caveats": [
@@ -629,13 +643,14 @@
     "score": 3,
     "demoAngle": "Reclaim/rebuild a real site under their own domain, away from the resale listing.",
     "outreach": {
-      "draft": "Hey! I went to check out Los Vasos Lokos online and the website listed for you is actually up for sale now, not your page anymore — it's been picked up as a domain listing. That means anyone searching for you and clicking through lands somewhere totally unrelated. I build simple sites for Chicago spots, plus a little game your regulars can play to win something free that quietly builds you a list of customers to come back. Happy to mock up what yours could look like, no strings — want to see?",
+      "draft": "Hey! Our team's always after a good raspado on a hot day, and Los Vasos Lokos keeps coming up in Little Village. The domain your Chamber listing points to now redirects to a domain-for-sale page — so anyone following that link to find you lands on a parking page instead of your menu. We build custom sites for Chicago spots that actually look like the place, with a few around the city we can show you, and a small game your regulars play for a free treat that builds you a list to bring folks back. Want us to get a real site up under your own name and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Los Vasos Lokos' domain is parked for resale"
     },
     "status": "New",
     "caveats": [
@@ -672,13 +687,14 @@
     "score": 4,
     "demoAngle": "Replace the auto-generated listing-mill pages with a real owned site.",
     "outreach": {
-      "draft": "Hey! I was trying to find Jamaican Jerk King's menu online and couldn't turn up a real website — just some auto-generated listing pages that aren't really yours. When people can't confirm the menu or hours in a few seconds, they tend to just go with whatever shows up easiest. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free plate that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like, no strings — want to see?",
+      "draft": "Hey! Our team's always chasing good jerk, and Jamaican Jerk King keeps coming up around Bronzeville. When I searched for your site, everything that came up was an auto-generated listing page, not something you own — so customers can't tell what's really you, and your menu and hours get buried. We build phone-first sites for Chicago restaurants, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free plate that quietly builds you a list of people to bring back. Want us to build you a real site of your own and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Jamaican Jerk King only shows up on auto-generated pages"
     },
     "status": "New",
     "caveats": [
@@ -715,13 +731,14 @@
     "score": 4,
     "demoAngle": "Quick fix of the placeholder page title, plus a polish pass on the just-launched site.",
     "outreach": {
-      "draft": "Hey, congrats on opening Taan! I checked out the site and noticed the browser tab still says 'Your Site Title' — looks like the template default never got swapped out. Small thing, but it's the kind of detail that makes people wonder if the rest of the page is finished too, right when you need first impressions to land. I build clean sites for Chicago restaurants, plus a little game regulars can play to win a free dish that quietly builds you a list of customers to bring back. Happy to put together a mockup, no strings — want to see?",
+      "draft": "Hey! Our team's been excited about a chef-driven Thai wine bar opening in Humboldt Park — congrats on the launch. One quick thing while it's brand new: the browser tab and Google both still read \"Your Site Title,\" the site builder's default that never got filled in, so every link anyone shares of you right now turns up unnamed. We build phone-first sites matched to a spot's vibe for Chicago restaurants, with a few around town we'd love to show you, plus a little game regulars play to win a free dish that quietly builds you a list of people to bring back. Want us to fix that and show you a quick polish of the new site?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Taan's browser tab still says “Your Site Title”"
     },
     "status": "New",
     "caveats": [
@@ -758,13 +775,14 @@
     "score": 5,
     "demoAngle": "Build the menu + hours page they're missing, given how many regulars they already have.",
     "outreach": {
-      "draft": "Hey! I tried to pull up Sunrise Cafe's menu online before stopping in and couldn't find a website anywhere, just the Yelp page. With as many regulars as you clearly have, it seems like a lot of first-timers are probably missing you because there's nowhere to check the menu first. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free breakfast that quietly builds you a list of customers to bring back. Happy to mock up what yours could look like, no strings — want to see?",
+      "draft": "Hey! Our team's always after a solid brunch, and Sunrise keeps coming up in Ukrainian Village. You've clearly got a crowd, hundreds of reviews, but there's no site of your own to find — just aggregator pages — so all those regulars have nowhere to check your real menu and hours. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free coffee that quietly grows a list of people to bring back. Want us to put together your menu-and-hours page and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Sunrise Cafe has 360 reviews and no site of its own"
     },
     "status": "New",
     "caveats": [
@@ -801,13 +819,14 @@
     "score": 5,
     "demoAngle": "Screen-record the 404 from the press link, then show a working mockup landing page.",
     "outreach": {
-      "draft": "Hey! Saw the recent write-ups on Semaphore Cafe and went to check out the site they linked — semaphorecafe.com comes back as page not found. That's rough timing, since anyone reading that piece right now and clicking through hits a dead end instead of your menu. I build simple sites for Chicago spots, plus a little game your regulars can play to win a free coffee that quietly builds you a list of customers to bring back. Happy to mock up a working version, no strings — want to see?",
+      "draft": "Hey! Our team's been reading all the Semaphore coverage lately, WTTW and The Infatuation, and had to say hi. Here's the catch: the link those articles point to is 404ing on every page right now, so a lot of that attention lands on a broken site instead of your menu. We build phone-first sites for Chicago cafés, with a few around town we'd love to show you, plus a little game regulars play to win a free coffee that quietly builds you a list of people to bring back. Want us to get a working page up and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Semaphore's site 404s — right as the press links roll in"
     },
     "status": "New",
     "caveats": [
@@ -841,13 +860,14 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Went looking for your new place after hearing you'd moved to Hubbard St, and your site sent me to the old Wentworth address in Chinatown. It's the only address on there, so I figured you'd want to know. Anyone who Googles you and drives to Chinatown probably doesn't try a second time. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Happy to put together a fixed version you can look at, want me to?",
+      "draft": "Hey! Our team's always after real Hunan cooking, and yours keeps coming up now that you've moved to Hubbard St. Quick heads-up: your site still lists the old Chinatown address as the only one, and the menu isn't really on there — so someone looking you up could head to the wrong place or not find the food at all. We build phone-first sites for Chicago restaurants, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free dish that quietly builds you a list of people to bring back. Want us to get the new address and menu up properly and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 1
+      "revisions": 1,
+      "subject": "Hunan Cuisine's site still lists your old Chinatown address"
     },
     "status": "New",
     "caveats": [],
@@ -880,13 +900,14 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Saw the old Wave Sushi space was open again and looked you up. Your site's still on the Wix starter template though, it lists an address in San Francisco. Anyone who lands there before they find your Toast link probably figures you aren't open yet. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free dish, which quietly gets you a list of customers you actually own. Happy to mock up what yours could look like if you want to see it.",
+      "draft": "Hey! Our team's always after a good izakaya, and Jomon keeps coming up in Bucktown. Right now your site is still the Wix demo template — it shows a San Francisco address, a placeholder phone number, and links to Wix's own social pages instead of yours — so anyone landing there gets someone else's details entirely. We're a small Chicago studio that builds restaurant sites made to match the room, with a few nearby we'd happily show you, plus a little game regulars play to win a free dish that quietly grows a list of people to bring back. Want us to build you a real one and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 1
+      "revisions": 1,
+      "subject": "Jomon's site is still the Wix demo — wrong address and all"
     },
     "status": "Hold",
     "caveats": [
@@ -920,13 +941,14 @@
     "score": 5,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Read the Axios piece on your lagman and went to look up your menu, which is how I ended up here. Couldn't really read it though, it's all photos, so none of the dish names are text anywhere. Means when someone searches for lagman in Chicago, yours can't come up. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Happy to put together a version you can look at if you want.",
+      "draft": "Hey! Our team's always excited to find Uyghur food, and Kashgar keeps coming up in Albany Park. A couple of things on your site are still the template's defaults — placeholder text in the contact form and a phone number with an out-of-state area code — and the menu's only there as photos, so the dishes don't show up in search. We build phone-first sites for Chicago restaurants, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free dish that quietly builds you a list of people to bring back. Want us to clean that up, put the menu in real text, and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 1
+      "revisions": 1,
+      "subject": "Kashgar's site still has the template's placeholder text"
     },
     "status": "New",
     "caveats": []
@@ -958,13 +980,14 @@
     "score": 5,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Heard someone finally took over the old Won Kow space, and went looking for your hours and what the AYCE includes. Couldn't find a site anywhere, just Yelp, so I gave up, and I'd guess other people do too. I do websites for Chicago restaurants, plus a small game regulars play for a free plate, which builds you a customer list you can bring back in later. Happy to put something together you can look at, no pressure either way.",
+      "draft": "Hey! Our team's always after good barbecue, and Wasai keeps coming up in Chinatown. When I went looking for your menu and hours there was no site of your own, just a couple of third-party listings — so folks deciding where to eat can't pull you up quickly and often go elsewhere. We build custom sites for Chicago spots that actually look like the place, with a few around the city we can show you, and a small game your regulars play for a free plate that builds you a list to bring folks back. Want us to mock up a simple one with your menu and hours?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Wasai BBQ has no site of its own to find"
     },
     "status": "New",
     "caveats": []
@@ -1078,13 +1101,14 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Saw you're switching Zimi's over to Balkan food and went to look at the menu. There isn't one on the site, and the Order Online button goes to a 404, it's still pointing at the old zimispizzaandgrill address. Right now the phone number is about the only thing on there that works. I do websites for Chicago restaurants, plus a small game regulars play for a free dish, which builds you a customer list you can bring back in later. Want me to mock up what the new one could look like?",
+      "draft": "Hey! Our team's always after a good neighborhood spot, and Zimi's keeps coming up in Lincoln Square. The one button on your homepage, \"Order Online,\" points at an old page that 404s — and there's no menu on the site itself — so someone ready to order hits a dead end and usually just moves on. We build phone-first sites for Chicago restaurants, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free dish that quietly builds you a list of people to bring back. Want us to get ordering working, put your menu on the page, and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 1
+      "revisions": 1,
+      "subject": "Zimi's only button, “Order Online,” leads to a 404"
     },
     "status": "New",
     "caveats": [
@@ -1118,13 +1142,14 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Went looking for you after the move downtown and couldn't find a website anywhere, everything runs through Toast and Facebook. With the Food Network feature and 490-odd reviews pointing at you, that's a lot of people landing somewhere you don't own. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free jibarito, which quietly gets you a list of customers you actually own. Happy to put something together you can look at, want me to?",
+      "draft": "Hey! Our team's always after a great jibarito, and yours keeps coming up in the Loop. Right now the only thing online is a Toast ordering page whose own \"Website\" button just loops back to Toast — so there's no real site with your story, menu, and hours for people to find. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free jibarito that quietly grows a list of people to bring back. Want us to build you a real one and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "The Jibarito Stop only lives on a Toast page"
     },
     "status": "New",
     "caveats": [
@@ -1158,13 +1183,14 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Followed you over from the Richland Center food court and went looking for the new place. Couldn't find a site, just your Chowbus page, so the menu lives on someone else's platform and nothing of yours turns up in a search. The old regulars will find you, new people mostly won't. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free dish, which quietly builds you a list of people to bring back in. Want to see a mockup?",
+      "draft": "Hey! Our team's always chasing good Sichuan, and yours keeps coming up in Bridgeport. When I went looking for you there's no site of your own — the whole menu lives on a third-party ordering page that links back to nothing of yours — so people can't easily find your hours or reach you directly. We build simple, good-looking sites for Chicago restaurants (a few around town we'd love to show you), plus a little game that turns first-timers into regulars with a free dish on the line. Want us to build you a real site with the menu and hours and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Szechuan Bistro's menu only lives on Chowbus"
     },
     "status": "New",
     "caveats": [
@@ -1275,13 +1301,14 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Went looking for the new Devon spot and the only site that comes up still lists just Diversey. Anyone searching for the Devon location would come away thinking you're only in Lakeview. I'm a web guy here in Chicago, I build small sites for restaurants plus a little game regulars play to win a free plate, which quietly builds you a list of people to bring back in. Happy to mock up one with both locations on it if you want a look.",
+      "draft": "Hey! Our team's always after good shawarma, and yours keeps coming up now that you're on Devon. Right now your only web page is a bare Toast template that still lists just the old Lakeview address — so someone looking you up could head to the wrong location entirely. We build phone-first sites for Chicago restaurants, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free plate that quietly builds you a list of people to bring back. Want us to get the Devon location and your menu up properly and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 1
+      "revisions": 1,
+      "subject": "Shawarma & Grill's site only lists the old Lakeview address"
     },
     "status": "New",
     "caveats": []
@@ -1313,13 +1340,14 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Heard there's a burger counter inside the Emerald Isle and went to look at the menu. It's one big image, so on my phone I was zooming around trying to read it, and none of the burgers turn up in a search either. Seems a shame given the monthly rotation. I do websites for Chicago restaurants, plus a small game regulars play for a free burger, which builds you a customer list you can bring back in later. Want me to mock up a version that reads properly on a phone?",
+      "draft": "Hey! Our team's always after a great burger, and Brennan's keeps coming up in Edison Park. Your menu is posted as a single image, so on a phone it's pinch-and-zoom with no readable text — and because Google can't read any of it, none of your burgers show up when people search for them. We build phone-first sites for Chicago restaurants, with a few around town we'd love to show you, plus a little game regulars play to win a free burger that quietly builds you a list of people to bring back. Want us to put the menu up as real text and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 1
+      "revisions": 1,
+      "subject": "Brennan's whole menu is one image no phone can read"
     },
     "status": "New",
     "caveats": []
@@ -1351,13 +1379,14 @@
     "score": 4,
     "demoAngle": null,
     "outreach": {
-      "draft": "Hi! Read about the BYOB at the Italian cultural center and went looking for the menu. Your page on the Sentieri site has the hours and address but no menu at all, and the reviews keep naming dishes like the sartu di riso that I couldn't find anywhere. I build websites for restaurants around Chicago, and a little game your regulars can play to win a free plate, which quietly gets you a list of customers you actually own. Happy to put a menu page together you can look at.",
+      "draft": "Hey! Our team's always after real Italian, and L'Angolo keeps coming up in Rogers Park. Your page has the story, address, and hours but no menu at all — and no way to book, even though Sundays are reservation-only — so someone deciding on dinner can't see the food or grab a table and often moves on. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free dish that quietly grows a list of people to bring back. Want us to build a proper page with the menu and a reservation link and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 1
+      "revisions": 1,
+      "subject": "L'Angolo's page has everything but the menu"
     },
     "status": "New",
     "caveats": []
@@ -1520,13 +1549,14 @@
     "score": 4,
     "demoAngle": "Search \"Mi Corazon Cafe Pilsen\" on a phone and screenshot what comes back — a Facebook page and three scraped listing pages — next to a one-page site with the real hours and the horchata latte on it.",
     "outreach": {
-      "draft": "Hey! I went looking for the horchata latte everyone in Pilsen keeps mentioning and ended up on your Instagram — then tried to find a site with your hours and the full menu and there just isn't one, only a Facebook page and a few auto-generated listing pages with your name on them. Those pages are written by strangers scraping your info, so the hours people find are often wrong, and someone who shows up on a Monday to a closed door usually doesn't try again. I build small sites for Chicago restaurants matched to the actual room and vibe, plus a little game your regulars can play to win a free drink that quietly builds you a list of people to bring back in. Want to see what yours could look like?",
+      "draft": "Hey! Our team's always after a good Mexican brunch, and Mi Corazón keeps coming up in Pilsen. You're only open Wednesday to Sunday and cash-only, but there's no site of your own, just a Facebook page — so the exact things someone needs to know before heading over are the hardest to find. We build phone-first sites for Chicago cafés, with a few around town we'd love to show you, plus a little game regulars play to win a free coffee that quietly builds you a list of people to bring back. Want us to put your hours and menu on a simple page and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Mi Corazón's hours are nowhere a customer can find them"
     },
     "status": "New",
     "caveats": [
@@ -1565,13 +1595,14 @@
     "score": 4,
     "demoAngle": "Screenshot the footer with another restaurant's name in the copyright line, next to the same footer corrected. It is a small fix that proves competence and makes the bigger rebuild an easy yes.",
     "outreach": {
-      "draft": "Hey! Went looking for your rib tips, found the site, and scrolled to the bottom for the phone number — the footer still reads \"© 2023 by Luna Tapas,\" which is the demo restaurant the Wix template came with, and there's a 123-456-7890 placeholder sitting right next to your real number. Someone deciding where to order sees another restaurant's name on your page and a phone number that goes nowhere, and that is usually enough to make them wonder whether you're still open and pick somewhere else. I make sites for Chicago spots that look like the food actually tastes, plus a little game regulars play to win a free plate that quietly builds you a list of customers to bring back. Mind if I send over a cleaned-up version?",
+      "draft": "Hey! Our team's always after real barbecue, and Taylormade keeps coming up in Englewood. Your site footer still carries another restaurant's name in the copyright line and a placeholder phone number next to your real one, leftover demo content — which makes a spot people love look unfinished. We build phone-first sites for Chicago restaurants, and we've done a few around town we'd love to show you, plus a little game regulars play to win a free plate that quietly builds you a list of people to bring back. Want us to clean that up and show you a bigger refresh?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Taylormade Que's site still says “© Luna Tapas”"
     },
     "status": "New",
     "caveats": [
@@ -1610,13 +1641,14 @@
     "score": 4,
     "demoAngle": "A one-page site whose top line is the 4:30am open time and the hand-made tortillas — the two things the delivery-app listings bury.",
     "outreach": {
-      "draft": "¡Hola! Los busqué por internet para ver a qué hora abren y no encontré una página suya, solo Yelp y las apps de entrega, que ponen sus horarios y su información sin preguntarles. Ustedes abren a las cuatro y media de la mañana, que es justo lo que alguien quiere confirmar antes de salir de casa, y ahorita la respuesta que encuentra la escribió otra persona y muchas veces está mal. Hago páginas sencillas para restaurantes de Chicago, con el estilo del lugar, y además un juego que los clientes juegan para ganarse algo gratis y que a ustedes les va armando una lista de gente para hacerla volver. ¿Les mando un ejemplo de cómo se vería la suya?",
+      "draft": "Hey! Our team's always after handmade tamales, and Magos keeps coming up in Belmont Cragin. You open crazy early for the breakfast crowd, but there's no site of your own — the neighborhood directory lists you with no website at all — so \"are they open yet\" is the one question nobody can answer online. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free taco that quietly grows a list of people to bring back. Want us to put your hours and menu on a simple page and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Magos opens before dawn — and nowhere online says so"
     },
     "status": "New",
     "caveats": [
@@ -1655,13 +1687,14 @@
     "score": 3,
     "demoAngle": "A single page that puts the weekly specials where a customer actually looks, instead of buried in a Grubhub description nobody updates.",
     "outreach": {
-      "draft": "¡Hola! Alguien me habló del chile relleno y los busqué para ver los especiales de la semana — no encontré página suya, solo Yelp y las apps de entrega. El problema es que esos especiales cambian y esas páginas no, así que la gente llega esperando algo que ya no está, o de plano no se entera. Hago páginas sencillas para restaurantes de Chicago, hechas con el estilo del lugar, y también un juego que los clientes juegan para ganarse algo gratis y que a ustedes les arma una lista de gente para hacerla volver. ¿Les gustaría ver un ejemplo?",
+      "draft": "Hey! Our team's always after a good taco Tuesday, and El Mercadito keeps coming up in Belmont Cragin. Your day-of-week specials only live on third-party pages that change without anywhere of your own to announce them — so regulars can't easily tell what's on today. We build custom sites for Chicago spots that actually look like the place, with a few around the city we can show you, and a small game your regulars play for a free taco that builds you a list to bring folks back. Want us to put your specials and hours on a simple page and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "El Mercadito's weekly specials live where nobody looks"
     },
     "status": "New",
     "caveats": [
@@ -1700,13 +1733,14 @@
     "score": 4,
     "demoAngle": "One page that answers \"open this weekend?\" and shows the Sunday buffet — the whole business compressed into the question people are actually asking.",
     "outreach": {
-      "draft": "Hey! I heard about the Sunday buffet and went looking for what's on it this week — there's no site to land on, just a Facebook page and a handful of scraped listing pages with your name on them. The catch is those pages list weekday hours you don't keep, so someone can turn up on a Tuesday to a locked door and write you off, and you never find out it happened. I build simple sites for Chicago restaurants that fit the place they're for, plus a little game regulars play to win a free plate that quietly builds you a list of people to bring back. Happy to put together what yours could look like — want to see?",
+      "draft": "Hey! Our team's always after good soul food, and Salaam keeps coming up in Auburn Gresham. You're open just Saturday and Sunday with the Sunday buffet as the draw, but there's no site of your own, just listings and auto-generated pages — so \"are they open today\" is exactly the thing a customer can't find. We build phone-first sites for Chicago restaurants, with a few around town we'd love to show you, plus a little game regulars play to win a free plate that quietly builds you a list of people to bring back. Want us to put your weekend hours and the buffet on a simple page and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Salaam's Sunday buffet is hard to find online"
     },
     "status": "New",
     "caveats": [
@@ -1745,13 +1779,14 @@
     "score": 4,
     "demoAngle": "Puerto Rican food is thin on the ground in Brighton Park — a site that says what it is and where it is would own that search outright.",
     "outreach": {
-      "draft": "¡Hola! Andaba buscando comida boricua por Brighton Park y llegué a ustedes, pero cuando quise ver el menú completo no había página suya, solo Yelp y las apps de pedidos. Ahí sale lo que otra gente escribió sobre ustedes, no lo que ustedes dirían, y quien busca \"comida puertorriqueña cerca de mí\" pasa de largo porque no encuentra nada que le diga claramente qué son. Hago páginas sencillas para restaurantes de Chicago, con el estilo del sitio, y además un juego que los clientes juegan para ganarse algo gratis y que a ustedes les va armando una lista de gente para hacerla volver. ¿Les mando un ejemplo de cómo se vería?",
+      "draft": "Hey! Our team's always after Puerto Rican food, and Que Rico keeps coming up in Brighton Park. There's no site of your own right now — ordering runs through third-party apps — so when someone searches for Puerto Rican food nearby, there's nothing of yours to find, even though there's not much competition for it. We build simple, good-looking sites for Chicago restaurants (a few around town we'd love to show you), plus a little game that turns first-timers into regulars with a free dish on the line. Want us to build you a simple one and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
-      "revisions": 0
+      "revisions": 0,
+      "subject": "Que Rico could own “Puerto Rican food Brighton Park”"
     },
     "status": "New",
     "caveats": [
