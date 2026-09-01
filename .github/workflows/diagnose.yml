@@ -124,14 +124,18 @@ jobs:
                           evidenceTier ("routing"|"static"|"absence"), types (optional array) },
                    whyNow: { text, sourceUrl },
                    instagram: { handle, status },
+                   contact: { phone, email },
                    score (1-5, integer),
                    demoAngle,
-                   outreach: { draft },
+                   outreach: { draft, subject },
                    caveats: [ ... ]
                  }
-               Follow rules/outreach-voice.md for the draft: no pricing, no invented owner
-               names, none of the banned phrases. Set evidenceTier honestly — routing is
-               the highest-risk claim.
+               Follow rules/outreach-voice.md for the draft AND the email subject line:
+               no pricing, no invented owner names, none of the banned phrases. Set
+               evidenceTier honestly — routing is the highest-risk claim. For contact,
+               use a real phone/email from the restaurant's own listing or site when you
+               can find one, null when you can't — never a site-builder placeholder like
+               "123-456-7890", "info@mysite.com", or an out-of-state area code.
             4. If you genuinely cannot diagnose a restaurant (can't find it, no evidence
                of any gap, or it doesn't fit the ICP), set its "status" to "failed" and
                write a short, honest "error" string saying why. Leave "result" null.
