@@ -291,5 +291,18 @@
     "generalizes": true,
     "proposedRule": "",
     "ruleStatus": "proposed"
+  },
+  {
+    "id": "fb-2026-09-01-rthw",
+    "date": "2026-09-01",
+    "leadId": "2026-08-20-thai-me-up-cafe",
+    "kind": "gap-verdict",
+    "verdict": "wrong",
+    "claimed": null,
+    "actual": "the website exist but it is not landing well. https://thaimeupcafe.toast.site/menu/thai-me-up-cafe-608-w-barry-ave",
+    "reason": "the website exist but it is not landing well. https://thaimeupcafe.toast.site/menu/thai-me-up-cafe-608-w-barry-ave",
+    "generalizes": true,
+    "proposedRule": "",
+    "ruleStatus": "proposed"
   }
 ]
