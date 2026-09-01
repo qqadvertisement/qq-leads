@@ -217,7 +217,8 @@
     "caveats": [
       "ICP fit is questionable and this is Angela’s call, not mine: review scores are very low across platforms (Yelp 2.0/5 from 63 reviews, TripAdvisor 1.3/5 and ranked #5,209 of 5,218 Chicago restaurants). The \"can plausibly afford a retainer\" criterion is doubtful. Scored 3 for that reason.",
       "Instagram handle came from a domain-restricted search, not from loading the profile."
-    ]
+    ],
+    "priority": "skip"
   },
   {
     "id": "2026-08-27-momtys-grill",
