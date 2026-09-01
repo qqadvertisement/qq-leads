@@ -1352,7 +1352,8 @@
       "subject": "Brennan's whole menu is one image no phone can read"
     },
     "status": "New",
-    "caveats": []
+    "caveats": [],
+    "priority": "skip"
   },
   {
     "id": "2026-08-20-l-angolo-italiano",
