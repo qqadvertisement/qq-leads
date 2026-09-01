@@ -94,7 +94,7 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # Same reasoning as weekly-research.yml: run the strongest model, and hand it the
           # tools it needs to read the repo, browse, run node, and edit the one JSON file.
-          claude_args: "--model claude-opus-5 --allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 40"
+          claude_args: "--model claude-opus-5 --allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 60"
           prompt: |
             Run on-demand restaurant diagnoses for QQ Studio.
 
