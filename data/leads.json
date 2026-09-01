@@ -850,7 +850,8 @@
       "revisions": 1
     },
     "status": "New",
-    "caveats": []
+    "caveats": [],
+    "priority": "medium"
   },
   {
     "id": "2026-08-20-jomon-sushi-and-izakaya",
