@@ -213,14 +213,22 @@ the web, and has no model. So the page only ever writes a *request*:
 Diagnose view  ──►  appends {status:"requested"} to data/diagnoses.json
                          │  (direct commit via Angela's token — the same
                          ▼   write-path verdicts and outreach already use)
-                 .github/workflows/diagnose.yml  (triggers on that push)
+                 diagnose.yml `relay` job  (triggers on that push)
+                         │  claude-code-action rejects the "push" event, so this job
+                         ▼  just re-fires the workflow as a workflow_dispatch
+                 diagnose.yml `diagnose` job  (workflow_dispatch — an event the action accepts)
                          │  runs claude-code-action, same rules, ONE restaurant
                          ▼
                  fills in result, sets status "done"/"failed", commits back to main
-                         │  (GITHUB_TOKEN commit — does NOT re-trigger the workflow)
+                         │  (GITHUB_TOKEN push — does NOT re-trigger the relay)
                          ▼
                  Diagnose view shows it (Angela hits Refresh) — UNVERIFIED, like any lead
 ```
+
+The two-job hop exists because `claude-code-action` only accepts a handful of events
+(`workflow_dispatch`, `schedule`, comment/PR events) and errors on `push`. A
+`workflow_dispatch` **always** starts a run even when fired with the built-in
+`GITHUB_TOKEN`, so the relay needs no personal access token.
 
 Diagnoses live in their **own view and their own file** (`data/diagnoses.json`), separate
 from the leads board. They are machine output, so the same honesty bar applies: a finished
