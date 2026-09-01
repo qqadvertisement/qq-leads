@@ -92,6 +92,11 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # The `relay` job dispatches this run with the built-in GITHUB_TOKEN, so the
+          # triggering actor is github-actions[bot]. claude-code-action blocks bot-initiated
+          # runs by default; allow our own relay bot through (nothing else can dispatch this
+          # workflow without repo write access).
+          allowed_bots: "github-actions"
           # Same reasoning as weekly-research.yml: run the strongest model, and hand it the
           # tools it needs to read the repo, browse, run node, and edit the one JSON file.
           claude_args: "--model claude-opus-5 --allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 60"
