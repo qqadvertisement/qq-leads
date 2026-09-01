@@ -304,5 +304,18 @@
     "generalizes": true,
     "proposedRule": "",
     "ruleStatus": "proposed"
+  },
+  {
+    "id": "fb-2026-09-01-tuzw",
+    "date": "2026-09-01",
+    "leadId": "2026-08-20-pitch-and-pour-supper-club",
+    "kind": "gap-verdict",
+    "verdict": "wrong",
+    "claimed": null,
+    "actual": "the website exist but it is not landing well",
+    "reason": "the website exist but it is not landing well",
+    "generalizes": true,
+    "proposedRule": "",
+    "ruleStatus": "proposed"
   }
 ]
