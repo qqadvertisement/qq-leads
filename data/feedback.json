@@ -357,5 +357,18 @@
     "generalizes": true,
     "proposedRule": "",
     "ruleStatus": "proposed"
+  },
+  {
+    "id": "fb-2026-09-01-21ee",
+    "date": "2026-09-01",
+    "leadId": "2026-08-24-sunrise-cafe",
+    "kind": "gap-verdict",
+    "verdict": "wrong",
+    "claimed": "TripAdvisor's own website field fetched directly and confirmed empty. Only third-party menu aggregators plus a Facebook page exist.",
+    "actual": "there is website just weak",
+    "reason": "there is website just weak",
+    "generalizes": true,
+    "proposedRule": "",
+    "ruleStatus": "proposed"
   }
 ]
