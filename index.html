@@ -123,6 +123,18 @@ h1{font-size:clamp(28px,4vw,40px);font-weight:800;letter-spacing:-.01em;margin-b
 .verdictnote.v-partial .vlabel-inline{color:var(--warn)}
 .field{font-size:13px;line-height:1.5}
 .field .k{color:var(--ink-muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:2px}
+/* Contact — clickable IG/website/phone/email, plus inline add-or-edit */
+a.chip-link{text-decoration:none;cursor:pointer}
+a.chip-link:hover{filter:brightness(1.08)}
+.contact{border-top:1px dashed var(--border);padding-top:12px;margin-top:2px}
+.contact .vlabel{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted);margin-bottom:8px}
+.clinks{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.clink{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;text-decoration:none;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:4px 11px;white-space:nowrap}
+.clink:hover{border-color:var(--brand);color:var(--brand)}
+.clink .ck{color:var(--ink-muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em;font-size:10px}
+.cedit{display:flex;gap:6px;flex-wrap:wrap}
+.cinput{flex:1;min-width:130px;font:inherit;font-size:12.5px;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:8px;padding:7px 10px}
+.cinput::placeholder{color:var(--ink-muted)}
 .caveat{font-size:12px;color:var(--serious);background:color-mix(in srgb,var(--serious) 10%,transparent);border-radius:7px;padding:7px 10px;line-height:1.5}
 details{font-size:13px}
 details summary{cursor:pointer;color:var(--brand);font-weight:600;font-size:12.5px;list-style:none}
@@ -398,7 +410,17 @@ const draftWhy      = {};   // leadId -> why it was revised
 const draftNotes    = {};   // leadId -> verification note
 const draftPriority = {};   // leadId -> high | medium | low | skip | null
 const draftGapTypes = {};   // leadId -> array of gap-type strings
+const draftContact  = {};   // leadId -> { phone, email } staged edits
 let filters = { run:"All", verify:"All", gap:"All", outreach:"All", priority:"All", search:"" };
+
+// Contact (phone/email Angela can add or fix from the card). IG + website come straight
+// from the lead; phone/email are stageable and saved with the card's one Save button.
+const committedContact = l => ({ phone: l.contact?.phone || "", email: l.contact?.email || "" });
+const curContact = l => (draftContact[l.id] ?? committedContact(l));
+// Handles in the data sometimes carry a note ("@foo (unconfirmed)"); link only the handle token.
+const igUrl = h => "https://instagram.com/" + ((String(h || "").replace(/^@/, "").match(/[A-Za-z0-9._]+/) || [""])[0]);
+const siteUrl = w => w ? "https://" + String(w).replace(/^https?:\/\//, "").replace(/\/+$/, "") : "";
+const telHref = p => "tel:" + String(p || "").replace(/[^\d+]/g, "");
 
 // ---- Priority (Angela's own outreach ordering) ---------------------------
 // Her preference, separate from the machine's fit score. "skip" = a restaurant she's
@@ -420,6 +442,10 @@ function cardDirty(l){
   if(draftNotes[id]!==undefined && draftNotes[id]!==(l.gap.verification.note||"")) return true;
   if(draftPriority[id]!==undefined && draftPriority[id]!==(l.priority??null)) return true;
   if(draftGapTypes[id]!==undefined && !arrEq(draftGapTypes[id], committedTypes(l))) return true;
+  if(draftContact[id]!==undefined){
+    const c0 = committedContact(l), c1 = draftContact[id];
+    if(c1.phone!==c0.phone || c1.email!==c0.email) return true;
+  }
   return false;
 }
 function priorityMatch(l, f){
@@ -680,6 +706,27 @@ function gapChip(t){
   return `<span class="chip" style="color:var(${g.v});background:color-mix(in srgb,var(${g.f||g.v}) 14%,transparent)"><span class="swatch" style="background:var(${g.v})"></span>${esc(t)}</span>`;
 }
 
+// Contact links (act) + phone/email inputs (edit). IG and website come from the lead;
+// phone/email stage into draftContact and commit with the card's Save button.
+function contactBlock(l){
+  const c = curContact(l);
+  const site = l.website ? String(l.website).replace(/^https?:\/\//,"").replace(/\/+$/,"") : "";
+  const igHandle = l.instagram.handle ? l.instagram.handle.replace(/^@/,"") : "";
+  const links = [];
+  if(site) links.push(`<a class="clink" href="${esc(siteUrl(site))}" target="_blank" rel="noopener"><span class="ck">Site</span>${esc(site)} ↗</a>`);
+  if(igHandle) links.push(`<a class="clink" href="${igUrl(igHandle)}" target="_blank" rel="noopener"><span class="ck">IG</span>@${esc(igHandle)} ↗</a>`);
+  if(c.phone) links.push(`<a class="clink" href="${esc(telHref(c.phone))}"><span class="ck">Call</span>${esc(c.phone)}</a>`);
+  if(c.email) links.push(`<a class="clink" href="mailto:${esc(c.email)}"><span class="ck">Email</span>${esc(c.email)}</a>`);
+  return `<div class="contact">
+    <div class="vlabel">Contact</div>
+    ${links.length ? `<div class="clinks">${links.join("")}</div>` : ""}
+    <div class="cedit">
+      <input class="cinput" data-contact-phone placeholder="Add phone" value="${esc(c.phone)}" inputmode="tel" autocomplete="off">
+      <input class="cinput" data-contact-email placeholder="Add email" value="${esc(c.email)}" inputmode="email" autocomplete="off" spellcheck="false">
+    </div>
+  </div>`;
+}
+
 function card(l){
   const v = draftVerdicts[l.id] ?? l.gap.verification.status;
   const prio = curPriority(l);
@@ -697,7 +744,9 @@ function card(l){
     </div>
     <div class="chiprow" data-chiprow>
       ${types.map(gapChip).join("")}
-      <span class="chip ${ig.c}">${esc(l.instagram.handle || ig.t)}</span>
+      ${l.instagram.handle
+        ? `<a class="chip ${ig.c} chip-link" href="${igUrl(l.instagram.handle)}" target="_blank" rel="noopener">${esc(l.instagram.handle)} ↗</a>`
+        : `<span class="chip ${ig.c}">${esc(ig.t)}</span>`}
       <span class="chip chip-status">${esc(l.status)}</span>
     </div>
     <details class="gaptypes-wrap"${draftGapTypes[l.id]!==undefined?" open":""}><summary>Gap types${types.length>1?` · ${types.length}`:""}</summary>
@@ -719,6 +768,7 @@ function card(l){
       </div>` : `<div class="hint">${esc(TIER_NOTE[l.gap.evidenceTier]||"")}</div>`}
     ${l.whyNow?`<div class="field"><span class="k">Why now</span>${esc(l.whyNow.text)}${l.whyNow.sourceUrl?` <a href="${esc(l.whyNow.sourceUrl)}" target="_blank" rel="noopener">↗</a>`:""}</div>`:""}
     ${l.demoAngle?`<div class="field"><span class="k">Demo angle</span>${esc(l.demoAngle)}</div>`:""}
+    ${contactBlock(l)}
     ${l.outreach.draft ? `<details ${draftEdits[l.id]!==undefined?"open":""}><summary>Outreach draft — click to read and edit</summary>
       <div class="draftbox">
         <label class="subjlabel">Email subject <span class="subjhint">— the line that earns the open</span></label>
@@ -762,7 +812,7 @@ function refreshCard(cardEl, l){
 }
 function clearCardDrafts(id){
   delete draftVerdicts[id]; delete draftNotes[id];
-  delete draftPriority[id]; delete draftGapTypes[id];
+  delete draftPriority[id]; delete draftGapTypes[id]; delete draftContact[id];
 }
 
 function render(){
@@ -833,6 +883,13 @@ document.addEventListener("input", e=>{
     draftNotes[lead.id] = e.target.value;
     const btn = cardEl.querySelector("[data-act=save-card]");
     if(btn) btn.disabled = !cardDirty(lead);   // enable Save the moment the note changes
+  } else if(e.target.matches("[data-contact-phone]") || e.target.matches("[data-contact-email]")){
+    draftContact[lead.id] = {
+      phone: (cardEl.querySelector("[data-contact-phone]")?.value || "").trim(),
+      email: (cardEl.querySelector("[data-contact-email]")?.value || "").trim(),
+    };
+    const btn = cardEl.querySelector("[data-act=save-card]");
+    if(btn) btn.disabled = !cardDirty(lead);
   }
 });
 
@@ -1047,9 +1104,13 @@ async function saveCard(lead, cardEl, btn){
   const noteChanged   = note !== (lead.gap.verification.note||"");
   const prioChanged   = draftPriority[id]!==undefined && prio!==(lead.priority??null);
   const typesChanged  = draftGapTypes[id]!==undefined && !arrEq(types, committedTypes(lead));
+  const contact       = curContact(lead);
+  const c0            = committedContact(lead);
+  const contactChanged= draftContact[id]!==undefined && (contact.phone!==c0.phone || contact.email!==c0.email);
+  const contactObj    = { phone: contact.phone || null, email: contact.email || null };
   // Only touch verification when there's a real verdict to write (not "unverified").
   const writeVerif = status!=="unverified" && (verdictChanged || noteChanged);
-  if(!writeVerif && !prioChanged && !typesChanged) return;   // nothing staged
+  if(!writeVerif && !prioChanged && !typesChanged && !contactChanged) return;   // nothing staged
 
   const verification = writeVerif ? { status, checkedBy:"angela", checkedOn:today(), note: note || null } : null;
   const fb = (writeVerif && note) ? {
@@ -1062,12 +1123,14 @@ async function saveCard(lead, cardEl, btn){
     if(verification) t.gap.verification = verification;
     if(prioChanged)  t.priority = prio;
     if(typesChanged) t.gap.types = types;
+    if(contactChanged) t.contact = contactObj;
   };
   const fallback = ()=>{
     const changes = {};
     if(verification) changes["gap.verification"] = verification;
     if(prioChanged)  changes.priority = prio;
     if(typesChanged) changes["gap.types"] = types;
+    if(contactChanged) changes.contact = contactObj;
     const patch = { _paste_into:`data/leads.json → the lead with id "${id}"`, changes };
     if(fb) patch._also_append_to_feedback_json = { ...fb, id:`fb-${today()}-XXX` };
     return JSON.stringify(patch,null,2);
@@ -1077,12 +1140,13 @@ async function saveCard(lead, cardEl, btn){
 
   btnBusy(btn);
   try{
-    const bits = [verification&&"verdict", prioChanged&&"priority", typesChanged&&"gap types"].filter(Boolean).join(", ");
+    const bits = [verification&&"verdict", prioChanged&&"priority", typesChanged&&"gap types", contactChanged&&"contact"].filter(Boolean).join(", ");
     await ghWrite("data/leads.json", applyLeads, `Update ${id}: ${bits}`);
     if(fb){ await ghWrite("data/feedback.json", arr=>arr.push(fb), `Note from ${id}`); FEEDBACK.push(fb); }
     if(verification) lead.gap.verification = verification;
     if(prioChanged)  lead.priority = prio;
     if(typesChanged) lead.gap.types = types;
+    if(contactChanged) lead.contact = contactObj;
     clearCardDrafts(id);
     btnDone(btn, "Saved ✓"); refreshAll();
   }catch(err){
@@ -1158,8 +1222,15 @@ function diagnosisCard(d){
     body = `
       <div class="chiprow">
         ${types.map(gapChip).join("")}
-        ${r.instagram?.handle || r.instagram?.status ? `<span class="chip ${ig.c}">${esc(r.instagram.handle || ig.t)}</span>` : ""}
+        ${r.instagram?.handle
+          ? `<a class="chip ${ig.c} chip-link" href="${igUrl(r.instagram.handle)}" target="_blank" rel="noopener">${esc(r.instagram.handle)} ↗</a>`
+          : (r.instagram?.status ? `<span class="chip ${ig.c}">${esc(ig.t)}</span>` : "")}
       </div>
+      ${(r.website || r.contact?.phone || r.contact?.email) ? `<div class="clinks">
+        ${r.website ? `<a class="clink" href="${esc(siteUrl(r.website))}" target="_blank" rel="noopener"><span class="ck">Site</span>${esc(String(r.website).replace(/^https?:\/\//,""))} ↗</a>` : ""}
+        ${r.contact?.phone ? `<a class="clink" href="${esc(telHref(r.contact.phone))}"><span class="ck">Call</span>${esc(r.contact.phone)}</a>` : ""}
+        ${r.contact?.email ? `<a class="clink" href="mailto:${esc(r.contact.email)}"><span class="ck">Email</span>${esc(r.contact.email)}</a>` : ""}
+      </div>` : ""}
       ${r.gap?.claim ? `<div class="evidence">${esc(r.gap.claim)}${r.gap.sourceUrl?` <a href="${esc(r.gap.sourceUrl)}" target="_blank" rel="noopener">source ↗</a>`:""}</div>` : ""}
       ${r.gap?.evidenceTier ? `<div class="hint">${esc(TIER_NOTE[r.gap.evidenceTier]||"")}</div>` : ""}
       ${r.whyNow?.text ? `<div class="field"><span class="k">Why now</span>${esc(r.whyNow.text)}${r.whyNow.sourceUrl?` <a href="${esc(r.whyNow.sourceUrl)}" target="_blank" rel="noopener">↗</a>`:""}</div>` : ""}
