@@ -33,6 +33,8 @@ const warn = (m) => warnings.push(m);
 const leads = read('data/leads.json');
 const feedback = read('data/feedback.json');
 read('data/excluded.json');
+let diagnoses = [];
+try { diagnoses = read('data/diagnoses.json'); } catch { /* optional file */ }
 
 const seen = new Set();
 for (const l of leads) {
@@ -135,11 +137,50 @@ for (const f of feedback) {
   if (f.ruleStatus === 'adopted' && !f.adoptedInto) err(`${f.id}: adopted but no adoptedInto path`);
 }
 
+// On-demand diagnoses (data/diagnoses.json) — a separate scratch view fed by diagnose.yml.
+// The page only ever writes a "requested" stub; the Action fills the result. A finished
+// diagnosis is held to the same honesty bar as a lead: a real gap category, an honest
+// evidence tier, and a draft with no pricing and none of the banned phrases.
+const DX_STATUS = ['requested', 'researching', 'done', 'failed'];
+if (!Array.isArray(diagnoses)) {
+  err('data/diagnoses.json must be an array');
+} else {
+  const dxSeen = new Set();
+  for (const d of diagnoses) {
+    const at = `diagnosis ${d.id ?? '(no id)'}`;
+    if (!d.id) err(`${at}: missing id`);
+    if (dxSeen.has(d.id)) err(`duplicate diagnosis id: ${d.id}`);
+    dxSeen.add(d.id);
+    if (!DX_STATUS.includes(d.status)) err(`${at}: status "${d.status}" must be one of ${DX_STATUS.join('|')}`);
+    if (!d.input?.name) err(`${at}: input.name is required`);
+    if (d.status === 'failed' && !d.error) err(`${at}: a "failed" diagnosis must carry an "error" saying why`);
+    if (d.status === 'done') {
+      const r = d.result;
+      if (!r) { err(`${at}: status is "done" but result is empty`); continue; }
+      if (!GAP_TYPES.includes(r.gap?.type)) err(`${at}: result.gap.type "${r.gap?.type}" is not one of the five categories`);
+      if (!TIERS.includes(r.gap?.evidenceTier)) err(`${at}: result.gap.evidenceTier must be one of ${TIERS.join('|')}`);
+      if (r.gap?.claim && !r.gap?.sourceUrl) warn(`${at}: result gap claim has no sourceUrl`);
+      if (typeof r.score !== 'number' || r.score < 1 || r.score > 5) err(`${at}: result.score must be 1-5, got ${r.score}`);
+      const draft = r.outreach?.draft;
+      if (draft) {
+        const lower = draft.toLowerCase();
+        for (const phrase of BANNED) {
+          if (lower.includes(phrase)) err(`${at}: result outreach draft contains banned phrase "${phrase}"`);
+        }
+        if (/\$\s?\d|\d+\s?(?:\/mo|per month|dollars)/i.test(draft)) {
+          err(`${at}: result outreach draft appears to mention pricing — never allowed`);
+        }
+      }
+    }
+  }
+}
+
 for (const w of warnings) console.log(`\x1b[33mwarn\x1b[0m  ${w}`);
 for (const e of errors) console.log(`\x1b[31mERROR\x1b[0m ${e}`);
 
 console.log(
   `\n${leads.length} leads · ${feedback.length} feedback entries · ` +
+  `${Array.isArray(diagnoses) ? diagnoses.length : 0} diagnoses · ` +
   `${errors.length} errors · ${warnings.length} warnings`,
 );
 process.exit(errors.length ? 1 : 0);

@@ -1,0 +1,128 @@
+# On-demand restaurant diagnosis.
+#
+# The dashboard's "Diagnose a restaurant" view appends a request to data/diagnoses.json
+# (status: "requested"). That commit triggers this workflow, which runs the SAME research
+# engine as the weekly sweep — but scoped to just the restaurant(s) Angela pasted — and
+# writes the diagnosis back into the same file. Results show up in the Diagnose view,
+# unverified, exactly like weekly leads.
+#
+# It commits the result straight to main using the workflow's GITHUB_TOKEN. That's the
+# same direct-to-main path the dashboard already uses for verdicts and outreach, and a
+# GITHUB_TOKEN commit does NOT re-trigger this workflow, so there's no loop.
+#
+# Needs CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY — the same secret the weekly run uses.
+# Without it, this exits quietly and the request just sits as "Queued" until the secret exists.
+
+name: Diagnose a restaurant
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/diagnoses.json"
+  workflow_dispatch:
+
+# Never let two diagnosis runs race on the same file.
+concurrency:
+  group: diagnose
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      id-token: write
+
+    steps:
+      - name: Check the token is set up
+        id: guard
+        run: |
+          if [ -z "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}${{ secrets.ANTHROPIC_API_KEY }}" ]; then
+            echo "::notice::No Claude token secret set yet — skipping. See docs/automation.md."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v5
+        if: steps.guard.outputs.ready == 'true'
+
+      # Only spend a run when there's actually a request waiting. The result-writeback
+      # commit flips entries to "done"/"failed", so a re-trigger finds nothing and stops here.
+      - name: Any pending requests?
+        id: pending
+        if: steps.guard.outputs.ready == 'true'
+        run: |
+          if grep -q '"status": *"requested"' data/diagnoses.json 2>/dev/null; then
+            echo "pending=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::No requested diagnoses — nothing to do."
+            echo "pending=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: anthropics/claude-code-action@v1
+        if: steps.guard.outputs.ready == 'true' && steps.pending.outputs.pending == 'true'
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Same reasoning as weekly-research.yml: run the strongest model, and hand it the
+          # tools it needs to read the repo, browse, run node, and edit the one JSON file.
+          claude_args: "--model claude-opus-5 --allowedTools Read,Glob,Grep,Edit,Write,Bash,WebSearch,WebFetch --max-turns 40"
+          prompt: |
+            Run on-demand restaurant diagnoses for QQ Studio.
+
+            Read CLAUDE.md first, then rules/icp.md, rules/gap-verification.md and
+            rules/outreach-voice.md. Those rules are the spec — the same ones the weekly
+            run follows. The goal is that a diagnosis you produce here is indistinguishable
+            in quality and honesty from a weekly-research lead.
+
+            Then:
+
+            1. Load data/diagnoses.json. Work ONLY on entries whose "status" is
+               "requested". Ignore every entry already "done" or "failed".
+            2. For each requested entry, research that ONE restaurant using its
+               input.name, input.listing (a Google/website/Instagram link if present) and
+               input.notes. Find its real website, check the gap the same way a weekly run
+               would, and confirm it with a real sourceUrl. No source, no claim.
+            3. When you have a diagnosis, set that entry's "status" to "done" and fill its
+               "result" object with the SAME shape a lead uses:
+                 result = {
+                   name, neighborhood, cuisine, website,
+                   gap: { type (one of the five categories), claim, sourceUrl,
+                          evidenceTier ("routing"|"static"|"absence"), types (optional array) },
+                   whyNow: { text, sourceUrl },
+                   instagram: { handle, status },
+                   score (1-5, integer),
+                   demoAngle,
+                   outreach: { draft },
+                   caveats: [ ... ]
+                 }
+               Follow rules/outreach-voice.md for the draft: no pricing, no invented owner
+               names, none of the banned phrases. Set evidenceTier honestly — routing is
+               the highest-risk claim.
+            4. If you genuinely cannot diagnose a restaurant (can't find it, no evidence
+               of any gap, or it doesn't fit the ICP), set its "status" to "failed" and
+               write a short, honest "error" string saying why. Leave "result" null.
+               A failed-but-honest entry is correct; a fabricated finding is the worst
+               possible outcome here.
+            5. Never set any verification status — these are unverified by definition.
+               Never touch data/leads.json, data/feedback.json or data/excluded.json in
+               this run. The only file you may change is data/diagnoses.json.
+            6. Run `node scripts/validate.mjs` — it must pass before you commit.
+            7. Commit the updated data/diagnoses.json directly to the main branch with a
+               clear message (e.g. "Diagnosis result: <name>"). Do NOT open a pull request.
+               Do NOT change any other file.
+
+      # Keep the full log if the run fails, same as the weekly workflow.
+      - name: Save Claude execution log on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-output
+          path: |
+            ${{ runner.temp }}/claude-execution-output.json
+            ${{ runner.temp }}/claude-*.json
+          if-no-files-found: warn
+          retention-days: 14
