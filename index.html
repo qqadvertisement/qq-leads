@@ -207,6 +207,43 @@ textarea::placeholder{color:var(--ink-muted)}
 .gtbtn[disabled]{cursor:default;opacity:.9}
 .savebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:2px}
 .savebar .dirtydot{font-size:11.5px;color:var(--brand);font-weight:600}
+/* Top-level view switch — Lead board vs. Diagnose a restaurant */
+.topnav{display:flex;gap:6px;margin-bottom:22px;flex-wrap:wrap}
+.navbtn{font:inherit;font-size:13.5px;font-weight:700;font-family:"Archivo",sans-serif;color:var(--ink-2);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:8px 16px;cursor:pointer}
+.navbtn:hover{border-color:var(--brand);color:var(--ink)}
+.navbtn.active{background:var(--ink);color:var(--page);border-color:var(--ink)}
+/* Lead search */
+.searchwrap{display:flex;align-items:center;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.searchwrap input{flex:1;min-width:220px;font:inherit;font-size:14px;background:var(--surface);color:var(--ink);border:1px solid var(--border);border-radius:10px;padding:10px 14px}
+.searchwrap input::placeholder{color:var(--ink-muted)}
+.searchcount{font-size:12.5px;color:var(--ink-muted);white-space:nowrap}
+/* Diagnose view */
+.dx-intro{font-size:14px;line-height:1.6;color:var(--ink-2);max-width:66ch;margin:0 0 20px}
+.dx-form{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px 24px;margin-bottom:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px}
+.dx-form label{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-muted);font-weight:700;margin-bottom:6px}
+.dx-form input,.dx-form textarea{width:100%;font:inherit;font-size:14px;background:var(--surface-2);color:var(--ink);border:1px solid var(--border);border-radius:9px;padding:10px 12px}
+.dx-form textarea{min-height:64px;resize:vertical;line-height:1.5}
+.dx-form .req{color:var(--brand)}
+.dx-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.dx-hint{font-size:12px;color:var(--ink-muted);line-height:1.55}
+.dx-list-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.dx-list-head h2{font-size:16px}
+.dx-empty{font-size:13.5px;color:var(--ink-muted);line-height:1.7;background:var(--surface);border:1px dashed var(--border);border-radius:12px;padding:24px}
+.dxcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:14px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden}
+.dxcard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grid)}
+.dxcard.dx-done::before{background:var(--brand)}
+.dxcard.dx-failed::before{background:var(--critical)}
+.dxcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.dxcard h3{font-size:16.5px;letter-spacing:-.005em;margin-bottom:2px}
+.dx-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;white-space:nowrap;flex:none}
+.dx-badge .swatch{width:7px;height:7px;border-radius:50%;flex:none;background:currentColor}
+.dxb-requested{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
+.dxb-researching{color:var(--serious);background:color-mix(in srgb,var(--serious) 12%,transparent)}
+.dxb-done{color:var(--brand);background:var(--brand-soft)}
+.dxb-failed{color:var(--critical);background:color-mix(in srgb,var(--critical) 14%,transparent)}
+.dx-req{font-size:12.5px;color:var(--ink-muted)}
+.dx-waiting{font-size:13px;color:var(--ink-2);line-height:1.6;background:var(--surface-2);border-radius:9px;padding:11px 13px}
+.dx-unverified{font-size:11.5px;color:var(--serious);font-weight:600;text-transform:uppercase;letter-spacing:.04em}
 .loading,.error{padding:48px 24px;text-align:center;color:var(--ink-muted);font-size:14px;line-height:1.7}
 .error{color:var(--critical)}
 .error code{display:inline-block;background:var(--surface-2);padding:2px 6px;border-radius:5px;color:var(--ink-2)}
@@ -235,14 +272,20 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
   </div>
 </header>
 
+<nav class="topnav" id="topnav">
+  <button class="navbtn active" data-view="board" type="button">Lead board</button>
+  <button class="navbtn" data-view="diagnose" type="button">Diagnose a restaurant</button>
+</nav>
+
+<div class="ghbar" id="ghbar"></div>
+
+<section id="view-board">
 <div class="notice">
   <div class="dot"></div>
   <div id="notice-body">
     <strong id="notice-lead">Loading…</strong> <span id="notice-rest"></span>
   </div>
 </div>
-
-<div class="ghbar" id="ghbar"></div>
 
 <div class="stats" id="stats"></div>
 
@@ -254,6 +297,11 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
 
 <div class="lessons" id="lessons"></div>
 
+<div class="searchwrap">
+  <input type="search" id="lead-search" placeholder="Search leads — name, neighborhood, cuisine, gap, or evidence…" autocomplete="off" spellcheck="false">
+  <span class="searchcount" id="search-count"></span>
+</div>
+
 <div class="controls">
   <div class="filter-group" id="f-run"><span class="glabel">Run</span></div>
   <div class="filter-group" id="f-verify"><span class="glabel">Verification</span></div>
@@ -264,6 +312,36 @@ footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--border);font-
 
 <p class="count-note" id="count-note"></p>
 <div id="grid"><div class="loading">Loading leads…</div></div>
+</section>
+
+<section id="view-diagnose" hidden>
+  <p class="dx-intro">Got a restaurant in mind that isn't on the board yet? Paste its name (and a Google listing or website link if you have one) and the same research engine that runs the weekly sweep will diagnose what it lacks — the gap, the evidence with a source, a fit score, and a first-draft message. It runs in the background and takes a few minutes, just like the weekly run. Results land here, <strong>unverified</strong> — check them in a browser before you trust or send anything.</p>
+
+  <div class="dx-form" id="dx-form">
+    <div>
+      <label for="dx-name">Restaurant name <span class="req">*</span></label>
+      <input type="text" id="dx-name" placeholder="e.g. Kie-Gol-Lanee" autocomplete="off">
+    </div>
+    <div>
+      <label for="dx-listing">Google listing or website <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional, but a link makes the diagnosis far more reliable)</span></label>
+      <input type="text" id="dx-listing" placeholder="Paste a Google Maps link, website URL, or Instagram handle" autocomplete="off">
+    </div>
+    <div>
+      <label for="dx-notes">Anything else <span style="text-transform:none;letter-spacing:0;font-weight:400">(optional — neighborhood, cuisine, why you're interested)</span></label>
+      <textarea id="dx-notes" placeholder="e.g. Uptown, Oaxacan; saw a line out the door on a Tuesday"></textarea>
+    </div>
+    <div class="dx-actions">
+      <button class="btn" data-act="dx-submit" type="button">Diagnose this restaurant</button>
+      <span class="dx-hint" id="dx-submit-hint"></span>
+    </div>
+  </div>
+
+  <div class="dx-list-head">
+    <h2>Diagnoses</h2>
+    <button class="btn ghost" data-act="dx-refresh" type="button">Refresh</button>
+  </div>
+  <div id="dx-list"><div class="loading">Loading diagnoses…</div></div>
+</section>
 
 <footer>
   Data lives in <code>data/leads.json</code> · corrections in <code>data/feedback.json</code> · learned rules in <code>rules/</code>.
@@ -305,7 +383,7 @@ const TIER_NOTE = {
   absence: "Absence claim — corroborated across listings. A browser check adds little.",
 };
 
-let LEADS = [], FEEDBACK = [];
+let LEADS = [], FEEDBACK = [], DIAGNOSES = [];
 // Staged in the page until committed to GitHub — nothing here is saved on its own.
 // Selecting a verdict/priority/gap-type only stages it here; the card's Save button is
 // what commits everything at once, so picking a verdict never makes the board jump.
@@ -315,7 +393,7 @@ const draftWhy      = {};   // leadId -> why it was revised
 const draftNotes    = {};   // leadId -> verification note
 const draftPriority = {};   // leadId -> high | medium | low | skip | null
 const draftGapTypes = {};   // leadId -> array of gap-type strings
-let filters = { run:"All", verify:"All", gap:"All", outreach:"All", priority:"All" };
+let filters = { run:"All", verify:"All", gap:"All", outreach:"All", priority:"All", search:"" };
 
 // ---- Priority (Angela's own outreach ordering) ---------------------------
 // Her preference, separate from the machine's fit score. "skip" = a restaurant she's
@@ -394,11 +472,12 @@ function outreachMatch(l, f){
 
 async function load(){
   try{
-    const [l,f] = await Promise.all([
+    const [l,f,d] = await Promise.all([
       fetch("./data/leads.json").then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
       fetch("./data/feedback.json").then(r=>r.ok?r.json():[]),
+      fetch("./data/diagnoses.json").then(r=>r.ok?r.json():[]).catch(()=>[]),
     ]);
-    LEADS = l; FEEDBACK = f;
+    LEADS = l; FEEDBACK = f; DIAGNOSES = Array.isArray(d)?d:[];
     boot();
   }catch(e){
     document.getElementById("grid").innerHTML =
@@ -415,8 +494,38 @@ function boot(){
   pills("f-gap", ["All", ...Object.keys(GAP)], "gap");
   pills("f-outreach", ["All","Not sent","Awaiting","Replied","No reply"], "outreach");
   pills("f-priority", ["All","High","Medium","Low","No reach"], "priority");
+  wireChrome();
   render();
+  renderDiagnoses();
   if(hasToken()) verifyToken();   // resolve whether the stored token actually works yet
+}
+
+// One-time wiring for the view switch and the search box (both live outside the cards).
+function wireChrome(){
+  document.querySelectorAll("#topnav .navbtn").forEach(b=>{
+    b.onclick = ()=>{
+      const view = b.dataset.view;
+      document.querySelectorAll("#topnav .navbtn").forEach(x=>x.classList.toggle("active", x===b));
+      document.getElementById("view-board").hidden = view!=="board";
+      document.getElementById("view-diagnose").hidden = view!=="diagnose";
+    };
+  });
+  const search = document.getElementById("lead-search");
+  if(search){
+    search.value = filters.search;
+    search.addEventListener("input", ()=>{ filters.search = search.value; render(); });
+  }
+}
+
+// Free-text match across the fields Angela would actually search by.
+function searchMatch(l, q){
+  if(!q) return true;
+  const hay = [
+    l.name, l.neighborhood, l.cuisine, l.website, l.status,
+    l.gap?.claim, l.demoAngle, l.whyNow?.text, l.instagram?.handle,
+    ...committedTypes(l),
+  ].filter(Boolean).join(" ").toLowerCase();
+  return q.toLowerCase().split(/\s+/).filter(Boolean).every(term=>hay.includes(term));
 }
 
 // The one-time GitHub connection. Disconnected: explain the copy-paste you still do,
@@ -648,15 +757,19 @@ function clearCardDrafts(id){
 }
 
 function render(){
+  const q = filters.search.trim();
   const list = LEADS.filter(l=>
     (filters.run==="All"||l.run===filters.run) &&
     (filters.gap==="All"||committedTypes(l).includes(filters.gap)) &&
     (filters.verify==="All"||(draftVerdicts[l.id]??l.gap.verification.status)===filters.verify) &&
     outreachMatch(l, filters.outreach) &&
-    priorityMatch(l, filters.priority))
+    priorityMatch(l, filters.priority) &&
+    searchMatch(l, q))
     // Angela's priority first (High → No reach at the bottom), fit score breaks ties.
     .sort((a,b)=> prioRank(a.priority??null) - prioRank(b.priority??null) || b.score - a.score);
   document.getElementById("count-note").textContent = `Showing ${list.length} of ${LEADS.length} leads.`;
+  const sc = document.getElementById("search-count");
+  if(sc) sc.textContent = q ? `${list.length} match${list.length===1?"":"es"}` : "";
   document.getElementById("grid").innerHTML = list.map(card).join("") ||
     `<div class="loading">No leads match those filters.</div>`;
   document.querySelectorAll("#grid .card").forEach(el=>{
@@ -996,6 +1109,145 @@ document.addEventListener("click", e=>{
     if(!t){ alert("Paste your token first."); return; }
     setToken(t); ghPanelOpen = false; verifyToken();   // check it right away, don't assume it works
   }
+});
+
+// ---- Diagnose a restaurant (on-demand, runs the same engine in a GitHub Action) ----
+// The page only writes a REQUEST. A workflow (diagnose.yml) picks it up, runs the real
+// research, and writes the result back into data/diagnoses.json — so nothing here fetches
+// a restaurant's site or invents a finding. Results are unverified, same as weekly leads.
+const dxId = () => `dx-${today()}-${Date.now().toString(36).slice(-4)}`;
+const DX_STATUS = {
+  requested:   { cls:"dxb-requested",   label:"Queued — research starting" },
+  researching: { cls:"dxb-researching", label:"Researching…" },
+  done:        { cls:"dxb-done",        label:"Diagnosed" },
+  failed:      { cls:"dxb-failed",      label:"Couldn't diagnose" },
+};
+
+function dxBadge(status){
+  const s = DX_STATUS[status] || DX_STATUS.requested;
+  return `<span class="dx-badge ${s.cls}"><span class="swatch"></span>${esc(s.label)}</span>`;
+}
+
+// Read-only render of one diagnosis. A finished one mirrors a lead card's evidence,
+// score, why-now, demo angle and draft — but carries no verify/save controls, because
+// on-demand diagnoses live in their own view until Angela chooses to promote one.
+function diagnosisCard(d){
+  const inp = d.input || {};
+  const r = d.result;
+  const statusCls = d.status==="done" ? "dx-done" : d.status==="failed" ? "dx-failed" : "";
+  const listing = inp.listing ? `<div class="dx-req"><a href="${esc(inp.listing)}" target="_blank" rel="noopener">${esc(inp.listing)} ↗</a></div>` : "";
+  let body = "";
+  if(d.status==="done" && r){
+    const types = (r.gap?.types && r.gap.types.length) ? r.gap.types : [r.gap?.type].filter(Boolean);
+    const ig = IG[r.instagram?.status] || IG["handle-found"];
+    body = `
+      <div class="chiprow">
+        ${types.map(gapChip).join("")}
+        ${r.instagram?.handle || r.instagram?.status ? `<span class="chip ${ig.c}">${esc(r.instagram.handle || ig.t)}</span>` : ""}
+      </div>
+      ${r.gap?.claim ? `<div class="evidence">${esc(r.gap.claim)}${r.gap.sourceUrl?` <a href="${esc(r.gap.sourceUrl)}" target="_blank" rel="noopener">source ↗</a>`:""}</div>` : ""}
+      ${r.gap?.evidenceTier ? `<div class="hint">${esc(TIER_NOTE[r.gap.evidenceTier]||"")}</div>` : ""}
+      ${r.whyNow?.text ? `<div class="field"><span class="k">Why now</span>${esc(r.whyNow.text)}${r.whyNow.sourceUrl?` <a href="${esc(r.whyNow.sourceUrl)}" target="_blank" rel="noopener">↗</a>`:""}</div>` : ""}
+      ${r.demoAngle ? `<div class="field"><span class="k">Demo angle</span>${esc(r.demoAngle)}</div>` : ""}
+      ${r.outreach?.draft ? `<details><summary>Outreach draft — click to read</summary>
+        <div class="draftbox"><textarea data-dx-draft readonly>${esc(r.outreach.draft)}</textarea></div>
+      </details>` : ""}
+      ${(r.caveats||[]).map(c=>`<div class="caveat">${esc(c)}</div>`).join("")}
+      <div class="dx-unverified">Unverified — open it in a browser before you trust it</div>`;
+  } else if(d.status==="failed"){
+    body = `<div class="dx-waiting">The research run couldn't complete a diagnosis${d.error?`: ${esc(d.error)}`:""}. Try again with a Google listing or website link, which gives it something concrete to check.</div>`;
+  } else {
+    body = `<div class="dx-waiting">The research engine is working on this in the background — it takes a few minutes, like the weekly run. Hit <strong>Refresh</strong> above in a bit to see the result.</div>`;
+  }
+  return `<div class="dxcard ${statusCls}">
+    <div class="dxcard-top">
+      <div>
+        <h3>${esc((r && r.name) || inp.name || "Untitled")}</h3>
+        <div class="place">${esc([(r&&r.neighborhood)||"", (r&&r.cuisine)||""].filter(Boolean).join(" · "))}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
+        ${dxBadge(d.status)}
+        ${r && typeof r.score==="number" ? scoreEl(r.score) : ""}
+      </div>
+    </div>
+    ${listing}
+    ${inp.notes ? `<div class="dx-req">Note: ${esc(inp.notes)}</div>` : ""}
+    ${body}
+    <div class="dx-req" style="margin-top:2px">Requested ${esc(d.requestedOn||"")}</div>
+  </div>`;
+}
+
+function renderDiagnoses(){
+  const el = document.getElementById("dx-list");
+  if(!el) return;
+  if(!DIAGNOSES.length){
+    el.innerHTML = `<div class="dx-empty">No diagnoses yet. Paste a restaurant above and the research engine will work up a full diagnosis — the same gap, evidence, score and draft you get from the weekly run — and drop it here.</div>`;
+    return;
+  }
+  const order = { researching:0, requested:1, done:2, failed:3 };
+  const sorted = [...DIAGNOSES].sort((a,b)=>
+    (a.requestedOn||"") < (b.requestedOn||"") ? 1 : (a.requestedOn||"") > (b.requestedOn||"") ? -1 :
+    (order[a.status]??9) - (order[b.status]??9));
+  el.innerHTML = sorted.map(diagnosisCard).join("");
+}
+
+async function refreshDiagnoses(btn){
+  if(btn) btnBusy(btn);
+  try{
+    const d = await fetch("./data/diagnoses.json?t="+Date.now(), {cache:"no-store"}).then(r=>r.ok?r.json():[]);
+    DIAGNOSES = Array.isArray(d)?d:[];
+    renderDiagnoses();
+    if(btn) btnDone(btn, "Refreshed ✓");
+  }catch(e){ if(btn) btnDone(btn, "Refresh"); }
+}
+
+// Diagnose-view buttons live outside .card, so they get their own listener.
+document.addEventListener("click", e=>{
+  const act = e.target.dataset?.act;
+  if(act==="dx-refresh"){ refreshDiagnoses(e.target); return; }
+  if(act!=="dx-submit") return;
+
+  const name = (document.getElementById("dx-name").value||"").trim();
+  const listing = (document.getElementById("dx-listing").value||"").trim();
+  const notes = (document.getElementById("dx-notes").value||"").trim();
+  const hint = document.getElementById("dx-submit-hint");
+  if(!name){ if(hint) hint.textContent = "Add a restaurant name first."; return; }
+
+  const record = {
+    id: dxId(), requestedOn: today(), requestedBy: "angela",
+    input: { name, listing: listing||null, notes: notes||null },
+    status: "requested", result: null, error: null,
+  };
+  const fallback = ()=>JSON.stringify({
+    _paste_into: "data/diagnoses.json → append this object to the array (then commit — the diagnose workflow picks it up)",
+    entry: record,
+  }, null, 2);
+
+  const clearForm = ()=>{
+    document.getElementById("dx-name").value = "";
+    document.getElementById("dx-listing").value = "";
+    document.getElementById("dx-notes").value = "";
+  };
+
+  if(!canSaveDirect()){
+    if(hint) hint.textContent = "Not connected to GitHub — copying the request JSON to paste into data/diagnoses.json.";
+    copyOut(e.target, fallback());
+    window.open(`https://github.com/${REPO.owner}/${REPO.name}/edit/${REPO.branch}/data/diagnoses.json`,"_blank","noopener");
+    return;
+  }
+
+  btnBusy(e.target);
+  ghWrite("data/diagnoses.json", arr=>arr.push(record), `Diagnosis request: ${name}`)
+    .then(()=>{
+      DIAGNOSES.push(record); renderDiagnoses(); clearForm();
+      btnDone(e.target, "Requested ✓");
+      if(hint) hint.textContent = "Request logged. The research engine will diagnose it in a few minutes — hit Refresh below to check.";
+    })
+    .catch(err=>{
+      btnDone(e.target, "Diagnose this restaurant");
+      if(hint) hint.textContent = "Couldn't save to GitHub ("+err.message+") — copying the JSON to paste instead.";
+      copyOut(e.target, fallback()); verifyToken();
+    });
 });
 
 load();

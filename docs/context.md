@@ -193,12 +193,51 @@ automates the exact commit Angela used to make by hand in GitHub's web editor. W
 token is connected, every save falls back to the original copy-JSON + "Edit on GitHub"
 flow, so nothing regresses and the page still works as a pure static file.
 
+## Two ways in: the board, and on-demand diagnosis
+
+The dashboard has a top-level switch between two views:
+
+- **Lead board** — everything the weekly run found, with a free-text **search** across name,
+  neighborhood, cuisine, gap type, and the evidence text. Search stacks on top of the
+  existing filters; it only narrows what's already on the board.
+- **Diagnose a restaurant** — for a place Angela has in mind that isn't on the board yet.
+  She pastes a name (plus a Google/website/Instagram link if she has one) and the **same
+  research engine that runs the weekly sweep** diagnoses it — gap, sourced evidence, fit
+  score, first-draft message — in the identical format a lead uses.
+
+The critical thing to understand: **the page cannot do the research itself.** A static,
+serverless page can't fetch a restaurant's site (CORS blocks cross-origin), can't search
+the web, and has no model. So the page only ever writes a *request*:
+
+```
+Diagnose view  ──►  appends {status:"requested"} to data/diagnoses.json
+                         │  (direct commit via Angela's token — the same
+                         ▼   write-path verdicts and outreach already use)
+                 .github/workflows/diagnose.yml  (triggers on that push)
+                         │  runs claude-code-action, same rules, ONE restaurant
+                         ▼
+                 fills in result, sets status "done"/"failed", commits back to main
+                         │  (GITHUB_TOKEN commit — does NOT re-trigger the workflow)
+                         ▼
+                 Diagnose view shows it (Angela hits Refresh) — UNVERIFIED, like any lead
+```
+
+Diagnoses live in their **own view and their own file** (`data/diagnoses.json`), separate
+from the leads board. They are machine output, so the same honesty bar applies: a finished
+diagnosis is unverified, its draft is run through the same no-pricing / no-banned-phrase
+checks in `scripts/validate.mjs`, and nothing is promoted onto the board automatically.
+The diagnose workflow only ever touches `data/diagnoses.json` — never `leads.json`,
+`feedback.json`, or `excluded.json`.
+
+Without a Claude token secret the workflow exits quietly and a request just sits as
+"Queued". Without a connected GitHub token in the browser, the Diagnose form falls back to
+copy-the-JSON + "edit on GitHub", exactly like every other save on the page.
+
 ## Known gaps / open items
 
 - `data/excluded.json` has entries marked `recheck` (Rogers Park Social, Staropolska)
   that have real gaps but couldn't clear the Instagram-reachable test. If outreach ever
   adds a Facebook channel, they qualify immediately.
-- The dashboard has no search — fine at 28 leads, will bite around 100.
 - The browser-stored token is an accepted tradeoff for staying serverless: it's a
   fine-grained token scoped to this one repo's contents, on Angela's own origin, on a
   page with no third-party scripts. A GitHub App or serverless proxy would avoid
