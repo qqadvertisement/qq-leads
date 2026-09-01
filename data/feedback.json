@@ -331,5 +331,18 @@
     "proposedRule": "Five beats stay. Beat 4 gains a light social-proof nod (a couple of real builds; link in the signature). Every email gets a specific subject line built on the verified gap, paid off by the first line. Ask softens to a mockup, not a meeting.",
     "ruleStatus": "adopted",
     "adoptedInto": "rules/outreach-voice.md"
+  },
+  {
+    "id": "fb-2026-09-01-vssv",
+    "date": "2026-09-01",
+    "leadId": "2026-08-27-paper-tiger-cafe",
+    "kind": "gap-verdict",
+    "verdict": "wrong",
+    "claimed": "The live site still serves the Squarespace default site title. Fetched 2026-08-27: <title>Your Site Title</title>, and both og:title and og:site_name are also \"Your Site Title\". Every browser tab, Google result and shared link therefore shows \"Your Site Title\" rather than the cafe name. The rest of the site is fully built out (251KB), so this is an unset field rather than a half-finished build.",
+    "actual": "the website exist just doesn't' land well",
+    "reason": "the website exist just doesn't' land well",
+    "generalizes": true,
+    "proposedRule": "",
+    "ruleStatus": "proposed"
   }
 ]
