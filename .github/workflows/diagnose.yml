@@ -1,17 +1,20 @@
 # On-demand restaurant diagnosis.
 #
 # The dashboard's "Diagnose a restaurant" view appends a request to data/diagnoses.json
-# (status: "requested"). That commit triggers this workflow, which runs the SAME research
-# engine as the weekly sweep — but scoped to just the restaurant(s) Angela pasted — and
-# writes the diagnosis back into the same file. Results show up in the Diagnose view,
-# unverified, exactly like weekly leads.
+# (status: "requested"). That commit runs the SAME research engine as the weekly sweep —
+# scoped to just the restaurant(s) Angela pasted — and writes the diagnosis back into the
+# same file. Results show up in the Diagnose view, unverified, like weekly leads.
 #
-# It commits the result straight to main using the workflow's GITHUB_TOKEN. That's the
-# same direct-to-main path the dashboard already uses for verdicts and outreach, and a
-# GITHUB_TOKEN commit does NOT re-trigger this workflow, so there's no loop.
+# Why two jobs: claude-code-action does NOT accept the "push" event ("Unsupported event
+# type: push"). It does accept workflow_dispatch (the weekly run uses that + schedule). So
+# a push to data/diagnoses.json runs the tiny `relay` job, which re-fires this workflow as
+# a workflow_dispatch — the event the action supports — and the `diagnose` job does the
+# real work there. workflow_dispatch always creates a run even when triggered with the
+# built-in GITHUB_TOKEN, so no PAT is needed; and the diagnose job's write-back is a plain
+# GITHUB_TOKEN push, which does NOT re-trigger `relay`, so there is no loop.
 #
 # Needs CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY — the same secret the weekly run uses.
-# Without it, this exits quietly and the request just sits as "Queued" until the secret exists.
+# Without it, the diagnose job exits quietly and a request just sits as "Queued".
 
 name: Diagnose a restaurant
 
@@ -28,7 +31,29 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # A push can't run the Claude action directly, so this job just re-fires the workflow as
+  # a workflow_dispatch when there's a request waiting. Nothing here calls the model.
+  relay:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+      - name: Dispatch a diagnosis run if there are pending requests
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if grep -q '"status": *"requested"' data/diagnoses.json 2>/dev/null; then
+            echo "Pending request found — dispatching the diagnosis run."
+            gh workflow run diagnose.yml --ref main
+          else
+            echo "::notice::No requested diagnoses — nothing to dispatch."
+          fi
+
   diagnose:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     permissions:
@@ -49,8 +74,8 @@ jobs:
       - uses: actions/checkout@v5
         if: steps.guard.outputs.ready == 'true'
 
-      # Only spend a run when there's actually a request waiting. The result-writeback
-      # commit flips entries to "done"/"failed", so a re-trigger finds nothing and stops here.
+      # Only spend a model run when there's actually a request waiting. The result-writeback
+      # commit flips entries to "done"/"failed", so a manual re-dispatch finds nothing here.
       - name: Any pending requests?
         id: pending
         if: steps.guard.outputs.ready == 'true'
