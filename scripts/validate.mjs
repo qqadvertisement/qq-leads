@@ -84,8 +84,9 @@ for (const l of leads) {
     }
   }
 
-  // Outreach constraints from rules/outreach-voice.md.
-  for (const field of ['draft', 'sent']) {
+  // Outreach constraints from rules/outreach-voice.md. The email subject line is held to
+  // the same no-pricing / no-banned-phrase bar as the body.
+  for (const field of ['draft', 'sent', 'subject']) {
     const text = l.outreach?.[field];
     if (!text) continue;
     const lower = text.toLowerCase();
