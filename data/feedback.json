@@ -278,5 +278,18 @@
     "proposedRule": "Give an image-menu gap two consequences, not one: unreadable on a phone AND invisible to search. On its own the phone complaint reads as a cosmetic gripe.",
     "ruleStatus": "adopted",
     "adoptedInto": "rules/gap-verification.md"
+  },
+  {
+    "id": "fb-2026-09-01-jjpv",
+    "date": "2026-09-01",
+    "leadId": "2026-08-20-hunan-cuisine",
+    "kind": "gap-verdict",
+    "verdict": "confirmed",
+    "claimed": "Site still lists the OLD Chinatown address (2002 S Wentworth Ave) as its only address and carries no priced menu (a few dish names appear in prose; ordering is pushed off to Chowbus), though they relocated to 30 E Hubbard St in Jul 2026. Correctly-spelled domain hunancuisinechicago.com is dead (DNS NXDOMAIN) yet still ranks in search. Live menu is stranded on Chowbus.",
+    "actual": "Need to fix address and the website design could be fix.\nno one pick up the call",
+    "reason": "Need to fix address and the website design could be fix.\nno one pick up the call",
+    "generalizes": true,
+    "proposedRule": "",
+    "ruleStatus": "proposed"
   }
 ]
