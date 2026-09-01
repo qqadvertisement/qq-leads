@@ -756,7 +756,7 @@
     "name": "Sunrise Cafe",
     "neighborhood": "Ukrainian Village",
     "cuisine": "Breakfast & brunch diner",
-    "website": null,
+    "website": "sunrisecafechicago.com",
     "gap": {
       "type": "No website",
       "claim": "TripAdvisor's own website field fetched directly and confirmed empty. Only third-party menu aggregators plus a Facebook page exist.",
@@ -771,7 +771,8 @@
       "types": [
         "No website",
         "Weak / outdated site"
-      ]
+      ],
+      "supersededBy": "Site exists (sunrisecafechicago.com) but has no real menu — the \"Explore Menu\" button is inert and the menu sections are empty, so customers can’t see dishes or prices. Verified in a browser 2026-09-01. Secondary: \"Ukrainian\" is misspelled \"Ukranian\" across the hero."
     },
     "whyNow": {
       "text": "None found — established, 360 Yelp reviews",
@@ -784,14 +785,14 @@
     "score": 5,
     "demoAngle": "Build the menu + hours page they're missing, given how many regulars they already have.",
     "outreach": {
-      "draft": "Hey! Our team's always after a solid brunch, and Sunrise keeps coming up in Ukrainian Village. You've clearly got a crowd, hundreds of reviews, but there's no site of your own to find — just aggregator pages — so all those regulars have nowhere to check your real menu and hours. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free coffee that quietly grows a list of people to bring back. Want us to put together your menu-and-hours page and show you a mockup?",
+      "draft": "Hey! Our team’s always after a proper family breakfast, and Sunrise kept coming up in Ukrainian Village — family-owned since 2004, and those chilaquiles sound great. I went to look at the food and clicked \"Explore Menu,\" but it doesn’t go anywhere and there’s no actual menu on the site, just a few descriptions — so someone deciding on breakfast can’t see the dishes or prices and usually picks a spot where they can. We build phone-first sites for Chicago cafés, and we’ve done a few around town we’d love to show you, plus a little game regulars play to win a free breakfast that quietly builds you a list of people to bring back. Want us to put your real menu on the site and show you a mockup?",
       "sent": null,
       "channel": null,
       "sentOn": null,
       "reply": null,
       "repliedOn": null,
       "revisions": 0,
-      "subject": "Sunrise Cafe has 360 reviews and no site of its own"
+      "subject": "Sunrise Cafe’s “Explore Menu” button doesn’t open a menu"
     },
     "status": "New",
     "caveats": [
@@ -799,8 +800,8 @@
     ],
     "priority": "medium",
     "contact": {
-      "phone": null,
-      "email": "info@sunriscafechicago.com"
+      "phone": "773-276-8290",
+      "email": null
     }
   },
   {
