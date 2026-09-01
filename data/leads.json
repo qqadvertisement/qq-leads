@@ -1200,8 +1200,8 @@
       "sent": "Hi! Heard you were soft-opening on Western and went to look you up. The Toast menu looks great, but there's no site behind it, so searching you just lands on an ordering page with nothing about the room itself. I do websites for Chicago restaurants, plus a small game regulars play for a free dish, which builds you a customer list you can bring back in later. Happy to mock one up if you want to see it.",
       "channel": "email",
       "sentOn": "2026-09-01",
-      "reply": null,
-      "repliedOn": null,
+      "reply": "replied",
+      "repliedOn": "2026-09-01",
       "revisions": 0
     },
     "status": "New",
