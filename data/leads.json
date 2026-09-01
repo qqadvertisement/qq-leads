@@ -1155,7 +1155,8 @@
     "status": "New",
     "caveats": [
       "No Instagram handle surfaced — confirmed Facebook only."
-    ]
+    ],
+    "priority": "skip"
   },
   {
     "id": "2026-08-20-szechuan-bistro",
