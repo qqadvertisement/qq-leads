@@ -19,7 +19,10 @@
         "claim": "Fetched 2026-09-01. Two of the six items in the site's top navigation, \"Online Menu\" and \"Table Resevation\" (their spelling), are anchors with no href and no attributes at all: <li id=\"menu-item-333\" ...><a>Online Menu</a></li>. Nothing on the site binds them — the only third-party script is fbgcdn's ewm2.js, which binds exclusively `*[data-glf-cuid]`, and neither anchor carries that attribute; the GloriaFood plugin's own public-scripts.js does nothing but render opening hours. Separately, the site's own page titled \"Menu\" at /services/ returns 200 with a completely empty page-content div and loads no widget script at all. The GloriaFood \"See MENU & Order\" button further down the homepage does carry data-glf-cuid and does work, so the menu is reachable — it is the header route and the Menu page that are dead.",
         "sourceUrl": "https://www.amaritthai.com/services/",
         "evidenceTier": "static",
-        "types": ["Broken links", "Weak / outdated site"]
+        "types": [
+          "Broken links",
+          "Weak / outdated site"
+        ]
       },
       "whyNow": {
         "text": "Someone was actively working on this site about seven weeks ago and did not touch the menu route. The site's own page-sitemap.xml gives /services/, /about/ and /contact/ a lastmod of 2020-03-25, but the homepage is 2026-07-09, a new /faq/ page is 2026-07-10, there is a blog post dated 2026-07-10, and the logo was uploaded to /wp-content/uploads/2026/06/. So the blank Menu page has been blank for six years and survived a refresh this summer.",
@@ -49,6 +52,19 @@
         "Score 4: +2 screenshot-able gap, +1 independent (Chicago license data shows one entity, STAR OF SUPERSTARS INC., licensed only at 600 S Dearborn, active through 2027-03-15, with a Consumption on Premises licence confirming dine-in), +1 busy (466 Yelp reviews, 317 photos). No +1 for Instagram activity because I could not confirm it."
       ]
     },
+    "error": null
+  },
+  {
+    "id": "dx-2026-09-01-test",
+    "requestedOn": "2026-09-01",
+    "requestedBy": "angela",
+    "input": {
+      "name": "Kie-Gol-Lanee",
+      "listing": null,
+      "notes": "Uptown, Oaxacan — test run to confirm the diagnosis workflow completes green"
+    },
+    "status": "requested",
+    "result": null,
     "error": null
   }
 ]
