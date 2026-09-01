@@ -643,16 +643,17 @@ function scoreEl(n){
 function outreachBlock(l){
   const o = l.outreach || {};
   const st = outreachState(l);
-  const chanLabel = o.channel==="email" ? "Email" : o.channel==="instagram" ? "Instagram" : "";
-  const meta = [chanLabel, o.sentOn ? "sent "+o.sentOn : ""].filter(Boolean).join(" · ");
+  const chanLabel = o.channel==="email" ? "Email" : o.channel==="instagram" ? "Instagram" : o.channel==="phone" ? "Phone call" : "";
+  const meta = [chanLabel, o.sentOn ? (o.channel==="phone"?"called ":"sent ")+o.sentOn : ""].filter(Boolean).join(" · ");
   let actions = "";
   if(st.key==="not-sent"){
     actions = canSend(l)
       ? `<div class="vactions">
            <button class="btn" data-act="send" data-ch="email">Log send · Email</button>
            <button class="btn" data-act="send" data-ch="instagram">Log send · Instagram</button>
+           <button class="btn" data-act="send" data-ch="phone">Log call · Phone</button>
          </div>
-         <div class="ohint">Logs the message above as sent today and starts the two-week reply clock.</div>`
+         <div class="ohint">Logs this outreach as done today and starts the two-week reply clock. For a phone call, the draft above is your talking points.</div>`
       : `<div class="ohint">Verify the gap and save the verdict first — a message can't go out on an unverified gap.</div>`;
   } else if(st.key==="awaiting" || st.key==="stale"){
     actions = `<div class="vactions">
