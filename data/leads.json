@@ -1454,11 +1454,15 @@
       "sourceUrl": null,
       "evidenceTier": "absence",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
-      }
+        "status": "wrong",
+        "checkedBy": "angela",
+        "checkedOn": "2026-09-01",
+        "note": "the website exist but it is not landing well. https://thaimeupcafe.toast.site/menu/thai-me-up-cafe-608-w-barry-ave"
+      },
+      "types": [
+        "No website",
+        "Weak / outdated site"
+      ]
     },
     "whyNow": null,
     "instagram": {
