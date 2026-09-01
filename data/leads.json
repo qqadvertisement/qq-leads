@@ -178,7 +178,11 @@
     "status": "New",
     "caveats": [
       "WEAKEST EVIDENCE IN THIS BATCH. The listing pages could not be loaded directly this run — TripAdvisor returned 403 and RestaurantGuru returned 503. The absence of a website field comes from search-result summaries, not from a page I opened. Treat as unconfirmed until checked in a browser."
-    ]
+    ],
+    "contact": {
+      "phone": null,
+      "email": "taqueriavaritas@gmail.com"
+    }
   },
   {
     "id": "2026-08-27-jamisons-soul-food",
@@ -952,7 +956,11 @@
       "subject": "Kashgar's site still has the template's placeholder text"
     },
     "status": "New",
-    "caveats": []
+    "caveats": [],
+    "contact": {
+      "phone": "872-946-7049",
+      "email": null
+    }
   },
   {
     "id": "2026-08-20-wasai-bbq",
@@ -1197,7 +1205,11 @@
     "status": "New",
     "caveats": [
       "An account surfaced but could not be confidently tied to this location."
-    ]
+    ],
+    "contact": {
+      "phone": "(312) 265-0047",
+      "email": null
+    }
   },
   {
     "id": "2026-08-20-izakaya-by-aiya",
@@ -1612,7 +1624,11 @@
       "Static tier, which the current calibration puts at 50% overturned (4 of 8) — and gap-verification.md classifies footer text as a render claim, not a record claim. Open the site in a real browser before sending; a crawler and a browser can be served different markup.",
       "Two specifics are cited (the Luna Tapas copyright and the placeholder phone). Per the \"a placeholder claim is several claims\" rule, either can be false independently — if only one holds, cut the other rather than softening both.",
       "Instagram: search results report ~19K followers, but every indexed post I could see is from 2023, so recency is unconfirmed rather than active."
-    ]
+    ],
+    "contact": {
+      "phone": "(872) 244-3616",
+      "email": null
+    }
   },
   {
     "id": "2026-08-31-magos-tacos-y-tamales",

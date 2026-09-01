@@ -73,6 +73,11 @@ jobs:
             5. Write an outreach draft per rules/outreach-voice.md, including a
                compelling email subject line in outreach.subject (see the subject-line
                section of that file). No pricing, no invented owner names.
+               Also capture a contact block: contact.phone and contact.email, taken
+               from the restaurant's own listing/site when you can find them (null when
+               you can't). Never use a site-builder placeholder — "123-456-7890",
+               "info@mysite.com", an out-of-state area code on a Chicago spot — those
+               are demo junk, not contacts. null is the honest answer.
             6. Append to data/leads.json and add anything checked-and-rejected to
                data/excluded.json so future runs don't repeat the work.
             7. Run `node scripts/validate.mjs` — it must pass before you commit.

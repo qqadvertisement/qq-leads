@@ -69,6 +69,18 @@ for (const l of leads) {
   if (!VERDICTS.includes(l.gap?.verification?.status)) err(`${at}: gap.verification.status invalid`);
   if (!IG_STATUS.includes(l.instagram?.status)) err(`${at}: instagram.status "${l.instagram?.status}" invalid`);
 
+  // Contact (optional): phone/email Angela can add from the card, or the engine can capture.
+  if (l.contact != null) {
+    if (typeof l.contact !== 'object' || Array.isArray(l.contact)) {
+      err(`${at}: contact must be an object with phone/email`);
+    } else {
+      for (const k of ['phone', 'email']) {
+        if (l.contact[k] != null && typeof l.contact[k] !== 'string') err(`${at}: contact.${k} must be a string or null`);
+      }
+      if (l.contact.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(l.contact.email)) warn(`${at}: contact.email "${l.contact.email}" doesn't look like an email`);
+    }
+  }
+
   // Every gap claim needs proof. This is the rule that keeps research honest.
   if (l.gap?.claim && !l.gap?.sourceUrl && l.run >= '2026-08-24') {
     warn(`${at}: gap claim has no sourceUrl`);

@@ -181,6 +181,18 @@ the lead re-file into its verdict/priority position. And a **note now feeds lear
 any saved verdict, confirmed included** — whenever a note is present it's written to
 `data/feedback.json` and shows under "What the system has learned", not just on `wrong`.
 
+## Contact on a lead (how you actually reach them)
+
+Each lead can carry an optional `contact: { phone, email }`. The Instagram handle and
+website already live on the lead (`instagram.handle`, `website`) and now render as
+**clickable** chips/links on the card — IG opens the profile, the website opens in a tab,
+a phone becomes a `tel:` link and an email a `mailto:`. Phone and email are also editable
+in place: the card has two inputs, and they commit with the same single **Save** button as
+everything else (via `contact` in the leads.json write). The research and diagnosis engines
+populate `contact` when a real number/email is findable — never a site-builder placeholder
+(`123-456-7890`, `info@mysite.com`, an out-of-state area code on a Chicago spot); `null` is
+the honest answer, and Angela fills the rest in from the card as she works a lead.
+
 ## The dashboard write-path (how the copy-paste went away)
 
 The dashboard can commit `data/leads.json` and `data/feedback.json` directly through
