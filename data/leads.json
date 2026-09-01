@@ -58,10 +58,10 @@
       "sourceUrl": "https://www.papertigercafe.com/",
       "evidenceTier": "static",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
-        "note": null
+        "status": "wrong",
+        "checkedBy": "angela",
+        "checkedOn": "2026-09-01",
+        "note": "the website exist just doesn't' land well"
       }
     },
     "whyNow": {
@@ -88,7 +88,8 @@
     "caveats": [
       "Closes the \"Paper Tiger Cafe\" unknown entry in excluded.json — the previous run flagged the placeholder title as \"a strong lead if it holds\". It holds, on the live domain.",
       "Recently opened, so the mid-build exception in gap-verification.md applies. Judgement call: the site is complete apart from this one unset field, so it reads as an oversight rather than a build in progress — but confirm before sending."
-    ]
+    ],
+    "priority": "high"
   },
   {
     "id": "2026-08-27-cafe-63",
