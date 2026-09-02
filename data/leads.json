@@ -850,7 +850,8 @@
     "status": "New",
     "caveats": [
       "Handle sourced from a press citation, not independently loaded — confirm before DM."
-    ]
+    ],
+    "priority": "skip"
   },
   {
     "id": "2026-08-20-hunan-cuisine",
