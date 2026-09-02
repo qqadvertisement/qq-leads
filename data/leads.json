@@ -533,7 +533,12 @@
       "subject": "Portage Park Breakfast Place has no real front door online"
     },
     "status": "New",
-    "caveats": []
+    "caveats": [],
+    "priority": "high",
+    "contact": {
+      "phone": "3317022460",
+      "email": null
+    }
   },
   {
     "id": "2026-08-24-iztatl-cocina-mexicana",
