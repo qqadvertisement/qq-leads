@@ -507,9 +507,9 @@
       "sourceUrl": "https://local.yahoo.com/info-240513094-portage-park-breakfast-place-chicago/",
       "evidenceTier": "absence",
       "verification": {
-        "status": "unverified",
-        "checkedBy": null,
-        "checkedOn": null,
+        "status": "confirmed",
+        "checkedBy": "angela",
+        "checkedOn": "2026-09-03",
         "note": null
       }
     },
