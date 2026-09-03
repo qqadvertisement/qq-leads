@@ -363,7 +363,8 @@
     "caveats": [
       "Only one of the two corroborating listings was loaded directly (ZipPicks). The Yelp/Atly \"website = Facebook page\" detail comes from a search-result summary.",
       "Owner language may well be Spanish — see the new language rule in outreach-voice.md before sending."
-    ]
+    ],
+    "priority": "skip"
   },
   {
     "id": "2026-08-24-taqueria-el-charro-i",
