@@ -525,13 +525,13 @@
     "demoAngle": "Build the missing site around their Toast ordering page so newcomers get a real front door.",
     "outreach": {
       "draft": "Hey! Our team's always chasing a great breakfast, and we've been meaning to try your new Portage Park spot since you opened this year. Right now the only thing online is a bare Toast ordering page — there's no real site with your story, menu, and hours — so newcomers checking you out don't get much of a first impression. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free breakfast that quietly grows a list of people to bring back. Want us to build a proper front door around that ordering page and show you a mockup?",
-      "sent": null,
-      "channel": null,
-      "sentOn": null,
+      "subject": "Portage Park Breakfast Place has no real front door online",
+      "sent": "Hey! Our team's always chasing a great breakfast, and we've been meaning to try your new Portage Park spot since you opened this year. Right now the only thing online is a bare Toast ordering page — there's no real site with your story, menu, and hours — so newcomers checking you out don't get much of a first impression. We're a small Chicago studio that builds restaurant sites made to match the room, and we've got a few nearby we'd happily show you, with a little game regulars play to win a free breakfast that quietly grows a list of people to bring back. Want us to build a proper front door around that ordering page and show you a mockup?",
+      "channel": "phone",
+      "sentOn": "2026-09-03",
       "reply": null,
       "repliedOn": null,
-      "revisions": 0,
-      "subject": "Portage Park Breakfast Place has no real front door online"
+      "revisions": 0
     },
     "status": "New",
     "caveats": [],
