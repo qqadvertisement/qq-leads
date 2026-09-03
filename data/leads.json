@@ -1783,7 +1783,8 @@
       "Confirm the weekday-hours claim in the draft before sending. Listings disagree: some show Saturday and Sunday only, others show weekday hours. The draft leans on that disagreement, so if the listings actually agree, cut that sentence.",
       "Closes out part of the Auburn Gresham thin-coverage gap flagged in excluded.json.",
       "Instagram bio matches the address and the \"Palace of the People\" tagline, so the handle is a solid match; post recency is unconfirmed."
-    ]
+    ],
+    "priority": "skip"
   },
   {
     "id": "2026-08-31-que-rico-restaurant",
