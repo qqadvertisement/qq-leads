@@ -370,5 +370,18 @@
     "generalizes": true,
     "proposedRule": "",
     "ruleStatus": "proposed"
+  },
+  {
+    "id": "fb-2026-09-03-65lg",
+    "date": "2026-09-03",
+    "leadId": "2026-08-20-jomon-sushi-and-izakaya",
+    "kind": "gap-verdict",
+    "verdict": "partial",
+    "claimed": "Live site is an unedited Wix demo template, verified on two fetches: footer reads \"(c) 2035 by My Site\", address shown is Wix's demo \"500 Terry Francine Street, 6th Floor, San Francisco, CA 94158\", contact is info@mysite.com / 123-456-7890, and the social buttons link to facebook.com/wix and instagram.com/wix. No menu anywhere on the site.",
+    "actual": "The website is a placeholder but no address is listed. already have a team building on that",
+    "reason": "The website is a placeholder but no address is listed. already have a team building on that",
+    "generalizes": true,
+    "proposedRule": "",
+    "ruleStatus": "proposed"
   }
 ]
