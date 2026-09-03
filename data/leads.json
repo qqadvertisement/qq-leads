@@ -922,13 +922,13 @@
     "demoAngle": null,
     "outreach": {
       "draft": "Hey! Our team's always after a good izakaya, and Jomon keeps coming up in Bucktown. Right now your site is still the Wix demo template — it shows a San Francisco address, a placeholder phone number, and links to Wix's own social pages instead of yours — so anyone landing there gets someone else's details entirely. We're a small Chicago studio that builds restaurant sites made to match the room, with a few nearby we'd happily show you, plus a little game regulars play to win a free dish that quietly grows a list of people to bring back. Want us to build you a real one and show you a mockup?",
-      "sent": null,
-      "channel": null,
-      "sentOn": null,
+      "subject": "Jomon's site is still the Wix demo — wrong address and all",
+      "sent": "Hey! Our team's always after a good izakaya, and Jomon keeps coming up in Bucktown. Right now your site is still the Wix demo template — it shows a San Francisco address, a placeholder phone number, and links to Wix's own social pages instead of yours — so anyone landing there gets someone else's details entirely. We're a small Chicago studio that builds restaurant sites made to match the room, with a few nearby we'd happily show you, plus a little game regulars play to win a free dish that quietly grows a list of people to bring back. Want us to build you a real one and show you a mockup?",
+      "channel": "phone",
+      "sentOn": "2026-09-03",
       "reply": null,
       "repliedOn": null,
-      "revisions": 1,
-      "subject": "Jomon's site is still the Wix demo — wrong address and all"
+      "revisions": 1
     },
     "status": "Hold",
     "caveats": [
