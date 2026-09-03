@@ -126,16 +126,19 @@ for (const l of leads) {
     err(`${at}: outreach records a reply but nothing was sent`);
   }
 
-  // Sending on an unverified gap is the exact failure the repo exists to prevent.
+  // Sending on an unverified gap used to be a hard error — the exact failure the repo was
+  // built to prevent. Angela decided she wants to log a reach on any card, verified or not
+  // (it's her signature, in her own browser, on her own judgment). So this is now a WARNING,
+  // not a failure: the record still flags that a message went out on an unchecked claim, but
+  // it no longer turns her save red. The dashboard confirms before logging one of these.
   if (l.outreach?.sent && l.gap?.verification?.status === 'unverified') {
-    err(`${at}: marked as sent, but the gap was never verified`);
+    warn(`${at}: marked as sent, but the gap was never verified`);
   }
-  // A "wrong" verdict doesn't always kill the lead — sometimes the claim was false but a
-  // real gap sits underneath it. That replacement has to be written down, because it's
-  // what the message is actually built on. Without it, "sent on a wrong verdict" means
-  // a message went out repeating a claim we know to be false.
+  // Same downgrade for a "wrong" verdict with no corrected gap recorded: the claim was found
+  // false and nothing replaced it, so the sent message repeats something we know to be wrong.
+  // Still worth flagging loudly — but a warning now, since Angela may log the reach anyway.
   if (l.outreach?.sent && l.gap?.verification?.status === 'wrong' && !l.gap?.supersededBy) {
-    err(`${at}: sent on a "wrong" verdict with no gap.supersededBy — record the corrected gap the message is built on`);
+    warn(`${at}: sent on a "wrong" verdict with no gap.supersededBy — the message repeats a claim marked false`);
   }
 }
 

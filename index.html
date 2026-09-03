@@ -483,13 +483,14 @@ function outreachState(l){
   if(days>=14) return { key:"stale", label:"No reply after 2 weeks", cls:"os-serious" };
   return { key:"awaiting", label:`Awaiting reply · ${14-days}d left`, cls:"os-warn" };
 }
-// A message can only go out on a gap that's actually been verified and saved —
-// this mirrors scripts/validate.mjs so the dashboard never writes a state CI would reject.
-function canSend(l){
+// Angela can log a reach on ANY card — that's her call (the reach decision). A send is
+// never hard-blocked, but one built on a gap she hasn't verified (or that she marked
+// "wrong" with no corrected gap recorded) is the risky case: the message repeats a claim
+// no one has checked. So those get a confirm before they log and a caution flag on the
+// card, and validate.mjs downgrades them from an error to a warning — visible, not fatal.
+function sendNeedsCare(l){
   const v = l.gap.verification.status;   // committed truth, not a staged verdict
-  if(v==="unverified") return false;
-  if(v==="wrong" && !l.gap.supersededBy) return false;
-  return true;
+  return v==="unverified" || (v==="wrong" && !l.gap.supersededBy);
 }
 function outreachMatch(l, f){
   if(f==="All") return true;
@@ -678,14 +679,15 @@ function outreachBlock(l){
   const meta = [chanLabel, o.sentOn ? (o.channel==="phone"?"called ":"sent ")+o.sentOn : ""].filter(Boolean).join(" · ");
   let actions = "";
   if(st.key==="not-sent"){
-    actions = canSend(l)
-      ? `<div class="vactions">
+    const care = sendNeedsCare(l);
+    actions = `<div class="vactions">
            <button class="btn" data-act="send" data-ch="email">Log send · Email</button>
            <button class="btn" data-act="send" data-ch="instagram">Log send · Instagram</button>
            <button class="btn" data-act="send" data-ch="phone">Log call · Phone</button>
          </div>
-         <div class="ohint">Logs this outreach as done today and starts the two-week reply clock. For a phone call, the draft above is your talking points.</div>`
-      : `<div class="ohint">Verify the gap and save the verdict first — a message can't go out on an unverified gap.</div>`;
+         <div class="ohint">${care
+            ? `Heads up — this gap ${l.gap.verification.status==="wrong"?"is marked <strong>wrong</strong> with no corrected gap recorded":"isn’t verified yet"}. You can still log the reach; it'll ask you to confirm first, since the draft leans on a claim no one has checked.`
+            : "Logs this outreach as done today and starts the two-week reply clock. For a phone call, the draft above is your talking points."}</div>`;
   } else if(st.key==="awaiting" || st.key==="stale"){
     actions = `<div class="vactions">
         <button class="btn" data-act="reply" data-r="replied">Mark replied</button>
@@ -955,9 +957,11 @@ document.addEventListener("click", e=>{
   // and starts the two-week reply clock. If the text was edited, the reason rides along
   // as an outreach-edit correction, same as the old draft-edit flow.
   if(act==="send"){
-    if(!canSend(lead)){
-      alert("Verify the gap and save the verdict first — a message can't go out on an unverified gap.");
-      return;
+    if(sendNeedsCare(lead)){
+      const why = lead.gap.verification.status==="wrong"
+        ? "You marked this gap wrong and there's no corrected gap recorded — the draft repeats a claim you found false."
+        : "This gap hasn't been verified yet — the draft is built on a claim no one has checked.";
+      if(!confirm(why+"\n\nLog the reach anyway? It records as sent today and starts the two-week reply clock.")) return;
     }
     const channel = e.target.dataset.ch;
     const ta = cardEl.querySelector("[data-draft]");
@@ -1108,12 +1112,20 @@ async function saveCard(lead, cardEl, btn){
   const c0            = committedContact(lead);
   const contactChanged= draftContact[id]!==undefined && (contact.phone!==c0.phone || contact.email!==c0.email);
   const contactObj    = { phone: contact.phone || null, email: contact.email || null };
-  // Only touch verification when there's a real verdict to write (not "unverified").
-  const writeVerif = status!=="unverified" && (verdictChanged || noteChanged);
+  // Write the verification block whenever the verdict OR the note changed. A note on its
+  // own — verdict still "unverified" — is a valid save, so a jotting like "called them,
+  // left a voicemail" sticks and shows on the card instead of silently vanishing. The
+  // validator only demands checkedBy/checkedOn once the status is a real verdict, so an
+  // unverified note passes CI fine.
+  const hasVerdict = status!=="unverified";
+  const writeVerif = verdictChanged || noteChanged;
   if(!writeVerif && !prioChanged && !typesChanged && !contactChanged) return;   // nothing staged
 
   const verification = writeVerif ? { status, checkedBy:"angela", checkedOn:today(), note: note || null } : null;
-  const fb = (writeVerif && note) ? {
+  // Only a real verdict feeds the learning queue — a bare note (no verdict yet) is Angela's
+  // own jotting, not a correction, so it shows on the card but not under "What the system
+  // has learned". Once she picks a verdict, the note rides into feedback as before.
+  const fb = (hasVerdict && note) ? {
     id:fbId(), date:today(), leadId:id, kind:"gap-verdict", verdict:status,
     claimed:lead.gap.claim, actual:note, reason:note, generalizes:true, proposedRule:"", ruleStatus:"proposed",
   } : null;
@@ -1140,7 +1152,7 @@ async function saveCard(lead, cardEl, btn){
 
   btnBusy(btn);
   try{
-    const bits = [verification&&"verdict", prioChanged&&"priority", typesChanged&&"gap types", contactChanged&&"contact"].filter(Boolean).join(", ");
+    const bits = [verification&&(hasVerdict?"verdict":"note"), prioChanged&&"priority", typesChanged&&"gap types", contactChanged&&"contact"].filter(Boolean).join(", ");
     await ghWrite("data/leads.json", applyLeads, `Update ${id}: ${bits}`);
     if(fb){ await ghWrite("data/feedback.json", arr=>arr.push(fb), `Note from ${id}`); FEEDBACK.push(fb); }
     if(verification) lead.gap.verification = verification;
