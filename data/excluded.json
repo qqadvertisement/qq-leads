@@ -1,6 +1,6 @@
 {
   "note": "Dedupe list. Check every candidate against this before researching it. Reasons are kept so a future run knows whether an entry is permanently dead or worth revisiting.",
-  "lastUpdated": "2026-08-31",
+  "lastUpdated": "2026-09-06",
   "entries": [
     {
       "name": "404 Burgers",
@@ -309,8 +309,8 @@
     },
     {
       "name": "The Neighborhood Gem",
-      "reason": "unknown",
-      "detail": "Auburn Gresham. theneigborhoodgem.com sits behind a Cloudflare challenge (HTTP 403) so it could not be assessed. IG @chicagofoodontherun has ~55K followers. Worth a browser check."
+      "reason": "no-gap",
+      "detail": "Rechecked 2026-09-06: theneigborhoodgem.com no longer 403s. It serves a real, mobile-friendly site with a readable text menu, hours, address, online ordering and a rewards programme. The Cloudflare challenge that blocked the 2026-08 pass is gone. No gap — do not re-research."
     },
     {
       "name": "Mi Tierrita Colombia",
@@ -680,12 +680,12 @@
     {
       "name": "Gaby'z Panaderia Y Pizzeria",
       "reason": "unknown",
-      "detail": "Belmont Cragin, 5050 W Fullerton. Chamber directory shows a Facebook link only — a real No website shape, but not researched to completion this run. Good next-run candidate if a handle exists."
+      "detail": "Belmont Cragin, 5050 W Fullerton. Picked up 2026-09-06 as flagged. Chamber directory still shows Facebook only, and gabyspanaderia.com serves a bare \"Hostinger Horizons\" parked page rather than a site — a real gap shape. Instagram @gabyspanaderia exists, so it is reachable. Blocker is ICP fit, not evidence: it is a panaderia first with pizza and some seating. Needs a human call on whether a bakery-forward spot counts, per the snack-stand edge case."
     },
     {
       "name": "Polish Food",
       "reason": "unknown",
-      "detail": "Belmont Cragin, 3104 N Central. Chamber directory shows a Facebook link only. Same shape and same status as Gaby'z — unfinished, worth picking up next run."
+      "detail": "Belmont Cragin, 3104 N Central. Trades as \"Tasty Polish Food\". Picked up 2026-09-06 as flagged. Textbook No website shape: chamber directory shows Facebook only, and everything else is DoorDash, Uber Eats, Zmenu, plus goto-where and restaurants-info listing mills. But no Instagram business account exists — only an IG location tag with 24 posts. Unreachable under the ICP, same pattern as Restauracja Anastazja and Taqueria Los Molcajetes: Polish-language spots here skew to Facebook."
     },
     {
       "name": "Paleteria Y Neveria Fruta Loca",
@@ -716,6 +716,266 @@
       "name": "Uptown Vietnam Cuisine",
       "reason": "poor-fit",
       "detail": "NOT CHICAGO — Columbus, GA. Surfaced by an \"Uptown Chicago\" Instagram search."
+    },
+    {
+      "name": "Let's Eat To Live",
+      "reason": "no-gap",
+      "detail": "Woodlawn, 621 E 67th. letseattoliverestaurant.com plus a BentoBox site."
+    },
+    {
+      "name": "DixiePura Kitchen",
+      "reason": "no-gap",
+      "detail": "Bronzeville, 325 E Pershing. dixiepura.com."
+    },
+    {
+      "name": "Coco's Famous Fried Lobster",
+      "reason": "no-gap",
+      "detail": "South Chicago, 8118 S Stony Island. cocoslobster.com."
+    },
+    {
+      "name": "Iyanna's",
+      "reason": "no-gap",
+      "detail": "West Englewood, 1809 W 69th. iyannas.com."
+    },
+    {
+      "name": "Authentic Cooking Soul Food Kitchen",
+      "reason": "no-gap",
+      "detail": "Chatham, 306 E 75th (licensed as Q'S AUTHENTIC COOKING). acsoulfood.com plus authenticcookingkitchen.com."
+    },
+    {
+      "name": "El Loto de Fuego Latin Fusion",
+      "reason": "no-gap",
+      "detail": "Brighton Park, 4070 S Archer. ellotodefuegolatinfusion.com plus IG @lotodefuegolatin."
+    },
+    {
+      "name": "Mezze Mediterranean Grill",
+      "reason": "no-gap",
+      "detail": "Bronzeville, 737 E 47th. mezzemediterraneangrill.com."
+    },
+    {
+      "name": "Mi Nueva Venezuela",
+      "reason": "no-gap",
+      "detail": "Back of the Yards, 752 W Garfield Blvd. minuevavenezuelail.com."
+    },
+    {
+      "name": "Waffle Lounge",
+      "reason": "no-gap",
+      "detail": "Chatham, 7433 S State. waffleloungechicago.com plus IG @waffleloungechicago. Opened Dec 2025 — would have been a good why-now if the site were weak."
+    },
+    {
+      "name": "Mama Ruth's Soulfood",
+      "reason": "no-gap",
+      "detail": "Austin, 5965 W Chicago Ave. mamaruthssoulfoodil.com."
+    },
+    {
+      "name": "Avenida Peru",
+      "reason": "no-gap",
+      "detail": "Belmont Cragin, 3131 N Central. avenidaperu.com. The belmontcragin.org directory link is stale — do not trust that directory as proof of absence."
+    },
+    {
+      "name": "Taqueria Jamay",
+      "reason": "no-gap",
+      "detail": "Gage Park, 2500 W 51st. ordertaqueriajamay.com is dead (NXDOMAIN 2026-09-06) but a working netwaiter site exists, and no Instagram handle for the Chicago location could be confirmed (@tacosjamay is a separate events/catering account)."
+    },
+    {
+      "name": "Egg Rolls Etc",
+      "reason": "no-gap",
+      "detail": "Washington Park, 503 E 61st (licensed as THE FLAVOUR UNIT). eggrollsetc.com."
+    },
+    {
+      "name": "Morrison's Soul Food",
+      "reason": "no-gap",
+      "detail": "Auburn Gresham, 148 W 79th. morrisonsoulfood.com."
+    },
+    {
+      "name": "TNT Rooftop Restaurant",
+      "reason": "no-gap",
+      "detail": "Austin, 5405 W Madison. tntrooftoprestaurant.com plus IG @tnt_rooftopchgo."
+    },
+    {
+      "name": "Yao's Cafe",
+      "reason": "no-gap",
+      "detail": "Fuller Park, 601 W 43rd. yaoscafe.com plus an ordering subdomain."
+    },
+    {
+      "name": "Los Llanos Restaurant",
+      "reason": "no-gap",
+      "detail": "East Side, 10148 S Ewing. losllanosrestaurant1incil.com plus Toast ordering."
+    },
+    {
+      "name": "Esquina del Sazon",
+      "reason": "no-gap",
+      "detail": "Brighton Park, 3834 W 47th. esquinadelsazon.com."
+    },
+    {
+      "name": "Peke's Pozole",
+      "reason": "no-gap",
+      "detail": "Archer Heights, 4710 S Pulaski. pekespozole.us plus IG @pekes_pozole (~17K followers)."
+    },
+    {
+      "name": "Los Cuates de Juanita's",
+      "reason": "no-gap",
+      "detail": "Chicago Lawn, 2757 W 71st. loscuatesdejuanita.com."
+    },
+    {
+      "name": "Nuestra Bendicion a lo Maracucho",
+      "reason": "no-gap",
+      "detail": "Back of the Yards, 1738 W 47th. nuestrabendicionalomaracuchoil.com."
+    },
+    {
+      "name": "Olocuilta Pupuseria",
+      "reason": "no-gap",
+      "detail": "Belmont Cragin, 3040 N Laramie. The chamber directory link orderolocuiltapupuseria.com is dead (NXDOMAIN) but olocuiltapupuseriail.com serves a live site (HTTP 200). Working site plus IG @pupuseriaolocuilta_llc — the dead link is only a stale directory entry."
+    },
+    {
+      "name": "El Mirador",
+      "reason": "no-gap",
+      "detail": "Belmont Cragin, 5340 W Diversey. Same pattern as Olocuilta: chamber link orderelmirador.com is dead but elmiradoril.com is live (HTTP 200). Also has a Melrose Park location."
+    },
+    {
+      "name": "New Archview Restaurant",
+      "reason": "no-gap",
+      "detail": "McKinley Park, 3480 S Archer. newarchviewchi.com."
+    },
+    {
+      "name": "Rocky Pancake House",
+      "reason": "unknown",
+      "detail": "South Chicago, 2948 E 83rd. Genuine No website shape — the only \"site\" is rockypancakehouse.menu-res.com, a listing mill. But no Instagram could be confirmed (the handle some directories print, @ophdfw, is unrelated garbage data). Unreachable until a handle surfaces."
+    },
+    {
+      "name": "Glad You Asked",
+      "reason": "chain-or-group",
+      "detail": "Auburn Gresham, 8052 S Racine. Licence holder is DPL FOOD GROUP INC. Also ordering runs on a Toast page, which under the proposed \"a site that loads is a website\" rule reads as a weak site rather than no site. Out on both counts."
+    },
+    {
+      "name": "Sammy's Touch",
+      "reason": "chain-or-group",
+      "detail": "West Englewood, 6230 S Western. Three Chicago locations under sammystouchusa.com."
+    },
+    {
+      "name": "Passion Eats",
+      "reason": "chain-or-group",
+      "detail": "Oak Lawn and Oak Park, not Chicago proper. passioneatscateringco.com; catering-led."
+    },
+    {
+      "name": "Goblinbat",
+      "reason": "chain-or-group",
+      "detail": "Auburn Gresham, 120 W 87th (licensed as GOBLIN TACO). goblinbat.com; second location on N Milwaukee."
+    },
+    {
+      "name": "Rude Boyz Roadside Jerk Smokehouse",
+      "reason": "no-gap",
+      "detail": "Austin/North Ave, 5223 W North Ave. Separate LLC from Rude Boyz Jerk & Soul Cafe on Cicero. Has a working site. Recorded here so the two are not confused in future runs."
+    },
+    {
+      "name": "Sazon Cubano",
+      "reason": "closed",
+      "detail": "Belmont Cragin, 5422 W Fullerton. Yelp marks CLOSED as of Aug 2026, and sazoncubanocafe.com exists anyway."
+    },
+    {
+      "name": "Halal Dz House",
+      "reason": "closed",
+      "detail": "Belmont Cragin, 5753 W Belmont. Yelp marks CLOSED Sept 2026 and halaldzhouse.com is now NXDOMAIN, though stale search results still show it. Both signals point the same way."
+    },
+    {
+      "name": "Mary Jane Cafe",
+      "reason": "closed",
+      "detail": "South Shore, 7112 S Yates. Yelp marks CLOSED May 2026 and maryjanecafechicago.com is NXDOMAIN."
+    },
+    {
+      "name": "South Shore Brew",
+      "reason": "closed",
+      "detail": "South Shore, 7101 S Yates. Closed; the space now trades as The Brew (itsthebrew.com), an unaffiliated business."
+    },
+    {
+      "name": "Splyt N Half Kitchen",
+      "reason": "closed",
+      "detail": "Austin, 5815 W Madison. Yelp carries a CLOSED duplicate listing and the city licence at that address is now C B S GRILL (issued 2025-12-30). Treat as closed."
+    },
+    {
+      "name": "Nothin' But Soul",
+      "reason": "unknown",
+      "detail": "West Garfield Park, 3858 W Madison, licensed 2026-01-23 with a grand opening around March 2026. Strong No website shape and a genuine why-now, but the only social presence is Facebook; no Instagram account could be confirmed. Worth a recheck if a handle appears."
+    },
+    {
+      "name": "Figueroa's Taqueria",
+      "reason": "unknown",
+      "detail": "West Garfield Park, 283 N Pulaski, licensed 2025-11-05. DoorDash and Uber Eats only, no website. No Instagram handle findable."
+    },
+    {
+      "name": "Shrimp Stop",
+      "reason": "unknown",
+      "detail": "West Garfield Park, 3849 W Madison, licensed 2026-03-09. Only \"site\" is a res-menu.net listing mill. No Instagram handle findable."
+    },
+    {
+      "name": "M&S Cafe",
+      "reason": "unknown",
+      "detail": "Austin, 5963 W Madison. No website at all — Uber Eats, DoorDash, Atly, Yelp only. No Instagram handle findable."
+    },
+    {
+      "name": "Kiki D's",
+      "reason": "unknown",
+      "detail": "Back of the Yards, 4117 S Ashland. Thirty years trading, no website (directories misprint kikidresses.com, an unrelated clothing domain, in the field; Atly fetched 2026-09-06 shows no website at all). No Instagram handle findable."
+    },
+    {
+      "name": "Joe's Ribs and Tips",
+      "reason": "unknown",
+      "detail": "Austin, 4805-4809 W Madison, licensed 2026-01-06. No website, no Instagram handle findable."
+    },
+    {
+      "name": "JR's Jamaican Tropical Cafe",
+      "reason": "unknown",
+      "detail": "South Shore, 2200 E 79th. No website of its own. The nearest Instagram match, @jrs_jamaican_jerk, is a pop-up vendor at a different address (1732 E 79th) posting from out of state — not confidently the same business. Do not conflate."
+    },
+    {
+      "name": "El Asador Restaurant",
+      "reason": "unknown",
+      "detail": "Archer Heights, 4117 W 47th. Has IG @elasadorchicago and no obvious owned site, but the identity is unresolved: the current city licence at that unit is ASADOR MV (issued 2025-11-20), the previous operator was QUINTERO ENTERPRISES, and elasadorrestaurants.com resolves to something that may or may not be this location. Entity in transition — do not pitch until the name and ownership settle."
+    },
+    {
+      "name": "AB's Jerk Factory",
+      "reason": "unknown",
+      "detail": "South Chicago, 8205 S Exchange. Genuine No website shape (Atly fetched 2026-09-06 shows no website; absjerkfactory.com is NXDOMAIN) and a real IG @absjerkfactory. Held back on the mid-build rule: AB'S JERK CORPORATION's licence is cancelled (AAC) and a new entity, JERK FACTORY LLC, took the licence on 2026-07-08 — exactly 60 days before this run. Recent change of hands plus the 60-day boundary is the precise case rules/gap-verification.md says to wait out. Recheck after November 2026."
+    },
+    {
+      "name": "Cutie Pie's Kitchen",
+      "reason": "unknown",
+      "detail": "Auburn Gresham, 752 W 78th. Only web presence is an orestaurant.site builder subdomain; no Instagram handle findable."
+    },
+    {
+      "name": "The Vee",
+      "reason": "unknown",
+      "detail": "Greater Grand Crossing, 125-127 W 75th, licensed 2025-11-16. Nothing findable online at all beyond health-inspection records — no site, no listing, no handle."
+    },
+    {
+      "name": "Steel Cooking",
+      "reason": "unknown",
+      "detail": "Auburn Gresham, 747 W 79th, licensed 2026-02-11. Only trace online is a health-inspection record; no trading name, site or handle could be established."
+    },
+    {
+      "name": "Retro Cafe and Restaurant",
+      "reason": "poor-fit",
+      "detail": "Belmont Cragin/Portage Park border, 3246 N Central. Toast ordering plus OpenTable, and it trades as a Friday/Saturday-night lounge with a dance floor rather than a restaurant. Out on format."
+    },
+    {
+      "name": "24 Hr Gyros & Subs",
+      "reason": "poor-fit",
+      "detail": "South Shore, 2058 E 71st. 24-hour counter service, no dine-in identity, no Instagram."
+    },
+    {
+      "name": "Sankofa Bonne Sante",
+      "reason": "poor-fit",
+      "detail": "Bronzeville, 4509 S Indiana. Health-food market and juice bar, not a dine-in restaurant."
+    },
+    {
+      "name": "The Green Living Room",
+      "reason": "poor-fit",
+      "detail": "Woodlawn, 6431 S Cottage Grove. Coffee counter inside a community hub run by the Blacks in Green nonprofit; the web presence is a page on blacksingreen.org. No independent owner-operator to sell to."
+    },
+    {
+      "name": "Fly Girl Fly",
+      "reason": "poor-fit",
+      "detail": "Fuller Park, 125 W 46th Pl. School and daycare lunch catering company, not a restaurant. flygirlfly.com."
     }
   ]
 }

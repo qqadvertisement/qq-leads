@@ -52,11 +52,21 @@ Qualifying gaps, one of exactly these five (categorical — the dashboard charts
   City business-license data is a good way to spot this.
 - **A restaurant that opened in the last ~60 days with a placeholder site** — assume mid-build
   and check before pitching. See `gap-verification.md`.
-- **A page on somebody else's site is not a website.** A subpage on a parent nonprofit, a
-  landlord's or cultural centre's site, a builder subdomain (`*.godaddysites.com`,
-  `*.business.site`), an auto-generated delivery-platform page, or a Facebook page in the
-  website field — all of these are `No website`, not `Weak / outdated site`. Treating one as
-  a site the owner controls understates the gap, and the pitch lands weaker for it: "your menu
-  page is missing" is a much smaller idea than "you don't have a site of your own."
+- **If a site loads, it is a website — the gap is that it doesn't land.** Three `No website`
+  claims were overturned on the same day, each with the same note: *"the website exists, it's
+  just not landing well."* One pointed at a `*.toast.site` page. So a platform- or
+  builder-hosted site the owner actually uses — `*.toast.site`, `*.square.site`,
+  `*.netwaiter.com`, `*.godaddysites.com`, `*.business.site`, a Toast or Square ordering page —
+  is `Weak / outdated site`, not `No website`.
 
-  *Provenance: fb-2026-08-21-114*
+  Two checks this buys you. Before filing `No website`, search for a platform-hosted site *by
+  business name*, not just for an owned domain. And if the lead record's own `website` field is
+  populated, the gap cannot be `No website` — that contradiction shipped once already.
+
+  Still `No website`: an auto-generated listing-mill page nobody chose (`*.hub.biz`,
+  menu-world, restaurants-info), a delivery-app page, a subpage on a parent nonprofit's or
+  landlord's site, or a Facebook page in the website field. Nobody built those on purpose.
+
+  *Provenance: fb-2026-09-01-rthw, fb-2026-09-01-tuzw, fb-2026-09-01-21ee. Replaces the
+  narrower rule from fb-2026-08-21-114, which counted every builder subdomain as `No website`;
+  Angela's later verdicts went the other way on exactly that call.*
