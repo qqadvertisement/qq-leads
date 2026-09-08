@@ -389,5 +389,18 @@
     "proposedRule": "Extend the mid-build check past new openings. A placeholder site says nothing about whether an owner gave up — it is equally consistent with an agency working on it right now, at any age of business. Jomon had traded for years and still had a team mid-build.",
     "ruleStatus": "adopted",
     "adoptedInto": "rules/gap-verification.md"
+  },
+  {
+    "id": "fb-2026-09-08-3vkj",
+    "date": "2026-09-08",
+    "leadId": "2026-08-20-szechuan-bistro",
+    "kind": "gap-verdict",
+    "verdict": "confirmed",
+    "claimed": "No owned domain found across repeated searches. Infatuation listing shows address and phone (312) 265-0047 with no website field. Entire menu lives on a third-party Chowbus POS page that links to no site or social of theirs.",
+    "actual": "no website at all. employees picked up the phone but owner is not on site. they said they already use chowbus so don't need a website",
+    "reason": "no website at all. employees picked up the phone but owner is not on site. they said they already use chowbus so don't need a website",
+    "generalizes": true,
+    "proposedRule": "",
+    "ruleStatus": "proposed"
   }
 ]
