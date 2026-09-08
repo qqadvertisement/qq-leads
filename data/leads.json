@@ -1198,8 +1198,8 @@
       "verification": {
         "status": "confirmed",
         "checkedBy": "angela",
-        "checkedOn": "2026-08-21",
-        "note": "no website at all"
+        "checkedOn": "2026-09-08",
+        "note": "no website at all. employees picked up the phone but owner is not on site. they said they already use chowbus so don't need a website"
       }
     },
     "whyNow": null,
@@ -1226,7 +1226,8 @@
     "contact": {
       "phone": "(312) 265-0047",
       "email": null
-    }
+    },
+    "priority": "medium"
   },
   {
     "id": "2026-08-20-izakaya-by-aiya",
