@@ -1831,5 +1831,256 @@
       "Drafted in Spanish. Same language caveat as the other two.",
       "No dish named in the draft — I could not verify a signature item from a fetchable source, and inventing one would be the fabrication the contract warns about. Adding a real dish before sending would strengthen the \"I actually looked\" beat."
     ]
+  },
+  {
+    "id": "2026-09-06-rude-boyz-jerk-and-soul-cafe",
+    "run": "2026-09-06",
+    "name": "Rude Boyz Jerk & Soul Cafe",
+    "neighborhood": "Austin",
+    "cuisine": "Jamaican / soul",
+    "website": "rudeboyzjerkcafe.com (dead)",
+    "gap": {
+      "type": "Broken links",
+      "claim": "rudeboyzjerkcafe.com is dead at the DNS level: NXDOMAIN on both apex and www, verified 2026-09-06, and neither https nor http returns anything (curl exit 6, no A record to connect to). The domain is still indexed under the title \"Rude Boyz Jerk & Soul Cafe | Jamaican Store in Chicago | Order Food Online\", so it still surfaces as their site in search while resolving nowhere. This is a DNS record fact, not a rendered page, so a browser check should read identically. Everything live is third-party: Grubhub, DoorDash, Postmates, plus goto-where and res-menu listing mills.",
+      "sourceUrl": "https://rudeboyzjerkcafe.com/",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "New operator in the space. City licence data shows KITABEE RUDE BOY CAFE LLC took the retail food licence at 556 N Cicero on 2025-09-02 (active to 2027-09-15); the previous tenant, 3 KINGS JERK & SOUL LLC, has a cancelled (AAC) licence that lapsed 2025-06-15. Roughly a year in and already investing in the room.",
+      "sourceUrl": "https://data.cityofchicago.org/resource/r5kz-chrr.json?$where=starts_with(address,%27556%20N%20CICERO%27)"
+    },
+    "instagram": {
+      "handle": "@rudeboyzcafe",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Caribbean food on the far West Side is thinly covered online. A site that loads, names the jerk plates and shows hours would own \"jerk chicken Austin Chicago\" with almost no competition.",
+    "contact": {
+      "phone": null,
+      "email": null
+    },
+    "outreach": {
+      "draft": "Hey! We were hunting down jerk on the West Side and Rude Boyz kept coming up, the jerk egg rolls especially. We went to pull up rudeboyzjerkcafe.com, the link that still shows up in search, and it doesn't load at all. The domain's gone, so anyone who taps that result gets an error instead of your menu, and most of them just order from whoever's next on the list. We build sites matched to a spot's food and feel for Chicago restaurants, and there are a few around the city we'd love to show you, plus a little game your regulars play for a free plate that quietly builds you a customer list. Want us to mock up what a new one could look like?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0,
+      "subject": "Rude Boyz' own website link doesn't load anymore"
+    },
+    "status": "New",
+    "caveats": [
+      "Attribution of the domain: rudeboyzjerkcafe.com is indexed under their exact business name and an \"Order Food Online\" title, which is strong but circumstantial. I could not retrieve an archived copy to prove the site was theirs. If Angela finds the domain never belonged to them, the claim collapses and the fallback gap is the same \"No website\" shape as the rest of this batch.",
+      "Do not confuse with RUDE BOYS ROADSIDE JERK SMOKEHOUSE at 5223 W North Ave (separate LLC, separate licence, has a working site at rudeboysroadsidejerksmokehouse.com). Everything here is tied to 556 N Cicero.",
+      "No phone or email found on any listing I could fetch. null rather than a guess.",
+      "Instagram @rudeboyzcafe exists but I could not confirm posting recency; Instagram blocks automated fetching. Status is handle-found, not active-est."
+    ]
+  },
+  {
+    "id": "2026-09-06-just-jerk-cafe",
+    "run": "2026-09-06",
+    "name": "Just Jerk Cafe",
+    "neighborhood": "Chatham",
+    "cuisine": "Jamaican",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "No site of their own. justjerkcafe.com does not resolve (NXDOMAIN, checked 2026-09-06). The only thing any listing offers as a website is just-jerk-cafe-il.hub.biz, an auto-generated hub.biz listing page rather than anything the owner built or controls; RestaurantGuru was fetched directly on 2026-09-06 and that hub.biz URL is the value in its website field. Everything else is aggregators: SinglePlatform, Zmenu, AllMenus, MenuPix, mymenuweb.",
+      "sourceUrl": "https://restaurantguru.com/Just-Jerk-Cafe-Chicago",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. Licensed continuously at 119 E 79th as JUST JERK CAFE, INC. since 2013-12-17, current licence active to 2027-12-15. Settled and long past any mid-build window, so there is no urgency hook here beyond the gap itself.",
+      "sourceUrl": "https://data.cityofchicago.org/resource/r5kz-chrr.json?$where=starts_with(address,%27119%20E%2079TH%27)"
+    },
+    "instagram": {
+      "handle": "@just_jerk_cafe",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Twelve years on 79th with a following and nothing searchable to show for it. A real site with the curry goat and oxtail plates as readable text would pick up every \"jerk near me\" search in Chatham that currently lands on an aggregator.",
+    "contact": {
+      "phone": "(773) 846-2232",
+      "email": null
+    },
+    "outreach": {
+      "draft": "Hey! We eat our way around 79th pretty often and Just Jerk's oxtails come up every single time. We went looking for your menu online and there's no site of your own, just an auto-generated listing page somebody else's software built. So when folks search for jerk in Chatham there's nothing of yours for Google to actually read, and they end up at the next place instead. We make good-looking sites tuned to a restaurant's own vibe here in Chicago, with a few nearby we'd be glad to show you, and a little game regulars play to win a free plate that quietly builds you a list of customers to bring back. Mind if we put together a quick mockup?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0,
+      "subject": "Just Jerk's oxtails are nowhere to be found online"
+    },
+    "status": "New",
+    "caveats": [
+      "This is the exact shape Angela has overturned before: a \"No website\" claim where something website-ish does exist. Here the something is a hub.biz auto-listing, which rules/icp.md classes as No website and rules/gap-verification.md classes as evidence *for* the gap. It is still worth ten seconds in a browser before it goes out, because if that hub.biz page looks like a real site to her, the verdict is \"weak site\", not \"no site\".",
+      "I could not meet the two-independent-listings bar for the absence claim. TripAdvisor and Zmenu both returned HTTP 403 to automated fetching on 2026-09-06. RestaurantGuru is the one listing I actually read.",
+      "Instagram @just_jerk_cafe exists and a Black Foodies reel features the restaurant, but I could not date any post. handle-found, not active-est."
+    ]
+  },
+  {
+    "id": "2026-09-06-southside-african-restaurant",
+    "run": "2026-09-06",
+    "name": "Southside African Restaurant",
+    "neighborhood": "South Chicago",
+    "cuisine": "Nigerian / West African",
+    "website": null,
+    "gap": {
+      "type": "No website",
+      "claim": "EatOkra's listing was fetched directly on 2026-09-06 and its website field is empty: it carries phone, address and third-party Uber Eats / Postmates order links, and no site of the restaurant's own. southsideafricanrestaurant.com does not resolve (NXDOMAIN, same date). Everything else that surfaces is Facebook, Yelp, Uber Eats, plus menu-world and wheree listing mills, which rules/gap-verification.md treats as evidence for the gap rather than against it.",
+      "sourceUrl": "https://www.eatokra.com/businesses/southside-african-restaurant",
+      "evidenceTier": "absence",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. Licensed at 8311 S Baltimore since 2015-12-22 under the same ownership, current licence active to 2028-01-15. Long-established rather than newly opened, so the hook has to be the gap, not a moment.",
+      "sourceUrl": "https://data.cityofchicago.org/resource/r5kz-chrr.json?$where=starts_with(address,%278311%20S%20BALTIMORE%27)"
+    },
+    "instagram": {
+      "handle": "@southsideafricanrestautant",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "Nigerian food is barely represented online on the far Southeast Side. A searchable menu naming the actual dishes would own that whole category locally, and West African menus are exactly the case where a delivery-app listing reads as gibberish to someone who has not eaten the food before.",
+    "contact": {
+      "phone": "(872) 666-5588",
+      "email": null
+    },
+    "outreach": {
+      "draft": "Hey! We've been eating our way through the South Side and Southside African keeps getting named for the Nigerian plates. You've been on Baltimore Ave since 2015 and there's still no website of your own anywhere, just delivery apps and a Facebook page. That means when someone searches for Nigerian food nearby there's nothing of yours to find, and a delivery app's page doesn't tell anyone what the dishes actually are. We build sites matched to a restaurant's food and its room, and there are a few around Chicago we'd love to show you, plus a small game regulars play for a free dish that quietly grows a customer list for you. Want us to sketch one up?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0,
+      "subject": "Ten years on Baltimore Ave and no site of your own"
+    },
+    "status": "New",
+    "caveats": [
+      "One directly-fetched listing with an empty website field (EatOkra), not the two the absence rule asks for. TripAdvisor and restaurant.com both returned HTTP 403 on 2026-09-06. The DNS miss on southsideafricanrestaurant.com is a second, independent record-level fact, but it is not a second listing.",
+      "The Instagram handle is spelled @southsideafricanrestautant (missing the \"r\" in restaurant) — that is the actual handle, not a typo in this record.",
+      "City licence data names the licence holders. I have deliberately not put any name in the draft, and it should not go in one without a human confirming who currently runs the place."
+    ]
+  },
+  {
+    "id": "2026-09-06-royal-bbq-and-jerk",
+    "run": "2026-09-06",
+    "name": "Royal BBQ & Jerk",
+    "neighborhood": "Greater Grand Crossing",
+    "cuisine": "Jamaican / BBQ",
+    "website": "royalbbqjerk.com",
+    "gap": {
+      "type": "Broken links",
+      "claim": "royalbbqjerk.com resolves but will not complete an HTTPS handshake for at least two independent clients. Checked 2026-09-06: the server presents a Let's Encrypt certificate chaining through intermediate \"YE2\" to root \"ISRG Root YE\", a root not yet present in common trust stores, so curl and the WebFetch tool both rejected it with \"unable to get local issuer certificate\" from different network paths. Plain http:// returns an empty reply (curl exit 52), so there is no unencrypted fallback. The certificate itself is current (valid 2026-09-01 to 2026-11-30) — the problem is the chain, not expiry.",
+      "sourceUrl": "https://royalbbqjerk.com/",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. ROYAL BBQ & JERK INC has held the licence at 7518 S Cottage Grove since 2022-03-31, renewed 2026-04-16 and active to 2028-04-15. The certificate was reissued 2026-09-01, five days before this check, which suggests somebody is touching the hosting right now — that could cut either way.",
+      "sourceUrl": "https://data.cityofchicago.org/resource/r5kz-chrr.json?$where=starts_with(address,%277518%20S%20COTTAGE%20GROVE%27)"
+    },
+    "instagram": {
+      "handle": "@royalbbqjerk",
+      "status": "handle-found"
+    },
+    "score": 4,
+    "demoAngle": "They already decided a website was worth having. This is not a sell on the idea of a site, it is a sell on one that actually opens — the shortest possible distance from where they are.",
+    "contact": {
+      "phone": "(872) 244-7120",
+      "email": null
+    },
+    "outreach": {
+      "draft": "Hey! We've been working through the jerk spots on Cottage Grove and the oxtails at Royal keep coming up. We tried opening royalbbqjerk.com from two different connections and it wouldn't load either time. The security certificate it's serving isn't one every browser trusts yet, so some people get a warning page instead of your menu, which is about the fastest way to lose someone who was already hungry. We build sites for Chicago restaurants that match the room and the food, and we've done a few around town we'd be happy to show you, plus a little game your regulars play for a free plate that quietly builds you a customer list. Want us to take a look and show you what a working one could look like?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0,
+      "subject": "royalbbqjerk.com would not open for us"
+    },
+    "status": "New",
+    "caveats": [
+      "HIGHEST-RISK CLAIM IN THIS BATCH. A TLS chain failure is a render claim, and how it presents depends entirely on the visitor's device: browsers that already cache the intermediate, or ship the newer ISRG root, will load the site perfectly. Angela should check this on a phone AND a laptop before any message goes out. If it opens fine for her, the opener is dead and the lead should be re-scored on something else.",
+      "The certificate was reissued five days before this check. Somebody may already be mid-fix, which is the \"unfinished vs neglected\" trap in rules/gap-verification.md wearing a different hat.",
+      "A separate food-truck entity, ROYAL CARIBBEAN EXPRESS JERK CUISINE FOOD TRUCK LLC, is licensed at the same address. It is a truck rather than a second storefront, so I read this as one location, but it is worth a glance before treating them as single-site."
+    ]
+  },
+  {
+    "id": "2026-09-06-chef-saras-cafe",
+    "run": "2026-09-06",
+    "name": "Chef Sara's Cafe",
+    "neighborhood": "South Shore",
+    "cuisine": "Breakfast / cafe",
+    "website": "chefsarascafe.com (dead)",
+    "gap": {
+      "type": "Broken links",
+      "claim": "chefsarascafe.com is dead at the DNS level — NXDOMAIN on both apex and www, verified 2026-09-06, with no HTTP response on either scheme. Multiple listings still publish it as the cafe's website, including EatOkra and BeyondMenu, so directories are actively sending people to a domain that resolves nowhere. DNS is a record, not a render, so a browser check should agree.",
+      "sourceUrl": "https://www.eatokra.com/businesses/chef-sara-s-cafe",
+      "evidenceTier": "routing",
+      "verification": {
+        "status": "unverified",
+        "checkedBy": null,
+        "checkedOn": null,
+        "note": null
+      }
+    },
+    "whyNow": {
+      "text": "None confirmed. Owner-operated at 7201 S Exchange since 2011-09-28 under a single individual licence holder, renewed 2025-10-16 and active to 2027-10-15. Fifteen years in, no visible moment to hang urgency on.",
+      "sourceUrl": "https://data.cityofchicago.org/resource/r5kz-chrr.json?$where=starts_with(address,%277201%20S%20EXCHANGE%27)"
+    },
+    "instagram": {
+      "handle": "@chefsarascafe",
+      "status": "handle-found"
+    },
+    "score": 3,
+    "demoAngle": "A neighbourhood breakfast cafe with fifteen years of goodwill and a dead link on every listing. Restoring a working site is a small, concrete job with a visible before and after.",
+    "contact": {
+      "phone": "(773) 359-4637",
+      "email": "Chefsarascafe@gmail.com"
+    },
+    "outreach": {
+      "draft": "Hey! We keep hearing about breakfast at Chef Sara's, the paninis and the house-brewed coffee especially. The domain listed as your website, chefsarascafe.com, doesn't resolve anymore, so every directory still pointing people there sends them to a dead end instead of your hours and your menu, and a fair number of them won't try a second time. We build simple, sharp sites for Chicago restaurants, matched to the room rather than dropped out of a template, and there are a few nearby we'd love to show you, plus a little game regulars play for a free drink that quietly builds you a customer list. Want a quick mockup?",
+      "sent": null,
+      "channel": null,
+      "sentOn": null,
+      "reply": null,
+      "repliedOn": null,
+      "revisions": 0,
+      "subject": "The website link on Chef Sara's listings is dead"
+    },
+    "status": "New",
+    "caveats": [
+      "Scored 3, not 4, on reachability. Instagram @chefsarascafe exists but shows roughly 147 followers and a single post, so it is a handle rather than a channel. If Angela wants this one, email or phone is the more realistic route and both are captured here.",
+      "The email came off a third-party listing (BeyondMenu), not from the cafe's own site, since there isn't one. It reads like a genuine business address rather than builder demo junk, but it is unconfirmed.",
+      "The licence at this address is held by a named individual and the cafe carries that first name. I have kept every name out of the draft per the contract; treat the connection as unconfirmed until a human checks it."
+    ]
   }
 ]

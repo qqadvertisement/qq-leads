@@ -56,24 +56,34 @@ as verdicts accumulate, and they beat this paragraph.
 **3. Absence claims** — "no website exists." Corroborate across two or more independent
 listings that each omit a website field.
 
-This is the tier that has actually held up: **0 of 4 overturned** in the 2026-08-21 pass. The
-reason is structural — an absence claim is a statement about listings, and listings are static
-records rather than rendered pages, so the crawler-vs-browser gap doesn't apply. Lead with these
-when you have them.
+Still the best tier, but no longer the safe one it looked like: **3 of 8 overturned** as of
+2026-09-06, up from 0 of 4. Every new failure was the same shape — a site did exist, on a
+platform, and the claim should have been `Weak / outdated site`. The structural argument still
+holds (listings are records, not renders), so what broke was never the tier; it was searching
+for an owned domain and concluding nothing existed. See the "if a site loads, it is a website"
+rule in `icp.md` for the check that closes this.
 
 ---
 
-## An unfinished site and a neglected site look identical from outside
+## Placeholder and template-default gaps are the weakest openers we have
 
-They mean opposite things commercially. A Wix placeholder with demo content might be a
-restaurant that gave up, or it might be a site someone is actively building this week —
-and pitching the second one is embarrassing at best.
+Every one of them has come back short. Two shapes, two separate lessons.
 
-Before leading with a placeholder or template-default gap, check whether the business
-recently changed hands, recently opened, or has a visible agency/builder attached. If it
-opened in the last ~60 days, assume mid-build unless proven otherwise.
+**An unfinished site and a neglected site look identical from outside**, and they mean
+opposite things commercially. Before leading with a placeholder, check whether the business
+recently changed hands, recently opened, or has an agency attached. If it opened in the last
+~60 days, assume mid-build. But do not stop at new openings: Jomon had traded for years and
+still came back *"already have a team building on that."* A placeholder says nothing about
+whether an owner gave up — it is equally consistent with work in progress at any age of
+business, and the age of the business does not tell you which.
 
-*Provenance: fb-2026-08-21-003*
+**A defect the visitor never consciously reads is not a customer-visible wall.** Paper Tiger's
+Squarespace `<title>Your Site Title` was factually correct, unrebutted, and still returned
+`wrong`: *"the website exists, it just doesn't land well."* A title tag, an og: property, a
+copyright year — nobody standing on the page sees them. Beat 2 wants the most *visible*
+defect, so cite these as supporting texture at most, never as the opener.
+
+*Provenance: fb-2026-08-21-003, fb-2026-09-01-vssv, fb-2026-09-01-19wo, fb-2026-09-03-65lg*
 
 ---
 
@@ -121,11 +131,20 @@ Look for the second before rewriting the first.
 
 ## Source reliability (updated as we learn it)
 
-- **Reliably fetchable:** TripAdvisor listing pages, chamber-of-commerce and
-  neighborhood-association directories, the business's own site, the Chicago open-data
+- **Reliably fetchable:** EatOkra listings, Atly listings, RestaurantGuru, chamber-of-commerce
+  and neighborhood-association directories, the business's own site, the Chicago open-data
   business-license API.
 - **Blocks automated fetching, essentially always:** Yelp `/biz/` pages, Facebook, Instagram,
-  Bing, DuckDuckGo, Block Club Chicago, Google Maps (JS-rendered).
+  Bing, DuckDuckGo, Block Club Chicago, Google Maps (JS-rendered), **TripAdvisor** (moved here
+  2026-09-06 — every `/Restaurant_Review-` fetch returned HTTP 403), restaurant.com, Zmenu.
+- **Chamber directories go stale.** The belmontcragin.org listing showed "Facebook only" for
+  businesses that in fact had live sites, and published dead `orderX.com` domains for two
+  others. Treat a directory's website field as a lead to check, never as proof of absence.
+- **The city business-license API is the sharpest tool here.** It settles open/closed, change
+  of hands, and — via sibling legal names at different addresses — franchise and group
+  structure, which is the ICP question hardest to answer from listings.
+  `data.cityofchicago.org/resource/r5kz-chrr.json`, filter on `address` or
+  `doing_business_as_name`; `license_status` `AAC` means cancelled.
 - **Auto-generated listing mills** (goto-restaurants.com, weeblyte.com, restaurants-world.net
   and similar) look like a real result in a search list but are not an owner-built site.
   Their presence is evidence *for* a "No website" gap, not against it.

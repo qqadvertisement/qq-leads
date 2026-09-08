@@ -302,8 +302,9 @@
     "actual": "the website exist but it is not landing well. https://thaimeupcafe.toast.site/menu/thai-me-up-cafe-608-w-barry-ave",
     "reason": "the website exist but it is not landing well. https://thaimeupcafe.toast.site/menu/thai-me-up-cafe-608-w-barry-ave",
     "generalizes": true,
-    "proposedRule": "",
-    "ruleStatus": "proposed"
+    "proposedRule": "If a site loads it is a website: a platform- or builder-hosted page the owner uses (*.toast.site, *.square.site, *.netwaiter.com, *.godaddysites.com, a Toast/Square ordering page) is \"Weak / outdated site\", not \"No website\". Search for a platform-hosted site by business name before filing an absence claim.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/icp.md"
   },
   {
     "id": "fb-2026-09-01-tuzw",
@@ -315,8 +316,9 @@
     "actual": "the website exist but it is not landing well",
     "reason": "the website exist but it is not landing well",
     "generalizes": true,
-    "proposedRule": "",
-    "ruleStatus": "proposed"
+    "proposedRule": "If a site loads it is a website: a platform- or builder-hosted page the owner uses (*.toast.site, *.square.site, *.netwaiter.com, *.godaddysites.com, a Toast/Square ordering page) is \"Weak / outdated site\", not \"No website\". Search for a platform-hosted site by business name before filing an absence claim.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/icp.md"
   },
   {
     "id": "fb-2026-09-01-voice",
@@ -342,8 +344,9 @@
     "actual": "the website exist just doesn't' land well",
     "reason": "the website exist just doesn't' land well",
     "generalizes": true,
-    "proposedRule": "",
-    "ruleStatus": "proposed"
+    "proposedRule": "A defect the visitor never consciously reads is not a customer-visible wall. A title tag, an og: property or a copyright year is invisible to someone standing on the page; cite it as supporting texture at most, never as beat 2.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   },
   {
     "id": "fb-2026-09-01-19wo",
@@ -355,8 +358,9 @@
     "actual": "the website exist just doesn't' land well\nalready send a email",
     "reason": "the website exist just doesn't' land well\nalready send a email",
     "generalizes": true,
-    "proposedRule": "",
-    "ruleStatus": "proposed"
+    "proposedRule": "A defect the visitor never consciously reads is not a customer-visible wall. A title tag, an og: property or a copyright year is invisible to someone standing on the page; cite it as supporting texture at most, never as beat 2.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   },
   {
     "id": "fb-2026-09-01-21ee",
@@ -368,8 +372,9 @@
     "actual": "there is website just weak",
     "reason": "there is website just weak",
     "generalizes": true,
-    "proposedRule": "",
-    "ruleStatus": "proposed"
+    "proposedRule": "If a site loads it is a website. Corollary check: if the lead record's own website field is populated, the gap cannot be \"No website\" — that self-contradiction shipped on this lead.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/icp.md"
   },
   {
     "id": "fb-2026-09-03-65lg",
@@ -381,7 +386,8 @@
     "actual": "The website is a placeholder but no address is listed. already have a team building on that",
     "reason": "The website is a placeholder but no address is listed. already have a team building on that",
     "generalizes": true,
-    "proposedRule": "",
-    "ruleStatus": "proposed"
+    "proposedRule": "Extend the mid-build check past new openings. A placeholder site says nothing about whether an owner gave up — it is equally consistent with an agency working on it right now, at any age of business. Jomon had traded for years and still had a team mid-build.",
+    "ruleStatus": "adopted",
+    "adoptedInto": "rules/gap-verification.md"
   }
 ]
