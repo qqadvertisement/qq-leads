@@ -151,8 +151,8 @@ Each lead's `outreach` block records what actually went out and what came back:
 | `sent` | The exact text Angela sent. Her signature (see constraints above). |
 | `channel` | `"email"`, `"instagram"`, or `"phone"` — how it went out. |
 | `sentOn` | `YYYY-MM-DD` — anchors the two-week reply clock. |
-| `reply` | `"replied"` or `"none"` — set explicitly by Angela. |
-| `repliedOn` | `YYYY-MM-DD` when she marked it replied. |
+| `reply` | `"replied"`, `"rejected"` (owner declined the pitch), or `"none"` — set explicitly by Angela. |
+| `repliedOn` | `YYYY-MM-DD` when she marked it replied or declined. |
 | `revisions` | How many times the draft was edited before sending. |
 
 **Reply state is derived from the date, not stored.** A message with `sent` set, no
@@ -160,6 +160,13 @@ Each lead's `outreach` block records what actually went out and what came back:
 automatically — nobody has to mark it. `reply: "none"` is only for closing one out
 early. The validator requires `sentOn` + `channel` whenever `sent` is set, so the clock
 can always be computed.
+
+**`reply: "rejected"` is the "owner declined" outcome** — she reached out and the owner
+said no to the pitch. The card's **Mark declined** button sets it (alongside Mark replied /
+Mark no reply). These leads are their own section: the board sinks them to the bottom,
+dims them like a "No reach", and the Outreach filter has a **Rejected** pill that shows only
+them. A declined lead reads "Owner declined · <date>" and there's an "Owner declined" stat
+tile up top.
 
 ## Priority and multiple gaps (Angela's own ordering)
 
