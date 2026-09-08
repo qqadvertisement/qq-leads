@@ -76,13 +76,13 @@
     "demoAngle": "Show the Google result and the browser tab reading \"Your Site Title\" side by side with the corrected version — a ten-second fix that proves competence and opens the door.",
     "outreach": {
       "draft": "Hey! Our team's always café-hopping around the neighborhood, and Paper Tiger's been on our list since you opened on Webster. I went to pull up your hours and noticed the browser tab and Google both still read \"Your Site Title\" instead of Paper Tiger — the Squarespace default that never got filled in, so for a brand-new café every shared link and search result turns up unnamed, right when first impressions count most. We build custom, made-to-match sites for Chicago cafés, plus a little game regulars play to win a free coffee that quietly builds you a list of people to bring back. We've done a few around the city we'd love to show you. Want us to put together a quick mockup of what yours could look like?",
-      "sent": null,
-      "channel": null,
-      "sentOn": null,
+      "subject": "Paper Tiger shows up as “Your Site Title” on Google",
+      "sent": "Hey! Our team's always café-hopping around the neighborhood, and Paper Tiger's been on our list since you opened on Webster. I went to pull up your hours and noticed the browser tab and Google both still read \"Your Site Title\" instead of Paper Tiger — the Squarespace default that never got filled in, so for a brand-new café every shared link and search result turns up unnamed, right when first impressions count most. We build custom, made-to-match sites for Chicago cafés, plus a little game regulars play to win a free coffee that quietly builds you a list of people to bring back. We've done a few around the city we'd love to show you. Want us to put together a quick mockup of what yours could look like?",
+      "channel": "email",
+      "sentOn": "2026-09-08",
       "reply": null,
       "repliedOn": null,
-      "revisions": 0,
-      "subject": "Paper Tiger shows up as “Your Site Title” on Google"
+      "revisions": 0
     },
     "status": "New",
     "caveats": [
