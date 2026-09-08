@@ -179,6 +179,8 @@ textarea::placeholder{color:var(--ink-muted)}
 .btn{font:inherit;font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:8px;border:1px solid var(--ink);background:var(--ink);color:var(--page);cursor:pointer}
 .btn.ghost{background:transparent;color:var(--ink-2);border-color:var(--border)}
 .btn.ghost:hover{color:var(--ink);border-color:var(--ink-muted)}
+.btn.reject{background:transparent;color:var(--critical);border-color:color-mix(in srgb,var(--critical) 45%,var(--border))}
+.btn.reject:hover{border-color:var(--critical)}
 .btn[disabled]{opacity:.4;cursor:not-allowed}
 .hint{font-size:11.5px;color:var(--ink-muted)}
 
@@ -191,6 +193,7 @@ textarea::placeholder{color:var(--ink-muted)}
 .os-warn{color:var(--warn);background:color-mix(in srgb,var(--warn) 16%,transparent)}
 .os-serious{color:var(--serious);background:color-mix(in srgb,var(--serious) 12%,transparent)}
 .os-muted,.os-none{color:var(--ink-muted);background:var(--surface-2)}
+.os-reject{color:var(--critical);background:color-mix(in srgb,var(--critical) 13%,transparent)}
 .ohint{font-size:11.5px;color:var(--ink-muted);margin-top:4px;line-height:1.5}
 /* GitHub connect bar — the one-time setup that turns copy-paste into a direct save */
 .ghbar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;justify-content:space-between;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:11px 15px;margin-bottom:24px;font-size:13px;color:var(--ink-2);box-shadow:var(--shadow)}
@@ -207,6 +210,9 @@ textarea::placeholder{color:var(--ink-muted)}
 /* Priority — Angela's own ordering, set per card */
 .card.p-skip{opacity:.5}
 .card.p-skip:hover,.card.p-skip:focus-within{opacity:1}
+/* Owner declined — the reject section: dimmed and sunk to the bottom */
+.card.o-rejected{opacity:.5}
+.card.o-rejected:hover,.card.o-rejected:focus-within{opacity:1}
 .prio{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .prio .plabel{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-muted)}
 .pbtn{font:inherit;font-size:11.5px;font-weight:600;padding:4px 10px;border-radius:7px;border:1px solid var(--border);background:var(--surface-2);color:var(--ink-2);cursor:pointer}
@@ -478,6 +484,7 @@ function outreachState(l){
   const o = l.outreach || {};
   if(!o.sent) return { key:"not-sent", label:"Not sent yet", cls:"os-none" };
   if(o.reply==="replied") return { key:"replied", label:`Replied ✓${o.repliedOn?" · "+o.repliedOn:""}`, cls:"os-good" };
+  if(o.reply==="rejected") return { key:"rejected", label:`Owner declined${o.repliedOn?" · "+o.repliedOn:""}`, cls:"os-reject" };
   if(o.reply==="none") return { key:"closed", label:"No reply — closed", cls:"os-muted" };
   const days = o.sentOn ? daysBetween(o.sentOn) : 0;
   if(days>=14) return { key:"stale", label:"No reply after 2 weeks", cls:"os-serious" };
@@ -498,6 +505,7 @@ function outreachMatch(l, f){
   if(f==="Not sent") return k==="not-sent";
   if(f==="Awaiting")  return k==="awaiting";
   if(f==="Replied")   return k==="replied";
+  if(f==="Rejected")  return k==="rejected";
   if(f==="No reply")  return k==="stale" || k==="closed";
   return true;
 }
@@ -524,7 +532,7 @@ function boot(){
   pills("f-run", ["All", ...new Set(LEADS.map(l=>l.run))], "run");
   pills("f-verify", ["All","unverified","confirmed","wrong","partial"], "verify");
   pills("f-gap", ["All", ...Object.keys(GAP)], "gap");
-  pills("f-outreach", ["All","Not sent","Awaiting","Replied","No reply"], "outreach");
+  pills("f-outreach", ["All","Not sent","Awaiting","Replied","Rejected","No reply"], "outreach");
   pills("f-priority", ["All","High","Medium","Low","No reach"], "priority");
   wireChrome();
   render();
@@ -641,6 +649,7 @@ function renderStats(){
   document.getElementById("lead-count").textContent = n + " leads across " + runs.length + " runs";
   const sent = LEADS.filter(l=>l.outreach && l.outreach.sent);
   const replied = sent.filter(l=>l.outreach.reply==="replied").length;
+  const declined = sent.filter(l=>l.outreach.reply==="rejected").length;
   const noReply = sent.filter(l=>{const s=outreachState(l).key;return s==="stale"||s==="closed";}).length;
   const awaiting = sent.filter(l=>outreachState(l).key==="awaiting").length;
   document.getElementById("stats").innerHTML = `
@@ -650,7 +659,8 @@ function renderStats(){
     <div class="stat"><div class="label">Avg. fit score</div><div class="value">${avg}</div><div class="foot">out of 5</div></div>
     <div class="stat"><div class="label">Outreach sent</div><div class="value">${sent.length}</div><div class="foot">${awaiting} awaiting a reply</div></div>
     <div class="stat"><div class="label">Replied</div><div class="value">${sent.length?replied:"—"}</div><div class="foot">${sent.length?replied+" of "+sent.length+" got a reply":"nothing sent yet"}</div></div>
-    <div class="stat"><div class="label">No reply (2wk+)</div><div class="value">${sent.length?noReply:"—"}</div><div class="foot">${sent.length?"past the two-week cutoff":"—"}</div></div>`;
+    <div class="stat"><div class="label">No reply (2wk+)</div><div class="value">${sent.length?noReply:"—"}</div><div class="foot">${sent.length?"past the two-week cutoff":"—"}</div></div>
+    <div class="stat"><div class="label">Owner declined</div><div class="value">${sent.length?declined:"—"}</div><div class="foot">${sent.length?(declined?"said no to the pitch":"none yet"):"—"}</div></div>`;
 }
 
 function renderChart(){
@@ -691,6 +701,7 @@ function outreachBlock(l){
   } else if(st.key==="awaiting" || st.key==="stale"){
     actions = `<div class="vactions">
         <button class="btn" data-act="reply" data-r="replied">Mark replied</button>
+        <button class="btn reject" data-act="reply" data-r="rejected">Mark declined</button>
         <button class="btn ghost" data-act="reply" data-r="none">Mark no reply</button>
       </div>`;
   }
@@ -738,6 +749,7 @@ function card(l){
   let cls = "";
   if(v!=="unverified") cls += " v-"+v;
   if(prio==="skip") cls += " p-skip";
+  if(outreachState(l).key==="rejected") cls += " o-rejected";
   const noteVal = draftNotes[l.id] ?? l.gap.verification.note ?? "";
   return `<div class="card${cls}" data-id="${esc(l.id)}">
     <div class="card-top">
@@ -826,8 +838,12 @@ function render(){
     outreachMatch(l, filters.outreach) &&
     priorityMatch(l, filters.priority) &&
     searchMatch(l, q))
-    // Angela's priority first (High → No reach at the bottom), fit score breaks ties.
-    .sort((a,b)=> prioRank(a.priority??null) - prioRank(b.priority??null) || b.score - a.score);
+    // Declined-by-owner leads sink below everything (their own section at the bottom);
+    // then Angela's priority (High → No reach), with fit score breaking ties.
+    .sort((a,b)=>
+      (outreachState(a).key==="rejected") - (outreachState(b).key==="rejected")
+      || prioRank(a.priority??null) - prioRank(b.priority??null)
+      || b.score - a.score);
   document.getElementById("count-note").textContent = `Showing ${list.length} of ${LEADS.length} leads.`;
   const sc = document.getElementById("search-count");
   if(sc) sc.textContent = q ? `${list.length} match${list.length===1?"":"es"}` : "";
@@ -1000,11 +1016,12 @@ document.addEventListener("click", e=>{
 
   // Record whether the send got a reply, or passed with none.
   if(act==="reply"){
-    const r = e.target.dataset.r;   // "replied" | "none"
-    const block = { ...lead.outreach, reply:r, repliedOn: r==="replied" ? today() : null };
+    const r = e.target.dataset.r;   // "replied" | "rejected" | "none"
+    const block = { ...lead.outreach, reply:r, repliedOn: (r==="replied"||r==="rejected") ? today() : null };
     const fallback = ()=>JSON.stringify({ _paste_into:`data/leads.json → the lead with id "${id}" → replace its "outreach" block`, outreach: block }, null, 2);
     if(!canSaveDirect()){ copyOut(e.target, fallback()); return; }
-    saveOutreach(lead, block, null, e.target, `Outreach ${r==="replied"?"reply":"no-reply"} for ${id}`)
+    const commitMsg = r==="replied" ? "reply" : r==="rejected" ? "owner declined" : "no-reply";
+    saveOutreach(lead, block, null, e.target, `Outreach ${commitMsg} for ${id}`)
       .catch(err=>{ alert("Couldn't save to GitHub ("+err.message+").\nCopying the JSON so you can paste it into GitHub instead."); copyOut(e.target, fallback()); verifyToken(); });
     return;
   }
