@@ -181,6 +181,7 @@ textarea::placeholder{color:var(--ink-muted)}
 .btn.ghost:hover{color:var(--ink);border-color:var(--ink-muted)}
 .btn.reject{background:transparent;color:var(--critical);border-color:color-mix(in srgb,var(--critical) 45%,var(--border))}
 .btn.reject:hover{border-color:var(--critical)}
+.btn.reject.sel{background:var(--critical);color:var(--page);border-color:var(--critical)}
 .btn[disabled]{opacity:.4;cursor:not-allowed}
 .hint{font-size:11.5px;color:var(--ink-muted)}
 
@@ -680,8 +681,9 @@ function scoreEl(n){
   return `<div class="score"><span class="num">${n}</span><div class="dots">${d}</div></div>`;
 }
 
-// The send/reply record for one lead. Status is always shown; the buttons offered
-// depend on where the message is in its life (not sent → sent/awaiting → replied/closed).
+// The send/reply record for one lead. Status is always shown. A not-sent lead gets the
+// "log send" buttons; once anything is sent, the three outcome buttons (replied / declined /
+// no reply) are always offered so the outcome can be set or corrected at any time.
 function outreachBlock(l){
   const o = l.outreach || {};
   const st = outreachState(l);
@@ -698,11 +700,17 @@ function outreachBlock(l){
          <div class="ohint">${care
             ? `Heads up — this gap ${l.gap.verification.status==="wrong"?"is marked <strong>wrong</strong> with no corrected gap recorded":"isn’t verified yet"}. You can still log the reach; it'll ask you to confirm first, since the draft leans on a claim no one has checked.`
             : "Logs this outreach as done today and starts the two-week reply clock. For a phone call, the draft above is your talking points."}</div>`;
-  } else if(st.key==="awaiting" || st.key==="stale"){
+  } else {
+    // Anything already sent (awaiting, past-two-weeks, or resolved). The three outcome
+    // buttons are always offered so Angela can set the outcome — or correct a mis-click —
+    // at any point, the way Priority and the verdict buttons always show. The current
+    // outcome (if any) is highlighted; a rejection is usually the reply itself, so
+    // "Mark declined" has to be reachable even from a lead already marked replied.
+    const cur = o.reply || null;   // "replied" | "rejected" | "none" | null
     actions = `<div class="vactions">
-        <button class="btn" data-act="reply" data-r="replied">Mark replied</button>
-        <button class="btn reject" data-act="reply" data-r="rejected">Mark declined</button>
-        <button class="btn ghost" data-act="reply" data-r="none">Mark no reply</button>
+        <button class="btn ${cur==="replied"?"":"ghost"}" data-act="reply" data-r="replied">Mark replied</button>
+        <button class="btn reject ${cur==="rejected"?"sel":""}" data-act="reply" data-r="rejected">Mark declined</button>
+        <button class="btn ${cur==="none"?"":"ghost"}" data-act="reply" data-r="none">Mark no reply</button>
       </div>`;
   }
   return `<div class="outreach">
