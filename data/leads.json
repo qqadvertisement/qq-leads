@@ -1215,8 +1215,8 @@
       "sent": "Hey! Our team's always chasing good Sichuan, and yours keeps coming up in Bridgeport. When I went looking for you there's no site of your own — the whole menu lives on a third-party ordering page that links back to nothing of yours — so people can't easily find your hours or reach you directly. We build simple, good-looking sites for Chicago restaurants (a few around town we'd love to show you), plus a little game that turns first-timers into regulars with a free dish on the line. Want us to build you a real site with the menu and hours and show you a mockup?",
       "channel": "phone",
       "sentOn": "2026-09-08",
-      "reply": null,
-      "repliedOn": null,
+      "reply": "replied",
+      "repliedOn": "2026-09-08",
       "revisions": 0
     },
     "status": "New",
