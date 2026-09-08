@@ -698,8 +698,8 @@ function outreachBlock(l){
            <button class="btn" data-act="send" data-ch="phone">Log call · Phone</button>
          </div>
          <div class="ohint">${care
-            ? `Heads up — this gap ${l.gap.verification.status==="wrong"?"is marked <strong>wrong</strong> with no corrected gap recorded":"isn’t verified yet"}. You can still log the reach; it'll ask you to confirm first, since the draft leans on a claim no one has checked.`
-            : "Logs this outreach as done today and starts the two-week reply clock. For a phone call, the draft above is your talking points."}</div>`;
+            ? `Heads up — this gap ${l.gap.verification.status==="wrong"?"is marked <strong>wrong</strong> with no corrected gap recorded":"isn’t verified yet"}. You can still log the reach; it'll ask you to confirm first, since it leans on a claim no one has checked.`
+            : `Logs this outreach as done today and starts the two-week reply clock.${o.draft?" For a phone call, the draft above is your talking points.":""}`}</div>`;
   } else {
     // Anything already sent (awaiting, past-two-weeks, or resolved). The three outcome
     // buttons are always offered so Angela can set the outcome — or correct a mis-click —
@@ -803,7 +803,7 @@ function card(l){
         </div>
       </div>
     </details>` : ""}
-    ${(l.outreach.draft || l.outreach.sent) ? outreachBlock(l) : ""}
+    ${outreachBlock(l)}
     ${(l.caveats||[]).map(c=>`<div class="caveat">${esc(c)}</div>`).join("")}
     <div class="prio">
       <span class="plabel">Priority</span>
